@@ -103,7 +103,7 @@
       <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
         <a href="{{ item.href }}" onMouseEnter="{{ item.onHover }}" style="display:none;font-size:12px;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap;padding:6px 0;border-bottom:1px solid {{ item.rule }};color:{{ item.color }};transition:color .35s ease,border-color .35s ease;" data-nav="1">{{ item.label }}</a>
       </sc-for>
-      <a href="{{ fresha }}" target="_blank" rel="noopener" style="padding:12px 22px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:background .4s ease;" style-hover="background:#0B4B50;color:#F7F4EE;">Book</a>
+      <a href="#/book" target="_blank" rel="noopener" style="padding:12px 22px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:background .4s ease;" style-hover="background:#0B4B50;color:#F7F4EE;">Book</a>
       <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:none;background:none;border:1px solid {{ navBorder2 }};width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;color:{{ navInk }};" data-burger="1">
         <span style="display:block;width:16px;height:7px;border-top:1px solid currentColor;border-bottom:1px solid currentColor;"></span>
       </button>
@@ -148,7 +148,7 @@
     <sc-for list="{{ menuItems }}" as="item" hint-placeholder-count="8">
       <a href="{{ item.href }}" onClick="{{ toggleMenu }}" style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,6.5vw,46px);line-height:1.18;color:#F7F4EE;padding:5px 0;border-bottom:1px solid rgba(247,244,238,.12);">{{ item.label }}</a>
     </sc-for>
-    <a href="{{ fresha }}" target="_blank" rel="noopener" style="margin-top:30px;align-self:start;padding:16px 30px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;">Book an appointment</a>
+    <a href="#/book" target="_blank" rel="noopener" style="margin-top:30px;align-self:start;padding:16px 30px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;">Book an appointment</a>
   </div>
 </sc-if>
 
@@ -176,7 +176,7 @@
         </p>
         
         <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:34px;">
-          <a href="{{ fresha }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 32px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .35s ease,transform .2s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+          <a href="#/book" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 32px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .35s ease,transform .2s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
             <span>Book a Session</span>
             <span class="btn-icon-bubble">→</span>
           </a>
@@ -293,7 +293,7 @@
           </div>
 
           <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="{{ matchRecFresha }}" target="_blank" rel="noopener" style="flex:1;min-width:180px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 22px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+            <a href="#/book" target="_blank" rel="noopener" style="flex:1;min-width:180px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 22px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
               <span>Book This Session</span>
               <span class="btn-icon-bubble">→</span>
             </a>
@@ -731,7 +731,7 @@
               <span style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:600;color:#1F2A28;">{{ tb.price }}</span>
               <div style="display:flex;align-items:center;gap:12px;">
                 <a href="{{ tb.detailHref }}" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid rgba(138,90,46,.4);padding-bottom:1px;">Read the hour →</a>
-                <a href="{{ fresha }}" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
+                <a href="#/book" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
               </div>
             </div>
           </div>
@@ -777,7 +777,7 @@
                 <span style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:600;color:#1F2A28;">{{ tb.price }}</span>
                 <div style="display:flex;align-items:center;gap:12px;">
                   <a href="{{ tb.detailHref }}" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid rgba(138,90,46,.4);padding-bottom:1px;">Read the hour →</a>
-                  <a href="{{ fresha }}" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
+                  <a href="#/book" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
                 </div>
               </div>
             </div>
@@ -823,7 +823,7 @@
               <span style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:600;color:#1F2A28;">{{ tb.price }}</span>
               <div style="display:flex;align-items:center;gap:12px;">
                 <a href="{{ tb.detailHref }}" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid rgba(138,90,46,.4);padding-bottom:1px;">Read the hour →</a>
-                <a href="{{ fresha }}" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
+                <a href="#/book" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
               </div>
             </div>
           </div>
@@ -869,7 +869,7 @@
                 <span style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:600;color:#1F2A28;">{{ tb.price }}</span>
                 <div style="display:flex;align-items:center;gap:12px;">
                   <a href="{{ tb.detailHref }}" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid rgba(138,90,46,.4);padding-bottom:1px;">Read the hour →</a>
-                  <a href="{{ fresha }}" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
+                  <a href="#/book" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
                 </div>
               </div>
             </div>
@@ -946,8 +946,8 @@
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:12px;">
-          <a href="{{ fresha }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:16px 30px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
-            <span>Book on Fresha</span>
+          <a href="#/book" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:16px 30px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+            <span>Book Online</span>
             <span class="btn-icon-bubble">→</span>
           </a>
           <a href="{{ whatsapp }}" target="_blank" rel="noopener" style="padding:16px 24px;background:#EDE8DF;border:1px solid #DCD3C5;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;">
@@ -1049,7 +1049,7 @@
               </ul>
             </div>
 
-            <a href="{{ fresha }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;background:{{ pk.btnBg }};border:1px solid {{ pk.btnBorder }};color:{{ pk.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:all .3s ease;">
+            <a href="#/book" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;background:{{ pk.btnBg }};border:1px solid {{ pk.btnBorder }};color:{{ pk.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:all .3s ease;">
               <span>Book {{ pk.tier }}</span>
               <span class="btn-icon-bubble">→</span>
             </a>
@@ -1461,7 +1461,7 @@
               <p style="font-size:14px;line-height:1.6;color:#6E675C;margin:0 0 24px;padding-top:14px;border-top:1px solid #DCD3C5;">{{ h.note }}</p>
 
               <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:18px;border-top:1px solid #DCD3C5;">
-                <a href="{{ h.fresha }}" target="_blank" rel="noopener" style="flex:1;min-width:140px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:14px 20px;background:#072F33;color:#F7F4EE;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+                <a href="#/book" target="_blank" rel="noopener" style="flex:1;min-width:140px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:14px 20px;background:#072F33;color:#F7F4EE;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
                   <span>Book Slot</span>
                   <span class="btn-icon-bubble">→</span>
                 </a>
@@ -1685,8 +1685,8 @@
           </div>
 
           <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
-            <a href="{{ matchRecFresha }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 34px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
-              <span>Book Matched Slot on Fresha</span>
+            <a href="#/book" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 34px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+              <span>Reserve Matched Protocol</span>
               <span class="btn-icon-bubble">→</span>
             </a>
             <a href="{{ matchRecWhatsApp }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:17px 28px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;">
@@ -1806,8 +1806,8 @@
           </div>
 
           <div style="display:flex;flex-wrap:wrap;gap:14px;">
-            <a href="{{ matchRecFresha }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:17px 32px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
-              <span>Book Matched Slot on Fresha</span>
+            <a href="#/book" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:17px 32px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+              <span>Reserve Matched Protocol</span>
               <span class="btn-icon-bubble">→</span>
             </a>
             <a href="{{ matchRecWhatsApp }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:17px 26px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;">
@@ -2013,6 +2013,371 @@
 </main>
 </sc-if>
 <!-- ================= GRAND SANCTUARY FOOTER ================= -->
+<!-- ================= IN-HOUSE BOOKING WIZARD ================= -->
+<sc-if value="{{ isBook }}" hint-placeholder-val="{{ false }}">
+<main style="animation:{{ pageAnim }};">
+  <!-- Hero -->
+  <section style="position:relative;min-height:clamp(380px,50vh,540px);display:grid;align-items:end;background:#072F33;color:#F7F4EE;overflow:hidden;padding:calc(78px + clamp(44px,6vw,80px)) clamp(20px,4vw,56px) clamp(44px,5vw,72px);border-bottom:1px solid rgba(192,139,92,.28);">
+    <span style="position:absolute;inset:0;overflow:hidden;"><img data-parallax="0.3" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&amp;fit=crop&amp;w=2200&amp;q=80" alt="Sanctuary Suite" style="width:100%;height:125%;min-height:125%;object-fit:cover;filter:saturate(.7) contrast(1.05) brightness(.5);"></span>
+    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.75) 0%,rgba(7,47,51,.45) 44%,rgba(7,47,51,.96) 100%);"></span>
+    
+    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:clamp(30px,4vw,60px);align-items:end;" data-stack="1">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+          <span style="width:28px;height:1px;background:#C08B5C;"></span>
+          <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Dedicated Online Reservation</span>
+        </div>
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,7.5vw,100px);line-height:.96;letter-spacing:-.03em;margin:0 0 20px;">
+          Reserve your sanctuary hour.
+        </h1>
+        <p style="font-size:16.5px;line-height:1.75;color:rgba(247,244,238,.82);max-width:52ch;margin:0;">
+          Select your desired treatment or custom bundle, pick your preferred specialist, and secure your arrival window with zero surprise charges.
+        </p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;justify-content:flex-end;">
+        <div style="background:rgba(247,244,238,.06);border:1px solid rgba(247,244,238,.16);padding:22px 26px;backdrop-filter:blur(10px);">
+          <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:6px;">Need Instant Desk Help?</span>
+          <p style="font-size:13px;line-height:1.6;color:rgba(247,244,238,.8);margin:0 0 12px;">Call or message our front desk concierge directly for same-day urgent openings or custom group buy-outs.</p>
+          <a href="{{ whatsapp }}" target="_blank" rel="noopener" style="color:#C08B5C;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid rgba(192,139,92,.5);padding-bottom:2px;">Chat with Desk Concierge →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Container -->
+  <section style="max-width:1380px;margin:0 auto;padding:clamp(60px,8vw,120px) clamp(20px,4vw,56px);">
+    
+    <sc-if value="{{ bookConfirmed }}" hint-placeholder-val="{{ false }}">
+      <!-- Confirmation Success Pass -->
+      <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:#C08B5C;max-width:840px;margin:0 auto;">
+        <div class="jv-bezel-inner" style="background:#072F33;color:#F7F4EE;padding:clamp(36px,5vw,68px);border-color:rgba(247,244,238,.14);">
+          
+          <div style="text-align:center;max-width:48ch;margin:0 auto 34px;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:rgba(192,139,92,.2);border:1px solid #C08B5C;color:#C08B5C;font-size:24px;margin-bottom:16px;">✓</span>
+            <span style="display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#C08B5C;margin-bottom:8px;">Sanctuary Reservation Confirmed</span>
+            <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(32px,4.5vw,56px);line-height:1.05;color:#F7F4EE;margin:0 0 12px;">We have held your room, {{ bookName }}.</h2>
+            <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);">A confirmation SMS has been dispatched to <strong>{{ bookPhone }}</strong>. Your therapist will prepare your treatment suite and botanical tea prior to arrival.</p>
+          </div>
+
+          <!-- Digital Reservation Ticket -->
+          <div style="background:rgba(247,244,238,.04);border:1px solid rgba(247,244,238,.16);padding:24px 28px;border-radius:8px;margin-bottom:34px;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;padding-bottom:20px;border-bottom:1px solid rgba(247,244,238,.1);">
+              <div>
+                <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Reference No.</span>
+                <span style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;color:#F7F4EE;">{{ bookRef }}</span>
+              </div>
+              <div>
+                <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Date &amp; Arrival Slot</span>
+                <span style="font-size:14px;color:#F7F4EE;font-weight:600;">{{ bookDate }} · {{ bookTime }}</span>
+              </div>
+              <div>
+                <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Sanctuary Location</span>
+                <span style="font-size:14px;color:#F7F4EE;">{{ currentHouseLabel }}</span>
+              </div>
+              <div>
+                <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Total Published Rate</span>
+                <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#C08B5C;font-weight:600;">{{ currentServicePrice }}</span>
+              </div>
+            </div>
+
+            <div style="padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;color:rgba(247,244,238,.85);">
+              <div>
+                <span style="color:#C08B5C;font-weight:600;">Selected Service:</span> {{ currentServiceName }} ({{ currentServiceDur }})
+              </div>
+              <div>
+                <span style="color:#C08B5C;font-weight:600;">Specialist:</span> {{ currentSpecialistLabel }}
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;">
+            <a href="{{ bookWhatsAppConfirmation }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:17px 32px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+              <span>Send Reservation Copy to WhatsApp</span>
+              <span class="btn-icon-bubble">→</span>
+            </a>
+            <button onClick="{{ resetBooking }}" style="padding:17px 26px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">
+              Book Another Appointment
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ bookInProgress }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:1.35fr 0.65fr;gap:clamp(30px,4vw,60px);align-items:start;" data-stack="1">
+        
+        <!-- Left: Multi-Step Booking Panel -->
+        <div>
+          
+          <!-- Step Progress Ribbon -->
+          <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:clamp(36px,4.5vw,56px);border-bottom:1px solid #DCD3C5;padding-bottom:16px;" data-stack="1">
+            <sc-for list="{{ bookProgressSteps }}" as="st" hint-placeholder-count="5">
+              <button onClick="{{ st.select }}" style="background:none;border:none;border-bottom:2px solid {{ st.rule }};padding:10px 0;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:{{ st.color }};cursor:pointer;text-align:left;font-weight:600;transition:all .3s ease;">
+                <span style="display:block;font-size:9.5px;opacity:.7;">{{ st.stepNum }}</span>
+                <span>{{ st.title }}</span>
+              </button>
+            </sc-for>
+          </div>
+
+          <!-- STEP 1: CATEGORY & SERVICE -->
+          <sc-if value="{{ isBookStep0 }}" hint-placeholder-val="{{ true }}">
+            <div>
+              <div style="margin-bottom:24px;">
+                <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Step 01 of 05</span>
+                <h2 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.8vw,48px);color:#1F2A28;margin:8px 0 8px;">Select Service or Package</h2>
+                <p style="font-size:15px;line-height:1.7;color:#6E675C;">Choose a treatment department, package tier, or custom sequence.</p>
+              </div>
+
+              <!-- Department Filter Tabs -->
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+                <sc-for list="{{ bookCategories }}" as="bc" hint-placeholder-count="5">
+                  <button onClick="{{ bc.select }}" style="cursor:pointer;padding:8px 16px;background:{{ bc.bg }};border:1px solid {{ bc.border }};color:{{ bc.color }};font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-radius:20px;font-weight:500;transition:all .25s ease;">{{ bc.label }}</button>
+                </sc-for>
+              </div>
+
+              <!-- Service Cards Grid -->
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:34px;">
+                <sc-for list="{{ bookServicesList }}" as="sv" hint-placeholder-count="6">
+                  <div onClick="{{ sv.select }}" class="jv-bezel" style="cursor:pointer;background:{{ sv.bg }};border-color:{{ sv.border }};transition:all .3s ease;">
+                    <div class="jv-bezel-inner" style="padding:20px 22px;background:transparent;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                      <div>
+                        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px;">
+                          <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:{{ sv.ink }};margin:0;">{{ sv.name }}</h4>
+                          <span style="font-size:11px;letter-spacing:.1em;color:#8A5A2E;font-weight:600;">{{ sv.dur }}</span>
+                        </div>
+                        <p style="font-size:13px;line-height:1.55;color:{{ sv.muted }};margin:0 0 14px;">{{ sv.desc }}</p>
+                      </div>
+                      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid rgba(220,211,197,.7);">
+                        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;color:{{ sv.ink }};font-weight:600;">{{ sv.price }}</span>
+                        <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:{{ sv.accent }};font-weight:600;">{{ sv.actionLabel }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <div style="display:flex;justify-content:flex-end;">
+                <button onClick="{{ goToStep1 }}" class="btn-touch" style="display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+                  <span>Next: Specialist Preference</span>
+                  <span class="btn-icon-bubble">→</span>
+                </button>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- STEP 2: SPECIALIST SELECTION -->
+          <sc-if value="{{ isBookStep1 }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="margin-bottom:24px;">
+                <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Step 02 of 05</span>
+                <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(28px,3.8vw,48px);color:#1F2A28;margin:8px 0 8px;">Select Specialist Preference</h2>
+                <p style="font-size:15px;line-height:1.7;color:#6E675C;">Every practitioner at JVEE has minimum 5+ years anatomical training.</p>
+              </div>
+
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:34px;">
+                <sc-for list="{{ bookSpecialistsList }}" as="sp" hint-placeholder-count="5">
+                  <div onClick="{{ sp.select }}" class="jv-bezel" style="cursor:pointer;background:{{ sp.bg }};border-color:{{ sp.border }};transition:all .3s ease;">
+                    <div class="jv-bezel-inner" style="padding:22px 24px;background:transparent;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                      <div>
+                        <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ sp.accent }};font-weight:600;">{{ sp.tag }}</span>
+                        <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:{{ sp.ink }};margin:8px 0 4px;">{{ sp.name }}</h4>
+                        <span style="display:block;font-size:12px;color:{{ sp.muted }};margin-bottom:10px;font-weight:500;">{{ sp.role }}</span>
+                        <p style="font-size:13px;line-height:1.55;color:{{ sp.muted }};margin:0;">{{ sp.desc }}</p>
+                      </div>
+                      <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(220,211,197,.7);text-align:right;">
+                        <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:{{ sp.accent }};font-weight:600;">{{ sp.status }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <button onClick="{{ goToStep0 }}" style="background:none;border:1px solid #DCD3C5;padding:14px 22px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:#1F2A28;">← Back to Services</button>
+                <button onClick="{{ goToStep2 }}" class="btn-touch" style="display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+                  <span>Next: Sanctuary House</span>
+                  <span class="btn-icon-bubble">→</span>
+                </button>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- STEP 3: LOCATION SELECTION -->
+          <sc-if value="{{ isBookStep2 }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="margin-bottom:24px;">
+                <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Step 03 of 05</span>
+                <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(28px,3.8vw,48px);color:#1F2A28;margin:8px 0 8px;">Select Sanctuary Location</h2>
+                <p style="font-size:15px;line-height:1.7;color:#6E675C;">Both houses operate dual generators, medical sanitization, and complimentary tea lounges.</p>
+              </div>
+
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:34px;">
+                <sc-for list="{{ bookHousesList }}" as="hl" hint-placeholder-count="3">
+                  <div onClick="{{ hl.select }}" class="jv-bezel" style="cursor:pointer;background:{{ hl.bg }};border-color:{{ hl.border }};transition:all .3s ease;">
+                    <div class="jv-bezel-inner" style="padding:24px 26px;background:transparent;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                      <div>
+                        <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ hl.accent }};font-weight:600;">{{ hl.badge }}</span>
+                        <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;color:{{ hl.ink }};margin:8px 0 6px;">{{ hl.name }}</h4>
+                        <span style="display:block;font-size:12.5px;color:{{ hl.muted }};margin-bottom:8px;">{{ hl.address }}</span>
+                        <p style="font-size:13px;line-height:1.55;color:{{ hl.muted }};margin:0;">{{ hl.desc }}</p>
+                      </div>
+                      <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(220,211,197,.7);display:flex;justify-content:space-between;align-items:center;">
+                        <span style="font-size:11.5px;color:#8A5A2E;">{{ hl.hours }}</span>
+                        <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:{{ hl.accent }};font-weight:600;">{{ hl.status }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <button onClick="{{ goToStep1 }}" style="background:none;border:1px solid #DCD3C5;padding:14px 22px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:#1F2A28;">← Back to Specialists</button>
+                <button onClick="{{ goToStep3 }}" class="btn-touch" style="display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+                  <span>Next: Date &amp; Time</span>
+                  <span class="btn-icon-bubble">→</span>
+                </button>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- STEP 4: DATE & TIME -->
+          <sc-if value="{{ isBookStep3 }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="margin-bottom:24px;">
+                <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Step 04 of 05</span>
+                <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(28px,3.8vw,48px);color:#1F2A28;margin:8px 0 8px;">Select Date &amp; Arrival Slot</h2>
+                <p style="font-size:15px;line-height:1.7;color:#6E675C;">Select an upcoming date and your preferred arrival window.</p>
+              </div>
+
+              <!-- Date Picker Input -->
+              <div style="margin-bottom:24px;max-width:380px;">
+                <label style="display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:8px;">Select Appointment Date:</label>
+                <input type="date" value="{{ bookDate }}" onChange="{{ onDateChange }}" min="{{ bookMinDate }}" style="width:100%;padding:14px 16px;background:#EDE8DF;border:1px solid #DCD3C5;font-size:15px;color:#1F2A28;border-radius:4px;outline:none;">
+              </div>
+
+              <!-- Time Slot Grid -->
+              <div style="margin-bottom:34px;">
+                <span style="display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:12px;">Available Arrival Windows for Selected Day:</span>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;">
+                  <sc-for list="{{ bookTimeSlots }}" as="ts" hint-placeholder-count="8">
+                    <div onClick="{{ ts.select }}" style="cursor:pointer;text-align:center;padding:14px 12px;background:{{ ts.bg }};border:1px solid {{ ts.border }};transition:all .25s ease;">
+                      <span style="display:block;font-weight:600;font-size:14px;color:{{ ts.color }};">{{ ts.time }}</span>
+                      <span style="display:block;font-size:10px;color:{{ ts.subColor }};margin-top:2px;">{{ ts.label }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <button onClick="{{ goToStep2 }}" style="background:none;border:1px solid #DCD3C5;padding:14px 22px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:#1F2A28;">← Back to Location</button>
+                <button onClick="{{ goToStep4 }}" class="btn-touch" style="display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+                  <span>Next: Guest Information</span>
+                  <span class="btn-icon-bubble">→</span>
+                </button>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- STEP 5: GUEST DETAILS & CONFIRMATION -->
+          <sc-if value="{{ isBookStep4 }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="margin-bottom:24px;">
+                <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Step 05 of 05</span>
+                <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(28px,3.8vw,48px);color:#1F2A28;margin:8px 0 8px;">Guest Details &amp; Confirmation</h2>
+                <p style="font-size:15px;line-height:1.7;color:#6E675C;">Enter your contact information to lock in your private suite reservation.</p>
+              </div>
+
+              <div style="display:grid;gap:18px;margin-bottom:28px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" data-stack="1">
+                  <div>
+                    <label style="display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:6px;">Full Name *</label>
+                    <input type="text" value="{{ bookName }}" onChange="{{ onNameChange }}" placeholder="e.g. Dr. Ngozi Adeleke" style="width:100%;padding:14px 16px;background:#EDE8DF;border:1px solid #DCD3C5;font-size:14px;color:#1F2A28;border-radius:4px;outline:none;">
+                  </div>
+                  <div>
+                    <label style="display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:6px;">Phone / WhatsApp Number *</label>
+                    <input type="tel" value="{{ bookPhone }}" onChange="{{ onPhoneChange }}" placeholder="+234 803 123 4567" style="width:100%;padding:14px 16px;background:#EDE8DF;border:1px solid #DCD3C5;font-size:14px;color:#1F2A28;border-radius:4px;outline:none;">
+                  </div>
+                </div>
+
+                <div>
+                  <label style="display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:6px;">Email Address (For Booking Confirmation)</label>
+                  <input type="email" value="{{ bookEmail }}" onChange="{{ onEmailChange }}" placeholder="ngozi@example.com" style="width:100%;padding:14px 16px;background:#EDE8DF;border:1px solid #DCD3C5;font-size:14px;color:#1F2A28;border-radius:4px;outline:none;">
+                </div>
+
+                <div>
+                  <label style="display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:6px;">Treatment Preferences, Pressure, Allergies, or Health Notes (Optional)</label>
+                  <textarea value="{{ bookNotes }}" onChange="{{ onNotesChange }}" rows="3" placeholder="Tell us if you prefer firmer/gentler pressure, female therapist, scalp emphasis, or silent relaxation..." style="width:100%;padding:14px 16px;background:#EDE8DF;border:1px solid #DCD3C5;font-size:14px;color:#1F2A28;border-radius:4px;outline:none;resize:vertical;"></textarea>
+                </div>
+              </div>
+
+              <!-- Sanctuary Terms Guarantee -->
+              <div style="background:#EDE8DF;border:1px solid #DCD3C5;padding:16px 20px;margin-bottom:30px;font-size:12.5px;line-height:1.6;color:#6E675C;">
+                <strong style="color:#1F2A28;">Sanctuary Policy:</strong> Your appointment holds a private suite and dedicated practitioner. Cancellations or changes are free up to 12 hours prior. Zero upfront pre-payment penalty.
+              </div>
+
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <button onClick="{{ goToStep3 }}" style="background:none;border:1px solid #DCD3C5;padding:14px 22px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:#1F2A28;">← Back to Date &amp; Time</button>
+                <button onClick="{{ submitBooking }}" class="btn-touch" style="display:inline-flex;align-items:center;gap:8px;padding:17px 34px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+                  <span>Confirm Sanctuary Reservation</span>
+                  <span class="btn-icon-bubble">→</span>
+                </button>
+              </div>
+            </div>
+          </sc-if>
+
+        </div>
+
+        <!-- Right: Real-time Reservation Summary Card -->
+        <div style="position:sticky;top:calc({{ navH }} + 24px);">
+          <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:rgba(192,139,92,.4);">
+            <div class="jv-bezel-inner" style="background:#072F33;color:#F7F4EE;padding:clamp(26px,3vw,38px);border-color:rgba(247,244,238,.12);">
+              
+              <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:12px;">Reservation Summary</span>
+              <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(22px,2.4vw,30px);line-height:1.1;color:#F7F4EE;margin:0 0 16px;">{{ currentServiceName }}</h3>
+              
+              <div style="display:grid;gap:12px;font-size:13px;padding-bottom:18px;border-bottom:1px solid rgba(247,244,238,.14);">
+                <div style="display:flex;justify-content:space-between;">
+                  <span style="color:rgba(247,244,238,.6);">Duration:</span>
+                  <span style="color:#F7F4EE;font-weight:500;">{{ currentServiceDur }}</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;">
+                  <span style="color:rgba(247,244,238,.6);">Specialist:</span>
+                  <span style="color:#F7F4EE;font-weight:500;">{{ currentSpecialistLabel }}</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;">
+                  <span style="color:rgba(247,244,238,.6);">Sanctuary House:</span>
+                  <span style="color:#F7F4EE;font-weight:500;">{{ currentHouseLabel }}</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;">
+                  <span style="color:rgba(247,244,238,.6);">Date &amp; Time:</span>
+                  <span style="color:#C08B5C;font-weight:600;">{{ bookDate }} · {{ bookTime }}</span>
+                </div>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:18px;margin-bottom:20px;">
+                <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,244,238,.7);">Published Rate</span>
+                <span style="font-family:'Instrument Serif',Georgia,serif;font-size:28px;color:#C08B5C;font-weight:600;">{{ currentServicePrice }}</span>
+              </div>
+
+              <div style="font-size:11.5px;color:rgba(247,244,238,.6);line-height:1.5;">
+                ✦ Includes pre-session consultation &amp; herbal tea lounge<br>
+                ✦ Zero hidden surcharges or surprise linen fees<br>
+                ✦ 100% Inverter &amp; Generator Power Guaranteed
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </sc-if>
+
+  </section>
+</main>
+</sc-if>
+
 <footer style="background:#052528;color:#F7F4EE;border-top:1px solid rgba(192,139,92,.35);position:relative;overflow:hidden;">
   
   <!-- Subtle ambient noise & glow -->
@@ -2031,8 +2396,8 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;justify-content:center;">
         <div style="display:flex;flex-wrap:wrap;gap:12px;width:100%;">
-          <a href="{{ fresha }}" target="_blank" rel="noopener" style="flex:1;min-width:200px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .35s ease,transform .2s ease;" style-hover="background:#F7F4EE;color:#072F33;">
-            <span>Book on Fresha</span>
+          <a href="#/book" target="_blank" rel="noopener" style="flex:1;min-width:200px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .35s ease,transform .2s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+            <span>Book Online</span>
             <span class="btn-icon-bubble">→</span>
           </a>
           <a href="{{ whatsapp }}" target="_blank" rel="noopener" style="flex:1;min-width:200px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.24);color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:background .35s ease,border-color .35s ease;" style-hover="background:rgba(247,244,238,.16);border-color:#C08B5C;">
@@ -2152,7 +2517,7 @@
 </footer>
 <!-- Mobile Floating Booking Rail -->
 <div class="jv-mobile-rail" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:rgba(7,47,51,.94);backdrop-filter:blur(16px);border-top:1px solid rgba(247,244,238,.16);gap:10px;align-items:center;">
-  <a href="{{ fresha }}" target="_blank" rel="noopener" style="flex:1;text-align:center;padding:13px 18px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;">Book on Fresha</a>
+  <a href="#/book" target="_blank" rel="noopener" style="flex:1;text-align:center;padding:13px 18px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;">Book Online</a>
   <a href="{{ whatsapp }}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 18px;background:#25D366;color:#FFFFFF;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:opacity .3s ease;">
     <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.19 8.19 0 0 1-5.82 2.42c-1.48 0-2.93-.39-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.25-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
     <span>WhatsApp</span>
@@ -2386,6 +2751,10 @@ class Component extends DCLogic {
     giftIdx: 2, giftDelivery: 0, giftName: '', giftMsg: '',
     matcherStep: 0, matcherNeed: 0, matcherTime: 0, matcherHouse: 0,
     builderMassage: 1, builderFacial: 1, builderHydro: 0,
+    bookStep: 0, bookCat: 'massage', bookService: 'deep-tissue', bookSpecialist: 'any', bookHouse: 'wuse2',
+    bookDate: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+    bookTime: '10:30 AM', bookName: '', bookPhone: '', bookEmail: '', bookNotes: '', bookConfirmed: false,
+    bookRef: 'JV-' + Math.floor(100000 + Math.random() * 900000),
   };
 
   componentDidMount() {
@@ -2450,7 +2819,6 @@ class Component extends DCLogic {
 
   syncRoute(scrollTop) {
     const hash = location.hash || '';
-    // Normalize hash: e.g. #/packages#custom-builder -> path = packages, anchor = custom-builder
     let stripped = hash.replace(/^#\/?/, '');
     const parts = stripped.split('#');
     const mainPath = parts[0].split('?')[0];
@@ -2462,7 +2830,7 @@ class Component extends DCLogic {
       slug = route.slice(2);
       route = DETAILS[slug] ? 'detail' : 'treatments';
     }
-    const ok = ['home', 'treatments', 'detail', 'packages', 'membership', 'gifts', 'occasions', 'about', 'faq', 'visit', 'matcher', 'massage', 'facials', 'rituals', 'aesthetics', 'aftercare', 'etiquette'];
+    const ok = ['home', 'treatments', 'detail', 'packages', 'membership', 'gifts', 'occasions', 'about', 'faq', 'visit', 'matcher', 'massage', 'facials', 'rituals', 'aesthetics', 'aftercare', 'etiquette', 'book'];
     if (ok.indexOf(route) < 0) route = 'home';
 
     const changed = route !== this.state.route || slug !== this.state.slug;
@@ -2558,7 +2926,7 @@ class Component extends DCLogic {
     const showPrices = this.props.showPrices !== false;
     const featured = this.props.featuredTier || 'Gold';
     const P = (v) => (showPrices ? v : 'On request');
-    const onDark = !scrolled && (route === 'home' || route === 'treatments' || route === 'visit' || route === 'detail' || route === 'membership' || route === 'occasions' || route === 'matcher' || route === 'massage' || route === 'facials' || route === 'rituals' || route === 'aesthetics' || route === 'etiquette' || route === 'aftercare');
+    const onDark = !scrolled && (route === 'home' || route === 'treatments' || route === 'visit' || route === 'detail' || route === 'membership' || route === 'occasions' || route === 'matcher' || route === 'massage' || route === 'facials' || route === 'rituals' || route === 'aesthetics' || route === 'etiquette' || route === 'aftercare' || route === 'book');
 
     const nav = [
       ['Home', '#/'],
@@ -2576,7 +2944,7 @@ class Component extends DCLogic {
       packages: 3,
       membership: 4,
       occasions: 5,
-      visit: 6, etiquette: 6, aftercare: 6, about: 6, faq: 6,
+      visit: 6, etiquette: 6, aftercare: 6, about: 6, faq: 6, book: 1,
     };
 
     const marquee = [
@@ -2650,7 +3018,6 @@ class Component extends DCLogic {
         hours: 'Monday – Sunday · 9:00 AM – 9:00 PM',
         img: U('1540555700478-4be289fbecef', 1600),
         note: 'Flagship location with private couples suites, hydrotherapy steam, and advanced medical aesthetics wing.',
-        fresha: 'https://www.fresha.com/book-now/jvee-wellness-spa-zkccddaf/all-offer?id=1411460&pId=1340373',
       },
       {
         name: 'Wuye House',
@@ -2660,7 +3027,6 @@ class Component extends DCLogic {
         hours: 'Tuesday – Sunday · 10:00 AM – 8:00 PM',
         img: U('1544161515-4ab6ce6db874', 1600),
         note: 'Secluded residential retreat designed for deep quiet, individual recharge and restorative massage sessions.',
-        fresha: 'https://www.fresha.com/book-now/jvee-wellness-spa-zkccddaf/all-offer?id=1411460&pId=1340373',
       },
     ];
 
@@ -3014,15 +3380,160 @@ class Component extends DCLogic {
       matchRecPractitioner = 'Senior Sports Specialist: Charles · Includes Menthol-Arnica Cryo Balm';
     }
 
-    const matchRecFresha = 'https://www.fresha.com/book-now/jvee-wellness-spa-zkccddaf/all-offer?id=1411460&pId=1340373';
     const matchRecWhatsApp = wa(`Hello JVEE — I completed the Clinical Protocol Matcher and would like to book: ${matchRecTitle} (${matchRecPrice})`);
 
     const matcherFaqs = [
       { q: 'What makes a "Protocol" different from a standard spa menu item?', a: 'A standard spa item is often a generic routine. A JVEE Protocol starts with a physical movement or skin barrier read, uses targeted modality combinations (like basalt heat before deep pressure), and includes a structured 10-day recovery roadmap.' },
       { q: 'Can I do a free in-person diagnostic instead of the online quiz?', a: 'Yes! We offer a complimentary 15-minute diagnostic skin analysis under Wood\'s lamp with Lead Aesthetician Suliat or a posture mobility intake with Charles at zero cost and no booking obligation.' },
       { q: 'What if I have medical contraindications or am pregnant?', a: 'Every protocol includes safety screening. For pregnancy (past the 1st trimester), we adjust to gentle side-lying Swedish bodywork and avoid hot stone thermotherapy or aggressive acid peels.' },
-      { q: 'Can I request a female therapist for my matched session?', a: 'Always. Female therapists are on staff daily and can be locked into your reservation with one click on Fresha or via WhatsApp.' },
+      { q: 'Can I request a female therapist for my matched session?', a: 'Always. Female therapists are on staff daily and can be locked into your reservation with one click during booking or via WhatsApp.' },
     ];
+
+    // In-House Booking Wizard Data
+    const bookServicesDict = {
+      'deep-tissue': { name: 'Deep Tissue Massage', dur: '60 min', price: P('₦38,000'), desc: 'Targeted myofascial work into chronic tension points.', cat: 'massage' },
+      'swedish-massage': { name: 'Swedish Relaxation', dur: '60 min', price: P('₦30,000'), desc: 'Long rhythmic effleurage for systemic nervous downshift.', cat: 'massage' },
+      'hot-stone': { name: 'Hot Stone Basalt', dur: '75 min', price: P('₦45,000'), desc: 'Volcanic heated basalt thermotherapy along the spine.', cat: 'massage' },
+      'aromatherapy': { name: 'Aromatherapy Botanical', dur: '60 min', price: P('₦35,000'), desc: 'Pure essential oil blends for adrenal fatigue and sleep.', cat: 'massage' },
+      'sports-recovery': { name: 'Sports Rehabilitation', dur: '75 min', price: P('₦48,000'), desc: 'Assisted PNF stretching and cross-fiber athletic release.', cat: 'massage' },
+      'couples-sanctuary': { name: 'Couples VIP Suite', dur: '60 min', price: P('₦70,000'), desc: 'Side-by-side bespoke session in our private double suite.', cat: 'massage' },
+
+      'hydrafacial': { name: 'HydraFacial MD Vortex', dur: '60 min', price: P('₦75,000'), desc: 'Painless vortex suction extraction and barrier antioxidant infusion.', cat: 'facials' },
+      'brightening-facial': { name: 'Brightening & Pigment Peel', dur: '60 min', price: P('₦40,000'), desc: 'Tranexamic acid and stable vitamin C for melanin-rich skin.', cat: 'facials' },
+      'multivitamin-facial': { name: 'Multivitamin Nourishing', dur: '60 min', price: P('₦38,000'), desc: 'Vitamins A, C, E, and B5 infusion for depleted, stressed skin.', cat: 'facials' },
+      'skin-consultation': { name: 'Clinical Skin Analysis', dur: '15 min', price: P('Complimentary'), desc: 'Diagnostic Woods lamp skin read with Lead Aesthetician Suliat.', cat: 'facials' },
+
+      'turkish-hammam': { name: 'Authentic Turkish Hammam', dur: '60 min', price: P('₦40,000'), desc: 'Eucalyptus steam, Moroccan black soap, and kessa glove scrub.', cat: 'rituals' },
+      'body-polish': { name: 'Body Polish & Wrap', dur: '75 min', price: P('₦48,000'), desc: 'Full-body sugar polish, warm clay mask, and cocoon wrap.', cat: 'rituals' },
+      'private-steam': { name: 'Private Steam Suite', dur: '30 min', price: P('₦15,000'), desc: 'Private eucalyptus hydro steam bath with rainfall shower.', cat: 'rituals' },
+
+      'body-sculpting': { name: 'Non-Invasive Sculpting', dur: '60 min', price: P('₦90,000'), desc: 'Ultrasonic cavitation and RF thermal energy per area.', cat: 'aesthetics' },
+      'teeth-whitening': { name: 'In-Chair Teeth Whitening', dur: '45 min', price: P('₦60,000'), desc: 'Cold-blue LED light activation lifting 4–8 shades.', cat: 'aesthetics' },
+
+      'pkg-bronze': { name: 'Bronze Sanctuary Tier', dur: '90 min', price: P('₦55,000'), desc: 'Swedish massage + private steam + express cleanse facial.', cat: 'packages' },
+      'pkg-silver': { name: 'Silver Sanctuary Tier', dur: '2.5 hours', price: P('₦95,000'), desc: 'Deep tissue + body scrub + brightening facial + steam bath.', cat: 'packages' },
+      'pkg-gold': { name: 'Gold Sanctuary Tier', dur: '4 hours', price: P('₦150,000'), desc: 'Hot stone + body polish + HydraFacial + teeth whitening + lunch.', cat: 'packages' },
+      'pkg-diamond': { name: 'Diamond VIP Tier', dur: 'Full Day', price: P('₦245,000'), desc: 'Full-day suite hold, aromatherapy, anti-ageing facial, sculpting & champagne.', cat: 'packages' },
+    };
+
+    const currentService = bookServicesDict[this.state.bookService] || bookServicesDict['deep-tissue'];
+    const currentServiceName = currentService.name;
+    const currentServiceDur = currentService.dur;
+    const currentServicePrice = currentService.price;
+
+    const bookCategories = [
+      { key: 'massage', label: '01 Massage & Bodywork' },
+      { key: 'facials', label: '02 Facials & Clinical Skin' },
+      { key: 'rituals', label: '03 Body Rituals & Steam' },
+      { key: 'aesthetics', label: '04 Advanced Aesthetics' },
+      { key: 'packages', label: '05 Signature Packages' },
+    ].map((bc) => ({
+      ...bc,
+      select: () => this.setState({ bookCat: bc.key }),
+      bg: this.state.bookCat === bc.key ? '#072F33' : '#EDE8DF',
+      color: this.state.bookCat === bc.key ? '#F7F4EE' : '#1F2A28',
+      border: this.state.bookCat === bc.key ? '#072F33' : '#DCD3C5',
+    }));
+
+    const bookServicesList = Object.keys(bookServicesDict)
+      .filter((k) => bookServicesDict[k].cat === this.state.bookCat)
+      .map((k) => {
+        const s = bookServicesDict[k];
+        const isSel = this.state.bookService === k;
+        return {
+          key: k,
+          ...s,
+          select: () => this.setState({ bookService: k }),
+          bg: isSel ? '#EDE8DF' : '#F7F4EE',
+          border: isSel ? '#C08B5C' : '#DCD3C5',
+          ink: '#1F2A28',
+          muted: '#6E675C',
+          accent: isSel ? '#C08B5C' : '#8A5A2E',
+          actionLabel: isSel ? 'Selected ✓' : 'Select Service →',
+        };
+      });
+
+    const bookSpecialistsList = [
+      { key: 'any', tag: 'Fastest Slot', name: 'First Available Specialist', role: 'Matched to your schedule', desc: 'Guarantees the earliest available opening across your chosen house.', status: this.state.bookSpecialist === 'any' ? 'Selected ✓' : 'Select →' },
+      { key: 'charles', tag: 'Lead Bodywork', name: 'Charles', role: 'Senior Clinical Bodywork & Sports Specialist', desc: '8+ years deep tissue, athletic trigger point, and spinal decompression.', status: this.state.bookSpecialist === 'charles' ? 'Selected ✓' : 'Select →' },
+      { key: 'suliat', tag: 'Lead Aesthetician', name: 'Suliat', role: 'Certified HydraFacial MD & Melanin Dermal Specialist', desc: 'Specialist in hyperpigmentation, chemical peels, and Woods lamp analysis.', status: this.state.bookSpecialist === 'suliat' ? 'Selected ✓' : 'Select →' },
+      { key: 'abigail', tag: 'Body Ritualist', name: 'Abigail', role: 'Massage & Hydrotherapist', desc: 'Master of Swedish relaxation, authentic Turkish Hammam, and basalt stone warmth.', status: this.state.bookSpecialist === 'abigail' ? 'Selected ✓' : 'Select →' },
+      { key: 'female-guaranteed', tag: 'Guaranteed Match', name: 'Female Therapist Guarantee', role: 'Pre-locked female specialist', desc: 'Guaranteed female therapist assigned for full comfort and privacy.', status: this.state.bookSpecialist === 'female-guaranteed' ? 'Selected ✓' : 'Select →' },
+    ].map((sp) => {
+      const isSel = this.state.bookSpecialist === sp.key;
+      return {
+        ...sp,
+        select: () => this.setState({ bookSpecialist: sp.key }),
+        bg: isSel ? '#EDE8DF' : '#F7F4EE',
+        border: isSel ? '#C08B5C' : '#DCD3C5',
+        ink: '#1F2A28',
+        muted: '#6E675C',
+        accent: isSel ? '#C08B5C' : '#8A5A2E',
+      };
+    });
+
+    const currentSpecialist = bookSpecialistsList.find((sp) => sp.key === this.state.bookSpecialist) || bookSpecialistsList[0];
+    const currentSpecialistLabel = currentSpecialist.name;
+
+    const bookHousesList = [
+      { key: 'wuse2', badge: 'Flagship House', name: 'Wuse 2 Sanctuary House', address: '3 Kumasi Crescent, Off Aminu Kano Way', desc: 'Private couples suites, advanced aesthetics wing, and authentic hammam marble.', hours: 'Mon–Sun · 9am–9pm', status: this.state.bookHouse === 'wuse2' ? 'Selected ✓' : 'Select →' },
+      { key: 'wuye', badge: 'Quiet House', name: 'Wuye Secluded Retreat', address: 'Anthony Ozodinobi Crescent, Off Obasanjo Way', desc: 'Acoustic calm, secluded residential setting, and easy curbside parking.', hours: 'Tue–Sun · 10am–8pm', status: this.state.bookHouse === 'wuye' ? 'Selected ✓' : 'Select →' },
+      { key: 'either', badge: 'Any House', name: 'First Available Sanctuary House', address: 'Wuse 2 or Wuye', desc: 'Whichever house accommodates your preferred arrival window soonest.', hours: 'Full Operating Hours', status: this.state.bookHouse === 'either' ? 'Selected ✓' : 'Select →' },
+    ].map((hl) => {
+      const isSel = this.state.bookHouse === hl.key;
+      return {
+        ...hl,
+        select: () => this.setState({ bookHouse: hl.key }),
+        bg: isSel ? '#EDE8DF' : '#F7F4EE',
+        border: isSel ? '#C08B5C' : '#DCD3C5',
+        ink: '#1F2A28',
+        muted: '#6E675C',
+        accent: isSel ? '#C08B5C' : '#8A5A2E',
+      };
+    });
+
+    const currentHouse = bookHousesList.find((hl) => hl.key === this.state.bookHouse) || bookHousesList[0];
+    const currentHouseLabel = currentHouse.name;
+
+    const timeSlots = [
+      { time: '09:00 AM', label: 'Morning Open' },
+      { time: '10:30 AM', label: 'Mid-Morning' },
+      { time: '12:00 PM', label: 'Mid-Day' },
+      { time: '01:30 PM', label: 'Early Afternoon' },
+      { time: '03:00 PM', label: 'Afternoon' },
+      { time: '04:30 PM', label: 'Late Afternoon' },
+      { time: '06:00 PM', label: 'Evening' },
+      { time: '07:30 PM', label: 'Night Reset' },
+    ];
+
+    const bookTimeSlots = timeSlots.map((ts) => {
+      const isSel = this.state.bookTime === ts.time;
+      return {
+        ...ts,
+        select: () => this.setState({ bookTime: ts.time }),
+        bg: isSel ? '#072F33' : '#EDE8DF',
+        border: isSel ? '#072F33' : '#DCD3C5',
+        color: isSel ? '#F7F4EE' : '#1F2A28',
+        subColor: isSel ? '#C08B5C' : '#6E675C',
+      };
+    });
+
+    const bookProgressSteps = [
+      { stepNum: 'Step 01', title: 'Service', step: 0 },
+      { stepNum: 'Step 02', title: 'Specialist', step: 1 },
+      { stepNum: 'Step 03', title: 'House', step: 2 },
+      { stepNum: 'Step 04', title: 'Date & Time', step: 3 },
+      { stepNum: 'Step 05', title: 'Confirm', step: 4 },
+    ].map((st) => ({
+      ...st,
+      select: () => this.setState({ bookStep: st.step }),
+      color: this.state.bookStep === st.step ? '#C08B5C' : '#6E675C',
+      rule: this.state.bookStep === st.step ? '#C08B5C' : 'transparent',
+    }));
+
+    const bookMinDate = new Date().toISOString().split('T')[0];
+    const bookWhatsAppConfirmation = wa(`Hello JVEE Concierge — I have submitted an online reservation:\n• Reference: ${this.state.bookRef}\n• Guest: ${this.state.bookName || 'Honoured Guest'}\n• Service: ${currentServiceName} (${currentServiceDur})\n• Specialist: ${currentSpecialistLabel}\n• Location: ${currentHouseLabel}\n• Date & Time: ${this.state.bookDate} at ${this.state.bookTime}\n• Total Rate: ${currentServicePrice}`);
+
     const etiquettePillars = [
       { n: '01', title: 'Silent Sanctuary & Phone Locker', desc: 'All personal phones must be set to silent upon arrival and stored in your private locker with USB-C chargers.', rule: 'No phone calls or loud media in public lounges.' },
       { n: '02', title: 'Professional Clinical Draping', desc: 'Your dignity is absolute. Therapists only undrape the specific muscle group currently being worked on.', rule: 'Full privacy during changing & dressing.' },
@@ -3115,6 +3626,7 @@ class Component extends DCLogic {
 
     const menuItems = [
       { label: 'Home', href: '#/' },
+      { label: 'Book an Appointment', href: '#/book' },
       { label: 'Treatments Menu', href: '#/treatments' },
       { label: 'Massage & Bodywork', href: '#/massage' },
       { label: 'Facials & Clinical Skin', href: '#/facials' },
@@ -3205,6 +3717,61 @@ class Component extends DCLogic {
       isAesthetics: route === 'aesthetics',
       isEtiquette: route === 'etiquette',
       isAftercare: route === 'aftercare',
+      isBook: route === 'book',
+
+      bookConfirmed: this.state.bookConfirmed,
+      bookInProgress: !this.state.bookConfirmed,
+      isBookStep0: this.state.bookStep === 0,
+      isBookStep1: this.state.bookStep === 1,
+      isBookStep2: this.state.bookStep === 2,
+      isBookStep3: this.state.bookStep === 3,
+      isBookStep4: this.state.bookStep === 4,
+
+      bookProgressSteps,
+      bookCategories,
+      bookServicesList,
+      bookSpecialistsList,
+      bookHousesList,
+      bookTimeSlots,
+      bookMinDate,
+      bookDate: this.state.bookDate,
+      bookTime: this.state.bookTime,
+      bookName: this.state.bookName,
+      bookPhone: this.state.bookPhone,
+      bookEmail: this.state.bookEmail,
+      bookNotes: this.state.bookNotes,
+      bookRef: this.state.bookRef,
+      bookWhatsAppConfirmation,
+
+      currentServiceName,
+      currentServiceDur,
+      currentServicePrice,
+      currentSpecialistLabel,
+      currentHouseLabel,
+
+      goToStep0: () => this.setState({ bookStep: 0 }),
+      goToStep1: () => this.setState({ bookStep: 1 }),
+      goToStep2: () => this.setState({ bookStep: 2 }),
+      goToStep3: () => this.setState({ bookStep: 3 }),
+      goToStep4: () => this.setState({ bookStep: 4 }),
+      onDateChange: (e) => this.setState({ bookDate: e.target.value }),
+      onNameChange: (e) => this.setState({ bookName: e.target.value }),
+      onPhoneChange: (e) => this.setState({ bookPhone: e.target.value }),
+      onEmailChange: (e) => this.setState({ bookEmail: e.target.value }),
+      onNotesChange: (e) => this.setState({ bookNotes: e.target.value }),
+      submitBooking: () => {
+        if (!this.state.bookName) {
+          alert('Please enter your full name to confirm your reservation.');
+          return;
+        }
+        if (!this.state.bookPhone) {
+          alert('Please enter your phone or WhatsApp number so we can reach you.');
+          return;
+        }
+        this.setState({ bookConfirmed: true });
+        window.scrollTo(0, 0);
+      },
+      resetBooking: () => this.setState({ bookConfirmed: false, bookStep: 0, bookName: '', bookPhone: '', bookEmail: '', bookNotes: '', bookRef: 'JV-' + Math.floor(100000 + Math.random() * 900000) }),
 
       protocolPillars,
       matcherFaqs,
@@ -3213,7 +3780,7 @@ class Component extends DCLogic {
       matcherStep2: this.state.matcherStep === 2,
       matcherStep3: this.state.matcherStep === 3,
       matcherTabs, matcherNeeds, matcherTimes, matcherHouses,
-      matchRecTitle, matchRecMeta, matchRecPrice, matchRecRationale, matchRecPractitioner, matchRecFresha, matchRecWhatsApp,
+      matchRecTitle, matchRecMeta, matchRecPrice, matchRecRationale, matchRecPractitioner, matchRecWhatsApp,
       resetMatcher: () => this.setState({ matcherStep: 0, matcherNeed: 0, matcherTime: 0, matcherHouse: 0 }),
 
       builderMassages, builderFacials, builderHydros,
@@ -3222,7 +3789,6 @@ class Component extends DCLogic {
       etiquettePillars, aftercareFull,
       massageItems, facialItems, ritualItems, aestheticItems,
 
-      fresha: 'https://www.fresha.com/book-now/jvee-wellness-spa-zkccddaf/all-offer?id=1411460&pId=1340373',
       whatsapp: wa('Hello JVEE Wellness & Spa — I would like to make an enquiry.'),
       instagram: 'https://instagram.com/jveewellness_spa',
 
@@ -3244,14 +3810,14 @@ class Component extends DCLogic {
       ],
 
       faqs: [
-        ['Do I need to book ahead?', 'Walk-ins are welcome and we will always try, but weekends and evenings fill. Booking on Fresha or by phone is the only way to be sure of the therapist and the room you want.'],
+        ['Do I need to book ahead?', 'Walk-ins are welcome and we will always try, but weekends and evenings fill. Reserving online or by phone is the only way to be sure of the therapist and the room you want.'],
         ['How early should I arrive?', 'Ten minutes before your slot. That covers the consultation form, a change of robe and a cup of tea, so your hour is actually an hour.'],
         ['What if I am running late?', 'Call ahead. We hold the room for fifteen minutes; past that we shorten the session rather than run into the next guest.'],
         ['Do you treat men?', 'Yes — every service on the menu is for men and women. Sports recovery massage and teeth whitening are among our most-booked male services.'],
-        ['Can I request a female therapist?', 'Always, and you never have to negotiate it. Say so when you book and it is simply arranged.'],
+        ['Can I request a female therapist?', 'Always, and you never have to negotiate it. Say so during online booking or WhatsApp and it is simply arranged.'],
         ['Which facial should I pick?', 'Book the complimentary skin consultation and let a medical aesthetician decide. Fifteen minutes, no charge, no obligation.'],
         ['How many sculpting sessions will I need?', 'Most areas respond over six weekly sessions. We photograph and measure at session one so the change is verifiable rather than a feeling.'],
-        ['Can I book for two?', 'Yes. The couples suite takes two therapists side by side, and every package has couples pricing. Book both slots together on Fresha.'],
+        ['Can I book for two?', 'Yes. The couples suite takes two therapists side by side, and every package has couples pricing. Reserve both slots together online.'],
         ['Do you take groups, bridal parties or offices?', 'Regularly — there is a page for it. Message us on WhatsApp with a headcount and date and we will quote a buy-out or a chair-massage day.'],
         ['Are gift cards available?', 'Any amount or any package tier, issued same day, valid twelve months, usable at both houses. You can build one on the gift cards page.'],
         ['What happens if the power goes?', 'Nothing. Inverter and generator switch over automatically, so neither the treatment nor the air conditioning stops.'],
