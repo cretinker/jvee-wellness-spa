@@ -103,7 +103,7 @@
       <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
         <a href="{{ item.href }}" onMouseEnter="{{ item.onHover }}" style="display:none;font-size:12px;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap;padding:6px 0;border-bottom:1px solid {{ item.rule }};color:{{ item.color }};transition:color .35s ease,border-color .35s ease;" data-nav="1">{{ item.label }}</a>
       </sc-for>
-      <a href="#/book" target="_blank" rel="noopener" style="padding:12px 22px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:background .4s ease;" style-hover="background:#0B4B50;color:#F7F4EE;">Book</a>
+      <a href="#/book" style="padding:12px 22px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:background .4s ease;" style-hover="background:#0B4B50;color:#F7F4EE;">Book</a>
       <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:none;background:none;border:1px solid {{ navBorder2 }};width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;color:{{ navInk }};" data-burger="1">
         <span style="display:block;width:16px;height:7px;border-top:1px solid currentColor;border-bottom:1px solid currentColor;"></span>
       </button>
@@ -148,7 +148,7 @@
     <sc-for list="{{ menuItems }}" as="item" hint-placeholder-count="8">
       <a href="{{ item.href }}" onClick="{{ toggleMenu }}" style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,6.5vw,46px);line-height:1.18;color:#F7F4EE;padding:5px 0;border-bottom:1px solid rgba(247,244,238,.12);">{{ item.label }}</a>
     </sc-for>
-    <a href="#/book" target="_blank" rel="noopener" style="margin-top:30px;align-self:start;padding:16px 30px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;">Book an appointment</a>
+    <a href="#/book" style="margin-top:30px;align-self:start;padding:16px 30px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;">Book an appointment</a>
   </div>
 </sc-if>
 
@@ -176,7 +176,7 @@
         </p>
         
         <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:34px;">
-          <a href="#/book" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 32px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .35s ease,transform .2s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+          <a href="#/book" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 32px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .35s ease,transform .2s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
             <span>Book a Session</span>
             <span class="btn-icon-bubble">→</span>
           </a>
@@ -293,7 +293,7 @@
           </div>
 
           <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="#/book" target="_blank" rel="noopener" style="flex:1;min-width:180px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 22px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+            <a href="#/book" style="flex:1;min-width:180px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 22px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
               <span>Book This Session</span>
               <span class="btn-icon-bubble">→</span>
             </a>
@@ -731,7 +731,7 @@
               <span style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:600;color:#1F2A28;">{{ tb.price }}</span>
               <div style="display:flex;align-items:center;gap:12px;">
                 <a href="{{ tb.detailHref }}" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid rgba(138,90,46,.4);padding-bottom:1px;">Read the hour →</a>
-                <a href="#/book" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
+                <a href="{{ row.bookHref }}" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
               </div>
             </div>
           </div>
@@ -777,7 +777,7 @@
                 <span style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:600;color:#1F2A28;">{{ tb.price }}</span>
                 <div style="display:flex;align-items:center;gap:12px;">
                   <a href="{{ tb.detailHref }}" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid rgba(138,90,46,.4);padding-bottom:1px;">Read the hour →</a>
-                  <a href="#/book" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
+                  <a href="{{ row.bookHref }}" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
                 </div>
               </div>
             </div>
@@ -823,7 +823,7 @@
               <span style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:600;color:#1F2A28;">{{ tb.price }}</span>
               <div style="display:flex;align-items:center;gap:12px;">
                 <a href="{{ tb.detailHref }}" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid rgba(138,90,46,.4);padding-bottom:1px;">Read the hour →</a>
-                <a href="#/book" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
+                <a href="{{ row.bookHref }}" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
               </div>
             </div>
           </div>
@@ -869,7 +869,7 @@
                 <span style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:600;color:#1F2A28;">{{ tb.price }}</span>
                 <div style="display:flex;align-items:center;gap:12px;">
                   <a href="{{ tb.detailHref }}" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid rgba(138,90,46,.4);padding-bottom:1px;">Read the hour →</a>
-                  <a href="#/book" target="_blank" rel="noopener" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
+                  <a href="{{ row.bookHref }}" style="padding:8px 16px;background:#072F33;color:#F7F4EE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">Book</a>
                 </div>
               </div>
             </div>
@@ -946,7 +946,7 @@
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:12px;">
-          <a href="#/book" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:16px 30px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+          <a href="#/book" style="display:inline-flex;align-items:center;gap:8px;padding:16px 30px;background:#072F33;color:#F7F4EE;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
             <span>Book Online</span>
             <span class="btn-icon-bubble">→</span>
           </a>
@@ -1049,7 +1049,7 @@
               </ul>
             </div>
 
-            <a href="#/book" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;background:{{ pk.btnBg }};border:1px solid {{ pk.btnBorder }};color:{{ pk.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:all .3s ease;">
+            <a href="{{ pk.bookHref }}" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;background:{{ pk.btnBg }};border:1px solid {{ pk.btnBorder }};color:{{ pk.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:all .3s ease;">
               <span>Book {{ pk.tier }}</span>
               <span class="btn-icon-bubble">→</span>
             </a>
@@ -1461,7 +1461,7 @@
               <p style="font-size:14px;line-height:1.6;color:#6E675C;margin:0 0 24px;padding-top:14px;border-top:1px solid #DCD3C5;">{{ h.note }}</p>
 
               <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:18px;border-top:1px solid #DCD3C5;">
-                <a href="#/book" target="_blank" rel="noopener" style="flex:1;min-width:140px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:14px 20px;background:#072F33;color:#F7F4EE;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
+                <a href="#/book" style="flex:1;min-width:140px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:14px 20px;background:#072F33;color:#F7F4EE;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
                   <span>Book Slot</span>
                   <span class="btn-icon-bubble">→</span>
                 </a>
@@ -1685,7 +1685,7 @@
           </div>
 
           <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
-            <a href="#/book" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 34px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+            <a href="{{ matchRecBookUrl }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 34px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
               <span>Reserve Matched Protocol</span>
               <span class="btn-icon-bubble">→</span>
             </a>
@@ -1806,7 +1806,7 @@
           </div>
 
           <div style="display:flex;flex-wrap:wrap;gap:14px;">
-            <a href="#/book" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:17px 32px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+            <a href="#/book" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:17px 32px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
               <span>Reserve Matched Protocol</span>
               <span class="btn-icon-bubble">→</span>
             </a>
@@ -1846,7 +1846,7 @@
             </div>
             <div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;border-top:1px solid #DCD3C5;">
               <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;font-weight:600;color:#1F2A28;">{{ mi.price }}</span>
-              <a href="{{ mi.href }}" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">{{ mi.cue }}</a>
+              <div style="display:flex;gap:12px;align-items:center;"><a href="{{ mi.href }}" style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#6E675C;">Details →</a><a href="{{ mi.bookHref }}" style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;font-weight:600;background:rgba(192,139,92,.15);padding:6px 12px;border-radius:2px;">Book</a></div>
             </div>
           </div>
         </div>
@@ -2396,7 +2396,7 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;justify-content:center;">
         <div style="display:flex;flex-wrap:wrap;gap:12px;width:100%;">
-          <a href="#/book" target="_blank" rel="noopener" style="flex:1;min-width:200px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .35s ease,transform .2s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+          <a href="{{ d.bookHref }}" style="flex:1;min-width:200px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .35s ease,transform .2s ease;" style-hover="background:#F7F4EE;color:#072F33;">
             <span>Book Online</span>
             <span class="btn-icon-bubble">→</span>
           </a>
@@ -2517,7 +2517,7 @@
 </footer>
 <!-- Mobile Floating Booking Rail -->
 <div class="jv-mobile-rail" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:rgba(7,47,51,.94);backdrop-filter:blur(16px);border-top:1px solid rgba(247,244,238,.16);gap:10px;align-items:center;">
-  <a href="#/book" target="_blank" rel="noopener" style="flex:1;text-align:center;padding:13px 18px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;">Book Online</a>
+  <a href="#/book" style="flex:1;text-align:center;padding:13px 18px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;">Book Online</a>
   <a href="{{ whatsapp }}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 18px;background:#25D366;color:#FFFFFF;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:opacity .3s ease;">
     <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.19 8.19 0 0 1-5.82 2.42c-1.48 0-2.93-.39-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.25-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
     <span>WhatsApp</span>
@@ -2821,8 +2821,12 @@ class Component extends DCLogic {
     const hash = location.hash || '';
     let stripped = hash.replace(/^#\/?/, '');
     const parts = stripped.split('#');
-    const mainPath = parts[0].split('?')[0];
+    const pathWithQuery = parts[0] || '';
     const anchor = parts[1] || '';
+
+    const qIdx = pathWithQuery.indexOf('?');
+    let mainPath = qIdx >= 0 ? pathWithQuery.slice(0, qIdx) : pathWithQuery;
+    const queryString = qIdx >= 0 ? pathWithQuery.slice(qIdx + 1) : '';
 
     let route = mainPath || 'home';
     let slug = '';
@@ -2833,14 +2837,47 @@ class Component extends DCLogic {
     const ok = ['home', 'treatments', 'detail', 'packages', 'membership', 'gifts', 'occasions', 'about', 'faq', 'visit', 'matcher', 'massage', 'facials', 'rituals', 'aesthetics', 'aftercare', 'etiquette', 'book'];
     if (ok.indexOf(route) < 0) route = 'home';
 
-    const changed = route !== this.state.route || slug !== this.state.slug;
+    const updates = { route, slug, menuOpen: false, menuTreatments: false, openFaq: 0 };
+
+    if (route === 'book') {
+      const query = {};
+      if (queryString) {
+        queryString.split('&').forEach((pair) => {
+          const [k, v] = pair.split('=');
+          if (k) query[decodeURIComponent(k)] = decodeURIComponent(v || '');
+        });
+      }
+
+      if (query.service) {
+        updates.bookService = query.service;
+        if (['deep-tissue', 'swedish-massage', 'hot-stone', 'aromatherapy', 'sports-recovery', 'couples-sanctuary'].includes(query.service)) {
+          updates.bookCat = 'massage';
+        } else if (['hydrafacial', 'brightening-facial', 'multivitamin-facial', 'skin-consultation'].includes(query.service)) {
+          updates.bookCat = 'facials';
+        } else if (['turkish-hammam', 'body-polish', 'private-steam'].includes(query.service)) {
+          updates.bookCat = 'rituals';
+        } else if (['body-sculpting', 'teeth-whitening'].includes(query.service)) {
+          updates.bookCat = 'aesthetics';
+        } else if (['pkg-bronze', 'pkg-silver', 'pkg-gold', 'pkg-diamond'].includes(query.service)) {
+          updates.bookCat = 'packages';
+        }
+      }
+      if (query.specialist) updates.bookSpecialist = query.specialist;
+      if (query.house) updates.bookHouse = query.house;
+      if (query.step !== undefined) updates.bookStep = parseInt(query.step, 10) || 0;
+      updates.bookConfirmed = false;
+    }
+
+    const changed = route !== this.state.route || slug !== this.state.slug || (route === 'book' && queryString);
     if (changed) {
-      this.setState({ route, slug, menuOpen: false, menuTreatments: false, openFaq: 0 }, () => {
+      this.setState(updates, () => {
         if (anchor) {
           setTimeout(() => {
             const el = document.getElementById(anchor);
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }, 100);
+        } else if (scrollTop) {
+          window.scrollTo(0, 0);
         }
       });
     } else {
@@ -3129,11 +3166,11 @@ class Component extends DCLogic {
       },
     ];
 
-    const massageItems = groups[0].items;
-    const facialItems = groups[1].items;
-    const ritualItems = groups[2].items;
-    const aestheticItems = groups[3].items;
-
+    const slugFromHref = (h) => (h && h.indexOf('#/t/') === 0 ? h.slice(4) : '');
+    const massageItems = groups[0].items.map((it) => ({ ...it, bookHref: '#/book?service=' + (slugFromHref(it.href) || 'deep-tissue') + '&step=1' }));
+    const facialItems = groups[1].items.map((it) => ({ ...it, bookHref: '#/book?service=' + (slugFromHref(it.href) || 'hydrafacial') + '&step=1' }));
+    const ritualItems = groups[2].items.map((it) => ({ ...it, bookHref: '#/book?service=' + (slugFromHref(it.href) || 'turkish-hammam') + '&step=1' }));
+    const aestheticItems = groups[3].items.map((it) => ({ ...it, bookHref: '#/book?service=' + (slugFromHref(it.href) || 'body-sculpting') + '&step=1' }));
     const megaMenuDepartments = [
       {
         n: '01 · Bodywork', title: 'Massage Therapy', href: '#/massage',
@@ -3174,35 +3211,35 @@ class Component extends DCLogic {
     ];
 
     const massageTable = [
-      { name: 'Swedish Relaxation Massage', dur: '60 min', desc: 'Long rhythmic effleurage to down-regulate the nervous system and ease tension.', price: P('₦30,000'), detailHref: '#/t/swedish-massage' },
-      { name: 'Deep Tissue Clinical Massage', dur: '60 min', desc: 'Slow, specific pressure into the layer under the ache. Target your two priority spots.', price: P('₦38,000'), detailHref: '#/t/deep-tissue' },
-      { name: 'Hot Stone Basalt Thermotherapy', dur: '75 min', desc: 'Volcanic heated stones laid along spine and glutes to melt fascia before hands work.', price: P('₦45,000'), detailHref: '#/t/hot-stone' },
-      { name: 'Aromatherapy Custom Botanical', dur: '60 min', desc: 'Pure essential oil blends targeting adrenal fatigue, sleep disruption, and mood reset.', price: P('₦35,000'), detailHref: '#/t/aromatherapy' },
-      { name: 'Sports Rehabilitation & Stretch', dur: '75 min', desc: 'Assisted PNF stretching and cross-fiber friction for runners, athletes, and desk warriors.', price: P('₦48,000'), detailHref: '#/t/sports-recovery' },
-      { name: 'Couples Sanctuary Suite Session', dur: '60 min', desc: 'Side-by-side bespoke massages in our private VIP double suite with sparkling tea.', price: P('₦70,000'), detailHref: '#/t/couples-sanctuary' },
+      { name: 'Swedish Relaxation Massage', dur: '60 min', desc: 'Long rhythmic effleurage to down-regulate the nervous system and ease tension.', price: P('₦30,000'), detailHref: '#/t/swedish-massage', bookHref: '#/book?service=swedish-massage&step=1' },
+      { name: 'Deep Tissue Clinical Massage', dur: '60 min', desc: 'Slow, specific pressure into the layer under the ache. Target your two priority spots.', price: P('₦38,000'), detailHref: '#/t/deep-tissue', bookHref: '#/book?service=deep-tissue&specialist=charles&step=1' },
+      { name: 'Hot Stone Basalt Thermotherapy', dur: '75 min', desc: 'Volcanic heated stones laid along spine and glutes to melt fascia before hands work.', price: P('₦45,000'), detailHref: '#/t/hot-stone', bookHref: '#/book?service=hot-stone&specialist=abigail&step=1' },
+      { name: 'Aromatherapy Custom Botanical', dur: '60 min', desc: 'Pure essential oil blends targeting adrenal fatigue, sleep disruption, and mood reset.', price: P('₦35,000'), detailHref: '#/t/aromatherapy', bookHref: '#/book?service=aromatherapy&step=1' },
+      { name: 'Sports Rehabilitation & Stretch', dur: '75 min', desc: 'Assisted PNF stretching and cross-fiber friction for runners, athletes, and desk warriors.', price: P('₦48,000'), detailHref: '#/t/sports-recovery', bookHref: '#/book?service=sports-recovery&specialist=charles&step=1' },
+      { name: 'Couples Sanctuary Suite Session', dur: '60 min', desc: 'Side-by-side bespoke massages in our private VIP double suite with sparkling tea.', price: P('₦70,000'), detailHref: '#/t/couples-sanctuary', bookHref: '#/book?service=couples-sanctuary&house=wuse2&step=1' },
     ];
 
     const facialTable = [
-      { name: 'HydraFacial MD Vortex Infusion', dur: '60 min', desc: 'Patented 4-in-1 vortex extraction, non-irritating acid peel, and antioxidant infusion.', price: P('₦75,000'), detailHref: '#/t/hydrafacial' },
-      { name: 'Brightening & Pigment Shield', dur: '60 min', desc: 'Tranexamic acid and stable vitamin C protocol calibrated for deeper skin tones.', price: P('₦40,000'), detailHref: '#/t/brightening-facial' },
-      { name: 'Multivitamin Nourishing Facial', dur: '60 min', desc: 'Vitamins A, C, E, and B5 infusion for depleted, environmentally stressed skin.', price: P('₦38,000'), detailHref: '#/t/multivitamin-facial' },
-      { name: 'Deep Cleansing & Extractions', dur: '60 min', desc: 'Enzymatic steam, ultrasonic extractions, and high-frequency calming shield.', price: P('₦35,000'), detailHref: '#/facials' },
-      { name: 'Clinical Skin Analysis Consultation', dur: '15 min', desc: 'Diagnostic Woods lamp assessment and customized dermal roadmap.', price: P('Complimentary'), detailHref: '#/t/skin-consultation' },
-      { name: 'Anti-Aging Peptide Firming Facial', dur: '60 min', desc: 'Micro-current lifting pass and bioactive copper peptides for skin elasticity.', price: P('₦45,000'), detailHref: '#/facials' },
+      { name: 'HydraFacial MD Vortex Infusion', dur: '60 min', desc: 'Patented 4-in-1 vortex extraction, non-irritating acid peel, and antioxidant infusion.', price: P('₦75,000'), detailHref: '#/t/hydrafacial', bookHref: '#/book?service=hydrafacial&specialist=suliat&step=1' },
+      { name: 'Brightening & Pigment Shield', dur: '60 min', desc: 'Tranexamic acid and stable vitamin C protocol calibrated for deeper skin tones.', price: P('₦40,000'), detailHref: '#/t/brightening-facial', bookHref: '#/book?service=brightening-facial&specialist=suliat&step=1' },
+      { name: 'Multivitamin Nourishing Facial', dur: '60 min', desc: 'Vitamins A, C, E, and B5 infusion for depleted, environmentally stressed skin.', price: P('₦38,000'), detailHref: '#/t/multivitamin-facial', bookHref: '#/book?service=multivitamin-facial&step=1' },
+      { name: 'Deep Cleansing & Extractions', dur: '60 min', desc: 'Enzymatic steam, ultrasonic extractions, and high-frequency calming shield.', price: P('₦35,000'), detailHref: '#/facials', bookHref: '#/book?service=brightening-facial&step=1' },
+      { name: 'Clinical Skin Analysis Consultation', dur: '15 min', desc: 'Diagnostic Woods lamp assessment and customized dermal roadmap.', price: P('Complimentary'), detailHref: '#/t/skin-consultation', bookHref: '#/book?service=skin-consultation&specialist=suliat&step=1' },
+      { name: 'Anti-Aging Peptide Firming Facial', dur: '60 min', desc: 'Micro-current lifting pass and bioactive copper peptides for skin elasticity.', price: P('₦45,000'), detailHref: '#/facials', bookHref: '#/book?service=hydrafacial&step=1' },
     ];
 
     const ritualTable = [
-      { name: 'Authentic Turkish Hammam Ritual', dur: '60 min', desc: 'Private eucalyptus steam, traditional Moroccan black soap, and kessa glove exfoliation.', price: P('₦40,000'), detailHref: '#/t/turkish-hammam' },
-      { name: 'Body Polish & Thermal Cocoon Wrap', dur: '75 min', desc: 'Full-body sugar scrub, warm detox clay mask, and thermal cocoon with scalp release.', price: P('₦48,000'), detailHref: '#/t/body-polish' },
-      { name: 'Private Thermal Steam Bath', dur: '30 min', desc: 'Stand-alone private steam suite with herbal infusions and rainfall hydro shower.', price: P('₦15,000'), detailHref: '#/rituals' },
-      { name: 'Cellular Detox Herbal Wrap', dur: '60 min', desc: 'Marine algae and mineral wrap for water retention and circulation boost.', price: P('₦42,000'), detailHref: '#/rituals' },
+      { name: 'Authentic Turkish Hammam Ritual', dur: '60 min', desc: 'Private eucalyptus steam, traditional Moroccan black soap, and kessa glove exfoliation.', price: P('₦40,000'), detailHref: '#/t/turkish-hammam', bookHref: '#/book?service=turkish-hammam&specialist=abigail&step=1' },
+      { name: 'Body Polish & Thermal Cocoon Wrap', dur: '75 min', desc: 'Full-body sugar scrub, warm detox clay mask, and thermal cocoon with scalp release.', price: P('₦48,000'), detailHref: '#/t/body-polish', bookHref: '#/book?service=body-polish&specialist=abigail&step=1' },
+      { name: 'Private Thermal Steam Bath', dur: '30 min', desc: 'Stand-alone private steam suite with herbal infusions and rainfall hydro shower.', price: P('₦15,000'), detailHref: '#/rituals', bookHref: '#/book?service=private-steam&step=1' },
+      { name: 'Cellular Detox Herbal Wrap', dur: '60 min', desc: 'Marine algae and mineral wrap for water retention and circulation boost.', price: P('₦42,000'), detailHref: '#/rituals', bookHref: '#/book?service=body-polish&step=1' },
       { name: 'Full Body Botanical Waxing', dur: '45–60 min', desc: 'Low-temperature strip and hard wax formulations for sensitive skin zones.', price: P('From ₦12,000'), detailHref: '#/rituals' },
       { name: 'Vaginal Steaming Herbal Ritual', dur: '45 min', desc: 'Gentle warm pelvic steam with certified organic botanical herbs in private suite.', price: P('₦25,000'), detailHref: '#/rituals' },
     ];
 
     const aestheticTable = [
-      { name: 'Non-Invasive Ultrasonic Body Sculpting', dur: '60 min', desc: 'Ultrasonic cavitation and RF thermal energy per area — measured and photographed.', price: P('₦90,000'), detailHref: '#/t/body-sculpting' },
-      { name: 'Professional In-Chair Teeth Whitening', dur: '45 min', desc: 'Safe non-peroxide LED cold light activation lifting 4–8 shades in one sitting.', price: P('₦60,000'), detailHref: '#/t/teeth-whitening' },
+      { name: 'Non-Invasive Ultrasonic Body Sculpting', dur: '60 min', desc: 'Ultrasonic cavitation and RF thermal energy per area — measured and photographed.', price: P('₦90,000'), detailHref: '#/t/body-sculpting', bookHref: '#/book?service=body-sculpting&step=1' },
+      { name: 'Professional In-Chair Teeth Whitening', dur: '45 min', desc: 'Safe non-peroxide LED cold light activation lifting 4–8 shades in one sitting.', price: P('₦60,000'), detailHref: '#/t/teeth-whitening', bookHref: '#/book?service=teeth-whitening&step=1' },
       { name: 'Clinical Aesthetic Consultation', dur: '20 min', desc: 'Medical assessment with our cosmetic doctor before embarking on aesthetic courses.', price: P('Complimentary'), detailHref: '#/t/skin-consultation' },
     ];
 
@@ -3211,6 +3248,7 @@ class Component extends DCLogic {
       name: d0.name, tag: d0.tag, img: d0.img, lede: d0.lede, body: d0.body, after: d0.after,
       byName: d0.byName, byRole: d0.byRole, steps: d0.steps, notFor: d0.notFor,
       facts: [{ k: 'Duration', v: d0.dur }, { k: 'From', v: P(d0.price) }, { k: 'Houses', v: 'Both' }],
+      bookHref: '#/book?service=' + (slug || 'deep-tissue') + '&step=1',
       pairs: (d0.pairs || []).map((p) => ({ name: p.name, dur: p.dur, href: '#/t/' + p.slug })),
     };
 
@@ -3222,8 +3260,10 @@ class Component extends DCLogic {
     ];
     const packages = pkData.map(([tier, price, dur, summary, includes]) => {
       const f = tier === featured;
+      const pkgSlugs = { Bronze: 'pkg-bronze', Silver: 'pkg-silver', Gold: 'pkg-gold', Diamond: 'pkg-diamond' };
       return {
         tier, price: P(price), dur, summary, includes,
+        bookHref: '#/book?service=' + (pkgSlugs[tier] || 'pkg-silver') + '&step=1',
         gold: f ? '#C08B5C' : '#8A5A2E',
         cardBg: f ? '#072F33' : '#F7F4EE', cardInk: f ? '#F7F4EE' : '#1F2A28',
         cardMuted: f ? 'rgba(247,244,238,.7)' : '#6E675C', cardBorder: f ? 'rgba(247,244,238,.2)' : '#DCD3C5',
@@ -3345,6 +3385,8 @@ class Component extends DCLogic {
     let matchRecPrice = P('₦38,000');
     let matchRecRationale = 'Slow, specific pressure into the deep muscular layer under the ache. Pre-session posture intake identifies trigger points along the scapulae, lumbar spine, and glutes.';
     let matchRecPractitioner = 'Lead Bodywork Therapist: Charles (8+ Years Clinical Experience)';
+    let matchRecServiceSlug = 'deep-tissue';
+    let matchRecSpecialistSlug = 'charles';
 
     if (this.state.matcherNeed === 1) {
       matchRecTitle = 'HydraFacial MD Vortex Infusion & Barrier Shield';
@@ -3352,6 +3394,8 @@ class Component extends DCLogic {
       matchRecPrice = P('₦75,000');
       matchRecRationale = 'Authentic 4-in-1 vortex suction clears pore congestion without skin trauma, followed by deep hyaluronic acid and antioxidant infusion to restore radiance against Harmattan dryness.';
       matchRecPractitioner = 'Lead Medical Aesthetician: Suliat (Certified HydraFacial Specialist)';
+      matchRecServiceSlug = 'hydrafacial';
+      matchRecSpecialistSlug = 'suliat';
     } else if (this.state.matcherNeed === 2) {
       if (this.state.matcherTime >= 2) {
         matchRecTitle = 'The Executive Reset Sanctuary Package';
@@ -3359,12 +3403,16 @@ class Component extends DCLogic {
         matchRecPrice = P('₦95,000');
         matchRecRationale = 'Thermal vasodilation in private eucalyptus steam followed by 60-min Deep Tissue Bodywork, full-body scrub, and Brightening Facial to completely reset adrenal fatigue.';
         matchRecPractitioner = 'Therapist Team: Charles & Suliat · Includes Herbal Tea Lounge Access';
+        matchRecServiceSlug = 'pkg-silver';
+        matchRecSpecialistSlug = 'charles';
       } else {
         matchRecTitle = 'Hot Stone Basalt Muscular Thermotherapy';
         matchRecMeta = '75 Minutes · Both Houses · ₦45,000';
         matchRecPrice = P('₦45,000');
         matchRecRationale = 'Heated volcanic basalt stones glide along spinal channels to melt tension passively before hands work, lowering cortisol and inducing parasympathetic calm.';
         matchRecPractitioner = 'Body Ritualist: Abigail · Includes Warm Botanical Carrier Oils';
+        matchRecServiceSlug = 'hot-stone';
+        matchRecSpecialistSlug = 'abigail';
       }
     } else if (this.state.matcherNeed === 3) {
       matchRecTitle = 'Private Couples Sanctuary Suite Session';
@@ -3372,14 +3420,20 @@ class Component extends DCLogic {
       matchRecPrice = P('₦70,000');
       matchRecRationale = 'Two licensed therapists working in synchronized parallel in our largest private acoustic double suite, followed by sparkling artisanal fruit teas.';
       matchRecPractitioner = 'Lead Therapists: Charles & Abigail · Side-by-side VIP Suite';
+      matchRecServiceSlug = 'couples-sanctuary';
+      matchRecSpecialistSlug = 'any';
     } else if (this.state.matcherNeed === 4) {
       matchRecTitle = 'Sports Rehabilitation & PNF Assisted Stretch';
       matchRecMeta = '75 Minutes · Both Houses · ₦48,000';
       matchRecPrice = P('₦48,000');
       matchRecRationale = 'Assisted Proprioceptive Neuromuscular Facilitation (PNF) stretching combined with cross-fiber friction targeting IT bands, calves, rotator cuffs, and tight hip flexors.';
       matchRecPractitioner = 'Senior Sports Specialist: Charles · Includes Menthol-Arnica Cryo Balm';
+      matchRecServiceSlug = 'sports-recovery';
+      matchRecSpecialistSlug = 'charles';
     }
 
+    const matchRecHouseSlug = this.state.matcherHouse === 0 ? 'wuse2' : this.state.matcherHouse === 1 ? 'wuye' : 'either';
+    const matchRecBookUrl = `#/book?service=${matchRecServiceSlug}&specialist=${matchRecSpecialistSlug}&house=${matchRecHouseSlug}&step=3`;
     const matchRecWhatsApp = wa(`Hello JVEE — I completed the Clinical Protocol Matcher and would like to book: ${matchRecTitle} (${matchRecPrice})`);
 
     const matcherFaqs = [
@@ -3780,7 +3834,7 @@ class Component extends DCLogic {
       matcherStep2: this.state.matcherStep === 2,
       matcherStep3: this.state.matcherStep === 3,
       matcherTabs, matcherNeeds, matcherTimes, matcherHouses,
-      matchRecTitle, matchRecMeta, matchRecPrice, matchRecRationale, matchRecPractitioner, matchRecWhatsApp,
+      matchRecTitle, matchRecMeta, matchRecPrice, matchRecRationale, matchRecPractitioner, matchRecWhatsApp, matchRecBookUrl,
       resetMatcher: () => this.setState({ matcherStep: 0, matcherNeed: 0, matcherTime: 0, matcherHouse: 0 }),
 
       builderMassages, builderFacials, builderHydros,
