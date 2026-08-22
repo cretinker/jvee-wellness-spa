@@ -1653,41 +1653,56 @@
     </div>
 
     <!-- 4 Occasion Cards in 2x2 Grid -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(20px,2.4vw,34px);margin-bottom:clamp(70px,9vw,120px);" data-stack="1">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:clamp(24px,3vw,40px);margin-bottom:clamp(70px,9vw,120px);align-items:stretch;" data-stack="1">
       <sc-for list="{{ occasionCards }}" as="oc" hint-placeholder-count="4">
         <div class="jv-bezel" style="background:{{ oc.bg }};border-color:{{ oc.border }};">
-          <div class="jv-bezel-inner" style="background:{{ oc.bg }};color:{{ oc.ink }};padding:clamp(28px,3.2vw,44px);display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ oc.border }};">
-            <div>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-                <span style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:{{ oc.gold }};font-weight:600;">{{ oc.num }} · {{ oc.capacity }}</span>
-                <span style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:{{ oc.badgeInk }};background:{{ oc.badgeBg }};padding:3px 8px;border-radius:12px;font-weight:600;border:1px solid {{ oc.badgeBorder }};">{{ oc.rateBadge }}</span>
+          <div class="jv-bezel-inner" style="background:{{ oc.bg }};color:{{ oc.ink }};padding:0;display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ oc.border }};overflow:hidden;">
+            
+            <!-- Image Header -->
+            <div style="position:relative;height:220px;overflow:hidden;background:#072F33;">
+              <img src="{{ oc.img }}" alt="{{ oc.title }}" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05) brightness(.75);transition:transform .6s ease;" style-hover="transform:scale(1.04);">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.2) 0%,rgba(7,47,51,.85) 100%);"></div>
+              
+              <div style="position:absolute;top:16px;left:18px;right:18px;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#F7F4EE;background:rgba(7,47,51,.7);border:1px solid rgba(247,244,238,.2);padding:4px 10px;border-radius:20px;font-weight:600;">{{ oc.num }} · {{ oc.capacity }}</span>
+                <span style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;background:#C08B5C;padding:4px 10px;border-radius:20px;font-weight:600;">{{ oc.rateBadge }}</span>
               </div>
 
-              <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3vw,38px);line-height:1.08;margin:0 0 10px;color:{{ oc.ink }};">{{ oc.title }}</h3>
-              <p style="font-size:14px;line-height:1.65;color:{{ oc.muted }};margin:0 0 20px;padding-bottom:16px;border-bottom:1px solid {{ oc.border }};">{{ oc.desc }}</p>
+              <div style="position:absolute;bottom:16px;left:20px;right:20px;">
+                <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(26px,2.8vw,36px);line-height:1.05;margin:0;color:#F7F4EE;">{{ oc.title }}</h3>
+              </div>
+            </div>
 
-              <!-- Inclusions -->
-              <div style="margin-bottom:24px;">
-                <span style="font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:{{ oc.gold }};font-weight:600;display:block;margin-bottom:10px;">Curated Sequence Details:</span>
-                <div style="display:grid;gap:10px;">
-                  <sc-for list="{{ oc.inclusions }}" as="inc" hint-placeholder-count="2">
-                    <div style="background:{{ oc.itemBg }};border:1px solid {{ oc.border }};padding:14px 16px;border-radius:4px;">
-                      <span style="display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:{{ oc.gold }};font-weight:600;margin-bottom:4px;">{{ inc.tag }}</span>
-                      <strong style="display:block;font-size:14px;color:{{ oc.ink }};margin-bottom:4px;">{{ inc.title }}</strong>
-                      <span style="display:block;font-size:12.5px;line-height:1.55;color:{{ oc.muted }};">{{ inc.desc }}</span>
-                    </div>
-                  </sc-for>
+            <!-- Card Body Content -->
+            <div style="padding:clamp(24px,2.8vw,36px);display:flex;flex-direction:column;justify-content:space-between;flex-grow:1;">
+              <div>
+                <p style="font-size:14.5px;line-height:1.68;color:{{ oc.muted }};margin:0 0 20px;padding-bottom:18px;border-bottom:1px solid {{ oc.border }};">{{ oc.desc }}</p>
+
+                <!-- Highlights List -->
+                <div style="margin-bottom:24px;">
+                  <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ oc.gold }};font-weight:600;display:block;margin-bottom:12px;">Curated Inclusions:</span>
+                  <ul style="margin:0;padding-left:0;list-style:none;display:grid;gap:12px;">
+                    <sc-for list="{{ oc.highlights }}" as="hl" hint-placeholder-count="3">
+                      <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:{{ oc.ink }};">
+                        <span style="color:{{ oc.gold }};margin-top:1px;font-size:11px;">✦</span>
+                        <span><strong>{{ hl.label }}:</strong> <span style="color:{{ oc.muted }};">{{ hl.desc }}</span></span>
+                      </li>
+                    </sc-for>
+                  </ul>
                 </div>
               </div>
+
+              <!-- Full-Width Clean Action Bar -->
+              <div style="padding-top:20px;border-top:1px solid {{ oc.border }};display:flex;flex-direction:column;gap:10px;">
+                <button onClick="{{ oc.selectToEnquire }}" class="btn-touch" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px 24px;background:{{ oc.btnBg }};border:1px solid {{ oc.btnBorder }};color:{{ oc.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;cursor:pointer;transition:all .3s ease;">
+                  <span>Plan {{ oc.shortTitle }}</span>
+                  <span class="btn-icon-bubble">→</span>
+                </button>
+                <span style="font-size:11.5px;color:{{ oc.muted }};text-align:center;display:block;">✦ {{ oc.pricingNote }}</span>
+              </div>
+
             </div>
 
-            <div style="padding-top:18px;border-top:1px solid {{ oc.border }};display:flex;justify-content:space-between;align-items:center;">
-              <button onClick="{{ oc.selectToEnquire }}" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;background:{{ oc.btnBg }};border:1px solid {{ oc.btnBorder }};color:{{ oc.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;cursor:pointer;transition:all .3s ease;">
-                <span>Plan {{ oc.shortTitle }}</span>
-                <span class="btn-icon-bubble">→</span>
-              </button>
-              <span style="font-size:12px;color:{{ oc.muted }};">{{ oc.pricingNote }}</span>
-            </div>
           </div>
         </div>
       </sc-for>
@@ -4501,17 +4516,16 @@ class Component extends DCLogic {
     ];
 
 
-    // Upgraded Curated Occasion Collections
+    // Upgraded Curated Occasion Collections with Photography & 2x2 Architecture
     const occasionCards = [
-
-
       {
         num: '01', key: 'bridal',
         title: 'The Bridal Sanctuary & Groom Suite',
-        shortTitle: 'Bridal Party',
+        shortTitle: 'Bridal Celebration',
         capacity: '4 to 12 Guests',
         rateBadge: 'From ₦45,000 / guest',
-        pricingNote: 'Custom packages available',
+        pricingNote: 'Includes private lounge hold & complimentary glassware',
+        img: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
         desc: 'Send the bride or groom into the wedding weekend with supple hydrated skin, decompressed trapezius muscles, and zero planning stress.',
         bg: '#F7F4EE', ink: '#1F2A28', muted: '#6E675C', border: '#DCD3C5', gold: '#8A5A2E',
         badgeBg: 'rgba(138,90,46,.08)', badgeInk: '#8A5A2E', badgeBorder: 'rgba(138,90,46,.2)',
@@ -4521,9 +4535,10 @@ class Component extends DCLogic {
           const el = document.getElementById('group-apply');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         },
-        inclusions: [
-          { tag: 'Bride / Groom VIP Care', title: 'The Radiance Glow & Tension Release', desc: 'HydraFacial MD vortex infusion, full-body botanical polish, gentle aromatherapy flow & cold LED teeth whitening.' },
-          { tag: 'Bridal Party Rotation', title: 'Parallel Relaxing Bodywork & Steam', desc: 'Synchronized 60-min massages or brightening facials with chilled champagne and artisanal canapés in the private lounge.' },
+        highlights: [
+          { label: 'Bride / Groom VIP Care', desc: 'HydraFacial MD vortex infusion, full-body botanical polish & LED teeth whitening' },
+          { label: 'Party Parallel Rotation', desc: 'Synchronized 60-min massage or brightening facial rotations with champagne service' },
+          { label: 'Private Suite Sanctuary', desc: 'Full hold of private relaxation lounge, eucalyptus steam & bespoke fruit platters' },
         ],
       },
       {
@@ -4532,7 +4547,8 @@ class Component extends DCLogic {
         shortTitle: 'Corporate Retreat',
         capacity: '6 to 20 Guests',
         rateBadge: 'From ₦40,000 / guest',
-        pricingNote: 'Corporate invoice provided',
+        pricingNote: 'Official VAT-compliant corporate invoice provided',
+        img: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80',
         desc: 'Reward the leadership team that delivered the quarter or reset executive partners. Unhurried, discrete, and scientifically restorative.',
         bg: '#072F33', ink: '#F7F4EE', muted: 'rgba(247,244,238,.75)', border: 'rgba(192,139,92,.4)', gold: '#C08B5C',
         badgeBg: 'rgba(192,139,92,.2)', badgeInk: '#C08B5C', badgeBorder: 'rgba(192,139,92,.4)',
@@ -4542,9 +4558,10 @@ class Component extends DCLogic {
           const el = document.getElementById('group-apply');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         },
-        inclusions: [
-          { tag: 'Ergonomic Decompression', title: 'Postural Reset & Trigger Point Release', desc: 'Targeted deep tissue work addressing neck strain, trapezius knots, and lower back aches caused by travel and screen hours.' },
-          { tag: 'Adrenal Thermal Reset', title: 'Private Eucalyptus Steam & Contrast Flow', desc: 'Rotational access to hydrotherapy steam suites paired with cold herbal infusions and private strategy breakout areas.' },
+        highlights: [
+          { label: 'Ergonomic Decompression', desc: 'Targeted deep tissue releasing neck strain, trapezius knots & lumbar desk fatigue' },
+          { label: 'Adrenal Thermal Reset', desc: 'Rotational private eucalyptus steam access paired with cold herbal infusions' },
+          { label: 'Executive Breakout Lounge', desc: 'Quiet acoustic lounge hold for team debriefs and strategy conversations' },
         ],
       },
       {
@@ -4553,8 +4570,9 @@ class Component extends DCLogic {
         shortTitle: 'Birthday Buyout',
         capacity: '2 to 10 Guests',
         rateBadge: 'From ₦50,000 / guest',
-        pricingNote: 'Personalized gifting included',
-        desc: 'Celebrate milestone anniversaries and birthdays with full private suite holds, candlelit acoustic calmness, and customized ritual sequences.',
+        pricingNote: 'Personalized gifting & cake presentation available',
+        img: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80',
+        desc: 'Celebrate milestone birthdays and anniversaries with full private suite holds, candlelit acoustic calmness, and customized sequences.',
         bg: '#EDE8DF', ink: '#1F2A28', muted: '#6E675C', border: '#DCD3C5', gold: '#8A5A2E',
         badgeBg: 'rgba(138,90,46,.12)', badgeInk: '#8A5A2E', badgeBorder: 'rgba(138,90,46,.25)',
         btnBg: '#072F33', btnInk: '#F7F4EE', btnBorder: '#072F33', itemBg: '#F7F4EE',
@@ -4563,9 +4581,10 @@ class Component extends DCLogic {
           const el = document.getElementById('group-apply');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         },
-        inclusions: [
-          { tag: 'Celebration Ritual', title: 'Authentic Turkish Hammam & Hot Basalt', desc: 'Full-body eucalyptus kessa scrub, warm rhassoul clay wrap, followed by deep heated volcanic stone bodywork.' },
-          { tag: 'Lounge Hospitality', title: 'Custom Fresh Fruit & Botanical Tea Bar', desc: 'Dedicated private lounge hold with handcrafted mocktails, seasonal fruit platters, and custom music playlist curation.' },
+        highlights: [
+          { label: 'Celebration Hydro Ritual', desc: 'Authentic Turkish Hammam kessa scrub, warm clay wrap & hot volcanic stone massage' },
+          { label: 'Botanical Tea & Fruit Bar', desc: 'Dedicated lounge hold with fresh seasonal fruit platters & custom herbal mocktails' },
+          { label: 'Curated Audio Ambience', desc: 'Personalized playlist selection and candlelit private resting suite atmosphere' },
         ],
       },
       {
@@ -4574,7 +4593,8 @@ class Component extends DCLogic {
         shortTitle: 'Couples Sanctuary',
         capacity: '2 Guests (Double Suite)',
         rateBadge: '₦95,000 – ₦160,000 Total',
-        pricingNote: 'Dedicated private suite',
+        pricingNote: 'Dedicated private double suite & rainfall shower',
+        img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
         desc: 'Side-by-side synchronized bodywork in our acoustic VIP double suite with dedicated hydro-steam rainfall shower and private tea lounge.',
         bg: '#F7F4EE', ink: '#1F2A28', muted: '#6E675C', border: '#DCD3C5', gold: '#8A5A2E',
         badgeBg: 'rgba(138,90,46,.08)', badgeInk: '#8A5A2E', badgeBorder: 'rgba(138,90,46,.2)',
@@ -4584,14 +4604,15 @@ class Component extends DCLogic {
           const el = document.getElementById('group-apply');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         },
-        inclusions: [
-          { tag: 'Synchronized Care', title: 'Side-by-Side Bespoke Modality Choice', desc: 'Two therapists working in exact harmony. Choose between Deep Tissue, Swedish, or Hot Stone tailored to each partner.' },
-          { tag: 'Sensory Immersion', title: 'Private Steam & Artisan Tea Service', desc: 'Private 30-min eucalyptus hydro bath followed by lemongrass infusions and dark chocolate in the secluded couple resting suite.' },
+        highlights: [
+          { label: 'Synchronized Bodywork', desc: 'Two therapists working in unison — choose Deep Tissue, Swedish, or Hot Basalt' },
+          { label: 'Private Hydro Steam Bath', desc: 'Private 30-min eucalyptus steam with cold rainfall shower & lemongrass mist' },
+          { label: 'Artisan Resting Service', desc: 'Lemongrass tea, artisan chocolates, and unhurried private suite relaxation' },
         ],
       },
     ];
-    const occasions = occasionCards;
 
+    const occasions = occasionCards;
 
     // Interactive Group Cost Estimator Calculation
     const occBaseRates = {
