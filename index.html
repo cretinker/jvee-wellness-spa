@@ -2044,11 +2044,11 @@
         Wuse 2 Flagship &amp; Wuye Quiet Retreat.
       </h1>
       <p style="font-size:16.5px;line-height:1.75;color:rgba(247,244,238,.85);max-width:54ch;margin:0 0 24px;">
-        Two distinct physical sanctuaries across the Federal Capital Territory, built around acoustic calm, private eucalyptus hydro-steam suites, and certified practitioners.
+        Two distinct physical sanctuaries across Abuja, designed around acoustic silence, private eucalyptus hydro-steam suites, and certified practitioners.
       </p>
       
       <div style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:18px;background:rgba(247,244,238,.07);border:1px solid rgba(247,244,238,.16);padding:10px 18px;border-radius:40px;font-size:12px;color:rgba(247,244,238,.85);letter-spacing:.06em;">
-        <span>✦ Synchronized Client Dermal Profiles</span>
+        <span>✦ Real-Time File Sync Across Both Houses</span>
         <span style="opacity:.4;">·</span>
         <span>✦ Dual House Cross-Access</span>
         <span style="opacity:.4;">·</span>
@@ -2057,76 +2057,304 @@
     </div>
   </section>
 
-  <!-- Deep Dive House Profiles Grid (2x2) -->
+  <!-- Interactive House Experience Switcher (Fun Interactive Presentation) -->
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
     
-    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(32px,4vw,48px);">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(28px,3.5vw,40px);">
       <div>
-        <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Sanctuary Locations</span>
-        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">Explore Our Sanctuary Houses</h2>
+        <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Interactive House Tour</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">Choose Your Sanctuary Atmosphere</h2>
       </div>
-      <a href="#/book" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid #C08B5C;padding:0 0 2px;text-decoration:none;">Book In-House Appointment →</a>
+      <button onClick="{{ scrollToContactForm }}" style="background:none;border:none;cursor:pointer;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid #C08B5C;padding:0 0 2px;font-family:inherit;">Send Desk Inquiry ↓</button>
     </div>
 
-    <!-- 2 Main House Deep Dive Cards in Balanced 2-Column Grid -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:clamp(24px,3.5vw,44px);margin-bottom:clamp(70px,9vw,120px);align-items:stretch;" data-stack="1">
-      <sc-for list="{{ housesDetailed }}" as="h" hint-placeholder-count="2">
-        <div class="jv-bezel" style="background:{{ h.bg }};border-color:{{ h.border }};">
-          <div class="jv-bezel-inner" style="background:{{ h.bg }};color:{{ h.ink }};padding:0;display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ h.border }};overflow:hidden;">
-            
-            <!-- Image Header -->
-            <div style="position:relative;height:240px;overflow:hidden;background:#072F33;">
-              <img src="{{ h.img }}" alt="{{ h.name }}" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05) brightness(.75);transition:transform .6s ease;" style-hover="transform:scale(1.04);">
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.2) 0%,rgba(7,47,51,.85) 100%);"></div>
-              
-              <div style="position:absolute;top:16px;left:18px;right:18px;display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#F7F4EE;background:rgba(7,47,51,.75);border:1px solid rgba(247,244,238,.2);padding:4px 10px;border-radius:20px;font-weight:600;">{{ h.badge }}</span>
-                <span style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;background:#C08B5C;padding:4px 10px;border-radius:20px;font-weight:600;">{{ h.hoursBadge }}</span>
-              </div>
+    <!-- House Toggle Tabs -->
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+      <sc-for list="{{ houseTabs }}" as="ht" hint-placeholder-count="2">
+        <button onClick="{{ ht.select }}" style="cursor:pointer;padding:16px 28px;background:{{ ht.bg }};border:1px solid {{ ht.border }};color:{{ ht.color }};font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border-radius:4px;transition:all .3s ease;display:flex;align-items:center;gap:10px;">
+          <span>{{ ht.label }}</span>
+          <span style="font-size:11px;opacity:.7;">{{ ht.badge }}</span>
+        </button>
+      </sc-for>
+    </div>
 
-              <div style="position:absolute;bottom:16px;left:20px;right:20px;">
-                <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3vw,38px);line-height:1.05;margin:0;color:#F7F4EE;">{{ h.name }}</h3>
+    <!-- Active House Interactive Showcase -->
+    <div class="jv-bezel" style="background:{{ activeHouse.cardBg }};border-color:{{ activeHouse.cardBorder }};margin-bottom:clamp(70px,9vw,120px);">
+      <div class="jv-bezel-inner" style="background:{{ activeHouse.cardBg }};color:{{ activeHouse.ink }};padding:0;overflow:hidden;border-color:{{ activeHouse.cardBorder }};">
+        
+        <!-- Large Showcase Banner -->
+        <div style="position:relative;min-height:340px;overflow:hidden;background:#072F33;">
+          <img src="{{ activeHouse.img }}" alt="{{ activeHouse.name }}" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05) brightness(.7);transition:transform .6s ease;" style-hover="transform:scale(1.03);">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.25) 0%,rgba(7,47,51,.92) 100%);"></div>
+          
+          <div style="position:absolute;top:20px;left:24px;right:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#F7F4EE;background:rgba(7,47,51,.8);border:1px solid rgba(247,244,238,.2);padding:6px 14px;border-radius:20px;font-weight:600;">{{ activeHouse.badge }}</span>
+              <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;background:#C08B5C;padding:6px 14px;border-radius:20px;font-weight:600;">{{ activeHouse.hoursBadge }}</span>
+            </div>
+            <span style="font-size:12px;color:rgba(247,244,238,.9);letter-spacing:.08em;">📍 {{ activeHouse.shortAddress }}</span>
+          </div>
+
+          <div style="position:absolute;bottom:24px;left:24px;right:24px;">
+            <span style="font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:6px;">{{ activeHouse.tagline }}</span>
+            <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(32px,4vw,56px);line-height:.98;margin:0;color:#F7F4EE;">{{ activeHouse.name }}</h3>
+          </div>
+        </div>
+
+        <!-- Showcase Body Grid -->
+        <div style="padding:clamp(28px,3.5vw,48px);display:grid;grid-template-columns:1.2fr 0.8fr;gap:clamp(30px,4vw,60px);" data-stack="1">
+          <div>
+            <span style="font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:{{ activeHouse.gold }};font-weight:600;display:block;margin-bottom:8px;">Atmosphere &amp; Ambience</span>
+            <p style="font-size:15.5px;line-height:1.75;color:{{ activeHouse.muted }};margin:0 0 24px;">{{ activeHouse.desc }}</p>
+
+            <!-- Ambience Spec Strip -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;background:{{ activeHouse.stripBg }};border:1px solid {{ activeHouse.border }};padding:18px 20px;border-radius:6px;margin-bottom:28px;" data-stack="1">
+              <div>
+                <span style="display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:{{ activeHouse.gold }};font-weight:600;margin-bottom:4px;">Signature Aroma Profile:</span>
+                <span style="font-size:13.5px;color:{{ activeHouse.ink }};">{{ activeHouse.aroma }}</span>
+              </div>
+              <div>
+                <span style="display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:{{ activeHouse.gold }};font-weight:600;margin-bottom:4px;">Acoustic Environment:</span>
+                <span style="font-size:13.5px;color:{{ activeHouse.ink }};">{{ activeHouse.acoustic }}</span>
               </div>
             </div>
 
-            <!-- Card Body Content -->
-            <div style="padding:clamp(24px,2.8vw,36px);display:flex;flex-direction:column;justify-content:space-between;flex-grow:1;">
-              <div>
-                <div style="margin-bottom:14px;">
-                  <span style="display:block;font-size:14px;color:{{ h.accent }};font-weight:600;margin-bottom:4px;">📍 {{ h.address }}</span>
-                  <span style="display:block;font-size:13px;color:{{ h.muted }};">🕒 {{ h.hours }}</span>
+            <!-- Suite Gallery Preview Tiles -->
+            <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ activeHouse.gold }};font-weight:600;display:block;margin-bottom:12px;">House Facilities &amp; Suites:</span>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
+              <sc-for list="{{ activeHouse.roomTiles }}" as="rt" hint-placeholder-count="3">
+                <div style="background:{{ activeHouse.stripBg }};border:1px solid {{ activeHouse.border }};padding:12px 14px;border-radius:6px;">
+                  <strong style="display:block;font-size:13.5px;color:{{ activeHouse.ink }};margin-bottom:2px;">{{ rt.title }}</strong>
+                  <span style="display:block;font-size:12px;color:{{ activeHouse.muted }};line-height:1.4;">{{ rt.desc }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- Quick Actions & Practical Info -->
+          <div style="display:flex;flex-direction:column;justify-content:space-between;background:{{ activeHouse.stripBg }};border:1px solid {{ activeHouse.border }};padding:24px 28px;border-radius:8px;">
+            <div>
+              <span style="font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:{{ activeHouse.gold }};font-weight:600;display:block;margin-bottom:12px;">Direct Practical Details:</span>
+              
+              <div style="display:grid;gap:14px;margin-bottom:24px;">
+                <div>
+                  <span style="font-size:11px;color:{{ activeHouse.muted }};display:block;">Physical Street Address</span>
+                  <strong style="font-size:14px;color:{{ activeHouse.ink }};display:block;margin-top:2px;">{{ activeHouse.address }}</strong>
+                </div>
+                <div>
+                  <span style="font-size:11px;color:{{ activeHouse.muted }};display:block;">Operating Days &amp; Hours</span>
+                  <strong style="font-size:14px;color:{{ activeHouse.ink }};display:block;margin-top:2px;">{{ activeHouse.hours }}</strong>
+                </div>
+                <div>
+                  <span style="font-size:11px;color:{{ activeHouse.muted }};display:block;">Parking &amp; Security</span>
+                  <strong style="font-size:14px;color:{{ activeHouse.ink }};display:block;margin-top:2px;">{{ activeHouse.parkingSpec }}</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display:grid;gap:10px;padding-top:18px;border-top:1px solid {{ activeHouse.border }};">
+              <a href="{{ activeHouse.bookUrl }}" class="btn-touch" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px 22px;background:{{ activeHouse.btnBg }};border:1px solid {{ activeHouse.btnBorder }};color:{{ activeHouse.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .3s ease;">
+                <span>Book {{ activeHouse.shortName }} Suite</span>
+                <span class="btn-icon-bubble">→</span>
+              </a>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <a href="{{ activeHouse.mapUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 14px;background:{{ activeHouse.mapBtnBg }};border:1px solid {{ activeHouse.border }};color:{{ activeHouse.ink }};font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">
+                  <span>Google Maps ↗</span>
+                </a>
+                <a href="{{ activeHouse.whatsAppUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 14px;background:{{ activeHouse.mapBtnBg }};border:1px solid {{ activeHouse.border }};color:{{ activeHouse.ink }};font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">
+                  <span>WhatsApp Desk</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Fun "Which House Fits Your Mood Today?" Mood-Matcher -->
+    <div style="background:#072F33;color:#F7F4EE;border:1px solid rgba(192,139,92,.4);border-radius:12px;padding:clamp(32px,4.5vw,60px);margin-bottom:clamp(70px,9vw,120px);">
+      <div style="max-width:48ch;margin-bottom:24px;">
+        <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Playful House Matcher</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#F7F4EE;margin:10px 0 10px;">Which House Fits Your Mood Today?</h2>
+        <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);">Tap a mood below to see which Abuja sanctuary location is curated for your exact needs.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:24px;">
+        <sc-for list="{{ moodOptions }}" as="mo" hint-placeholder-count="4">
+          <div onClick="{{ mo.select }}" style="cursor:pointer;padding:18px 20px;background:{{ mo.bg }};border:1px solid {{ mo.border }};border-radius:8px;transition:all .3s ease;">
+            <span style="font-size:22px;display:block;margin-bottom:8px;">{{ mo.icon }}</span>
+            <strong style="font-size:14.5px;color:{{ mo.titleColor }};display:block;margin-bottom:4px;">{{ mo.mood }}</strong>
+            <span style="font-size:12.5px;color:{{ mo.descColor }};line-height:1.5;display:block;">{{ mo.need }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- Mood Recommendation Result -->
+      <sc-if value="{{ moodSelected }}" hint-placeholder-val="{{ false }}">
+        <div style="background:rgba(247,244,238,.06);border:1px solid #C08B5C;padding:20px 24px;border-radius:8px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
+          <div>
+            <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Matched Recommendation</span>
+            <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;color:#F7F4EE;margin:0 0 4px;">{{ moodRecHouseName }}</h4>
+            <span style="font-size:13.5px;color:rgba(247,244,238,.85);">{{ moodRecRationale }}</span>
+          </div>
+          <a href="{{ moodRecBookUrl }}" style="padding:14px 26px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;text-decoration:none;">
+            <span>Book {{ moodRecHouseName }} →</span>
+          </a>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- Complete Directory & Full Address Information -->
+    <div style="margin-bottom:clamp(70px,9vw,120px);">
+      <div style="max-width:48ch;margin-bottom:clamp(32px,4vw,48px);">
+        <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Full Directory</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">Addresses &amp; Direct Desk Contacts</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.8vw,36px);" data-stack="1">
+        <!-- Wuse 2 Detailed Box -->
+        <div class="jv-bezel">
+          <div class="jv-bezel-inner" style="padding:32px 34px;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <span style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Flagship Sanctuary</span>
+                <span style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#0B4B50;background:rgba(11,75,80,.08);padding:3px 8px;border-radius:12px;font-weight:600;">Mon–Sun 9am–9pm</span>
+              </div>
+              <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:28px;color:#1F2A28;margin:0 0 14px;">Wuse 2 Sanctuary House</h3>
+              
+              <div style="display:grid;gap:12px;font-size:14px;color:#6E675C;line-height:1.6;margin-bottom:20px;">
+                <p style="margin:0;"><strong style="color:#1F2A28;">Full Physical Address:</strong><br>3 Kumasi Crescent, Off Aminu Kano Way, Wuse 2, Abuja, FCT, Nigeria.</p>
+                <p style="margin:0;"><strong style="color:#1F2A28;">Landmark:</strong><br>Directly opposite Kumasi Green Grove, 2 mins from Banex Plaza / AP Plaza.</p>
+                <p style="margin:0;"><strong style="color:#1F2A28;">Direct Concierge Desk:</strong><br><a href="tel:+2347068408027" style="color:#8A5A2E;text-decoration:none;">+234 706 840 8027</a> · <a href="mailto:wuse2@jveewellness.com" style="color:#8A5A2E;text-decoration:none;">wuse2@jveewellness.com</a></p>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:10px;padding-top:18px;border-top:1px solid #DCD3C5;">
+              <a href="https://maps.google.com/?q=3+Kumasi+Crescent+Wuse+2+Abuja" target="_blank" rel="noopener" style="padding:12px 18px;background:#EDE8DF;border:1px solid #DCD3C5;color:#1F2A28;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">Open in Google Maps ↗</a>
+              <a href="https://wa.me/2347068408027?text=Hello%20JVEE%20Wuse%202%20Desk" target="_blank" rel="noopener" style="padding:12px 18px;background:#072F33;color:#F7F4EE;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">WhatsApp Wuse 2</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wuye Detailed Box -->
+        <div class="jv-bezel">
+          <div class="jv-bezel-inner" style="padding:32px 34px;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <span style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Secluded Quiet Retreat</span>
+                <span style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#0B4B50;background:rgba(11,75,80,.08);padding:3px 8px;border-radius:12px;font-weight:600;">Tue–Sun 10am–8pm</span>
+              </div>
+              <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:28px;color:#1F2A28;margin:0 0 14px;">Wuye Secluded Sanctuary</h3>
+              
+              <div style="display:grid;gap:12px;font-size:14px;color:#6E675C;line-height:1.6;margin-bottom:20px;">
+                <p style="margin:0;"><strong style="color:#1F2A28;">Full Physical Address:</strong><br>Anthony Ozodinobi Crescent, Off Olusegun Obasanjo Way, Wuye District, Abuja, FCT, Nigeria.</p>
+                <p style="margin:0;"><strong style="color:#1F2A28;">Landmark:</strong><br>Quiet residential crescent behind Wuye Modern Market axis.</p>
+                <p style="margin:0;"><strong style="color:#1F2A28;">Direct Concierge Desk:</strong><br><a href="tel:+2347068408027" style="color:#8A5A2E;text-decoration:none;">+234 706 840 8027</a> · <a href="mailto:wuye@jveewellness.com" style="color:#8A5A2E;text-decoration:none;">wuye@jveewellness.com</a></p>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:10px;padding-top:18px;border-top:1px solid #DCD3C5;">
+              <a href="https://maps.google.com/?q=Anthony+Ozodinobi+Crescent+Wuye+Abuja" target="_blank" rel="noopener" style="padding:12px 18px;background:#EDE8DF;border:1px solid #DCD3C5;color:#1F2A28;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">Open in Google Maps ↗</a>
+              <a href="https://wa.me/2347068408027?text=Hello%20JVEE%20Wuye%20Desk" target="_blank" rel="noopener" style="padding:12px 18px;background:#072F33;color:#F7F4EE;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">WhatsApp Wuye</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direct In-House Sanctuary Contact & House Inquiry Form -->
+    <div id="contact-form" style="margin-bottom:clamp(70px,9vw,120px);">
+      <sc-if value="{{ contactConfirmed }}" hint-placeholder-val="{{ false }}">
+        <!-- Confirmed Contact Pass -->
+        <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:#C08B5C;max-width:860px;margin:0 auto;">
+          <div class="jv-bezel-inner" style="background:#072F33;padding:clamp(36px,5vw,68px);color:#F7F4EE;border-color:rgba(247,244,238,.14);">
+            <div style="text-align:center;max-width:48ch;margin:0 auto 32px;">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:rgba(192,139,92,.2);border:1px solid #C08B5C;color:#C08B5C;font-size:22px;margin-bottom:14px;">✓</span>
+              <span style="display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#C08B5C;margin-bottom:6px;">Message Dispatched to Desk</span>
+              <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#F7F4EE;margin:0 0 10px;">Thank you for writing to us, {{ contactName }}.</h2>
+              <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);">A concierge attendant has logged ticket <strong>{{ contactRef }}</strong> and will reply via WhatsApp/Email to <strong>{{ contactPhone }}</strong> within 30 minutes.</p>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;">
+              <a href="{{ contactWhatsAppLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:16px 30px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+                <span>Send Message to WhatsApp Concierge</span>
+                <span class="btn-icon-bubble">→</span>
+              </a>
+              <button onClick="{{ resetContactForm }}" style="padding:16px 24px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">
+                Send Another Note
+              </button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ contactPending }}" hint-placeholder-val="{{ true }}">
+        <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:rgba(192,139,92,.5);max-width:920px;margin:0 auto;">
+          <div class="jv-bezel-inner" style="background:#072F33;padding:clamp(32px,4.5vw,60px);color:#F7F4EE;border-color:rgba(247,244,238,.12);">
+            
+            <div style="margin-bottom:28px;">
+              <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;">Direct Sanctuary Concierge</span>
+              <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.04;margin:8px 0 10px;color:#F7F4EE;">Send a Note to Our Desk</h2>
+              <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);margin:0;">Have a question about house availability, customized sequences, or VIP group buyouts? Our desk is staffed daily.</p>
+            </div>
+
+            <div style="display:grid;gap:20px;">
+              <!-- House & Topic Row -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;" data-stack="1">
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C08B5C;font-weight:600;margin-bottom:8px;">1. Select Destination House:</label>
+                  <select onChange="{{ onContactHouseChange }}" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                    <option value="wuse2" style="background:#072F33;color:#F7F4EE;">Wuse 2 Flagship House Desk</option>
+                    <option value="wuye" style="background:#072F33;color:#F7F4EE;">Wuye Secluded Retreat Desk</option>
+                    <option value="general" style="background:#072F33;color:#F7F4EE;">General Concierge &amp; Management</option>
+                  </select>
                 </div>
 
-                <p style="font-size:14.5px;line-height:1.68;color:{{ h.muted }};margin:0 0 20px;padding-bottom:18px;border-bottom:1px solid {{ h.border }};">{{ h.desc }}</p>
-
-                <!-- Key Amenities -->
-                <div style="margin-bottom:24px;">
-                  <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ h.gold }};font-weight:600;display:block;margin-bottom:12px;">House Facilities &amp; Suites:</span>
-                  <ul style="margin:0;padding-left:0;list-style:none;display:grid;gap:10px;">
-                    <sc-for list="{{ h.facilities }}" as="fac" hint-placeholder-count="4">
-                      <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:{{ h.ink }};">
-                        <span style="color:{{ h.gold }};margin-top:1px;font-size:11px;">✦</span>
-                        <span>{{ fac }}</span>
-                      </li>
-                    </sc-for>
-                  </ul>
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C08B5C;font-weight:600;margin-bottom:8px;">2. Inquiry Topic:</label>
+                  <select onChange="{{ onContactSubjectChange }}" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                    <option value="booking" style="background:#072F33;color:#F7F4EE;">Appointment &amp; Treatment Scheduling</option>
+                    <option value="group" style="background:#072F33;color:#F7F4EE;">Private Group Buyout &amp; Celebrations</option>
+                    <option value="membership" style="background:#072F33;color:#F7F4EE;">Standing Membership Club</option>
+                    <option value="corporate" style="background:#072F33;color:#F7F4EE;">Corporate Wellness Partnership</option>
+                    <option value="feedback" style="background:#072F33;color:#F7F4EE;">Guest Feedback &amp; Review</option>
+                  </select>
                 </div>
               </div>
 
-              <!-- Multi-Action Bar -->
-              <div style="padding-top:20px;border-top:1px solid {{ h.border }};display:grid;gap:10px;">
-                <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:10px;">
-                  <a href="{{ h.bookUrl }}" class="btn-touch" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 18px;background:{{ h.btnBg }};border:1px solid {{ h.btnBorder }};color:{{ h.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .3s ease;">
-                    <span>Book {{ h.shortName }}</span>
-                    <span class="btn-icon-bubble">→</span>
-                  </a>
-                  <a href="{{ h.mapUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:15px 14px;background:{{ h.mapBtnBg }};border:1px solid {{ h.border }};color:{{ h.ink }};font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;text-decoration:none;">
-                    <span>Maps ↗</span>
-                  </a>
+              <!-- Guest Details (Name, Phone, Email) -->
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Your Name *</label>
+                  <input type="text" value="{{ contactName }}" onChange="{{ onContactNameChange }}" placeholder="e.g. Amina Mohammed" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
                 </div>
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Phone / WhatsApp *</label>
+                  <input type="tel" value="{{ contactPhone }}" onChange="{{ onContactPhoneChange }}" placeholder="+234 803 123 4567" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Email Address *</label>
+                  <input type="email" value="{{ contactEmail }}" onChange="{{ onContactEmailChange }}" placeholder="amina@example.com" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+              </div>
 
-                <a href="{{ h.whatsAppUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;background:rgba(247,244,238,.06);border:1px solid {{ h.border }};color:{{ h.muted }};font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">
-                  <span>Speak with Desk: {{ h.phone }}</span>
+              <!-- Message Content -->
+              <div>
+                <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Your Message or Question *</label>
+                <textarea value="{{ contactMessage }}" onChange="{{ onContactMessageChange }}" rows="3" placeholder="Write your question or request here..." style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;resize:vertical;"></textarea>
+              </div>
+
+              <!-- Submit Bar -->
+              <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:10px;padding-top:20px;border-top:1px solid rgba(247,244,238,.12);">
+                <button onClick="{{ submitContactInquiry }}" class="btn-touch" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 36px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;border:none;cursor:pointer;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+                  <span>Submit Inquiry to Concierge</span>
+                  <span class="btn-icon-bubble">→</span>
+                </button>
+                <a href="{{ whatsapp }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:17px 24px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;">
+                  <span>Instant WhatsApp Live Chat</span>
                 </a>
               </div>
 
@@ -2134,7 +2362,7 @@
 
           </div>
         </div>
-      </sc-for>
+      </sc-if>
     </div>
 
     <!-- House Comparison Matrix -->
@@ -2186,27 +2414,6 @@
             </div>
           </div>
         </sc-for>
-      </div>
-    </div>
-
-    <!-- Parking & Transit Details -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,44px);margin-bottom:clamp(70px,9vw,120px);" data-stack="1">
-      <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:rgba(192,139,92,.4);">
-        <div class="jv-bezel-inner" style="background:#072F33;padding:clamp(28px,3.5vw,40px);color:#F7F4EE;border-color:rgba(247,244,238,.12);">
-          <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;">Wuse 2 Access</span>
-          <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;color:#F7F4EE;margin:12px 0 14px;">Wuse 2 Flagship House Parking</h4>
-          <p style="font-size:14px;line-height:1.68;color:rgba(247,244,238,.8);margin:0 0 14px;">Dedicated on-site gated car park located directly in front of the Kumasi Crescent property. Uniformed security guard on duty during all operating hours.</p>
-          <span style="display:inline-block;font-size:12px;color:#C08B5C;background:rgba(192,139,92,.18);padding:4px 10px;border-radius:4px;">Gated &amp; Guarded · 8 Dedicated Bays</span>
-        </div>
-      </div>
-
-      <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:rgba(192,139,92,.4);">
-        <div class="jv-bezel-inner" style="background:#072F33;padding:clamp(28px,3.5vw,40px);color:#F7F4EE;border-color:rgba(247,244,238,.12);">
-          <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;">Wuye Access</span>
-          <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;color:#F7F4EE;margin:12px 0 14px;">Wuye Secluded House Parking</h4>
-          <p style="font-size:14px;line-height:1.68;color:rgba(247,244,238,.8);margin:0 0 14px;">Discreet residential setting on Anthony Ozodinobi Crescent with broad, shaded curbside parking directly adjacent to the entrance. Quiet and low traffic.</p>
-          <span style="display:inline-block;font-size:12px;color:#C08B5C;background:rgba(192,139,92,.18);padding:4px 10px;border-radius:4px;">Low-Traffic Residential · Discreet Entry</span>
-        </div>
       </div>
     </div>
 
@@ -3590,6 +3797,16 @@ class Component extends DCLogic {
     occasionNotes: '',
     occasionConfirmed: false,
     occasionRef: 'JV-GRP-' + Math.floor(100000 + Math.random() * 900000),
+    visitSelectedHouse: 0,
+    visitMoodIdx: -1,
+    contactHouse: 'wuse2',
+    contactSubject: 'booking',
+    contactName: '',
+    contactPhone: '',
+    contactEmail: '',
+    contactMessage: '',
+    contactConfirmed: false,
+    contactRef: 'JV-INQ-' + Math.floor(100000 + Math.random() * 900000),
     builderMassage: 1, builderFacial: 1, builderHydro: 0,
     bookStep: 0, bookCat: 'massage', bookService: 'deep-tissue', bookSpecialist: 'any', bookHouse: 'wuse2',
     bookDate: new Date(Date.now() + 86400000).toISOString().split('T')[0],
@@ -3891,18 +4108,28 @@ class Component extends DCLogic {
       href: '#/t/' + k,
     }));
 
-    // Upgraded Sanctuary Houses Detailed Profiles
+    // Upgraded Sanctuary Houses Interactive Showcase & Profiles
     const housesDetailed = [
       {
         name: 'Wuse 2 Flagship Sanctuary House',
         shortName: 'Wuse 2',
+        tagline: 'The Social Sanctuary & Clinical Aesthetics Wing',
         badge: 'Flagship Sanctuary',
         hoursBadge: 'Open Daily · 9am–9pm',
-        address: '3 Kumasi Crescent, Off Aminu Kano Way, Wuse 2, Abuja',
-        hours: 'Monday – Sunday · 9:00 AM – 9:00 PM',
+        address: '3 Kumasi Crescent, Off Aminu Kano Way, Wuse 2, Abuja, FCT, Nigeria',
+        shortAddress: 'Kumasi Crescent, Wuse 2',
+        hours: 'Monday – Sunday · 9:00 AM – 9:00 PM (7 Days a Week)',
         phone: '+234 706 840 8027',
+        parkingSpec: 'Gated On-Site Car Park · 8 Bays · Full-Time Uniformed Guard',
+        aroma: 'Wild Lemongrass, Sweet Orange & Amber Resins',
+        acoustic: 'Ambient Curated Lo-Fi & Gentle Water Sounds',
         img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
-        desc: 'Our full-service flagship sanctuary featuring luxury couples double suites, advanced clinical skin tech, and authentic Turkish Hammam heated marble.',
+        desc: 'Our lively, multi-suite flagship house featuring private VIP couples double suites, an advanced clinical skin wing, and authentic Turkish Hammam heated marble.',
+        roomTiles: [
+          { title: 'VIP Couples Suite', desc: 'Side-by-side tables with private hydro-rainfall shower' },
+          { title: 'Turkish Hammam', desc: 'Authentic heated marble slab with eucalyptus steam' },
+          { title: 'Dermal Aesthetics Wing', desc: 'Dedicated HydraFacial MD & Melanin pigment suite' },
+        ],
         facilities: [
           'Private VIP Couples Double Suite with rainfall shower',
           'Clinical Aesthetics Wing (HydraFacial MD, Chemical Peels)',
@@ -3913,19 +4140,29 @@ class Component extends DCLogic {
         bookUrl: '#/book?house=wuse2',
         mapUrl: 'https://maps.google.com/?q=3+Kumasi+Crescent+Wuse+2+Abuja',
         whatsAppUrl: wa('Hello JVEE Wuse 2 Concierge — I would like to check availability at Kumasi Crescent.'),
-        bg: '#F7F4EE', ink: '#1F2A28', border: '#DCD3C5', gold: '#8A5A2E', muted: '#6E675C', accent: '#0B4B50',
+        cardBg: '#F7F4EE', ink: '#1F2A28', cardBorder: '#DCD3C5', border: '#DCD3C5', gold: '#8A5A2E', muted: '#6E675C', stripBg: '#EDE8DF',
         btnBg: '#072F33', btnInk: '#F7F4EE', btnBorder: '#072F33', mapBtnBg: '#EDE8DF',
       },
       {
         name: 'Wuye Secluded Sanctuary Retreat',
         shortName: 'Wuye House',
+        tagline: 'The Silent Sanctuary & Postural Recovery Grove',
         badge: 'Acoustic Seclusion',
         hoursBadge: 'Tue–Sun · 10am–8pm',
-        address: 'Anthony Ozodinobi Crescent, Off Olusegun Obasanjo Way, Wuye, Abuja',
-        hours: 'Tuesday – Sunday · 10:00 AM – 8:00 PM (Monday Closed)',
+        address: 'Anthony Ozodinobi Crescent, Off Olusegun Obasanjo Way, Wuye District, Abuja, FCT, Nigeria',
+        shortAddress: 'Anthony Ozodinobi Crescent, Wuye',
+        hours: 'Tuesday – Sunday · 10:00 AM – 8:00 PM (Mondays Closed for Deep Sanitization)',
         phone: '+234 706 840 8027',
+        parkingSpec: 'Broad Tree-Lined Curbside Parking · Low Traffic · Guarded Gate',
+        aroma: 'Crushed Eucalyptus Leaf, Cedarwood & Camphor Mist',
+        acoustic: 'Deep Silence Sanctuary · Zero Road Noise · Whispered Protocol',
         img: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80',
-        desc: 'A discreet residential sanctuary designed for deep acoustic silence, sports postural recovery, and unhurried clinical bodywork.',
+        desc: 'A tranquil residential sanctuary designed for complete digital detox, sports rehabilitation, posture decompression, and acoustic calm.',
+        roomTiles: [
+          { title: 'Acoustic Single Suites', desc: 'Sound-dampened private rooms for undisturbed recharge' },
+          { title: 'Eucalyptus Steam Chamber', desc: 'Private herbal hydro-thermal bath with cold mist' },
+          { title: 'Sports Rehabilitation Wing', desc: 'PNF stretch and spinal decompression tables' },
+        ],
         facilities: [
           'Sound-dampened private single recovery suites',
           'Senior Sports Massage & Spinal Trigger-Point focus',
@@ -3936,10 +4173,76 @@ class Component extends DCLogic {
         bookUrl: '#/book?house=wuye',
         mapUrl: 'https://maps.google.com/?q=Anthony+Ozodinobi+Crescent+Wuye+Abuja',
         whatsAppUrl: wa('Hello JVEE Wuye Concierge — I would like to check availability at Wuye Retreat.'),
-        bg: '#072F33', ink: '#F7F4EE', border: 'rgba(192,139,92,.4)', gold: '#C08B5C', muted: 'rgba(247,244,238,.75)', accent: '#C08B5C',
+        cardBg: '#072F33', ink: '#F7F4EE', cardBorder: 'rgba(192,139,92,.4)', border: 'rgba(247,244,238,.14)', gold: '#C08B5C', muted: 'rgba(247,244,238,.75)', stripBg: 'rgba(247,244,238,.05)',
         btnBg: '#C08B5C', btnInk: '#1F2A28', btnBorder: '#C08B5C', mapBtnBg: 'rgba(247,244,238,.08)',
       },
     ];
+
+    const activeHouseIdx = this.state.visitSelectedHouse === 1 ? 1 : 0;
+    const activeHouse = housesDetailed[activeHouseIdx];
+
+    const houseTabs = [
+      {
+        label: '✦ 01 · Wuse 2 Flagship House', badge: 'Social & Aesthetics',
+        select: () => this.setState({ visitSelectedHouse: 0 }),
+        bg: activeHouseIdx === 0 ? '#072F33' : '#EDE8DF',
+        border: activeHouseIdx === 0 ? '#072F33' : '#DCD3C5',
+        color: activeHouseIdx === 0 ? '#F7F4EE' : '#1F2A28',
+      },
+      {
+        label: '✦ 02 · Wuye Secluded Retreat', badge: 'Silent Bodywork',
+        select: () => this.setState({ visitSelectedHouse: 1 }),
+        bg: activeHouseIdx === 1 ? '#072F33' : '#EDE8DF',
+        border: activeHouseIdx === 1 ? '#072F33' : '#DCD3C5',
+        color: activeHouseIdx === 1 ? '#F7F4EE' : '#1F2A28',
+      },
+    ];
+
+    // Mood Matcher Options
+    const moodData = [
+      {
+        icon: '🥂', mood: 'Couples & Celebration', need: 'Romantic anniversary, bridal glow, or shared double suite immersion.',
+        recHouse: 'Wuse 2 Flagship Sanctuary',
+        rationale: 'Features our exclusive private VIP couples double suite with side-by-side tables and chilled champagne lounge service.',
+        bookUrl: '#/book?house=wuse2&service=couples-sanctuary',
+      },
+      {
+        icon: '🌿', mood: 'Digital Detox & Silence', need: 'Escape phone calls, screen glare, and work stress in pure acoustic quiet.',
+        recHouse: 'Wuye Secluded Sanctuary',
+        rationale: 'Located in a quiet residential grove with deep soundproofing, soft lighting, and strict silent sanctuary rules.',
+        bookUrl: '#/book?house=wuye&service=swedish-massage',
+      },
+      {
+        icon: '✨', mood: 'Clinical Facial & Glow', need: 'Pore extraction, hyperpigmentation correction, and event-ready radiance.',
+        recHouse: 'Wuse 2 Dermal Wing',
+        rationale: 'Houses our authentic HydraFacial MD vortex technology and Woods lamp diagnostic suite led by Lead Aesthetician Suliat.',
+        bookUrl: '#/book?house=wuse2&service=hydrafacial',
+      },
+      {
+        icon: '💆', mood: 'Heavy Muscular Tension', need: 'Tight shoulder knots, desk neck strain, or intense athletic recovery.',
+        recHouse: 'Wuye Sports Recovery Suite',
+        rationale: 'Equipped with specialized spinal release tables and led by Senior Clinical Bodywork Specialist Charles.',
+        bookUrl: '#/book?house=wuye&service=deep-tissue',
+      },
+    ];
+
+    const moodOptions = moodData.map((md, idx) => {
+      const isSel = this.state.visitMoodIdx === idx;
+      return {
+        ...md,
+        select: () => this.setState({ visitMoodIdx: idx }),
+        bg: isSel ? 'rgba(192,139,92,.25)' : 'rgba(247,244,238,.06)',
+        border: isSel ? '#C08B5C' : 'rgba(247,244,238,.14)',
+        titleColor: isSel ? '#C08B5C' : '#F7F4EE',
+        descColor: isSel ? 'rgba(247,244,238,.9)' : 'rgba(247,244,238,.65)',
+      };
+    });
+
+    const curMood = moodData[this.state.visitMoodIdx] || moodData[0];
+    const moodSelected = this.state.visitMoodIdx >= 0;
+    const moodRecHouseName = curMood.recHouse;
+    const moodRecRationale = curMood.rationale;
+    const moodRecBookUrl = curMood.bookUrl;
 
     const houses = housesDetailed.map(h => ({
       name: h.name,
@@ -3975,6 +4278,19 @@ class Component extends DCLogic {
       { n: '03', title: 'Heated Suite Treatment', desc: 'Your therapist delivers continuous, unhurried bodywork on pre-warmed hydraulic tables tailored precisely to your requested pressure level.', standard: 'Medical Draping & Temperature Control' },
       { n: '04', title: 'Unhurried Lounge Recovery', desc: 'After your session, hydrate with antioxidant infusions and fresh fruit in our quiet lounge with zero checkout rush.', standard: 'Frictionless Departure' },
     ];
+
+    // Direct Concierge Contact Form State
+    const contactHouseLabel = this.state.contactHouse === 'wuse2' ? 'Wuse 2 Flagship House' : this.state.contactHouse === 'wuye' ? 'Wuye Secluded Retreat' : 'General Concierge';
+    const contactSubjectDict = {
+      booking: 'Appointment & Scheduling',
+      group: 'Private Group Buyout',
+      membership: 'Standing Membership Club',
+      corporate: 'Corporate Partnership',
+      feedback: 'Guest Feedback',
+    };
+    const contactSubjectLabel = contactSubjectDict[this.state.contactSubject] || 'General Inquiry';
+
+    const contactWhatsAppLink = wa(`Hello JVEE Concierge — I would like to send an inquiry:\n• Reference: ${this.state.contactRef}\n• Name: ${this.state.contactName || 'Honoured Guest'}\n• Phone: ${this.state.contactPhone || 'N/A'}\n• Email: ${this.state.contactEmail || 'N/A'}\n• Destination: ${contactHouseLabel}\n• Topic: ${contactSubjectLabel}\n• Message: ${this.state.contactMessage || 'N/A'}`);
 
     // Visit FAQs
     const visitFaqsList = [
@@ -5042,6 +5358,50 @@ class Component extends DCLogic {
       isAbout: route === 'about',
       isFaq: route === 'faq',
       isVisit: route === 'visit',
+      houseTabs,
+      activeHouse,
+      moodOptions,
+      moodSelected,
+      moodRecHouseName,
+      moodRecRationale,
+      moodRecBookUrl,
+      contactConfirmed: this.state.contactConfirmed,
+      contactPending: !this.state.contactConfirmed,
+      contactName: this.state.contactName,
+      contactPhone: this.state.contactPhone,
+      contactEmail: this.state.contactEmail,
+      contactMessage: this.state.contactMessage,
+      contactRef: this.state.contactRef,
+      contactWhatsAppLink,
+      scrollToContactForm: () => {
+        const el = document.getElementById('contact-form');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+      onContactHouseChange: (e) => this.setState({ contactHouse: e.target.value }),
+      onContactSubjectChange: (e) => this.setState({ contactSubject: e.target.value }),
+      onContactNameChange: (e) => this.setState({ contactName: e.target.value }),
+      onContactPhoneChange: (e) => this.setState({ contactPhone: e.target.value }),
+      onContactEmailChange: (e) => this.setState({ contactEmail: e.target.value }),
+      onContactMessageChange: (e) => this.setState({ contactMessage: e.target.value }),
+      submitContactInquiry: () => {
+        if (!this.state.contactName) {
+          alert('Please enter your name.');
+          return;
+        }
+        if (!this.state.contactPhone) {
+          alert('Please enter your phone or WhatsApp number.');
+          return;
+        }
+        if (!this.state.contactMessage) {
+          alert('Please write your question or message.');
+          return;
+        }
+        this.setState({ contactConfirmed: true });
+      },
+      resetContactForm: () => this.setState({
+        contactConfirmed: false,
+        contactRef: 'JV-INQ-' + Math.floor(100000 + Math.random() * 900000),
+      }),
       housesDetailed,
       visitHouseMatrix,
       visitStepsList,
