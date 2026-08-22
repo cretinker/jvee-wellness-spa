@@ -2016,37 +2016,31 @@
 <!-- ================= IN-HOUSE BOOKING WIZARD ================= -->
 <sc-if value="{{ isBook }}" hint-placeholder-val="{{ false }}">
 <main style="animation:{{ pageAnim }};">
-  <!-- Hero -->
-  <section style="position:relative;min-height:clamp(380px,50vh,540px);display:grid;align-items:end;background:#072F33;color:#F7F4EE;overflow:hidden;padding:calc(78px + clamp(44px,6vw,80px)) clamp(20px,4vw,56px) clamp(44px,5vw,72px);border-bottom:1px solid rgba(192,139,92,.28);">
-    <span style="position:absolute;inset:0;overflow:hidden;"><img data-parallax="0.3" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&amp;fit=crop&amp;w=2200&amp;q=80" alt="Sanctuary Suite" style="width:100%;height:125%;min-height:125%;object-fit:cover;filter:saturate(.7) contrast(1.05) brightness(.5);"></span>
-    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.75) 0%,rgba(7,47,51,.45) 44%,rgba(7,47,51,.96) 100%);"></span>
-    
-    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:clamp(30px,4vw,60px);align-items:end;" data-stack="1">
+  <!-- Clean Compact Header -->
+  <section style="background:#072F33;color:#F7F4EE;padding:calc(78px + clamp(20px,3vw,36px)) clamp(20px,4vw,56px) clamp(24px,3vw,36px);border-bottom:1px solid rgba(192,139,92,.28);">
+    <div style="max-width:1380px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:18px;">
       <div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
-          <span style="width:28px;height:1px;background:#C08B5C;"></span>
-          <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Dedicated Online Reservation</span>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <span style="width:20px;height:1px;background:#C08B5C;"></span>
+          <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;">Sanctuary Reservation</span>
         </div>
-        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,7.5vw,100px);line-height:.96;letter-spacing:-.03em;margin:0 0 20px;">
-          Reserve your sanctuary hour.
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,54px);line-height:1.05;margin:0 0 6px;color:#F7F4EE;">
+          {{ bookHeaderTitle }}
         </h1>
-        <p style="font-size:16.5px;line-height:1.75;color:rgba(247,244,238,.82);max-width:52ch;margin:0;">
-          Select your desired treatment or custom bundle, pick your preferred specialist, and secure your arrival window with zero surprise charges.
+        <p style="font-size:14.5px;line-height:1.6;color:rgba(247,244,238,.82);margin:0;max-width:58ch;">
+          {{ bookHeaderSubtitle }}
         </p>
       </div>
-
-      <div style="display:flex;flex-direction:column;gap:14px;justify-content:flex-end;">
-        <div style="background:rgba(247,244,238,.06);border:1px solid rgba(247,244,238,.16);padding:22px 26px;backdrop-filter:blur(10px);">
-          <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:6px;">Need Instant Desk Help?</span>
-          <p style="font-size:13px;line-height:1.6;color:rgba(247,244,238,.8);margin:0 0 12px;">Call or message our front desk concierge directly for same-day urgent openings or custom group buy-outs.</p>
-          <a href="{{ whatsapp }}" target="_blank" rel="noopener" style="color:#C08B5C;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid rgba(192,139,92,.5);padding-bottom:2px;">Chat with Desk Concierge →</a>
-        </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="{{ whatsapp }}" target="_blank" rel="noopener" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#C08B5C;border-bottom:1px solid rgba(192,139,92,.5);padding-bottom:2px;">
+          WhatsApp Concierge →
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Booking Container -->
-  <section style="max-width:1380px;margin:0 auto;padding:clamp(60px,8vw,120px) clamp(20px,4vw,56px);">
+  <section style="max-width:1380px;margin:0 auto;padding:clamp(36px,5vw,72px) clamp(20px,4vw,56px);">
     
     <sc-if value="{{ bookConfirmed }}" hint-placeholder-val="{{ false }}">
       <!-- Confirmation Success Pass -->
@@ -3585,7 +3579,13 @@ class Component extends DCLogic {
       rule: this.state.bookStep === st.step ? '#C08B5C' : 'transparent',
     }));
 
-    const bookMinDate = new Date().toISOString().split('T')[0];
+    const isPreSelected = this.state.bookStep > 0 || this.state.bookService !== 'deep-tissue';
+    const bookHeaderTitle = isPreSelected ? 'Complete Your Sanctuary Reservation' : 'Reserve Your Sanctuary Hour';
+    const bookHeaderSubtitle = isPreSelected
+      ? `You are reserving ${currentServiceName} (${currentServiceDur}) with ${currentSpecialistLabel} at ${currentHouseLabel}.`
+      : 'Select your service, specialist and arrival window with published transparent rates.';
+
+        const bookMinDate = new Date().toISOString().split('T')[0];
     const bookWhatsAppConfirmation = wa(`Hello JVEE Concierge — I have submitted an online reservation:\n• Reference: ${this.state.bookRef}\n• Guest: ${this.state.bookName || 'Honoured Guest'}\n• Service: ${currentServiceName} (${currentServiceDur})\n• Specialist: ${currentSpecialistLabel}\n• Location: ${currentHouseLabel}\n• Date & Time: ${this.state.bookDate} at ${this.state.bookTime}\n• Total Rate: ${currentServicePrice}`);
 
     const etiquettePillars = [
@@ -3771,7 +3771,9 @@ class Component extends DCLogic {
       isAesthetics: route === 'aesthetics',
       isEtiquette: route === 'etiquette',
       isAftercare: route === 'aftercare',
-      isBook: route === 'book',
+      bookHeaderTitle,
+      bookHeaderSubtitle,
+            isBook: route === 'book',
 
       bookConfirmed: this.state.bookConfirmed,
       bookInProgress: !this.state.bookConfirmed,
