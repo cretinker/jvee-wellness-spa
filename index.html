@@ -1205,67 +1205,331 @@
 <!-- ================= MEMBERSHIP ================= -->
 <sc-if value="{{ isMembership }}" hint-placeholder-val="{{ false }}">
 <main style="animation:{{ pageAnim }};">
+  <!-- Hero Section -->
   <section style="position:relative;min-height:clamp(420px,54vh,600px);display:grid;align-items:end;background:#072F33;color:#F7F4EE;overflow:hidden;padding:calc(78px + clamp(44px,6vw,80px)) clamp(20px,4vw,56px) clamp(44px,5vw,72px);border-bottom:1px solid rgba(192,139,92,.28);">
     <span style="position:absolute;inset:0;overflow:hidden;"><img data-parallax="0.32" src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&amp;fit=crop&amp;w=2200&amp;q=80" alt="Membership Sanctuary" style="width:100%;height:125%;min-height:125%;object-fit:cover;filter:saturate(.7) contrast(1.05) brightness(.55);"></span>
-    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.72) 0%,rgba(7,47,51,.4) 44%,rgba(7,47,51,.95) 100%);"></span>
+    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.72) 0%,rgba(7,47,51,.44) 44%,rgba(7,47,51,.96) 100%);"></span>
+    
     <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;">
-      <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Standing Sanctuary Care</span>
-      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,7.5vw,104px);line-height:.96;letter-spacing:-.03em;margin:18px 0 20px;max-width:18ch;">Recovery works when it's a habit, not an errand.</h1>
-      <p style="font-size:16px;line-height:1.72;color:rgba(247,244,238,.75);max-width:52ch;margin:0;">Members hold a standing monthly slot with a therapist who knows their pressure, their skin, and their history. Unused credits roll over, both houses are open to you, and you can freeze anytime you travel.</p>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="width:28px;height:1px;background:#C08B5C;"></span>
+        <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Standing Sanctuary Care · Wellness Club</span>
+      </div>
+      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,7.5vw,104px);line-height:.96;letter-spacing:-.03em;margin:0 0 20px;max-width:18ch;">
+        Recovery works when it's a habit, not an errand.
+      </h1>
+      <p style="font-size:16.5px;line-height:1.75;color:rgba(247,244,238,.85);max-width:54ch;margin:0 0 24px;">
+        Members hold a standing monthly suite with certified practitioners who document their anatomical pressure profile, dermal history, and recovery rhythm.
+      </p>
+      
+      <div style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:18px;background:rgba(247,244,238,.07);border:1px solid rgba(247,244,238,.16);padding:10px 18px;border-radius:40px;font-size:12px;color:rgba(247,244,238,.85);letter-spacing:.06em;">
+        <span>✦ 12-Month Rollover Guarantee</span>
+        <span style="opacity:.4;">·</span>
+        <span>✦ Travel Freeze Flexibility</span>
+        <span style="opacity:.4;">·</span>
+        <span>✦ Dual House Access (Wuse 2 &amp; Wuye)</span>
+      </div>
     </div>
   </section>
 
-  <!-- 3 Membership Tiers -->
+  <!-- 3 Membership Tiers Grid -->
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(20px,2.6vw,36px);margin-bottom:clamp(60px,8vw,110px);">
+    
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(32px,4vw,48px);">
+      <div>
+        <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Standing Tiers</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">Select Your Monthly Care Routine</h2>
+      </div>
+      <button onClick="{{ scrollToMemberApply }}" style="background:none;border:none;cursor:pointer;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid #C08B5C;padding:0 0 2px;font-family:inherit;">Enroll in Standing Care ↓</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,2.4vw,34px);margin-bottom:clamp(70px,9vw,120px);align-items:stretch;" data-stack="1">
       <sc-for list="{{ memberships }}" as="m" hint-placeholder-count="3">
         <div class="jv-bezel" style="background:{{ m.bg }};border-color:{{ m.border }};">
-          <div class="jv-bezel-inner" style="background:{{ m.bg }};color:{{ m.ink }};padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ m.border }};">
+          <div class="jv-bezel-inner" style="background:{{ m.bg }};color:{{ m.ink }};padding:clamp(28px,3vw,42px);display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ m.border }};">
             <div>
-              <span style="font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:{{ m.gold }};font-weight:600;">{{ m.eyebrow }}</span>
-              <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3vw,40px);line-height:1.05;margin:14px 0 8px;color:{{ m.ink }};">{{ m.name }}</h3>
-              <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:16px;">
-                <span style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(26px,2.8vw,36px);color:{{ m.ink }};font-weight:600;">{{ m.price }}</span>
-                <span style="font-size:12px;color:{{ m.muted }};">/ month</span>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <span style="font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:{{ m.gold }};font-weight:600;">{{ m.eyebrow }}</span>
+                <span style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:{{ m.badgeInk }};background:{{ m.badgeBg }};padding:3px 8px;border-radius:12px;font-weight:600;border:1px solid {{ m.badgeBorder }};">{{ m.frequency }}</span>
               </div>
-              <p style="font-size:14px;line-height:1.65;color:{{ m.muted }};margin:0 0 24px;">{{ m.line }}</p>
 
-              <ul style="margin:0 0 28px;padding-top:18px;border-top:1px solid {{ m.border }};display:grid;gap:10px;list-style:none;padding-left:0;">
-                <sc-for list="{{ m.perks }}" as="pk" hint-placeholder-count="5">
-                  <li style="font-size:13.5px;color:{{ m.ink }};display:flex;align-items:center;gap:8px;">
-                    <span style="color:{{ m.gold }};">✦</span>
-                    <span>{{ pk }}</span>
-                  </li>
-                </sc-for>
-              </ul>
+              <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(30px,3.2vw,44px);line-height:1.05;margin:0 0 8px;color:{{ m.ink }};">{{ m.name }}</h3>
+              
+              <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:16px;">
+                <span style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3vw,38px);color:{{ m.ink }};font-weight:600;">{{ m.price }}</span>
+                <span style="font-size:13px;color:{{ m.muted }};">/ month</span>
+              </div>
+
+              <p style="font-size:14px;line-height:1.65;color:{{ m.muted }};margin:0 0 22px;padding-bottom:18px;border-bottom:1px solid {{ m.border }};">{{ m.line }}</p>
+
+              <div style="margin-bottom:26px;">
+                <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ m.gold }};font-weight:600;display:block;margin-bottom:12px;">Included Monthly Privileges:</span>
+                <ul style="margin:0;display:grid;gap:10px;list-style:none;padding-left:0;">
+                  <sc-for list="{{ m.perks }}" as="pk" hint-placeholder-count="5">
+                    <li style="font-size:13px;color:{{ m.ink }};display:flex;align-items:flex-start;gap:8px;line-height:1.45;">
+                      <span style="color:{{ m.gold }};margin-top:2px;">✦</span>
+                      <span>{{ pk }}</span>
+                    </li>
+                  </sc-for>
+                </ul>
+              </div>
             </div>
 
-            <a href="{{ m.enquire }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;background:{{ m.btnBg }};border:1px solid {{ m.btnBorder }};color:{{ m.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:all .3s ease;">
-              <span>Enquire for {{ m.name }}</span>
-              <span class="btn-icon-bubble">→</span>
-            </a>
+            <div style="padding-top:18px;border-top:1px solid {{ m.border }};">
+              <button onClick="{{ m.selectToApply }}" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px 24px;background:{{ m.btnBg }};border:1px solid {{ m.btnBorder }};color:{{ m.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;cursor:pointer;transition:all .3s ease;">
+                <span>Enroll in {{ m.name }}</span>
+                <span class="btn-icon-bubble">→</span>
+              </button>
+            </div>
           </div>
         </div>
       </sc-for>
     </div>
 
-    <!-- 3 Sanctuary Rules -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,2.4vw,32px);">
-      <sc-for list="{{ memberRules }}" as="r" hint-placeholder-count="3">
-        <div class="jv-bezel">
-          <div class="jv-bezel-inner" style="padding:26px 28px;">
-            <span style="font-size:11px;letter-spacing:.2em;color:#8A5A2E;font-weight:600;">Rule {{ r.n }}</span>
-            <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.15;color:#1F2A28;margin:10px 0 8px;">{{ r.title }}</h4>
-            <p style="font-size:14px;line-height:1.6;color:#6E675C;margin:0;">{{ r.desc }}</p>
+    <!-- Interactive Member Value & ROI Calculator -->
+    <div style="background:#072F33;color:#F7F4EE;border:1px solid rgba(192,139,92,.4);border-radius:12px;padding:clamp(32px,4.5vw,64px);margin-bottom:clamp(70px,9vw,120px);">
+      <div style="max-width:48ch;margin-bottom:28px;">
+        <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Member Economics</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#F7F4EE;margin:10px 0 10px;">Membership Value Calculator</h2>
+        <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);">See how much regular monthly sanctuary visits save compared to single session drop-in rates.</p>
+      </div>
+
+      <!-- Frequency Selector Tabs -->
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px;">
+        <sc-for list="{{ calcTabs }}" as="ct" hint-placeholder-count="3">
+          <button onClick="{{ ct.select }}" style="cursor:pointer;padding:12px 22px;background:{{ ct.bg }};border:1px solid {{ ct.border }};color:{{ ct.color }};font-size:12px;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;font-weight:600;transition:all .25s ease;">{{ ct.label }}</button>
+        </sc-for>
+      </div>
+
+      <!-- Savings Breakdown Dashboard -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:26px 28px;background:rgba(247,244,238,.04);border:1px solid rgba(247,244,238,.12);border-radius:8px;">
+        <div>
+          <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,244,238,.6);display:block;margin-bottom:6px;">Standard Itemized Drop-In Rate</span>
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;color:rgba(247,244,238,.75);text-decoration:line-through;">{{ calcStandardRate }}</span>
+          <span style="display:block;font-size:11.5px;color:rgba(247,244,238,.5);margin-top:2px;">per month standard</span>
+        </div>
+        <div>
+          <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:6px;">Club Member Monthly Rate</span>
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:32px;color:#C08B5C;font-weight:600;">{{ calcMemberRate }}</span>
+          <span style="display:block;font-size:11.5px;color:#C08B5C;margin-top:2px;">{{ calcTierTitle }} Plan</span>
+        </div>
+        <div>
+          <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F7F4EE;display:block;margin-bottom:6px;">Annual Direct Member Savings</span>
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:32px;color:#F7F4EE;font-weight:600;">{{ calcAnnualSavings }}</span>
+          <span style="display:block;font-size:11.5px;color:rgba(247,244,238,.8);margin-top:2px;">+ Free Steam &amp; Product Perks</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Complete Tier Privileges Comparison Matrix -->
+    <div style="background:#EDE8DF;border:1px solid #DCD3C5;padding:clamp(28px,4vw,56px);border-radius:12px;margin-bottom:clamp(70px,9vw,120px);">
+      <div style="max-width:48ch;margin-bottom:24px;">
+        <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Tier Privileges</span>
+        <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(26px,3vw,38px);line-height:1.1;color:#1F2A28;margin:8px 0 0;">Compare Member Privileges</h3>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;text-align:left;font-size:14px;">
+          <thead>
+            <tr style="border-bottom:2px solid #DCD3C5;">
+              <th style="padding:14px 12px;color:#8A5A2E;font-size:11px;letter-spacing:.2em;text-transform:uppercase;">Privilege</th>
+              <th style="padding:14px 12px;color:#1F2A28;text-align:center;">The Regular (₦32k)</th>
+              <th style="padding:14px 12px;color:#0B4B50;text-align:center;font-weight:600;">The Sanctuary (₦60k)</th>
+              <th style="padding:14px 12px;color:#1F2A28;text-align:center;">The Patron (₦120k)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ memberMatrix }}" as="row" hint-placeholder-count="8">
+              <tr style="border-bottom:1px solid #DCD3C5;">
+                <td style="padding:14px 12px;font-weight:500;color:#1F2A28;">{{ row.label }}</td>
+                <sc-for list="{{ row.cells }}" as="c" hint-placeholder-count="3">
+                  <td style="padding:14px 12px;text-align:center;color:{{ c.color }};font-weight:600;">{{ c.mark }}</td>
+                </sc-for>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3 Sanctuary Lifestyle Pillars -->
+    <div style="margin-bottom:clamp(70px,9vw,120px);">
+      <div style="max-width:48ch;margin-bottom:clamp(32px,4vw,48px);">
+        <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">The Club Experience</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">Why Abuja Executives Choose Standing Care</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.4vw,32px);">
+        <sc-for list="{{ memberRules }}" as="r" hint-placeholder-count="3">
+          <div class="jv-bezel">
+            <div class="jv-bezel-inner" style="padding:28px 30px;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <span style="font-size:11px;letter-spacing:.2em;color:#8A5A2E;font-weight:600;">Pillar {{ r.n }}</span>
+                <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;line-height:1.15;color:#1F2A28;margin:12px 0 8px;">{{ r.title }}</h4>
+                <p style="font-size:14px;line-height:1.65;color:#6E675C;margin:0 0 16px;">{{ r.desc }}</p>
+              </div>
+              <span style="display:block;padding-top:14px;border-top:1px solid #DCD3C5;font-size:12.5px;color:#8A5A2E;font-weight:600;">Standard: {{ r.rule }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Direct In-House Membership Application Panel -->
+    <div id="member-apply" style="margin-bottom:clamp(70px,9vw,120px);">
+      <sc-if value="{{ memberConfirmed }}" hint-placeholder-val="{{ false }}">
+        <!-- Confirmed Member Pass -->
+        <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:#C08B5C;max-width:860px;margin:0 auto;">
+          <div class="jv-bezel-inner" style="background:#072F33;padding:clamp(36px,5vw,68px);color:#F7F4EE;border-color:rgba(247,244,238,.14);">
+            <div style="text-align:center;max-width:48ch;margin:0 auto 32px;">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:rgba(192,139,92,.2);border:1px solid #C08B5C;color:#C08B5C;font-size:22px;margin-bottom:14px;">✓</span>
+              <span style="display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#C08B5C;margin-bottom:6px;">Membership Application Confirmed</span>
+              <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#F7F4EE;margin:0 0 10px;">Welcome to Standing Sanctuary Care, {{ memberApplyName }}.</h2>
+              <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);">A welcome enrollment pack and monthly booking link have been dispatched to <strong>{{ memberApplyPhone }}</strong> and <strong>{{ memberApplyEmail }}</strong>.</p>
+            </div>
+
+            <!-- Digital Membership Pass -->
+            <div style="background:rgba(247,244,238,.04);border:1px solid rgba(247,244,238,.16);padding:22px 26px;border-radius:8px;margin-bottom:30px;">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;padding-bottom:18px;border-bottom:1px solid rgba(247,244,238,.1);">
+                <div>
+                  <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Member ID</span>
+                  <span style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;color:#F7F4EE;">{{ memberRef }}</span>
+                </div>
+                <div>
+                  <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Enrolled Tier</span>
+                  <span style="font-size:14px;color:#F7F4EE;font-weight:600;">{{ memberApplyTierLabel }}</span>
+                </div>
+                <div>
+                  <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Primary House</span>
+                  <span style="font-size:14px;color:#F7F4EE;">{{ memberApplyHouseLabel }}</span>
+                </div>
+                <div>
+                  <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Monthly Rate</span>
+                  <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#C08B5C;font-weight:600;">{{ memberApplyPrice }}</span>
+                </div>
+              </div>
+
+              <div style="padding-top:16px;font-size:13.5px;color:rgba(247,244,238,.85);">
+                <span style="color:#C08B5C;font-weight:600;">Standing Window Preference:</span> {{ memberApplyTimeLabel }}
+              </div>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;">
+              <a href="{{ memberWhatsAppLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:16px 30px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+                <span>Send Membership Card to WhatsApp Concierge</span>
+                <span class="btn-icon-bubble">→</span>
+              </a>
+              <button onClick="{{ resetMemberEnrollment }}" style="padding:16px 24px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">
+                Register Another Member
+              </button>
+            </div>
           </div>
         </div>
-      </sc-for>
+      </sc-if>
+
+      <sc-if value="{{ memberPending }}" hint-placeholder-val="{{ true }}">
+        <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:rgba(192,139,92,.5);max-width:920px;margin:0 auto;">
+          <div class="jv-bezel-inner" style="background:#072F33;padding:clamp(32px,4.5vw,60px);color:#F7F4EE;border-color:rgba(247,244,238,.12);">
+            
+            <div style="margin-bottom:28px;">
+              <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;">Fast-Track Enrollment</span>
+              <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.04;margin:8px 0 10px;color:#F7F4EE;">Join the Standing Sanctuary Club</h2>
+              <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);margin:0;">Lock in your monthly recovery standing slot with zero sign-up fees and full cross-house flexibility.</p>
+            </div>
+
+            <div style="display:grid;gap:22px;">
+              <!-- 1. Select Tier -->
+              <div>
+                <label style="display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C08B5C;font-weight:600;margin-bottom:8px;">1. Select Membership Tier:</label>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;">
+                  <sc-for list="{{ memberTierOptions }}" as="mto" hint-placeholder-count="3">
+                    <div onClick="{{ mto.select }}" style="cursor:pointer;padding:12px 16px;background:{{ mto.bg }};border:1px solid {{ mto.border }};border-radius:4px;transition:all .25s ease;">
+                      <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <span style="font-weight:600;font-size:13.5px;color:{{ mto.color }};">{{ mto.title }}</span>
+                        <span style="font-size:12px;color:{{ mto.subColor }};font-weight:600;">{{ mto.price }}</span>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+
+              <!-- 2. Select House & Preferred Time -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;" data-stack="1">
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C08B5C;font-weight:600;margin-bottom:8px;">2. Primary House:</label>
+                  <select onChange="{{ onMemberHouseChange }}" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                    <option value="wuse2" style="background:#072F33;color:#F7F4EE;">Wuse 2 Flagship House</option>
+                    <option value="wuye" style="background:#072F33;color:#F7F4EE;">Wuye Secluded Retreat</option>
+                    <option value="either" style="background:#072F33;color:#F7F4EE;">Either House (Cross-House Interoperable)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C08B5C;font-weight:600;margin-bottom:8px;">3. Preferred Monthly Window:</label>
+                  <select onChange="{{ onMemberTimeChange }}" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                    <option value="weekend" style="background:#072F33;color:#F7F4EE;">Saturday / Sunday Afternoons</option>
+                    <option value="weekday-morning" style="background:#072F33;color:#F7F4EE;">Weekday Mornings (9am – 12pm)</option>
+                    <option value="weekday-evening" style="background:#072F33;color:#F7F4EE;">Weekday Evenings (5pm – 8pm)</option>
+                    <option value="flexible" style="background:#072F33;color:#F7F4EE;">Flexible (Book as Needed via App)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- 4. Guest Details (Name, Phone, Email) -->
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Full Name *</label>
+                  <input type="text" value="{{ memberApplyName }}" onChange="{{ onMemberNameChange }}" placeholder="e.g. Dr. Ngozi Adeleke" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Phone / WhatsApp Number *</label>
+                  <input type="tel" value="{{ memberApplyPhone }}" onChange="{{ onMemberPhoneChange }}" placeholder="+234 803 123 4567" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Email Address *</label>
+                  <input type="email" value="{{ memberApplyEmail }}" onChange="{{ onMemberEmailChange }}" placeholder="ngozi@example.com" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+              </div>
+
+              <!-- Submit Bar -->
+              <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:10px;padding-top:20px;border-top:1px solid rgba(247,244,238,.12);">
+                <button onClick="{{ submitMemberEnrollment }}" class="btn-touch" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 36px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;border:none;cursor:pointer;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+                  <span>Submit Membership Enrollment</span>
+                  <span class="btn-icon-bubble">→</span>
+                </button>
+                <a href="{{ whatsapp }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:17px 24px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;">
+                  <span>Speak with Desk Concierge</span>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </sc-if>
     </div>
+
+    <!-- Membership Club FAQs -->
+    <div style="max-width:960px;margin:0 auto;">
+      <div style="text-align:center;max-width:48ch;margin:0 auto clamp(36px,5vw,60px);">
+        <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#8A5A2E;">Membership Clarity</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(32px,4.8vw,60px);line-height:1.05;letter-spacing:-.025em;margin-top:14px;color:#1F2A28;">Frequently Asked Member Questions</h2>
+      </div>
+
+      <div style="display:grid;gap:14px;">
+        <sc-for list="{{ memberFaqsList }}" as="mfq" hint-placeholder-count="5">
+          <div class="jv-bezel">
+            <div class="jv-bezel-inner" style="padding:22px 26px;">
+              <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#1F2A28;margin:0 0 8px;">{{ mfq.q }}</h4>
+              <p style="font-size:14px;line-height:1.68;color:#6E675C;margin:0;">{{ mfq.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
   </section>
 </main>
-</sc-if>
-
-<!-- ================= GIFT CERTIFICATES ================= -->
+</sc-if><!-- ================= GIFT CERTIFICATES ================= -->
 <sc-if value="{{ isGifts }}" hint-placeholder-val="{{ false }}">
 <main style="animation:{{ pageAnim }};">
   <section style="position:relative;min-height:clamp(420px,54vh,600px);display:grid;align-items:end;background:#072F33;color:#F7F4EE;overflow:hidden;padding:calc(78px + clamp(44px,6vw,80px)) clamp(20px,4vw,56px) clamp(44px,5vw,72px);border-bottom:1px solid rgba(192,139,92,.28);">
@@ -2879,6 +3143,16 @@ class Component extends DCLogic {
     route: 'home', slug: '', scrolled: false, goalIdx: 0, menuOpen: false, menuTreatments: false, openFaq: 0, heroIn: false,
     giftIdx: 2, giftDelivery: 0, giftName: '', giftMsg: '',
     matcherStep: 0, matcherNeed: 0, matcherTime: 0, matcherHouse: 0, matcherConfirmed: false,
+    memberCalcTier: 1,
+    memberApplyTier: 'sanctuary',
+    memberApplyHouse: 'wuse2',
+    memberApplyTime: 'weekend',
+    memberConfirmed: false,
+    memberRef: 'JV-MEM-' + Math.floor(100000 + Math.random() * 900000),
+    memberApplyName: '',
+    memberApplyPhone: '',
+    memberApplyEmail: '',
+    memberOpenFaq: -1,
     builderMassage: 1, builderFacial: 1, builderHydro: 0,
     bookStep: 0, bookCat: 'massage', bookService: 'deep-tissue', bookSpecialist: 'any', bookHouse: 'wuse2',
     bookDate: new Date(Date.now() + 86400000).toISOString().split('T')[0],
@@ -3772,32 +4046,166 @@ class Component extends DCLogic {
 
     const giftWhatsApp = wa(`Hello JVEE — I would like to order a gift card: ${giftCards[giftIdx] ? giftCards[giftIdx][0] + ' (' + giftCards[giftIdx][1] + ')' : 'Gift Card'}${giftName ? ' for ' + giftName : ''}`);
 
+    // Upgraded Membership Club Logic
     const memberships = [
       {
-        eyebrow: 'Tier 01', name: 'The Regular', price: P('₦32,000'),
-        line: 'One 60-minute massage or facial every month, with preferred booking windows.',
-        perks: ['1 × 60-minute treatment monthly', '10% off any additional bookings', 'Stand-by guest privilege', 'Unused credits roll over 60 days'],
+        eyebrow: 'Tier 01 · Bi-Weekly', name: 'The Regular', price: P('₦32,000'), key: 'regular',
+        frequency: '1 Session / Mo',
+        line: 'Essential monthly maintenance for busy professionals requiring regular fascial reset and skin cleansing.',
+        perks: [
+          '1 × 60-min Deep Tissue or Swedish Massage (or Express Facial)',
+          '10% Privilege on all additional treatments & retail products',
+          'Complimentary private eucalyptus steam suite add-on',
+          '12-Month credit rollover guarantee (credits never forfeit)',
+          'Up to 60 days annual travel freeze allowance',
+        ],
         bg: '#F7F4EE', ink: '#1F2A28', muted: '#6E675C', border: '#DCD3C5', gold: '#8A5A2E',
-        btnBg: 'transparent', btnInk: '#1F2A28', btnBorder: '#1F2A28',
-        enquire: wa('Hello JVEE — I would like to enquire about The Regular membership.'),
+        badgeBg: 'rgba(138,90,46,.08)', badgeInk: '#8A5A2E', badgeBorder: 'rgba(138,90,46,.2)',
+        btnBg: '#072F33', btnInk: '#F7F4EE', btnBorder: '#072F33',
+        selectToApply: () => {
+          this.setState({ memberApplyTier: 'regular' });
+          const el = document.getElementById('member-apply');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        },
       },
       {
-        eyebrow: 'Tier 02 · Most chosen', name: 'The Sanctuary', price: P('₦60,000'),
-        line: 'Two treatments per month — keep one for bodywork and one for your skin.',
-        perks: ['2 × treatments monthly (massage or facial)', '15% off additional treatments & products', 'Standing same-therapist calendar lock', 'Complimentary quarterly private steam room pass', 'Unused credits roll over 90 days'],
-        bg: '#072F33', ink: '#F7F4EE', muted: 'rgba(247,244,238,.7)', border: 'rgba(247,244,238,.2)', gold: '#C08B5C',
+        eyebrow: 'Tier 02 · Most Chosen', name: 'The Sanctuary', price: P('₦60,000'), key: 'sanctuary',
+        frequency: '2 Sessions / Mo',
+        line: 'Our signature bi-weekly rhythm: alternate between clinical bodywork and medical-grade skin therapy.',
+        perks: [
+          '2 × 60-min any-modality treatments (Massage, Facial, or Hammam)',
+          '15% Privilege on all additional bookings, aesthetics & retail',
+          'Dedicated therapist & preferred room reservation lock',
+          '1 Complimentary guest treatment pass per quarter',
+          'Unlimited weekday private steam suite access',
+          '12-Month rollover guarantee + 90 days travel freeze',
+        ],
+        bg: '#072F33', ink: '#F7F4EE', muted: 'rgba(247,244,238,.75)', border: 'rgba(192,139,92,.4)', gold: '#C08B5C',
+        badgeBg: 'rgba(192,139,92,.2)', badgeInk: '#C08B5C', badgeBorder: 'rgba(192,139,92,.4)',
         btnBg: '#C08B5C', btnInk: '#1F2A28', btnBorder: '#C08B5C',
-        enquire: wa('Hello JVEE — I would like to enquire about The Sanctuary membership.'),
+        selectToApply: () => {
+          this.setState({ memberApplyTier: 'sanctuary' });
+          const el = document.getElementById('member-apply');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        },
       },
       {
-        eyebrow: 'Tier 03', name: 'The Patron', price: P('₦120,000'),
-        line: 'Four monthly credits, full house access and unlimited steam bath add-ons.',
-        perks: ['4 × treatments monthly', '20% off everything across both houses', 'Unlimited private steam bath sessions', 'Priority booking in December and peak weekends', 'Dedicated concierge booking via WhatsApp'],
+        eyebrow: 'Tier 03 · Executive VIP', name: 'The Patron', price: P('₦120,000'), key: 'patron',
+        frequency: '4 Sessions / Mo',
+        line: 'Comprehensive weekly recovery with VIP private suite priority, guest allowances, and full house access.',
+        perks: [
+          '4 × 60-min any-modality treatments monthly (or 2 multi-hour packages)',
+          '20% Privilege on all treatments, injectables & aesthetic courses',
+          'Unlimited anytime private steam bath & VIP resting lounge access',
+          '2 Complimentary guest passes per quarter (shareable with spouse)',
+          'Assigned Lead Practitioner (Suliat or Charles)',
+          'Peak holiday & December guaranteed calendar lock',
+        ],
         bg: '#EDE8DF', ink: '#1F2A28', muted: '#6E675C', border: '#DCD3C5', gold: '#8A5A2E',
-        btnBg: '#0B4B50', btnInk: '#F7F4EE', btnBorder: '#0B4B50',
-        enquire: wa('Hello JVEE — I would like to enquire about The Patron membership.'),
+        badgeBg: 'rgba(138,90,46,.12)', badgeInk: '#8A5A2E', badgeBorder: 'rgba(138,90,46,.25)',
+        btnBg: '#072F33', btnInk: '#F7F4EE', btnBorder: '#072F33',
+        selectToApply: () => {
+          this.setState({ memberApplyTier: 'patron' });
+          const el = document.getElementById('member-apply');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        },
       },
     ];
+
+    // Membership ROI Calculator
+    const calcData = [
+      { label: '1 Visit / Mo (Fortnightly)', tierTitle: 'The Regular', standard: 45000, member: 32000 },
+      { label: '2 Visits / Mo (Signature)', tierTitle: 'The Sanctuary', standard: 88000, member: 60000 },
+      { label: '4 Visits / Mo (Weekly VIP)', tierTitle: 'The Patron', standard: 176000, member: 120000 },
+    ];
+    const curCalc = calcData[this.state.memberCalcTier] || calcData[1];
+    const calcStandardRate = '₦' + curCalc.standard.toLocaleString();
+    const calcMemberRate = '₦' + curCalc.member.toLocaleString();
+    const calcMonthlySavings = curCalc.standard - curCalc.member;
+    const calcAnnualSavings = 'Save ₦' + (calcMonthlySavings * 12).toLocaleString() + ' / Year';
+    const calcTierTitle = curCalc.tierTitle;
+
+    const calcTabs = calcData.map((cd, idx) => {
+      const isSel = this.state.memberCalcTier === idx;
+      return {
+        label: cd.label,
+        select: () => this.setState({ memberCalcTier: idx }),
+        bg: isSel ? '#C08B5C' : 'rgba(247,244,238,.08)',
+        border: isSel ? '#C08B5C' : 'rgba(247,244,238,.2)',
+        color: isSel ? '#1F2A28' : '#F7F4EE',
+      };
+    });
+
+    // Membership Comparison Matrix
+    const memberMatrix = [
+      ['Monthly Treatment Credits', ['1 × 60 min', '2 × 60 min', '4 × 60 min']],
+      ['Modalities Allowed', ['Massage or Cleanse', 'All Modalities (Any)', 'All Modalities (Any)']],
+      ['Unused Credit Rollover', ['12 Months', '12 Months', '12 Months']],
+      ['Private Eucalyptus Steam Suite', ['1 Included Pass / mo', 'Unlimited Weekdays', 'Unlimited Anytime']],
+      ['Complimentary Guest Passes', ['Standby Rate', '1 Per Quarter', '2 Per Quarter']],
+      ['Retail & Skincare Privilege', ['10% Off', '15% Off', '20% Off']],
+      ['Assigned Lead Specialist Lock', ['Optional', 'Guaranteed', 'Dedicated Lead']],
+      ['Annual Travel Freeze Allowance', ['Up to 60 Days', 'Up to 90 Days', 'Up to 120 Days']],
+      ['Dual House Access (Wuse 2 & Wuye)', ['✓', '✓', '✓']],
+    ].map(([label, cells]) => ({
+      label,
+      cells: cells.map((c) => ({
+        mark: typeof c === 'string' ? c : c ? '✓' : '—',
+        color: c === '✓' ? '#0B4B50' : '#1F2A28',
+      })),
+    }));
+
+    // Membership Application Form State
+    const memberTierDict = {
+      regular: { title: 'The Regular', price: '₦32,000 / mo' },
+      sanctuary: { title: 'The Sanctuary', price: '₦60,000 / mo' },
+      patron: { title: 'The Patron', price: '₦120,000 / mo' },
+    };
+    const curApplyTier = memberTierDict[this.state.memberApplyTier] || memberTierDict['sanctuary'];
+    const memberApplyTierLabel = curApplyTier.title;
+    const memberApplyPrice = curApplyTier.price;
+
+    const houseDict = {
+      wuse2: 'Wuse 2 Flagship House',
+      wuye: 'Wuye Secluded Retreat',
+      either: 'Either House (Full Access)',
+    };
+    const memberApplyHouseLabel = houseDict[this.state.memberApplyHouse] || 'Wuse 2 Flagship House';
+
+    const timeDict = {
+      weekend: 'Saturday / Sunday Afternoons',
+      'weekday-morning': 'Weekday Mornings (9am – 12pm)',
+      'weekday-evening': 'Weekday Evenings (5pm – 8pm)',
+      flexible: 'Flexible Schedule',
+    };
+    const memberApplyTimeLabel = timeDict[this.state.memberApplyTime] || 'Flexible Schedule';
+
+    const memberTierOptions = [
+      { key: 'regular', title: 'The Regular (1x/mo)', price: '₦32,000' },
+      { key: 'sanctuary', title: 'The Sanctuary (2x/mo)', price: '₦60,000' },
+      { key: 'patron', title: 'The Patron (4x/mo)', price: '₦120,000' },
+    ].map((mto) => {
+      const isSel = this.state.memberApplyTier === mto.key;
+      return {
+        ...mto,
+        select: () => this.setState({ memberApplyTier: mto.key }),
+        bg: isSel ? 'rgba(192,139,92,.25)' : 'rgba(247,244,238,.06)',
+        border: isSel ? '#C08B5C' : 'rgba(247,244,238,.16)',
+        color: isSel ? '#F7F4EE' : 'rgba(247,244,238,.8)',
+        subColor: isSel ? '#C08B5C' : 'rgba(247,244,238,.5)',
+      };
+    });
+
+    const memberWhatsAppLink = wa(`Hello JVEE Concierge — I have submitted my Membership Application:\n• Member ID: ${this.state.memberRef}\n• Name: ${this.state.memberApplyName || 'Honoured Member'}\n• Phone: ${this.state.memberApplyPhone || 'N/A'}\n• Email: ${this.state.memberApplyEmail || 'N/A'}\n• Enrolled Plan: ${memberApplyTierLabel} (${memberApplyPrice})\n• Primary House: ${memberApplyHouseLabel}\n• Preferred Window: ${memberApplyTimeLabel}`);
+
+    const memberFaqsList = [
+      { q: 'Can I share my membership credits with my spouse or family member?', a: 'Yes! On The Sanctuary (Tier 02) and The Patron (Tier 03) plans, you can share your monthly treatment credits or bring a guest using your complimentary guest passes.' },
+      { q: 'What happens to my unused credits if I am busy this month?', a: 'Your credits never expire. All unused monthly credits roll over for 12 full months, so you can stack multiple sessions for a full-day package whenever your schedule allows.' },
+      { q: 'How does the travel freeze policy work?', a: 'If you are traveling outside Abuja or abroad, simply send a 1-sentence WhatsApp message to the desk concierge. We will pause your membership and billing for up to 60 to 90 days at zero penalty.' },
+      { q: 'Can I use my membership at both Wuse 2 and Wuye locations?', a: 'Yes! All JVEE memberships are 100% interoperable across both Sanctuary Houses. You can enjoy your facial in Wuse 2 and your quiet deep tissue massage in Wuye.' },
+      { q: 'Are there any hidden sign-up fees or cancellation contracts?', a: 'Zero sign-up fees and zero lock-in contracts. You can adjust your tier or cancel anytime with 14 days notice prior to your next monthly cycle.' },
+    ];
+
 
     const occasions = [
       {
@@ -3905,6 +4313,53 @@ class Component extends DCLogic {
       isDetail: route === 'detail',
       isPackages: route === 'packages',
       isMembership: route === 'membership',
+      scrollToMemberApply: () => {
+        const el = document.getElementById('member-apply');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+      calcTabs,
+      calcStandardRate,
+      calcMemberRate,
+      calcAnnualSavings,
+      calcTierTitle,
+      memberMatrix,
+      memberConfirmed: this.state.memberConfirmed,
+      memberPending: !this.state.memberConfirmed,
+      memberRef: this.state.memberRef,
+      memberApplyName: this.state.memberApplyName,
+      memberApplyPhone: this.state.memberApplyPhone,
+      memberApplyEmail: this.state.memberApplyEmail,
+      memberApplyTierLabel,
+      memberApplyHouseLabel,
+      memberApplyPrice,
+      memberApplyTimeLabel,
+      memberTierOptions,
+      memberWhatsAppLink,
+      memberFaqsList,
+      onMemberHouseChange: (e) => this.setState({ memberApplyHouse: e.target.value }),
+      onMemberTimeChange: (e) => this.setState({ memberApplyTime: e.target.value }),
+      onMemberNameChange: (e) => this.setState({ memberApplyName: e.target.value }),
+      onMemberPhoneChange: (e) => this.setState({ memberApplyPhone: e.target.value }),
+      onMemberEmailChange: (e) => this.setState({ memberApplyEmail: e.target.value }),
+      submitMemberEnrollment: () => {
+        if (!this.state.memberApplyName) {
+          alert('Please enter your full name to complete your membership enrollment.');
+          return;
+        }
+        if (!this.state.memberApplyPhone) {
+          alert('Please enter your phone or WhatsApp number for booking confirmations.');
+          return;
+        }
+        if (!this.state.memberApplyEmail) {
+          alert('Please enter your email address for your digital membership pack.');
+          return;
+        }
+        this.setState({ memberConfirmed: true });
+      },
+      resetMemberEnrollment: () => this.setState({
+        memberConfirmed: false,
+        memberRef: 'JV-MEM-' + Math.floor(100000 + Math.random() * 900000),
+      }),
       isGifts: route === 'gifts',
       isOccasions: route === 'occasions',
       isAbout: route === 'about',
