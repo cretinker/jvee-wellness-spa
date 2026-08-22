@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;}body{margin:0;font-family:"Instrument Sans",sans-serif;}</style>
+</helmet>
+
+<div style="background:#F2EEE6;color:#1F2A28;font-size:14px;">
+  <div style="margin-bottom:18px;">
+    <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Revenue</span>
+    <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,36px);line-height:1.05;letter-spacing:-.02em;margin-top:9px;">₦33.6M this month</h1>
+    <p style="margin-top:8px;font-size:13.5px;color:#6E675C;">↑ 12.4% vs last month · ₦184k pending across 4 invoices</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#DDD5C6;border:1px solid #DDD5C6;border-radius:12px;overflow:hidden;margin-bottom:14px;">
+    <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+      <div style="background:#FBF9F4;padding:16px 17px;">
+        <span style="display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#6E675C;">{{ k.label }}</span>
+        <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:26px;margin:10px 0 6px;">{{ k.value }}</span>
+        <span style="font-size:11.5px;color:{{ k.color }};">{{ k.delta }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px;align-items:start;">
+    <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+      <div style="padding:16px 19px;border-bottom:1px solid #E7E0D2;display:flex;justify-content:space-between;align-items:baseline;">
+        <h2 style="font-size:14px;font-weight:600;">Revenue — 30 days</h2>
+        <span style="font-size:11.5px;color:#6E675C;">dashed = forecast</span>
+      </div>
+      <div style="padding:19px;">
+        <svg viewBox="0 0 700 200" preserveAspectRatio="none" style="width:100%;height:186px;" data-om-raster>
+          <defs>
+            <linearGradient id="revFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0B4B50" stop-opacity=".18"></stop>
+              <stop offset="100%" stop-color="#0B4B50" stop-opacity="0"></stop>
+            </linearGradient>
+          </defs>
+          <line x1="0" y1="20" x2="700" y2="20" stroke="#E7E0D2"></line>
+          <line x1="0" y1="90" x2="700" y2="90" stroke="#E7E0D2"></line>
+          <line x1="0" y1="180" x2="700" y2="180" stroke="#D3CCBE"></line>
+          <path d="{{ revFillPath }}" fill="url(#revFill)" stroke="none"></path>
+          <path d="{{ revPath }}" fill="none" stroke="#0B4B50" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+          <path d="{{ forecastPath }}" fill="none" stroke="#C08B5C" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"></path>
+          <circle cx="700" cy="50" r="4" fill="#0B4B50"></circle>
+        </svg>
+      </div>
+    </section>
+
+    <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+      <div style="padding:16px 19px;border-bottom:1px solid #E7E0D2;">
+        <h2 style="font-size:14px;font-weight:600;">Price modelling</h2>
+        <p style="font-size:11.5px;color:#6E675C;margin-top:3px;">HydraFacial · ₦75,000 · 118 bookings/mo</p>
+      </div>
+      <div style="padding:18px 19px;">
+        <span style="font-size:11.5px;color:#4A5450;">Price change</span>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:8px;">
+          <input type="range" min="-15" max="20" value="{{ pct }}" onChange="{{ setPct }}" style="flex:1;">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;width:52px;text-align:right;">{{ pctLabel }}</span>
+        </div>
+        <ul style="display:grid;gap:9px;margin-top:16px;padding-top:14px;border-top:1px solid #E7E0D2;">
+          <li style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:#4A5450;">New price</span><strong style="font-weight:600;">{{ newPrice }}</strong></li>
+          <li style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:#4A5450;">Modelled volume</span><strong style="font-weight:600;">{{ newVolume }}</strong></li>
+          <li style="display:flex;justify-content:space-between;font-size:13px;padding-top:9px;border-top:1px solid #E7E0D2;"><span style="color:#4A5450;">Net monthly</span><strong style="font-weight:600;color:{{ netColor }};">{{ netMonthly }}</strong></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px;margin-top:14px;align-items:start;">
+    <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+      <div style="padding:16px 19px;border-bottom:1px solid #E7E0D2;">
+        <h2 style="font-size:14px;font-weight:600;">Recent transactions</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:70px minmax(0,1fr) 90px 80px;padding:10px 19px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#6E675C;border-bottom:1px solid #E7E0D2;">
+        <span>Time</span><span>Client · service</span><span>Method</span><span style="text-align:right;">Amount</span>
+      </div>
+      <ul>
+        <sc-for list="{{ tx }}" as="t" hint-placeholder-count="10">
+          <li style="display:grid;grid-template-columns:70px minmax(0,1fr) 90px 80px;padding:11px 19px;border-bottom:1px solid #F0EBE0;align-items:center;">
+            <span style="font-size:12px;color:#6E675C;">{{ t.time }}</span>
+            <span style="font-size:13px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ t.desc }}</span>
+            <span style="font-size:12px;color:#6E675C;">{{ t.method }}</span>
+            <span style="font-size:13px;font-weight:600;text-align:right;">{{ t.amount }}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </section>
+
+    <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+      <div style="padding:16px 19px;border-bottom:1px solid #E7E0D2;">
+        <h2 style="font-size:14px;font-weight:600;">Outstanding</h2>
+        <p style="font-size:11.5px;color:#6E675C;margin-top:3px;">₦184,000 across 4 invoices</p>
+      </div>
+      <ul>
+        <sc-for list="{{ outstanding }}" as="o" hint-placeholder-count="4">
+          <li style="padding:12px 19px;border-bottom:1px solid #F0EBE0;">
+            <span style="display:flex;justify-content:space-between;gap:10px;"><span style="font-size:13px;">{{ o.name }}</span><strong style="font-size:13px;font-weight:600;">{{ o.amount }}</strong></span>
+            <span style="display:flex;justify-content:space-between;gap:10px;margin-top:3px;"><span style="font-size:11.5px;color:{{ o.overdue ? '#B23A2E' : '#6E675C' }};">{{ o.age }}</span><button style="font-size:11px;color:#8A5A2E;background:none;border:0;cursor:pointer;">Chase →</button></span>
+          </li>
+        </sc-for>
+      </ul>
+    </section>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+function seeded(seed) { let s = seed; return () => { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }; }
+const NAMES = ['Amaka Nwosu','Tunde Bakare','Ifeoma Chukwu','Grace Ameh','Chidinma Amadi','Joanna Irokaba','Bola Adeyemi','Kelechi Umeh','Sterling Corporate','Zainab Bello'];
+const SERVICES = ['HydraFacial','Deep Tissue Massage','Hot Stone Massage','Body Polish','Signature Ritual'];
+const METHODS = ['Card','Transfer','Cash','POS'];
+
+function buildPath(rand, base, amp, pts, dashed) {
+  let path = ''; let v = base;
+  for (let i = 0; i < pts; i++) {
+    v += (rand() - .45) * amp;
+    v = Math.max(20, Math.min(180, v));
+    path += (i === 0 ? 'M' : ' L') + `${(i / (pts - 1)) * 700},${200 - v}`;
+  }
+  return path;
+}
+
+class Component extends DCLogic {
+  state = { pct: 0 };
+
+  renderVals() {
+    const rand = seeded(19);
+    const revPath = buildPath(rand, 90, 26, 22);
+    const revFillPath = revPath + ' L700,180 L0,180 Z';
+    const lastX = 700, lastY = 200 - 150;
+    const forecastPath = `M${lastX},${lastY} L730,${lastY - 8} L760,${lastY - 18}`;
+
+    const tx = Array.from({ length: 10 }, (_, i) => ({
+      time: `${9 + Math.floor(rand() * 9)}:${(Math.floor(rand()*6)*10).toString().padStart(2,'0')}`,
+      desc: `${NAMES[Math.floor(rand()*NAMES.length)]} · ${SERVICES[Math.floor(rand()*SERVICES.length)]}`,
+      method: METHODS[Math.floor(rand()*METHODS.length)],
+      amount: `₦${(28 + Math.floor(rand()*50))*1000}`,
+    }));
+
+    const outstanding = [
+      { name: 'Sterling Corporate', amount: '₦96,000', age: '12 days overdue', overdue: true },
+      { name: 'Grace Ameh', amount: '₦38,000', age: '2 days', overdue: false },
+      { name: 'Bola Adeyemi', amount: '₦31,500', age: '5 days overdue', overdue: true },
+      { name: 'Kelechi Umeh', amount: '₦18,500', age: '1 day', overdue: false },
+    ];
+
+    const pct = this.state.pct;
+    const base = 75000, vol = 118;
+    const newPrice = Math.round(base * (1 + pct / 100));
+    const elasticity = -0.28;
+    const volChange = pct * elasticity / 100;
+    const newVol = Math.round(vol * (1 + volChange));
+    const oldRev = base * vol, newRev = newPrice * newVol;
+    const net = newRev - oldRev;
+
+    return {
+      kpis: [
+        { label: 'This month', value: '₦33.6M', delta: '↑ 12.4%', color: '#2E7D5B' },
+        { label: 'Average order value', value: '₦38,500', delta: '↑ 4.1%', color: '#2E7D5B' },
+        { label: 'Pending payments', value: '₦184k', delta: '4 invoices, 2 overdue', color: '#8A5A2E' },
+        { label: 'Refunds', value: '₦42,000', delta: '3 this month', color: '#6E675C' },
+      ],
+      revPath, revFillPath, forecastPath, tx, outstanding,
+      pct, setPct: (e) => this.setState({ pct: Number(e.target.value) }),
+      pctLabel: (pct > 0 ? '+' : '') + pct + '%',
+      newPrice: `₦${newPrice.toLocaleString()}`,
+      newVolume: `${newVol}/mo (${volChange >= 0 ? '+' : ''}${Math.round(volChange*100)}%)`,
+      netMonthly: `${net >= 0 ? '+' : ''}₦${Math.round(net).toLocaleString()}`,
+      netColor: net >= 0 ? '#2E7D5B' : '#B23A2E',
+    };
+  }
+}
+
+</script>
+</body>
+</html>

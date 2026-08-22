@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>*,*::before,*::after{box-sizing:border-box;}body{margin:0;font-family:"Instrument Sans",sans-serif;}</style>
+</helmet>
+
+<div style="background:#F2EEE6;color:#1F2A28;font-size:14px;">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:end;justify-content:space-between;margin-bottom:18px;">
+    <div>
+      <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Clients</span>
+      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,36px);line-height:1.05;letter-spacing:-.02em;margin-top:9px;">1,204 clients</h1>
+      <p style="margin-top:8px;font-size:13.5px;color:#6E675C;">74% returning · ₦38,500 average spend</p>
+    </div>
+    <input value="{{ query }}" onChange="{{ setQuery }}" placeholder="Search by name or phone…" style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:9px;padding:10px 14px;font-size:13px;width:260px;max-width:100%;outline:none;">
+  </div>
+
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:14px;align-items:start;">
+    <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 60px 84px 64px;padding:11px 16px;border-bottom:1px solid #E7E0D2;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6E675C;">
+        <span>Client</span><span>Visits</span><span>Lifetime</span><span>Tier</span>
+      </div>
+      <ul style="max-height:640px;overflow-y:auto;">
+        <sc-for list="{{ rows }}" as="c" hint-placeholder-count="10">
+          <li onClick="{{ c.open }}" style="display:grid;grid-template-columns:minmax(0,1fr) 60px 84px 64px;align-items:center;padding:12px 16px;border-bottom:1px solid #F0EBE0;border-left:3px solid {{ c.tierColor }};cursor:pointer;background:{{ c.selected }};">
+            <span style="min-width:0;display:flex;align-items:center;gap:10px;">
+              <span style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#E7E0D2;">
+                <image-slot id="{{ c.photoId }}" shape="circle" placeholder="" style="width:100%;height:100%;"></image-slot>
+              </span>
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ c.name }}</span>
+                <span style="display:block;font-size:11.5px;color:#6E675C;">{{ c.lastVisit }}</span>
+              </span>
+            </span>
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:14px;">{{ c.visits }}</span>
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:14px;">{{ c.lifetime }}</span>
+            <span style="font-size:10.5px;padding:3px 8px;border-radius:20px;background:{{ c.tierBg }};color:{{ c.tierColor }};white-space:nowrap;width:fit-content;">{{ c.tier }}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </section>
+
+    <!-- profile -->
+    <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;position:sticky;top:14px;">
+      <div style="padding:20px;border-bottom:1px solid #E7E0D2;display:flex;gap:14px;align-items:center;">
+        <span style="width:52px;height:52px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#062A2E;">
+          <image-slot id="{{ profile.photoId }}" shape="circle" placeholder="Client photo" style="width:100%;height:100%;"></image-slot>
+        </span>
+        <div style="min-width:0;">
+          <h2 style="font-size:18px;font-weight:600;letter-spacing:-.01em;">{{ profile.name }}</h2>
+          <span style="display:block;font-size:12.5px;color:#6E675C;margin-top:2px;">{{ profile.phone }} · {{ profile.tier }} member</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid #E7E0D2;">
+        <div style="padding:13px 16px;border-right:1px solid #E7E0D2;">
+          <span style="display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#6E675C;">Lifetime value</span>
+          <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:19px;margin-top:5px;">{{ profile.lifetime }}</span>
+        </div>
+        <div style="padding:13px 16px;border-right:1px solid #E7E0D2;">
+          <span style="display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#6E675C;">Visits</span>
+          <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:19px;margin-top:5px;">{{ profile.visits }}</span>
+        </div>
+        <div style="padding:13px 16px;">
+          <span style="display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#6E675C;">Avg gap</span>
+          <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:19px;margin-top:5px;">{{ profile.gap }}</span>
+        </div>
+      </div>
+
+      <div style="display:flex;border-bottom:1px solid #E7E0D2;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <button onClick="{{ t.go }}" style="flex:1;background:none;border:0;border-bottom:2px solid {{ t.border }};padding:11px 8px;font-size:12.5px;font-weight:{{ t.weight }};color:{{ t.color }};cursor:pointer;">{{ t.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="padding:18px 20px;">
+        <sc-if value="{{ isHistory }}" hint-placeholder-val="{{ true }}">
+          <ul style="display:grid;gap:12px;">
+            <sc-for list="{{ profile.history }}" as="h" hint-placeholder-count="5">
+              <li style="display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:12px;align-items:baseline;">
+                <span style="font-size:11.5px;color:#6E675C;">{{ h.date }}</span>
+                <span style="font-size:13px;">{{ h.service }} · {{ h.therapist }}</span>
+                <span style="font-family:'Instrument Serif',Georgia,serif;font-size:14.5px;">{{ h.price }}</span>
+              </li>
+            </sc-for>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ isNotes }}" hint-placeholder-val="{{ false }}">
+          <ul style="display:grid;gap:11px;">
+            <sc-for list="{{ profile.notes }}" as="n" hint-placeholder-count="3">
+              <li style="background:#F2EEE6;border:1px solid #E7E0D2;border-radius:9px;padding:11px 13px;">
+                <span style="display:block;font-size:13px;line-height:1.55;color:#4A5450;">{{ n.text }}</span>
+                <span style="display:block;font-size:11px;color:#8B8375;margin-top:5px;">{{ n.by }}</span>
+              </li>
+            </sc-for>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ isMembership }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#062A2E;border-radius:11px;padding:16px;color:#F7F4EE;">
+            <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FA9A4;">{{ profile.tier }}</span>
+            <p style="font-size:13.5px;line-height:1.6;color:#C6D6D3;margin-top:8px;">{{ profile.membershipDesc }}</p>
+            <div style="display:flex;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px solid #17454A;font-size:12.5px;">
+              <span style="color:#8FA9A4;">Renews</span><span>{{ profile.renews }}</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isLtv }}" hint-placeholder-val="{{ false }}">
+          <svg viewBox="0 0 400 140" style="width:100%;height:130px;" data-om-raster>
+            <defs>
+              <linearGradient id="ltvFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0B4B50" stop-opacity=".18"></stop>
+                <stop offset="100%" stop-color="#0B4B50" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            <path d="{{ profile.ltvFillPath }}" fill="url(#ltvFill)" stroke="none"></path>
+            <path d="{{ profile.ltvPath }}" fill="none" stroke="#0B4B50" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+          </svg>
+          <p style="font-size:12.5px;color:#6E675C;margin-top:8px;">Cumulative spend over {{ profile.visits }} visits · {{ profile.lifetime }} total</p>
+        </sc-if>
+      </div>
+    </section>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+const NAMES = ['Amaka Nwosu','Tunde Bakare','Ifeoma Chukwu','Grace Ameh','Daniella Olu-Ibukun','Chidinma Amadi','Joanna Irokaba','Bola Adeyemi','Kelechi Umeh','Zainab Bello','Emeka Okafor','Halima Yusuf','Femi Adisa','Ngozi Eze','Victor Osei'];
+const SERVICES = ['HydraFacial','Deep Tissue Massage','Hot Stone Massage','Body Polish','Signature Ritual','Express Facial'];
+const THERAPISTS = ['Charles','Suliat','Abigail','Ngozi'];
+const TIERS = [
+  { name: 'The House', bg: '#FBEFD4', color: '#8A5A2E' },
+  { name: 'The Fortnight', bg: '#E6F1EC', color: '#245F45' },
+  { name: 'Visitor', bg: '#F2EEE6', color: '#6E675C' },
+];
+function seeded(seed) { let s = seed; return () => { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }; }
+function initials(n) { return n.split(' ').map((w) => w[0]).slice(0, 2).join(''); }
+
+function buildClients() {
+  const rand = seeded(11);
+  return NAMES.map((name, i) => {
+    const visits = 4 + Math.floor(rand() * 40);
+    const lifetimeNum = visits * (28000 + Math.floor(rand() * 25000));
+    const tier = TIERS[visits > 25 ? 0 : visits > 10 ? 1 : 2];
+    const gapWeeks = 3 + Math.floor(rand() * 6);
+    const history = Array.from({ length: 5 }, (_, j) => ({
+      date: `${28 - j * 6} Jul`, service: SERVICES[Math.floor(rand() * SERVICES.length)],
+      therapist: THERAPISTS[Math.floor(rand() * THERAPISTS.length)], price: `₦${(28 + Math.floor(rand() * 45)) * 1000}`,
+    }));
+    const notes = [
+      { text: 'Prefers firm pressure, avoid lavender-based oils (mild sensitivity).', by: 'Suliat, 12 Jul' },
+      { text: 'Celebrating anniversary — offered complimentary upgrade in June.', by: 'Helene, 3 Jun' },
+    ];
+    let path = 'M0,130'; let acc = 0;
+    for (let k = 0; k < 20; k++) { acc += rand() * 6; path += ` L${k * 20},${Math.max(4, 130 - acc)}`; }
+    const ltvFillPath = path + ' L380,140 L0,140 Z';
+    return {
+      id: i, name, initials: initials(name), photoId: `client-photo-${i}`, visits, lifetime: `₦${(lifetimeNum / 1e6).toFixed(2)}M`,
+      lastVisit: `Last visit ${gapWeeks} wk ago`, tier: tier.name, tierBg: tier.bg, tierColor: tier.color,
+      phone: `+234 8${10000000 + Math.floor(rand() * 9999999)}`, gap: `${gapWeeks} wk`, history, notes,
+      membershipDesc: tier.name === 'Visitor' ? 'No active membership. Eligible for The Fortnight based on visit frequency.' : `Unlimited express treatments, priority booking, and 15% on retail. Member since ${2021 + Math.floor(rand()*4)}.`,
+      renews: `${5 + Math.floor(rand()*20)} Sep 2026`, ltvPath: path, ltvFillPath,
+    };
+  });
+}
+
+class Component extends DCLogic {
+  state = { query: '', selected: 0, tab: 'history', clients: null };
+  componentDidMount() { if (!this.state.clients) this.setState({ clients: buildClients() }); }
+
+  renderVals() {
+    const clients = this.state.clients || buildClients();
+    const q = (this.state.query || '').trim().toLowerCase();
+    const filtered = q ? clients.filter((c) => c.name.toLowerCase().includes(q)) : clients;
+    const profile = clients[this.state.selected] || clients[0];
+    const tab = this.state.tab;
+    const tabDef = [['history', 'History'], ['notes', 'Notes'], ['membership', 'Membership'], ['ltv', 'Lifetime value']];
+
+    return {
+      query: this.state.query, setQuery: (e) => this.setState({ query: e.target.value }),
+      rows: filtered.map((c) => ({ ...c, selected: c.id === this.state.selected ? '#F2EEE6' : 'transparent', open: () => this.setState({ selected: c.id }) })),
+      profile,
+      tabs: tabDef.map(([key, label]) => ({
+        label, go: () => this.setState({ tab: key }),
+        border: tab === key ? '#C08B5C' : 'transparent', weight: tab === key ? '600' : '400',
+        color: tab === key ? '#1F2A28' : '#6E675C',
+      })),
+      isHistory: tab === 'history', isNotes: tab === 'notes', isMembership: tab === 'membership', isLtv: tab === 'ltv',
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;}
+  body{margin:0;font-family:"Instrument Sans",sans-serif;}
+  [data-appt][draggable="true"]{cursor:grab;}
+  [data-appt][draggable="true"]:active{cursor:grabbing;}
+  [data-slot].drop-ok{background:#EDEAE0 !important;}
+</style>
+</helmet>
+
+<div style="background:#F2EEE6;color:#1F2A28;font-size:14px;">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:end;justify-content:space-between;margin-bottom:18px;">
+    <div>
+      <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Appointments</span>
+      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,36px);line-height:1.05;letter-spacing:-.02em;margin-top:9px;">{{ headline }}</h1>
+      <p style="margin-top:8px;font-size:13.5px;color:#6E675C;">{{ subline }}</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+      <div style="display:flex;background:#FBF9F4;border:1px solid #DDD5C6;border-radius:9px;padding:3px;gap:2px;">
+        <sc-for list="{{ views }}" as="v" hint-placeholder-count="4">
+          <button onClick="{{ v.go }}" style="border:0;border-radius:7px;padding:7px 13px;font-size:12.5px;cursor:pointer;background:{{ v.bg }};color:{{ v.color }};font-weight:{{ v.weight }};">{{ v.label }}</button>
+        </sc-for>
+      </div>
+      <button style="background:#062A2E;border:1px solid #062A2E;border-radius:9px;padding:10px 16px;color:#F7F4EE;font-size:12.5px;font-weight:500;cursor:pointer;white-space:nowrap;">+ New appointment</button>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:14px;align-items:start;">
+
+    <!-- ===== WEEK VIEW ===== -->
+    <sc-if value="{{ isWeek }}" hint-placeholder-val="{{ true }}">
+      <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:52px repeat(7,minmax(0,1fr));border-bottom:1px solid #E7E0D2;">
+          <span></span>
+          <sc-for list="{{ weekDays }}" as="d" hint-placeholder-count="7">
+            <span style="padding:11px 8px;text-align:center;border-left:1px solid #E7E0D2;">
+              <span style="display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#6E675C;">{{ d.dow }}</span>
+              <span style="display:block;font-size:14px;font-weight:600;margin-top:2px;">{{ d.date }}</span>
+            </span>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:52px repeat(7,minmax(0,1fr));position:relative;">
+          <div style="display:grid;grid-template-rows:repeat(13,52px);">
+            <sc-for list="{{ hours }}" as="h" hint-placeholder-count="13">
+              <span style="font-size:10.5px;color:#6E675C;padding:4px 6px 0 0;text-align:right;border-top:1px solid #F0EBE0;">{{ h }}</span>
+            </sc-for>
+          </div>
+          <sc-for list="{{ weekDays }}" as="d" hint-placeholder-count="7">
+            <div style="position:relative;border-left:1px solid #E7E0D2;display:grid;grid-template-rows:repeat(13,52px);">
+              <sc-for list="{{ hours }}" as="h" hint-placeholder-count="13">
+                <span data-slot="1" data-day="{{ d.i }}" data-hour="{{ $index }}" onDragOver="{{ allowDrop }}" onDrop="{{ makeDrop(d.i, $index) }}" style="border-top:1px solid #F0EBE0;"></span>
+              </sc-for>
+              <sc-for list="{{ d.appts }}" as="a" hint-placeholder-count="2">
+                <div data-appt="1" draggable="true" onDragStart="{{ makeDrag(a.id) }}" onClick="{{ makeOpen(a.id) }}" style="position:absolute;left:3px;right:3px;top:{{ a.top }}px;height:{{ a.h }}px;background:{{ a.bg }};border-left:3px solid {{ a.accent }};border-radius:6px;padding:6px 8px;overflow:hidden;box-shadow:0 1px 2px rgba(31,42,40,.08);">
+                  <span style="display:block;font-size:11.5px;font-weight:600;color:{{ a.text }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ a.client }}</span>
+                  <span style="display:block;font-size:10.5px;color:{{ a.text }};opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ a.service }} · {{ a.therapist }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ===== DAY VIEW ===== -->
+    <sc-if value="{{ isDay }}" hint-placeholder-val="{{ false }}">
+      <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+        <div style="padding:15px 18px;border-bottom:1px solid #E7E0D2;display:flex;align-items:center;justify-content:space-between;">
+          <h2 style="font-size:14px;font-weight:600;">{{ dayLabel }}</h2>
+          <span style="font-size:12px;color:#6E675C;">{{ dayAppts.length }} booked · Wuse 2 &amp; Wuye</span>
+        </div>
+        <ul>
+          <sc-for list="{{ dayAppts }}" as="a" hint-placeholder-count="8">
+            <li onClick="{{ makeOpen(a.id) }}" style="padding:13px 18px;border-bottom:1px solid #F0EBE0;display:grid;grid-template-columns:64px auto minmax(0,1fr) auto;gap:14px;align-items:center;cursor:pointer;">
+              <span style="font-size:12.5px;font-weight:600;color:#4A5450;">{{ a.time }}</span>
+              <span style="width:6px;height:28px;border-radius:3px;background:{{ a.accent }};"></span>
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13.5px;font-weight:500;">{{ a.client }}</span>
+                <span style="display:block;font-size:12px;color:#6E675C;margin-top:1px;">{{ a.service }} · {{ a.therapist }} · {{ a.room }}</span>
+              </span>
+              <span style="font-size:11px;padding:4px 9px;border-radius:20px;background:{{ a.statusBg }};color:{{ a.statusColor }};white-space:nowrap;">{{ a.status }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+    </sc-if>
+
+    <!-- ===== MONTH VIEW ===== -->
+    <sc-if value="{{ isMonth }}" hint-placeholder-val="{{ false }}">
+      <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+        <div style="padding:15px 18px;border-bottom:1px solid #E7E0D2;">
+          <h2 style="font-size:14px;font-weight:600;">August 2026</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;background:#E7E0D2;">
+          <sc-for list="{{ monthDows }}" as="dw" hint-placeholder-count="7">
+            <span style="background:#F7F4EE;padding:8px;text-align:center;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#6E675C;">{{ dw }}</span>
+          </sc-for>
+          <sc-for list="{{ monthCells }}" as="c" hint-placeholder-count="35">
+            <button onClick="{{ makeGoDay(c.n) }}" style="background:#FBF9F4;border:0;text-align:left;padding:8px;min-height:74px;cursor:pointer;opacity:{{ c.opacity }};">
+              <span style="display:block;font-size:12px;color:#4A5450;">{{ c.n }}</span>
+              <sc-if value="{{ c.count }}" hint-placeholder-val="{{ false }}">
+                <span style="display:inline-block;margin-top:6px;font-size:10.5px;padding:2px 7px;border-radius:20px;background:{{ c.bg }};color:{{ c.color }};">{{ c.count }}</span>
+              </sc-if>
+            </button>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ===== TIMELINE VIEW ===== -->
+    <sc-if value="{{ isTimeline }}" hint-placeholder-val="{{ false }}">
+      <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+        <div style="padding:15px 18px;border-bottom:1px solid #E7E0D2;">
+          <h2 style="font-size:14px;font-weight:600;">Today by room &amp; therapist</h2>
+        </div>
+        <div style="overflow-x:auto;">
+          <div style="display:grid;grid-template-columns:120px repeat(12,64px);min-width:900px;">
+            <span></span>
+            <sc-for list="{{ tlHours }}" as="h" hint-placeholder-count="12">
+              <span style="font-size:10px;color:#6E675C;text-align:center;padding:6px 0;border-bottom:1px solid #E7E0D2;">{{ h }}</span>
+            </sc-for>
+            <sc-for list="{{ tlRows }}" as="row" hint-placeholder-count="5">
+              <span style="font-size:12px;font-weight:500;padding:10px 10px 10px 0;border-top:1px solid #F0EBE0;white-space:nowrap;">{{ row.name }}</span>
+              <span style="grid-column:span 12;position:relative;border-top:1px solid #F0EBE0;height:40px;">
+                <sc-for list="{{ row.blocks }}" as="b" hint-placeholder-count="2">
+                  <span style="position:absolute;top:4px;left:{{ b.left }}px;width:{{ b.width }}px;height:32px;background:{{ b.bg }};border-radius:5px;font-size:10.5px;color:{{ b.text }};display:flex;align-items:center;padding:0 7px;overflow:hidden;white-space:nowrap;">{{ b.label }}</span>
+                </sc-for>
+              </span>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ===== RIGHT RAIL: waitlist + check-in ===== -->
+    <div style="display:grid;gap:14px;">
+      <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+        <div style="padding:13px 16px;border-bottom:1px solid #E7E0D2;display:flex;align-items:center;justify-content:space-between;">
+          <h2 style="font-size:13px;font-weight:600;">Waitlist</h2>
+          <span style="font-size:11px;color:#6E675C;">{{ waitlist.length }}</span>
+        </div>
+        <ul>
+          <sc-for list="{{ waitlist }}" as="w" hint-placeholder-count="4">
+            <li style="padding:11px 16px;border-bottom:1px solid #F0EBE0;">
+              <span style="display:flex;justify-content:space-between;gap:8px;align-items:baseline;">
+                <span style="font-size:13px;font-weight:500;">{{ w.name }}</span>
+                <span style="font-size:11px;color:#6E675C;">{{ w.wants }}</span>
+              </span>
+              <span style="display:block;font-size:11.5px;color:#6E675C;margin-top:2px;">{{ w.pref }}</span>
+              <button onClick="{{ w.notify }}" style="margin-top:7px;font-size:11px;background:#F2EEE6;border:1px solid #DDD5C6;border-radius:6px;padding:4px 9px;cursor:pointer;color:{{ w.notified ? '#2E7D5B' : '#4A5450' }};">{{ w.notifyLabel }}</button>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+
+      <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+        <div style="padding:13px 16px;border-bottom:1px solid #E7E0D2;">
+          <h2 style="font-size:13px;font-weight:600;">Check-in — today</h2>
+        </div>
+        <ul>
+          <sc-for list="{{ checkins }}" as="c" hint-placeholder-count="5">
+            <li style="padding:11px 16px;border-bottom:1px solid #F0EBE0;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13px;">{{ c.name }}</span>
+                <span style="display:block;font-size:11px;color:#6E675C;">{{ c.time }} · {{ c.service }}</span>
+              </span>
+              <button onClick="{{ c.toggle }}" style="flex-shrink:0;font-size:11px;border-radius:6px;padding:5px 10px;border:1px solid {{ c.arrived ? '#BFE0CD' : '#DDD5C6' }};background:{{ c.arrived ? '#E6F1EC' : '#F2EEE6' }};color:{{ c.arrived ? '#245F45' : '#4A5450' }};cursor:pointer;white-space:nowrap;">{{ c.label }}</button>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <!-- appointment detail modal -->
+  <sc-if value="{{ openAppt }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeOpen }}" style="position:fixed;inset:0;z-index:90;background:rgba(6,42,46,.32);display:flex;align-items:center;justify-content:center;padding:20px;">
+      <div onClick="{{ stop }}" style="width:min(420px,100%);background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;padding:22px;">
+        <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;">Appointment</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:400;margin-top:8px;">{{ openAppt.client }}</h2>
+        <p style="font-size:13.5px;color:#4A5450;margin-top:10px;line-height:1.6;">{{ openAppt.service }} with {{ openAppt.therapist }} · {{ openAppt.time }} · {{ openAppt.room }}</p>
+        <div style="display:flex;gap:8px;margin-top:18px;">
+          <button style="flex:1;background:#062A2E;border:0;border-radius:8px;padding:10px;color:#F7F4EE;font-size:12.5px;cursor:pointer;">Check in</button>
+          <button onClick="{{ closeOpen }}" style="background:#F2EEE6;border:1px solid #DDD5C6;border-radius:8px;padding:10px 14px;font-size:12.5px;cursor:pointer;">Close</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+const THERAPISTS = [
+  { name: 'Charles', accent: '#0B4B50', bg: '#E1EDEB', text: '#0B4B50' },
+  { name: 'Suliat', accent: '#8A5A2E', bg: '#F3E7D6', text: '#6B451F' },
+  { name: 'Abigail', accent: '#245F45', bg: '#E1EFE7', text: '#1E4E39' },
+  { name: 'Ngozi', accent: '#2A6F97', bg: '#DFEAF1', text: '#215A7A' },
+];
+const SERVICES = ['HydraFacial', 'Deep Tissue Massage', 'Hot Stone Massage', 'Body Polish', 'Signature Ritual', 'Express Facial'];
+const NAMES = ['Amaka Nwosu', 'Tunde Bakare', 'Ifeoma Chukwu', 'Grace Ameh', 'Daniella Olu-Ibukun', 'Chidinma A.', 'Joanna Irokaba', 'Bola Adeyemi', 'Kelechi Umeh', 'Zainab Bello'];
+
+function seeded(seed) { let s = seed; return () => { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }; }
+
+function buildWeek(rand) {
+  const days = [];
+  const baseDate = 3;
+  for (let i = 0; i < 7; i++) {
+    const count = 3 + Math.floor(rand() * 3);
+    const appts = [];
+    const used = [];
+    for (let j = 0; j < count; j++) {
+      let hourSlot = Math.floor(rand() * 11);
+      while (used.indexOf(hourSlot) >= 0) hourSlot = (hourSlot + 1) % 11;
+      used.push(hourSlot);
+      const th = THERAPISTS[Math.floor(rand() * THERAPISTS.length)];
+      const dur = rand() > .6 ? 2 : 1;
+      appts.push({
+        id: `${i}-${j}`, top: hourSlot * 52 + 2, h: dur * 52 - 4,
+        client: NAMES[Math.floor(rand() * NAMES.length)],
+        service: SERVICES[Math.floor(rand() * SERVICES.length)],
+        therapist: th.name, accent: th.accent, bg: th.bg, text: th.text,
+        time: `${8 + hourSlot}:00`, room: rand() > .5 ? 'Wuse 2' : 'Wuye',
+      });
+    }
+    days.push({ i, dow: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][i], date: baseDate + i, appts });
+  }
+  return days;
+}
+
+class Component extends DCLogic {
+  state = { view: 'week', openId: null, days: null, notified: {}, checked: {} };
+
+  componentDidMount() {
+    if (!this.state.days) this.setState({ days: buildWeek(seeded(42)) });
+  }
+
+  renderVals() {
+    const view = this.state.view;
+    const days = this.state.days || buildWeek(seeded(42));
+    const goView = (v) => () => this.setState({ view: v });
+    const views = ['day', 'week', 'month', 'timeline'].map((v) => ({
+      go: goView(v), label: v[0].toUpperCase() + v.slice(1),
+      bg: view === v ? '#062A2E' : 'transparent', color: view === v ? '#F7F4EE' : '#4A5450', weight: view === v ? '600' : '400',
+    }));
+
+    const allAppts = [];
+    days.forEach((d) => d.appts.forEach((a) => allAppts.push(a)));
+    const openAppt = this.state.openId ? allAppts.find((a) => a.id === this.state.openId) : null;
+
+    const dayAppts = (days[2] || { appts: [] }).appts.slice().sort((x, y) => x.top - y.top).map((a) => ({
+      ...a, status: a.top < 3 * 52 ? 'Confirmed' : (a.top < 6 * 52 ? 'Arrived' : 'Upcoming'),
+      statusBg: a.top < 3 * 52 ? '#E6F1EC' : (a.top < 6 * 52 ? '#E4EEF4' : '#F2EEE6'),
+      statusColor: a.top < 3 * 52 ? '#245F45' : (a.top < 6 * 52 ? '#2A6F97' : '#6E675C'),
+    }));
+
+    const monthDows = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const rand2 = seeded(7);
+    const monthCells = [];
+    for (let n = 1; n <= 31; n++) {
+      const c = Math.floor(rand2() * 22);
+      monthCells.push({
+        n, count: c || '', opacity: n === 4 ? '1' : '.85',
+        bg: c > 16 ? '#F6E5E2' : c > 9 ? '#FBEFD4' : '#E6F1EC',
+        color: c > 16 ? '#B23A2E' : c > 9 ? '#8A5A2E' : '#245F45',
+      });
+    }
+
+    const tlHours = ['8a', '9a', '10a', '11a', '12p', '1p', '2p', '3p', '4p', '5p', '6p', '7p'];
+    const tlRows = THERAPISTS.map((t, ti) => ({
+      name: t.name,
+      blocks: (days[2].appts.filter((_, i) => i % THERAPISTS.length === ti)).map((a) => ({
+        left: (a.top / 52) * 64, width: (a.h / 52) * 64 - 4, bg: t.bg, text: t.text, label: a.client,
+      })),
+    }));
+
+    return {
+      headline: view === 'day' ? 'Wednesday, 5 August' : view === 'month' ? 'August 2026' : view === 'timeline' ? 'Today — resource view' : 'Week of 3 August',
+      subline: 'Both houses · 63 confirmed, 2 pending, 1 waitlisted',
+      views, isWeek: view === 'week', isDay: view === 'day', isMonth: view === 'month', isTimeline: view === 'timeline',
+      weekDays: days,
+      hours: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
+      allowDrop: (e) => e.preventDefault(),
+      makeDrop: (dayIdx, hourIdx) => (e) => {
+        e.preventDefault();
+        const id = e.dataTransfer.getData('text/plain') || this._dragId;
+        if (!id) return;
+        const nd = days.map((d) => ({ ...d, appts: d.appts.slice() }));
+        let moved = null;
+        nd.forEach((d) => { const i = d.appts.findIndex((a) => a.id === id); if (i >= 0) { moved = d.appts.splice(i, 1)[0]; } });
+        if (!moved) return;
+        moved = { ...moved, top: hourIdx * 52 + 2, time: `${8 + hourIdx}:00` };
+        nd[dayIdx].appts.push(moved);
+        this.setState({ days: nd });
+      },
+      makeDrag: (id) => (e) => { this._dragId = id; e.dataTransfer.setData('text/plain', id); },
+      makeOpen: (id) => () => this.setState({ openId: id }),
+      openAppt, closeOpen: () => this.setState({ openId: null }), stop: (e) => e.stopPropagation(),
+      dayLabel: 'Wednesday, 5 August', dayAppts,
+      monthDows, monthCells,
+      makeGoDay: () => () => this.setState({ view: 'day' }),
+      tlHours, tlRows,
+      waitlist: [
+        { name: 'Chidinma A.', wants: 'HydraFacial', pref: 'Any day, mornings', notify: () => this.setState((s) => ({ notified: { ...s.notified, w0: true } })), notified: this.state.notified.w0, notifyLabel: this.state.notified.w0 ? 'Notified ✓' : 'Notify me next' },
+        { name: 'Kelechi Umeh', wants: 'Deep Tissue', pref: 'Fri or Sat', notify: () => this.setState((s) => ({ notified: { ...s.notified, w1: true } })), notified: this.state.notified.w1, notifyLabel: this.state.notified.w1 ? 'Notified ✓' : 'Notify me next' },
+        { name: 'Zainab Bello', wants: 'Body Polish', pref: 'Weekday evenings', notify: () => this.setState((s) => ({ notified: { ...s.notified, w2: true } })), notified: this.state.notified.w2, notifyLabel: this.state.notified.w2 ? 'Notified ✓' : 'Notify me next' },
+      ],
+      checkins: dayAppts.slice(0, 5).map((a, i) => ({
+        name: a.client, time: a.time, service: a.service,
+        arrived: !!this.state.checked['c' + i],
+        toggle: () => this.setState((s) => ({ checked: { ...s.checked, ['c' + i]: !s.checked['c' + i] } })),
+        label: this.state.checked['c' + i] ? 'Arrived ✓' : 'Check in',
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

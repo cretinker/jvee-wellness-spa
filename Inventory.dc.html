@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;}body{margin:0;font-family:"Instrument Sans",sans-serif;}</style>
+</helmet>
+
+<div style="background:#F2EEE6;color:#1F2A28;font-size:14px;">
+  <div style="margin-bottom:18px;">
+    <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Inventory</span>
+    <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,36px);line-height:1.05;letter-spacing:-.02em;margin-top:9px;">1 critical alert</h1>
+    <p style="margin-top:8px;font-size:13.5px;color:#6E675C;">42 products tracked across both houses</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px;align-items:start;">
+    <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 90px 100px 90px;padding:11px 18px;border-bottom:1px solid #E7E0D2;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#6E675C;">
+        <span>Product</span><span>Stock</span><span>Cover</span><span>Auto-reorder</span>
+      </div>
+      <ul>
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="10">
+          <li style="padding:12px 18px;border-bottom:1px solid #F0EBE0;border-left:3px solid {{ p.coverColor }};display:grid;grid-template-columns:minmax(0,1fr) 90px 100px 90px;align-items:center;">
+            <span style="min-width:0;">
+              <span style="display:block;font-size:13.5px;font-weight:500;">{{ p.name }}</span>
+              <span style="display:block;font-size:11.5px;color:#6E675C;">{{ p.supplier }}</span>
+            </span>
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:14.5px;">{{ p.stock }}</span>
+            <span>
+              <span style="font-size:12px;font-weight:600;color:{{ p.coverColor }};">{{ p.cover }}</span>
+              <span style="display:block;height:3px;background:#E7E0D2;border-radius:2px;overflow:hidden;margin-top:5px;width:64px;"><span style="display:block;height:100%;width:{{ p.coverPct }};background:{{ p.coverColor }};"></span></span>
+            </span>
+            <span>
+              <button onClick="{{ p.toggle }}" style="width:36px;height:20px;border-radius:20px;border:0;background:{{ p.toggleBg }};position:relative;cursor:pointer;">
+                <span style="position:absolute;top:2px;left:{{ p.knobLeft }};width:16px;height:16px;border-radius:50%;background:#FBF9F4;transition:left .2s ease;"></span>
+              </button>
+            </span>
+          </li>
+        </sc-for>
+      </ul>
+    </section>
+
+    <div style="display:grid;gap:14px;">
+      <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+        <div style="padding:14px 18px;border-bottom:1px solid #E7E0D2;"><h2 style="font-size:13.5px;font-weight:600;">Purchase orders</h2></div>
+        <ul>
+          <sc-for list="{{ pos }}" as="o" hint-placeholder-count="4">
+            <li style="padding:11px 18px;border-bottom:1px solid #F0EBE0;border-left:3px solid {{ o.color }};">
+              <span style="display:flex;justify-content:space-between;gap:10px;"><span style="font-size:13px;">{{ o.item }}</span><span style="font-size:11px;padding:3px 8px;border-radius:20px;background:{{ o.bg }};color:{{ o.color }};">{{ o.status }}</span></span>
+              <span style="display:flex;justify-content:space-between;gap:10px;margin-top:3px;"><span style="font-size:11.5px;color:#6E675C;">{{ o.supplier }}</span><span style="font-family:'Instrument Serif',Georgia,serif;font-size:13px;">{{ o.amount }}</span></span>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+
+      <section style="background:#F6E5E2;border:1px solid #EDD3CD;border-radius:14px;padding:16px;">
+        <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#B23A2E;">Critical</span>
+        <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:18px;margin-top:8px;">Lavender essential oil</h3>
+        <p style="font-size:13px;color:#4A5450;line-height:1.6;margin-top:6px;">340ml left, 3 days of cover. 17 booked treatments depend on it.</p>
+        <button style="margin-top:12px;width:100%;background:#B23A2E;border:0;border-radius:8px;padding:10px;color:#FBF9F4;font-size:12.5px;cursor:pointer;">Reorder 2,000ml — ₦86,400</button>
+      </section>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+function seeded(seed) { let s = seed; return () => { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }; }
+const PRODUCTS = [
+  ['Lavender Essential Oil', 'Naturals Nigeria', 3], ['HydraFacial Serum Set', 'Skin Republic', 34],
+  ['Massage Carrier Oil', 'Naturals Nigeria', 21], ['Hot Stone Set (spare)', 'Wellness Imports', 90],
+  ['Body Polish Scrub', 'Skin Republic', 18], ['Disposable Towels', 'Abuja Linens', 12],
+  ['Paraffin Wax', 'Wellness Imports', 44], ['Facial Masks — Collagen', 'Skin Republic', 8],
+  ['Aromatherapy Diffuser Pods', 'Naturals Nigeria', 27], ['Nitrile Gloves (M)', 'MedSupply NG', 60],
+];
+
+class Component extends DCLogic {
+  state = { auto: {} };
+
+  renderVals() {
+    const rand = seeded(53);
+    const products = PRODUCTS.map(([name, supplier, days], i) => ({
+      id: i, name, supplier, stock: `${20 + Math.floor(rand()*400)} units`,
+      cover: days <= 3 ? `${days}d left` : days <= 14 ? `${days}d` : `${Math.round(days/7)}wk`,
+      coverColor: days <= 3 ? '#B23A2E' : days <= 14 ? '#8A5A2E' : '#245F45',
+      coverPct: `${Math.min(100, Math.round((days / 90) * 100))}%`,
+      auto: this.state.auto[i] !== undefined ? this.state.auto[i] : days > 14,
+      toggleBg: (this.state.auto[i] !== undefined ? this.state.auto[i] : days > 14) ? '#245F45' : '#DDD5C6',
+      knobLeft: (this.state.auto[i] !== undefined ? this.state.auto[i] : days > 14) ? '18px' : '2px',
+      toggle: () => this.setState((s) => ({ auto: { ...s.auto, [i]: !(s.auto[i] !== undefined ? s.auto[i] : days > 14) } })),
+    }));
+    return {
+      products,
+      pos: [
+        { item: 'Lavender oil, 2000ml', supplier: 'Naturals Nigeria', amount: '₦86,400', status: 'Awaiting approval', bg: '#F6E5E2', color: '#B23A2E' },
+        { item: 'Facial masks, 200ct', supplier: 'Skin Republic', amount: '₦124,000', status: 'Ordered', bg: '#E4EEF4', color: '#2A6F97' },
+        { item: 'Nitrile gloves, 50 boxes', supplier: 'MedSupply NG', amount: '₦210,000', status: 'In transit', bg: '#FBEFD4', color: '#8A5A2E' },
+        { item: 'Disposable towels, 500ct', supplier: 'Abuja Linens', amount: '₦58,000', status: 'Delivered', bg: '#E6F1EC', color: '#245F45' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

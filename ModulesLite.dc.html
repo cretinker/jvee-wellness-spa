@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>*,*::before,*::after{box-sizing:border-box;}body{margin:0;font-family:"Instrument Sans",sans-serif;}</style>
+</helmet>
+
+<div style="background:#F2EEE6;color:#1F2A28;font-size:14px;">
+
+  <!-- ===== MEMBERSHIPS ===== -->
+  <sc-if value="{{ isMemberships }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="margin-bottom:18px;">
+        <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Memberships</span>
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,36px);letter-spacing:-.02em;margin-top:9px;">341 active subscribers</h1>
+        <p style="margin-top:8px;font-size:13.5px;color:#6E675C;">92% renewal rate over the last quarter</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;">
+        <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+          <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;padding:20px;">
+            <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;">{{ p.name }}</span>
+            <p style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;margin-top:8px;">{{ p.price }}<span style="font-size:13px;color:#6E675C;">/mo</span></p>
+            <p style="font-size:12.5px;color:#4A5450;margin-top:8px;line-height:1.6;">{{ p.desc }}</p>
+            <div style="display:flex;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid #E7E0D2;font-size:13px;">
+              <span style="color:#4A5450;">Subscribers</span><strong style="font-weight:600;">{{ p.subs }}</strong>
+            </div>
+          </section>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ===== TREATMENTS ===== -->
+  <sc-if value="{{ isTreatments }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="margin-bottom:18px;">
+        <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Treatments</span>
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,36px);letter-spacing:-.02em;margin-top:9px;">18 treatments on the menu</h1>
+      </div>
+      <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) 70px 90px 70px 90px;padding:11px 18px;border-bottom:1px solid #E7E0D2;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#6E675C;">
+          <span>Treatment</span><span>Mins</span><span>Price</span><span>Margin</span><span>Demand</span>
+        </div>
+        <ul>
+          <sc-for list="{{ treatments }}" as="t" hint-placeholder-count="8">
+            <li style="padding:12px 18px;border-bottom:1px solid #F0EBE0;border-left:3px solid {{ t.color }};display:grid;grid-template-columns:minmax(0,1fr) 70px 90px 70px 90px;align-items:center;">
+              <span style="font-size:13.5px;font-weight:500;">{{ t.name }}</span>
+              <span style="font-size:13px;color:#6E675C;">{{ t.mins }}</span>
+              <span style="font-family:'Instrument Serif',Georgia,serif;font-size:14.5px;">{{ t.price }}</span>
+              <span style="font-size:13px;">{{ t.margin }}</span>
+              <span style="font-size:11px;padding:3px 8px;border-radius:20px;background:{{ t.bg }};color:{{ t.color }};width:fit-content;">{{ t.demand }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ===== REVIEWS ===== -->
+  <sc-if value="{{ isReviews }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="margin-bottom:18px;">
+        <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Reviews</span>
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,36px);letter-spacing:-.02em;margin-top:9px;">4.9★ average across 218 reviews</h1>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:14px;align-items:start;">
+        <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+          <ul>
+            <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="5">
+              <li style="padding:15px 18px;border-bottom:1px solid #F0EBE0;">
+                <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;">
+                  <span style="display:flex;align-items:center;gap:9px;">
+                    <span style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#E7E0D2;">
+                      <image-slot id="{{ r.photoId }}" shape="circle" placeholder="" style="width:100%;height:100%;"></image-slot>
+                    </span>
+                    <span style="font-size:13.5px;font-weight:500;">{{ r.name }}</span>
+                  </span>
+                  <span style="font-size:12px;color:#8A5A2E;">{{ r.stars }}</span>
+                </div>
+                <p style="font-size:13px;color:#4A5450;margin-top:6px;line-height:1.55;">{{ r.text }}</p>
+                <div style="display:flex;justify-content:space-between;margin-top:8px;">
+                  <span style="font-size:11px;color:#6E675C;">{{ r.source }} · {{ r.time }}</span>
+                  <sc-if value="{{ r.needsReply }}" hint-placeholder-val="{{ false }}"><button style="font-size:11px;color:#8A5A2E;background:none;border:0;cursor:pointer;">Reply →</button></sc-if>
+                </div>
+              </li>
+            </sc-for>
+          </ul>
+        </section>
+        <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;padding:18px;">
+          <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6E675C;">By therapist</span>
+          <ul style="display:grid;gap:11px;margin-top:12px;">
+            <sc-for list="{{ byTherapist }}" as="b" hint-placeholder-count="4">
+              <li style="display:flex;justify-content:space-between;font-size:13px;"><span>{{ b.name }}</span><span style="color:#8A5A2E;">{{ b.rating }}</span></li>
+            </sc-for>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ===== AUTOMATION ===== -->
+  <sc-if value="{{ isAutomation }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="margin-bottom:18px;">
+        <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Automation</span>
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,36px);letter-spacing:-.02em;margin-top:9px;">7 flows running</h1>
+      </div>
+      <section style="background:#062A2E;border-radius:14px;padding:16px 18px;color:#F7F4EE;margin-bottom:14px;">
+        <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FA9A4;">Highest impact</span>
+        <p style="font-size:13.5px;color:#C6D6D3;margin-top:6px;line-height:1.5;">Birthday vouchers convert at 61% and cost under ₦15,000 each — the best return of any flow running.</p>
+      </section>
+      <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+        <ul>
+          <sc-for list="{{ flows }}" as="f" hint-placeholder-count="7">
+            <li style="padding:14px 18px;border-bottom:1px solid #F0EBE0;border-left:3px solid {{ f.accentColor }};display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;">
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13.5px;font-weight:500;">{{ f.name }}</span>
+                <span style="display:block;font-size:12px;color:#6E675C;margin-top:2px;">{{ f.desc }}</span>
+              </span>
+              <button onClick="{{ f.toggle }}" style="width:36px;height:20px;border-radius:20px;border:0;background:{{ f.toggleBg }};position:relative;cursor:pointer;flex-shrink:0;">
+                <span style="position:absolute;top:2px;left:{{ f.knobLeft }};width:16px;height:16px;border-radius:50%;background:#FBF9F4;transition:left .2s ease;"></span>
+              </button>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ===== REPORTS ===== -->
+  <sc-if value="{{ isReports }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="margin-bottom:18px;">
+        <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Reports</span>
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,36px);letter-spacing:-.02em;margin-top:9px;">Answers, exportable</h1>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;">
+        <sc-for list="{{ reports }}" as="r" hint-placeholder-count="7">
+          <button style="text-align:left;background:#FBF9F4;border:1px solid #DDD5C6;border-radius:12px;padding:17px;cursor:pointer;">
+            <span style="display:block;font-size:13.5px;font-weight:600;">{{ r.name }}</span>
+            <span style="display:block;font-size:12px;color:#6E675C;margin-top:6px;line-height:1.5;">{{ r.desc }}</span>
+            <span style="display:block;font-size:11px;color:#8A5A2E;margin-top:11px;">PDF · Excel →</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ===== SETTINGS ===== -->
+  <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="margin-bottom:18px;">
+        <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Settings</span>
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,36px);letter-spacing:-.02em;margin-top:9px;">JVEE Wellness &amp; Spa</h1>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;">
+        <sc-for list="{{ settingsGroups }}" as="g" hint-placeholder-count="9">
+          <a href="#" style="text-decoration:none;color:inherit;background:#FBF9F4;border:1px solid #DDD5C6;border-radius:12px;padding:17px;display:block;">
+            <span style="display:block;font-size:13.5px;font-weight:600;">{{ g.name }}</span>
+            <span style="display:block;font-size:12px;color:#6E675C;margin-top:6px;line-height:1.5;">{{ g.desc }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;route&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;memberships&quot;,&quot;treatments&quot;,&quot;reviews&quot;,&quot;automation&quot;,&quot;reports&quot;,&quot;settings&quot;],&quot;default&quot;:&quot;memberships&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { flowState: {} };
+
+  renderVals() {
+    const route = this.props.route;
+    const flowsBase = [
+      ['Appointment reminders', '24h and 2h before, via WhatsApp and SMS'],
+      ['Birthday vouchers', 'Complimentary treatment queued for VIP birthdays'],
+      ['Review requests', 'Sent 3 hours after checkout'],
+      ['Reactivation', 'Message sent when a regular passes their usual gap'],
+      ['Membership renewal notices', '7 days before expiry'],
+      ['Low-stock alerts', 'Notifies you when cover drops below 5 days'],
+      ['Payment chasing', 'Gentle reminder at 3 and 10 days overdue'],
+    ];
+
+    return {
+      isMemberships: route === 'memberships', isTreatments: route === 'treatments', isReviews: route === 'reviews',
+      isAutomation: route === 'automation', isReports: route === 'reports', isSettings: route === 'settings',
+
+      plans: [
+        { name: 'The Fortnight', price: '₦45,000', subs: 214, desc: 'Two express treatments monthly, priority booking, 10% on retail.' },
+        { name: 'The House', price: '₦120,000', subs: 98, desc: 'Unlimited express treatments, one signature ritual monthly, 15% on retail.' },
+        { name: 'Corporate Wellness', price: 'Custom', subs: 29, desc: 'Fixed monthly retainer for employer-sponsored wellness allowances.' },
+      ],
+
+      treatments: [
+        { name: 'HydraFacial', mins: 60, price: '₦75,000', margin: '68%', demand: 'Waitlisted', bg: '#F6E5E2', color: '#B23A2E' },
+        { name: 'Deep Tissue Massage', mins: 60, price: '₦38,000', margin: '61%', demand: 'High', bg: '#E6F1EC', color: '#245F45' },
+        { name: 'Hot Stone Massage', mins: 75, price: '₦48,000', margin: '58%', demand: 'Steady', bg: '#F2EEE6', color: '#6E675C' },
+        { name: 'Body Polish & Wrap', mins: 90, price: '₦52,000', margin: '64%', demand: 'Rising', bg: '#E6F1EC', color: '#245F45' },
+        { name: 'Signature Ritual', mins: 120, price: '₦96,000', margin: '71%', demand: 'High', bg: '#E6F1EC', color: '#245F45' },
+        { name: 'Express Facial', mins: 30, price: '₦28,000', margin: '54%', demand: 'Steady', bg: '#F2EEE6', color: '#6E675C' },
+        { name: 'Body Sculpting', mins: 60, price: '₦64,000', margin: '59%', demand: 'Rising', bg: '#FBEFD4', color: '#8A5A2E' },
+        { name: 'Prenatal Massage', mins: 60, price: '₦40,000', margin: '55%', demand: 'Low', bg: '#F2EEE6', color: '#6E675C' },
+      ],
+
+      reviews: [
+        { name: 'Chidinma A.', photoId: 'review-photo-0', stars: '★★★★☆', text: 'Lovely atmosphere and very professional staff. The HydraFacial results were subtle but real.', source: 'Google', time: '2 days ago', needsReply: true },
+        { name: 'Grace A.', photoId: 'review-photo-1', stars: '★★★★★', text: 'Best massage I have had in Abuja. Charles is exceptional.', source: 'Google', time: '4 days ago', needsReply: false },
+        { name: 'Bola A.', photoId: 'review-photo-2', stars: '★★★★★', text: 'The Fortnight membership has been worth every naira.', source: 'Instagram', time: '1 week ago', needsReply: false },
+      ],
+      byTherapist: [
+        { name: 'Charles', rating: '4.98★' }, { name: 'Suliat', rating: '4.91★' },
+        { name: 'Abigail', rating: '4.87★' }, { name: 'Ngozi', rating: '4.83★' },
+      ],
+
+      flows: flowsBase.map(([name, desc], i) => {
+        const on = this.state.flowState[i] !== undefined ? this.state.flowState[i] : true;
+        return {
+          name, desc, on,
+          accentColor: on ? '#245F45' : '#DDD5C6', toggleBg: on ? '#245F45' : '#DDD5C6', knobLeft: on ? '18px' : '2px',
+          toggle: () => this.setState((s) => ({ flowState: { ...s.flowState, [i]: !on } })),
+        };
+      }),
+
+      reports: [
+        { name: 'Financial summary', desc: 'Revenue, refunds, tax and net income by period.' },
+        { name: 'Operational report', desc: 'Occupancy, no-shows, average duration by room.' },
+        { name: 'Marketing performance', desc: 'Spend, bookings and ROI by channel.' },
+        { name: 'Staff performance', desc: 'Utilisation, revenue and commission by therapist.' },
+        { name: 'Client report', desc: 'New vs returning, lifetime value, churn risk.' },
+        { name: 'Inventory report', desc: 'Usage, wastage and reorder history.' },
+        { name: 'Membership report', desc: 'Subscribers, renewals and freeze requests.' },
+      ],
+
+      settingsGroups: [
+        { name: 'Business profile', desc: 'Name, contact details, opening hours.' },
+        { name: 'Locations', desc: 'Wuse 2 and Wuye — rooms, capacity, staff assignment.' },
+        { name: 'Taxes', desc: 'VAT and service charge configuration.' },
+        { name: 'Roles & permissions', desc: 'Who can see revenue, refund, or edit staff pay.' },
+        { name: 'Payment methods', desc: 'Card, transfer, POS and cash reconciliation.' },
+        { name: 'Branding', desc: 'Logo, colours and receipt templates.' },
+        { name: 'Integrations', desc: 'WhatsApp Business, Google Business Profile, Instagram.' },
+        { name: 'Notifications', desc: 'What triggers an alert, and to whom.' },
+        { name: 'API keys', desc: 'For custom integrations and exports.' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

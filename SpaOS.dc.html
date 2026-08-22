@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpaOS — JVEE Wellness &amp; Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: #F2EEE6; color: #1F2A28; font-family: "Instrument Sans", "Helvetica Neue", Helvetica, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty; font-size: 14px; }
+  h1, h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd, table, th, td { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  table { border-collapse: collapse; }
+  img { display: block; max-width: 100%; }
+  a { color: #0B4B50; text-decoration: none; }
+  a:hover { color: #8A5A2E; }
+  button, input, textarea, select { font: inherit; color: inherit; }
+  ::selection { background: #C08B5C; color: #F7F4EE; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #D3CCBE; border: 3px solid transparent; background-clip: content-box; border-radius: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  @keyframes osIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes osPulse { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+</style>
+</helmet>
+
+<div style="display:grid;grid-template-columns:246px minmax(0,1fr);min-height:100vh;background:#F2EEE6;">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside data-rail="1" style="background:linear-gradient(175deg,#0A3339 0%,#062A2E 38%),#062A2E;color:#F7F4EE;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;border-right:1px solid #052326;">
+    <div style="padding:20px 18px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #0F3B40;">
+      <a href="#/overview" style="display:flex;align-items:center;gap:11px;min-width:0;">
+        <span style="width:32px;height:32px;flex-shrink:0;background:linear-gradient(155deg,#D6A06E,#B07C4D);color:#062A2E;display:grid;place-items:center;font-family:'Instrument Serif',Georgia,serif;font-size:15px;letter-spacing:.02em;border-radius:7px;box-shadow:0 1px 0 rgba(255,255,255,.25) inset;">J</span>
+        <span data-railtext="1" style="min-width:0;">
+          <span style="display:block;font-size:13px;font-weight:600;letter-spacing:.01em;color:#F7F4EE;white-space:nowrap;">JVEE Wellness</span>
+          <span style="display:block;font-size:10.5px;letter-spacing:.05em;color:#8FA9A4;white-space:nowrap;">Two houses · Abuja</span>
+        </span>
+      </a>
+      <button onClick="{{ toggleRail }}" aria-label="Collapse sidebar" style="flex-shrink:0;width:26px;height:26px;background:none;border:1px solid #1B4247;border-radius:6px;color:#8FA9A4;cursor:pointer;display:grid;place-items:center;font-size:11px;line-height:1;transition:color .25s ease,border-color .25s ease;" style-hover="color:#F7F4EE;border-color:#2F5A5E;">{{ railIcon }}</button>
+    </div>
+
+    <nav style="flex:1;overflow-y:auto;padding:6px 10px 16px;display:flex;flex-direction:column;gap:2px;">
+      <span data-railtext="1" style="display:block;padding:14px 10px 7px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#8FA9A4;">Command</span>
+      <a href="#/overview" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">◎</span><span data-railtext="1" style="white-space:nowrap;">Overview</span>
+      </a>
+      <a href="#/appointments" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">▤</span><span data-railtext="1" style="white-space:nowrap;">Appointments</span>
+        <span data-railtext="1" style="margin-left:auto;background:#C08B5C;color:#062A2E;font-size:10px;font-weight:600;padding:1px 6px;border-radius:9px;">7</span>
+      </a>
+      <a href="#/clients" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">◍</span><span data-railtext="1" style="white-space:nowrap;">Clients</span>
+      </a>
+      <a href="#/staff" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">◈</span><span data-railtext="1" style="white-space:nowrap;">Staff</span>
+      </a>
+
+      <span data-railtext="1" style="display:block;padding:16px 10px 7px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#8FA9A4;">Commerce</span>
+      <a href="#/revenue" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">₦</span><span data-railtext="1" style="white-space:nowrap;">Revenue</span>
+      </a>
+      <a href="#/treatments" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">✦</span><span data-railtext="1" style="white-space:nowrap;">Treatments</span>
+      </a>
+      <a href="#/memberships" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">◇</span><span data-railtext="1" style="white-space:nowrap;">Memberships</span>
+      </a>
+      <a href="#/inventory" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">▣</span><span data-railtext="1" style="white-space:nowrap;">Inventory</span>
+        <span data-railtext="1" style="margin-left:auto;width:6px;height:6px;border-radius:50%;background:#B23A2E;"></span>
+      </a>
+
+      <span data-railtext="1" style="display:block;padding:16px 10px 7px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#8FA9A4;">Growth</span>
+      <a href="#/marketing" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">◐</span><span data-railtext="1" style="white-space:nowrap;">Marketing</span>
+      </a>
+      <a href="#/reviews" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">★</span><span data-railtext="1" style="white-space:nowrap;">Reviews</span>
+      </a>
+      <a href="#/automation" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">⟳</span><span data-railtext="1" style="white-space:nowrap;">Automation</span>
+      </a>
+      <a href="#/reports" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">▦</span><span data-railtext="1" style="white-space:nowrap;">Reports</span>
+      </a>
+      <a href="#/settings" data-navlink="1" style="display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:7px;color:#C6D6D3;font-size:13.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#0D3A3F;color:#F7F4EE;">
+        <span style="flex-shrink:0;width:16px;text-align:center;font-size:13px;">⚙</span><span data-railtext="1" style="white-space:nowrap;">Settings</span>
+      </a>
+    </nav>
+
+    <div data-railtext="1" style="padding:14px;border-top:1px solid #123539;">
+      <div style="background:#0D3A3F;border:1px solid #17454A;border-radius:9px;padding:13px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#7FD1A8;animation:osPulse 2.6s ease-in-out infinite;"></span>
+          <span style="font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:#8FA9A4;">Both houses open</span>
+        </div>
+        <p style="margin-top:9px;font-size:12.5px;line-height:1.55;color:#C6D6D3;">Wuse 2 at 91% capacity. Wuye has 6 slots left today.</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div style="min-width:0;display:flex;flex-direction:column;">
+
+    <!-- topbar -->
+    <header style="position:sticky;top:0;z-index:40;background:rgba(242,238,230,.86);backdrop-filter:saturate(150%) blur(14px);border-bottom:1px solid #DDD5C6;">
+      <div style="display:flex;align-items:center;gap:16px;padding:12px clamp(18px,2.4vw,32px);">
+        <button onClick="{{ openSearch }}" style="flex:1;min-width:0;max-width:520px;display:flex;align-items:center;gap:10px;background:#FBF9F4;border:1px solid #DDD5C6;border-radius:9px;padding:9px 13px;cursor:pointer;text-align:left;transition:border-color .25s ease,box-shadow .25s ease;" style-hover="border-color:#C4BAA6;box-shadow:0 1px 3px rgba(31,42,40,.05);">
+          <span style="color:#78715F;font-size:13px;">⌕</span>
+          <span style="flex:1;color:#78715F;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Search clients, appointments, invoices…</span>
+          <span style="flex-shrink:0;font-size:10.5px;color:#6E675C;border:1px solid #DDD5C6;border-radius:4px;padding:1px 5px;background:#F2EEE6;">⌘K</span>
+        </button>
+
+        <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
+          <button onClick="{{ openAssistant }}" style="display:flex;align-items:center;gap:8px;background:linear-gradient(155deg,#0A3339,#062A2E);border:1px solid #062A2E;border-radius:9px;padding:9px 14px;color:#F7F4EE;font-size:12.5px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .25s ease;" style-hover="background:#0B4B50;">
+            <span style="width:5px;height:5px;border-radius:50%;background:linear-gradient(155deg,#D6A06E,#B07C4D);"></span>Ask SpaOS
+          </button>
+          <button onClick="{{ openQuick }}" aria-label="Quick actions" style="width:36px;height:36px;background:#FBF9F4;border:1px solid #DDD5C6;border-radius:9px;color:#4A5450;font-size:15px;cursor:pointer;transition:border-color .25s ease;" style-hover="border-color:#C4BAA6;">+</button>
+          <button onClick="{{ openNotifs }}" aria-label="Notifications" style="position:relative;width:36px;height:36px;background:#FBF9F4;border:1px solid #DDD5C6;border-radius:9px;color:#4A5450;font-size:14px;cursor:pointer;transition:border-color .25s ease;" style-hover="border-color:#C4BAA6;">
+            ◔<span style="position:absolute;top:6px;right:6px;width:6px;height:6px;border-radius:50%;background:#B23A2E;border:1.5px solid #FBF9F4;"></span>
+          </button>
+          <span style="width:1px;height:26px;background:#DDD5C6;margin:0 3px;"></span>
+          <button style="display:flex;align-items:center;gap:9px;background:none;border:0;cursor:pointer;padding:2px;">
+            <span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(155deg,#0F5259,#0B4B50);color:#F7F4EE;display:grid;place-items:center;font-size:12px;font-weight:600;">JO</span>
+            <span data-hide-md="1" style="text-align:left;">
+              <span style="display:block;font-size:12.5px;font-weight:500;line-height:1.3;">Jennifer O.</span>
+              <span style="display:block;font-size:10.5px;color:#6E675C;line-height:1.3;">Owner</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main style="flex:1;min-width:0;padding:clamp(20px,2.6vw,34px) clamp(18px,2.4vw,32px) 64px;">
+
+    <!-- ================= OVERVIEW — EXECUTIVE BRIEFING ================= -->
+    <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:1560px;margin:0 auto;animation:osIn .5s cubic-bezier(.2,.7,.2,1) both;">
+
+      <!-- greeting -->
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:end;justify-content:space-between;margin-bottom:22px;">
+        <div>
+          <span style="display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8A5A2E;">Executive briefing · Tuesday, 4 August</span>
+          <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,3.2vw,44px);line-height:1.04;letter-spacing:-.022em;margin-top:11px;">Good morning, Jennifer.</h1>
+          
+        </div>
+        <div style="display:flex;gap:9px;">
+          <button style="background:#C08B5C;border:1px solid #C08B5C;border-radius:9px;padding:10px 17px;color:#20160C;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .25s ease;" style-hover="background:#B07C4D;">Approve all 3 suggested</button>
+          <button style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:9px;padding:10px 17px;color:#1F2A28;font-size:12.5px;font-weight:500;cursor:pointer;white-space:nowrap;transition:border-color .25s ease;" style-hover="border-color:#C4BAA6;">Share briefing</button>
+        </div>
+      </div>
+
+      <!-- EXECUTIVE SUMMARY -->
+      <section style="background:#062A2E;border-radius:14px;padding:clamp(20px,2.2vw,28px);color:#F7F4EE;margin-bottom:14px;box-shadow:0 1px 2px rgba(6,42,46,.16);">
+        <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;">
+          <span style="display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#8FA9A4;">
+            <span style="width:22px;height:1px;background:#C08B5C;"></span>Business health
+          </span>
+          <span style="font-size:11.5px;color:#8FA9A4;">Assessed 06:40 · next refresh 18:00</span>
+        </div>
+
+        <div data-summary="1" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:#17454A;border:1px solid #17454A;border-radius:11px;overflow:hidden;margin-top:18px;">
+          <div style="background:#062A2E;padding:15px 14px;">
+            <span style="display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FA9A4;">Overall</span>
+            <span style="display:flex;align-items:baseline;gap:7px;margin-top:9px;"><span style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1;color:#7FD1A8;">Excellent</span></span>
+          </div>
+          <div style="background:#062A2E;padding:15px 14px;">
+            <span style="display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FA9A4;">Revenue</span>
+            <span style="display:flex;align-items:baseline;gap:6px;margin-top:9px;"><span style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1;">Rising</span><span style="font-size:12px;color:#7FD1A8;">↑12%</span></span>
+          </div>
+          <div style="background:#062A2E;padding:15px 14px;">
+            <span style="display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FA9A4;">Bookings</span>
+            <span style="display:flex;align-items:baseline;gap:6px;margin-top:9px;"><span style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1;">Above</span><span style="font-size:12px;color:#8FA9A4;">target</span></span>
+          </div>
+          <div style="background:#062A2E;padding:15px 14px;">
+            <span style="display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FA9A4;">Satisfaction</span>
+            <span style="display:flex;align-items:baseline;gap:6px;margin-top:9px;"><span style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1;">4.9</span><span style="font-size:12px;color:#8FA9A4;">★ 218 reviews</span></span>
+          </div>
+          <div style="background:#062A2E;padding:15px 14px;">
+            <span style="display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FA9A4;">Inventory</span>
+            <span style="display:flex;align-items:baseline;gap:6px;margin-top:9px;"><span style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1;color:#F0A38C;">1 critical</span></span>
+          </div>
+          <div style="background:#062A2E;padding:15px 14px;">
+            <span style="display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FA9A4;">Marketing</span>
+            <span style="display:flex;align-items:baseline;gap:6px;margin-top:9px;"><span style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1;">Strong</span><span style="font-size:12px;color:#7FD1A8;">4.1× ROI</span></span>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;margin-top:18px;padding-top:17px;border-top:1px solid #17454A;">
+          <span style="flex-shrink:0;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#C08B5C;padding-top:3px;">Do this</span>
+          <p style="font-size:14.5px;line-height:1.62;color:#E4EDEB;max-width:88ch;">Fill Friday afternoon and reactivate your lapsed premium members. Those two moves are worth an estimated <strong style="color:#F7F4EE;font-weight:600;">₦680,000</strong> this week — more than any pricing change you could make.</p>
+        </div>
+      </section>
+
+      <!-- YESTERDAY -->
+      <section style="margin-bottom:14px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:11px;">
+          <h2 style="font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#4A5450;">Yesterday — Monday 3 August</h2>
+          <a href="#/reports" style="font-size:12px;color:#8A5A2E;">Full report →</a>
+        </div>
+        <div data-kpis="1" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#DDD5C6;border:1px solid #DDD5C6;border-radius:12px;overflow:hidden;">
+          <div style="background:#FBF9F4;padding:16px 17px;">
+            <span style="display:block;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Revenue</span>
+            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:31px;line-height:1;margin:11px 0 8px;letter-spacing:-.015em;">₦2.41M</span>
+            <span style="display:flex;align-items:center;gap:7px;font-size:11.5px;"><span style="color:#2E7D5B;font-weight:600;">↑ 12.4%</span><span style="color:#6E675C;">vs last Mon</span></span>
+          </div>
+          <div style="background:#FBF9F4;padding:16px 17px;">
+            <span style="display:block;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Bookings</span>
+            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:31px;line-height:1;margin:11px 0 8px;letter-spacing:-.015em;">63</span>
+            <span style="display:flex;align-items:center;gap:7px;font-size:11.5px;"><span style="color:#2E7D5B;font-weight:600;">↑ 9</span><span style="color:#6E675C;">41 Wuse 2 · 22 Wuye</span></span>
+          </div>
+          <div style="background:#FBF9F4;padding:16px 17px;">
+            <span style="display:block;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Occupancy</span>
+            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:31px;line-height:1;margin:11px 0 8px;letter-spacing:-.015em;">91%</span>
+            <span style="display:block;height:4px;background:#E7E0D2;border-radius:2px;overflow:hidden;"><span style="display:block;width:91%;height:100%;background:#0B4B50;"></span></span>
+          </div>
+          <div style="background:#FBF9F4;padding:16px 17px;">
+            <span style="display:block;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Average spend</span>
+            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:31px;line-height:1;margin:11px 0 8px;letter-spacing:-.015em;">₦38,500</span>
+            <span style="display:flex;align-items:center;gap:7px;font-size:11.5px;"><span style="color:#2E7D5B;font-weight:600;">↑ 4.1%</span><span style="color:#6E675C;">add-ons driving it</span></span>
+          </div>
+          <div style="background:#FBF9F4;padding:16px 17px;">
+            <span style="display:block;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Returning clients</span>
+            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:31px;line-height:1;margin:11px 0 8px;letter-spacing:-.015em;">74%</span>
+            <span style="display:flex;align-items:center;gap:7px;font-size:11.5px;"><span style="color:#2E7D5B;font-weight:600;">↑ 3pts</span><span style="color:#6E675C;">47 of 63</span></span>
+          </div>
+          <div style="background:#FBF9F4;padding:16px 17px;">
+            <span style="display:block;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">No-shows</span>
+            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:31px;line-height:1;margin:11px 0 8px;letter-spacing:-.015em;">2</span>
+            <span style="display:flex;align-items:center;gap:7px;font-size:11.5px;"><span style="color:#2E7D5B;font-weight:600;">↓ 3</span><span style="color:#6E675C;">₦76k recovered</span></span>
+          </div>
+          <div style="background:#FBF9F4;padding:16px 17px;">
+            <span style="display:block;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Staff productivity</span>
+            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:31px;line-height:1;margin:11px 0 8px;letter-spacing:-.015em;">94%</span>
+            <span style="display:flex;align-items:center;gap:7px;font-size:11.5px;"><span style="color:#6E675C;">Charles led at 106%</span></span>
+          </div>
+          <div style="background:#FBF9F4;padding:16px 17px;">
+            <span style="display:block;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Pending payments</span>
+            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:31px;line-height:1;margin:11px 0 8px;letter-spacing:-.015em;">₦184k</span>
+            <span style="display:flex;align-items:center;gap:7px;font-size:11.5px;"><span style="color:#8A5A2E;font-weight:600;">4 invoices</span><span style="color:#6E675C;">2 overdue</span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI BRIEFING -->
+      <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;margin-bottom:14px;">
+        <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:17px clamp(17px,2vw,24px);border-bottom:1px solid #E7E0D2;background:#F7F4EE;">
+          <div style="display:flex;align-items:center;gap:11px;">
+            <span style="width:24px;height:24px;border-radius:6px;background:#062A2E;color:#C08B5C;display:grid;place-items:center;font-size:11px;">◆</span>
+            <div>
+              <h2 style="font-size:14.5px;font-weight:600;letter-spacing:-.005em;">AI business briefing</h2>
+              <p style="font-size:11.5px;color:#6E675C;margin-top:2px;">7 findings · ranked by revenue impact · ₦1.34M total opportunity</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:7px;">
+            <button onClick="{{ expandAll }}" style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:8px;padding:7px 13px;font-size:11.5px;font-weight:500;cursor:pointer;white-space:nowrap;transition:border-color .25s ease;" style-hover="border-color:#C4BAA6;">{{ expandLabel }}</button>
+          </div>
+        </div>
+
+        <div data-ai="1">
+          <!-- 1 -->
+          <article data-aicard="0" style="border-bottom:1px solid #E7E0D2;">
+            <button onClick="{{ toggle0 }}" style="width:100%;background:none;border:0;text-align:left;cursor:pointer;padding:16px clamp(17px,2vw,24px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:15px;align-items:start;">
+              <span style="width:22px;height:22px;border-radius:6px;background:#F6E5E2;color:#B23A2E;display:grid;place-items:center;font-size:10px;font-weight:600;margin-top:1px;">1</span>
+              <span style="min-width:0;">
+                <span style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                  <span style="font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#B23A2E;font-weight:600;">Act today</span>
+                  
+                </span>
+                <span style="display:block;font-size:15.5px;font-weight:500;letter-spacing:-.008em;margin-top:8px;line-height:1.42;">Friday afternoon has 11 unsold slots. A WhatsApp flash offer to loyalty members typically fills 8 of them.</span>
+                
+              </span>
+              <span style="display:flex;align-items:center;gap:13px;flex-shrink:0;">
+                <span style="text-align:right;">
+                  <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1;color:#0B4B50;">₦304k</span>
+                  <span style="display:block;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#6E675C;margin-top:4px;">Upside</span>
+                </span>
+                <span data-chev="1" style="color:#6E675C;font-size:11px;transition:transform .3s ease;">▾</span>
+              </span>
+            </button>
+            <div data-aibody="0" style="display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1),opacity .3s ease;opacity:0;">
+              <div style="padding:0 clamp(17px,2vw,24px) 18px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:22px;min-height:0;overflow:hidden;" data-aigrid="1">
+                <dl style="display:grid;gap:13px;">
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Why</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Friday 13:00–17:00 has run below 60% for three consecutive weeks while Friday evening sells out. Corporate clients book mornings; leisure clients book evenings. The afternoon has no natural audience.</dd>
+                  </div>
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Evidence</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Your last three flash offers to the 412 loyalty members filled 8, 9 and 7 slots within six hours, at an average discount of 12%. No measurable effect on full-price bookings the following week.</dd>
+                  </div>
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Do</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Send a 15%-off Friday-afternoon offer to the 412 loyalty members, capped at 11 redemptions. Draft is written and ready to review.</dd>
+                  </div>
+                </dl>
+                <div style="background:#F7F4EE;border:1px solid #E7E0D2;border-radius:10px;padding:15px;">
+                  <span style="display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Projected outcome</span>
+                  <ul style="display:grid;gap:9px;margin-top:12px;">
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Slots filled</span><strong style="font-weight:600;">8 of 11</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Gross revenue</span><strong style="font-weight:600;">₦304,000</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Discount cost</span><strong style="font-weight:600;">−₦45,600</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;padding-top:9px;border-top:1px solid #E7E0D2;"><span style="color:#4A5450;">Net</span><strong style="font-weight:600;color:#2E7D5B;">₦258,400</strong></li>
+                  </ul>
+                  <div style="display:flex;gap:8px;margin-top:15px;">
+                    <button style="flex:1;background:#062A2E;border:1px solid #062A2E;border-radius:8px;padding:9px 12px;color:#F7F4EE;font-size:12px;font-weight:500;cursor:pointer;transition:background .25s ease;" style-hover="background:#0B4B50;">Review draft</button>
+                    <button style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:8px;padding:9px 12px;font-size:12px;cursor:pointer;color:#6E675C;transition:border-color .25s ease;" style-hover="border-color:#C4BAA6;">Dismiss</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article data-aicard="1" style="border-bottom:1px solid #E7E0D2;">
+            <button onClick="{{ toggle1 }}" style="width:100%;background:none;border:0;text-align:left;cursor:pointer;padding:16px clamp(17px,2vw,24px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:15px;align-items:start;">
+              <span style="width:22px;height:22px;border-radius:6px;background:#F6E5E2;color:#B23A2E;display:grid;place-items:center;font-size:10px;font-weight:600;margin-top:1px;">2</span>
+              <span style="min-width:0;">
+                <span style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                  <span style="font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#B23A2E;font-weight:600;">Act today</span>
+                  
+                </span>
+                <span style="display:block;font-size:15.5px;font-weight:500;letter-spacing:-.008em;margin-top:8px;line-height:1.42;">Lavender essential oil runs out Thursday. Seventeen booked treatments depend on it.</span>
+                
+              </span>
+              <span style="display:flex;align-items:center;gap:13px;flex-shrink:0;">
+                <span style="text-align:right;">
+                  <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1;color:#B23A2E;">₦412k</span>
+                  <span style="display:block;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#6E675C;margin-top:4px;">At risk</span>
+                </span>
+                <span data-chev="1" style="color:#6E675C;font-size:11px;transition:transform .3s ease;">▾</span>
+              </span>
+            </button>
+            <div data-aibody="1" style="display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1),opacity .3s ease;opacity:0;">
+              <div style="padding:0 clamp(17px,2vw,24px) 18px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:22px;min-height:0;overflow:hidden;" data-aigrid="1">
+                <dl style="display:grid;gap:13px;">
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Why</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Aromatherapy bookings rose 22% this month, so consumption outran the reorder point set in March. Current stock is 340ml; the seventeen aromatherapy and hot-stone sessions booked through Sunday need 510ml.</dd>
+                  </div>
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Risk</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Substituting a different oil mid-course is the single most common complaint in your reviews. Three of the seventeen are members on a standing slot.</dd>
+                  </div>
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Do</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Order 2L from Naturals Nigeria at ₦86,400 and raise the reorder point to 800ml so this does not recur.</dd>
+                  </div>
+                </dl>
+                <div style="background:#F6E5E2;border:1px solid #EDD3CD;border-radius:10px;padding:15px;">
+                  <span style="display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#B23A2E;">Purchase order ready</span>
+                  <ul style="display:grid;gap:9px;margin-top:12px;">
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Quantity</span><strong style="font-weight:600;">2,000 ml</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Supplier</span><strong style="font-weight:600;">Naturals Nigeria</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Cost</span><strong style="font-weight:600;">₦86,400</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;padding-top:9px;border-top:1px solid #EDD3CD;"><span style="color:#4A5450;">Arrives</span><strong style="font-weight:600;">Wed 6 Aug</strong></li>
+                  </ul>
+                  <div style="display:flex;gap:8px;margin-top:15px;">
+                    <button style="flex:1;background:#B23A2E;border:1px solid #B23A2E;border-radius:8px;padding:9px 12px;color:#FBF9F4;font-size:12px;font-weight:500;cursor:pointer;transition:background .25s ease;" style-hover="background:#9B3125;">Approve order</button>
+                    <button style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:8px;padding:9px 12px;font-size:12px;cursor:pointer;color:#6E675C;transition:border-color .25s ease;" style-hover="border-color:#C4BAA6;">Edit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article data-aicard="2" style="border-bottom:1px solid #E7E0D2;">
+            <button onClick="{{ toggle2 }}" style="width:100%;background:none;border:0;text-align:left;cursor:pointer;padding:16px clamp(17px,2vw,24px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:15px;align-items:start;">
+              <span style="width:22px;height:22px;border-radius:6px;background:#E6F1EC;color:#245F45;display:grid;place-items:center;font-size:10px;font-weight:600;margin-top:1px;">3</span>
+              <span style="min-width:0;">
+                <span style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                  <span style="font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#2E7D5B;font-weight:600;">Opportunity</span>
+                  
+                </span>
+                <span style="display:block;font-size:15.5px;font-weight:500;letter-spacing:-.008em;margin-top:8px;line-height:1.42;">Fourteen clients are due to rebook this week and haven't. All fit the pattern that precedes a return.</span>
+                
+              </span>
+              <span style="display:flex;align-items:center;gap:13px;flex-shrink:0;">
+                <span style="text-align:right;">
+                  <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1;color:#0B4B50;">₦347k</span>
+                  <span style="display:block;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#6E675C;margin-top:4px;">Upside</span>
+                </span>
+                <span data-chev="1" style="color:#6E675C;font-size:11px;transition:transform .3s ease;">▾</span>
+              </span>
+            </button>
+            <div data-aibody="2" style="display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1),opacity .3s ease;opacity:0;">
+              <div style="padding:0 clamp(17px,2vw,24px) 18px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:22px;min-height:0;overflow:hidden;" data-aigrid="1">
+                <div>
+                  <p style="font-size:13.5px;line-height:1.62;color:#4A5450;">Each of these fourteen has visited at least four times, averages a 5–7 week gap, and is now at week 8. That is the window where a client either rebooks or quietly stops coming. A message from the therapist they know converts roughly three times better than a generic reminder.</p>
+                  <table style="width:100%;margin-top:15px;font-size:13px;">
+                    <thead>
+                      <tr>
+                        <th style="text-align:left;padding:0 10px 9px 0;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#6E675C;font-weight:500;border-bottom:1px solid #E7E0D2;">Client</th>
+                        <th style="text-align:left;padding:0 10px 9px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#6E675C;font-weight:500;border-bottom:1px solid #E7E0D2;">Last visit</th>
+                        <th style="text-align:left;padding:0 10px 9px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#6E675C;font-weight:500;border-bottom:1px solid #E7E0D2;">Therapist</th>
+                        <th style="text-align:right;padding:0 0 9px 10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#6E675C;font-weight:500;border-bottom:1px solid #E7E0D2;">Lifetime</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td style="padding:9px 10px 9px 0;border-bottom:1px solid #F0EBE0;">Amaka Nwosu</td><td style="padding:9px 10px;border-bottom:1px solid #F0EBE0;color:#4A5450;">8 weeks ago</td><td style="padding:9px 10px;border-bottom:1px solid #F0EBE0;color:#4A5450;">Abigail</td><td style="padding:9px 0 9px 10px;text-align:right;border-bottom:1px solid #F0EBE0;">₦680,000</td></tr>
+                      <tr><td style="padding:9px 10px 9px 0;border-bottom:1px solid #F0EBE0;">Tunde Bakare</td><td style="padding:9px 10px;border-bottom:1px solid #F0EBE0;color:#4A5450;">9 weeks ago</td><td style="padding:9px 10px;border-bottom:1px solid #F0EBE0;color:#4A5450;">Charles</td><td style="padding:9px 0 9px 10px;text-align:right;border-bottom:1px solid #F0EBE0;">₦1,240,000</td></tr>
+                      <tr><td style="padding:9px 10px 9px 0;border-bottom:1px solid #F0EBE0;">Ifeoma Chukwu</td><td style="padding:9px 10px;border-bottom:1px solid #F0EBE0;color:#4A5450;">8 weeks ago</td><td style="padding:9px 10px;border-bottom:1px solid #F0EBE0;color:#4A5450;">Suliat</td><td style="padding:9px 0 9px 10px;text-align:right;border-bottom:1px solid #F0EBE0;">₦520,000</td></tr>
+                      <tr><td colspan="4" style="padding:11px 0 0;font-size:12.5px;color:#6E675C;">and 11 more</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div style="background:#F7F4EE;border:1px solid #E7E0D2;border-radius:10px;padding:15px;">
+                  <span style="display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Projected outcome</span>
+                  <ul style="display:grid;gap:9px;margin-top:12px;">
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Expected rebookings</span><strong style="font-weight:600;">9 of 14</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Avg booking value</span><strong style="font-weight:600;">₦38,500</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;padding-top:9px;border-top:1px solid #E7E0D2;"><span style="color:#4A5450;">This week</span><strong style="font-weight:600;color:#2E7D5B;">₦347,000</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Retained annual value</span><strong style="font-weight:600;color:#2E7D5B;">₦2.9M</strong></li>
+                  </ul>
+                  <div style="display:flex;gap:8px;margin-top:15px;">
+                    <button style="flex:1;background:#062A2E;border:1px solid #062A2E;border-radius:8px;padding:9px 12px;color:#F7F4EE;font-size:12px;font-weight:500;cursor:pointer;transition:background .25s ease;" style-hover="background:#0B4B50;">Queue 14 messages</button>
+                    <button style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:8px;padding:9px 12px;font-size:12px;cursor:pointer;color:#6E675C;transition:border-color .25s ease;" style-hover="border-color:#C4BAA6;">View list</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article data-aicard="3" style="border-bottom:1px solid #E7E0D2;">
+            <button onClick="{{ toggle3 }}" style="width:100%;background:none;border:0;text-align:left;cursor:pointer;padding:16px clamp(17px,2vw,24px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:15px;align-items:start;">
+              <span style="width:22px;height:22px;border-radius:6px;background:#E6F1EC;color:#245F45;display:grid;place-items:center;font-size:10px;font-weight:600;margin-top:1px;">4</span>
+              <span style="min-width:0;">
+                <span style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                  <span style="font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#2E7D5B;font-weight:600;">Opportunity</span>
+                  
+                </span>
+                <span style="display:block;font-size:15.5px;font-weight:500;letter-spacing:-.008em;margin-top:8px;line-height:1.42;">Facial packages can carry a 5% increase. Demand has outrun supply for eleven weeks.</span>
+                
+              </span>
+              <span style="display:flex;align-items:center;gap:13px;flex-shrink:0;">
+                <span style="text-align:right;">
+                  <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1;color:#0B4B50;">₦218k</span>
+                  <span style="display:block;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#6E675C;margin-top:4px;">Per month</span>
+                </span>
+                <span data-chev="1" style="color:#6E675C;font-size:11px;transition:transform .3s ease;">▾</span>
+              </span>
+            </button>
+            <div data-aibody="3" style="display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1),opacity .3s ease;opacity:0;">
+              <div style="padding:0 clamp(17px,2vw,24px) 18px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:22px;min-height:0;overflow:hidden;" data-aigrid="1">
+                <dl style="display:grid;gap:13px;">
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Why</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">A waitlist that never empties means you are rationing by time rather than price. Your two nearest competitors in Wuse 2 charge ₦82,000 and ₦88,000 for a comparable treatment; you charge ₦75,000.</dd>
+                  </div>
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Evidence</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Your last increase — body rituals, 6% in February — cost you no measurable volume. Rebooking rate held at 68% through the following quarter.</dd>
+                  </div>
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Caution</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Hold existing members at the current rate for 90 days and tell them so. The goodwill is worth more than the ₦34,000 it costs.</dd>
+                  </div>
+                </dl>
+                <div style="background:#F7F4EE;border:1px solid #E7E0D2;border-radius:10px;padding:15px;">
+                  <span style="display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Modelled impact</span>
+                  <ul style="display:grid;gap:9px;margin-top:12px;">
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">HydraFacial</span><strong style="font-weight:600;">₦75k → ₦79k</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Volume change</span><strong style="font-weight:600;">−1.5% modelled</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;padding-top:9px;border-top:1px solid #E7E0D2;"><span style="color:#4A5450;">Net monthly</span><strong style="font-weight:600;color:#2E7D5B;">+₦218,000</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Annualised</span><strong style="font-weight:600;color:#2E7D5B;">+₦2.6M</strong></li>
+                  </ul>
+                  <div style="display:flex;gap:8px;margin-top:15px;">
+                    <button style="flex:1;background:#062A2E;border:1px solid #062A2E;border-radius:8px;padding:9px 12px;color:#F7F4EE;font-size:12px;font-weight:500;cursor:pointer;transition:background .25s ease;" style-hover="background:#0B4B50;">Model in Revenue</button>
+                    <button style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:8px;padding:9px 12px;font-size:12px;cursor:pointer;color:#6E675C;transition:border-color .25s ease;" style-hover="border-color:#C4BAA6;">Later</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article data-aicard="4" style="border-bottom:1px solid #E7E0D2;">
+            <button onClick="{{ toggle4 }}" style="width:100%;background:none;border:0;text-align:left;cursor:pointer;padding:16px clamp(17px,2vw,24px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:15px;align-items:start;">
+              <span style="width:22px;height:22px;border-radius:6px;background:#FBEFD4;color:#8A5A2E;display:grid;place-items:center;font-size:10px;font-weight:600;margin-top:1px;">5</span>
+              <span style="min-width:0;">
+                <span style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                  <span style="font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Watch</span>
+                  
+                </span>
+                <span style="display:block;font-size:15.5px;font-weight:500;letter-spacing:-.008em;margin-top:8px;line-height:1.42;">Massage bookings fell 12% this week while facials rose 19%. This is a mix shift, not a decline.</span>
+                
+              </span>
+              <span style="display:flex;align-items:center;gap:13px;flex-shrink:0;">
+                <span style="text-align:right;">
+                  <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1;color:#8A5A2E;">−12%</span>
+                  <span style="display:block;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#6E675C;margin-top:4px;">Massage</span>
+                </span>
+                <span data-chev="1" style="color:#6E675C;font-size:11px;transition:transform .3s ease;">▾</span>
+              </span>
+            </button>
+            <div data-aibody="4" style="display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1),opacity .3s ease;opacity:0;">
+              <div style="padding:0 clamp(17px,2vw,24px) 18px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:22px;min-height:0;overflow:hidden;" data-aigrid="1">
+                <dl style="display:grid;gap:13px;">
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Why</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Your Instagram reels for the HydraFacial ran all week and worked. Facial enquiries rose 31%. Nothing promoted massage, so it lost share of attention rather than share of market.</dd>
+                  </div>
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Means</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Facials carry a higher margin, so the mix shift is currently earning you money. The risk is capacity: Suliat is at 118% while Charles sits at 74%. If facials keep climbing you will start turning people away and idling a senior therapist.</dd>
+                  </div>
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Do</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Feature the Deep Tissue Recovery pairing on the homepage and in this week's reels, and move two of Suliat's Thursday slots to a second trained aesthetician.</dd>
+                  </div>
+                </dl>
+                <div style="background:#F7F4EE;border:1px solid #E7E0D2;border-radius:10px;padding:15px;">
+                  <span style="display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Capacity now</span>
+                  <ul style="display:grid;gap:12px;margin-top:12px;">
+                    <li>
+                      <span style="display:flex;justify-content:space-between;gap:12px;font-size:12.5px;margin-bottom:5px;"><span style="color:#4A5450;">Suliat — skin</span><strong style="font-weight:600;color:#B23A2E;">118%</strong></span>
+                      <span style="display:block;height:4px;background:#E7E0D2;border-radius:2px;overflow:hidden;"><span style="display:block;width:100%;height:100%;background:#B23A2E;"></span></span>
+                    </li>
+                    <li>
+                      <span style="display:flex;justify-content:space-between;gap:12px;font-size:12.5px;margin-bottom:5px;"><span style="color:#4A5450;">Charles — massage</span><strong style="font-weight:600;color:#8A5A2E;">74%</strong></span>
+                      <span style="display:block;height:4px;background:#E7E0D2;border-radius:2px;overflow:hidden;"><span style="display:block;width:74%;height:100%;background:#C77D14;"></span></span>
+                    </li>
+                    <li>
+                      <span style="display:flex;justify-content:space-between;gap:12px;font-size:12.5px;margin-bottom:5px;"><span style="color:#4A5450;">Abigail — body</span><strong style="font-weight:600;color:#2E7D5B;">92%</strong></span>
+                      <span style="display:block;height:4px;background:#E7E0D2;border-radius:2px;overflow:hidden;"><span style="display:block;width:92%;height:100%;background:#2E7D5B;"></span></span>
+                    </li>
+                  </ul>
+                  <button style="width:100%;margin-top:15px;background:#062A2E;border:1px solid #062A2E;border-radius:8px;padding:9px 12px;color:#F7F4EE;font-size:12px;font-weight:500;cursor:pointer;transition:background .25s ease;" style-hover="background:#0B4B50;">Rebalance roster</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article data-aicard="5" style="border-bottom:1px solid #E7E0D2;">
+            <button onClick="{{ toggle5 }}" style="width:100%;background:none;border:0;text-align:left;cursor:pointer;padding:16px clamp(17px,2vw,24px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:15px;align-items:start;">
+              <span style="width:22px;height:22px;border-radius:6px;background:#E6F1EC;color:#245F45;display:grid;place-items:center;font-size:10px;font-weight:600;margin-top:1px;">6</span>
+              <span style="min-width:0;">
+                <span style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                  <span style="font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#2E7D5B;font-weight:600;">Opportunity</span>
+                  
+                </span>
+                <span style="display:block;font-size:15.5px;font-weight:500;letter-spacing:-.008em;margin-top:8px;line-height:1.42;">Corporate wellness enquiries are up 28% with nothing built to catch them.</span>
+                
+              </span>
+              <span style="display:flex;align-items:center;gap:13px;flex-shrink:0;">
+                <span style="text-align:right;">
+                  <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1;color:#0B4B50;">₦4.2M</span>
+                  <span style="display:block;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#6E675C;margin-top:4px;">Annual, modelled</span>
+                </span>
+                <span data-chev="1" style="color:#6E675C;font-size:11px;transition:transform .3s ease;">▾</span>
+              </span>
+            </button>
+            <div data-aibody="5" style="display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1),opacity .3s ease;opacity:0;">
+              <div style="padding:0 clamp(17px,2vw,24px) 18px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:22px;min-height:0;overflow:hidden;" data-aigrid="1">
+                <dl style="display:grid;gap:13px;">
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Why</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Three Abuja firms have added wellness allowances this quarter, and your Occasions page began ranking for "corporate massage Abuja" six weeks ago. The demand is arriving whether or not you are ready for it.</dd>
+                  </div>
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Means</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Retainers fill weekday mornings, which is exactly the capacity you struggle to sell. One 40-person retainer is worth more than a full Saturday and it recurs monthly.</dd>
+                  </div>
+                  <div style="display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;">
+                    <dt style="font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8A5A2E;padding-top:2px;">Do</dt>
+                    <dd style="font-size:13.5px;line-height:1.62;color:#4A5450;">Publish a corporate landing page with three fixed retainer tiers and a downloadable one-pager, so HR managers can circulate a price internally without waiting for you.</dd>
+                  </div>
+                </dl>
+                <div style="background:#F7F4EE;border:1px solid #E7E0D2;border-radius:10px;padding:15px;">
+                  <span style="display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#6E675C;">Pipeline now</span>
+                  <ul style="display:grid;gap:9px;margin-top:12px;">
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Open enquiries</span><strong style="font-weight:600;">7</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Went cold</span><strong style="font-weight:600;color:#B23A2E;">2</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;"><span style="color:#4A5450;">Avg headcount</span><strong style="font-weight:600;">34</strong></li>
+                    <li style="display:flex;justify-content:space-between;gap:12px;font-size:13px;padding-top:9px;border-top:1px solid #E7E0D2;"><span style="color:#4A5450;">If 3 convert</span><strong style="font-weight:600;color:#2E7D5B;">₦4.2M / yr</strong></li>
+                  </ul>
+                  <button style="width:100%;margin-top:15px;background:#062A2E;border:1px solid #062A2E;border-radius:8px;padding:9px 12px;color:#F7F4EE;font-size:12px;font-weight:500;cursor:pointer;transition:background .25s ease;" style-hover="background:#0B4B50;">Draft the page</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7 -->
+          <article data-aicard="6">
+            <button onClick="{{ toggle6 }}" style="width:100%;background:none;border:0;text-align:left;cursor:pointer;padding:16px clamp(17px,2vw,24px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:15px;align-items:start;">
+              <span style="width:22px;height:22px;border-radius:6px;background:#E4EEF4;color:#2A6F97;display:grid;place-items:center;font-size:10px;font-weight:600;margin-top:1px;">7</span>
+              <span style="min-width:0;">
+                <span style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                  <span style="font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#2A6F97;font-weight:600;">Automatic</span>
+                  
+                </span>
+                <span style="display:block;font-size:15.5px;font-weight:500;letter-spacing:-.008em;margin-top:8px;line-height:1.42;">Three VIP members have birthdays this week. Vouchers are queued and will send unless you stop them.</span>
+              </span>
+              <span style="display:flex;align-items:center;gap:13px;flex-shrink:0;">
+                <span style="text-align:right;">
+                  <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1;color:#2A6F97;">3</span>
+                  <span style="display:block;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#6E675C;margin-top:4px;">Queued</span>
+                </span>
+                <span data-chev="1" style="color:#6E675C;font-size:11px;transition:transform .3s ease;">▾</span>
+              </span>
+            </button>
+            <div data-aibody="6" style="display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1),opacity .3s ease;opacity:0;">
+              <div style="padding:0 clamp(17px,2vw,24px) 18px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:22px;min-height:0;overflow:hidden;" data-aigrid="1">
+                <div>
+                  <p style="font-size:13.5px;line-height:1.62;color:#4A5450;">All three are on The Fortnight or higher and have been members over a year. The voucher is a complimentary steam and express facial — cost to you ₦12,400 each, and 61% of birthday vouchers convert into a paid treatment in the same visit.</p>
+                  <ul style="display:grid;gap:1px;background:#E7E0D2;border:1px solid #E7E0D2;border-radius:9px;overflow:hidden;margin-top:14px;">
+                    <li style="background:#FBF9F4;padding:11px 13px;display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:13px;"><span>Grace Ameh · Thursday</span><span style="color:#6E675C;">The House · 3 yr</span></li>
+                    <li style="background:#FBF9F4;padding:11px 13px;display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:13px;"><span>Daniella Olu-Ibukun · Friday</span><span style="color:#6E675C;">The Fortnight · 2 yr</span></li>
+                    <li style="background:#FBF9F4;padding:11px 13px;display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:13px;"><span>Joanna Irokaba · Sunday</span><span style="color:#6E675C;">The Fortnight · 1 yr</span></li>
+                  </ul>
+                </div>
+                <div style="background:#E4EEF4;border:1px solid #D2E3ED;border-radius:10px;padding:15px;">
+                  <span style="display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#2A6F97;">Runs automatically</span>
+                  <p style="font-size:13px;line-height:1.6;color:#4A5450;margin-top:11px;">Sends 08:00 on each birthday via WhatsApp, with the voucher as a PDF. No action needed.</p>
+                  <div style="display:flex;gap:8px;margin-top:15px;">
+                    <button style="flex:1;background:#FBF9F4;border:1px solid #C4D6E1;border-radius:8px;padding:9px 12px;font-size:12px;font-weight:500;cursor:pointer;transition:border-color .25s ease;" style-hover="border-color:#2A6F97;">Preview message</button>
+                    <button style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:8px;padding:9px 12px;font-size:12px;cursor:pointer;color:#6E675C;transition:border-color .25s ease;" style-hover="border-color:#C4BAA6;">Pause</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- OPERATIONAL: today + charts -->
+      <div data-oprow="1" style="display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;margin-bottom:14px;">
+
+        <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+          <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;padding:16px 19px;border-bottom:1px solid #E7E0D2;">
+            <h2 style="font-size:14px;font-weight:600;letter-spacing:-.005em;">Revenue — last 14 days</h2>
+            <span style="display:flex;gap:14px;font-size:11.5px;color:#6E675C;">
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:2px;background:#0B4B50;"></span>Actual</span>
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:2px;background:#C08B5C;"></span>Forecast</span>
+            </span>
+          </div>
+          <div style="padding:19px;">
+            <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;">
+              <span style="font-family:'Instrument Serif',Georgia,serif;font-size:32px;line-height:1;letter-spacing:-.018em;">₦33.6M</span>
+              <span style="font-size:12.5px;color:#2E7D5B;font-weight:600;">↑ 12.4%</span>
+              <span style="font-size:12.5px;color:#6E675C;">vs previous 14 days</span>
+            </div>
+            <svg viewBox="0 0 700 200" preserveAspectRatio="none" style="width:100%;height:186px;display:block;overflow:visible;" data-om-raster>
+              <defs>
+                <linearGradient id="osRev" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0B4B50" stop-opacity=".17"></stop>
+                  <stop offset="100%" stop-color="#0B4B50" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+              <line x1="0" y1="20" x2="700" y2="20" stroke="#E7E0D2" stroke-width="1"></line>
+              <line x1="0" y1="73" x2="700" y2="73" stroke="#E7E0D2" stroke-width="1"></line>
+              <line x1="0" y1="126" x2="700" y2="126" stroke="#E7E0D2" stroke-width="1"></line>
+              <line x1="0" y1="180" x2="700" y2="180" stroke="#D3CCBE" stroke-width="1"></line>
+              <path d="M0,100 L53.8,86.7 L107.7,95.6 L161.5,73.3 L215.4,82.2 L269.2,64.4 L323.1,42.2 L376.9,91.1 L430.8,77.8 L484.6,82.2 L538.5,60 L592.3,68.9 L646.2,51.1 L700,28.9 L700,180 L0,180 Z" fill="url(#osRev)"></path>
+              <path d="M0,100 L53.8,86.7 L107.7,95.6 L161.5,73.3 L215.4,82.2 L269.2,64.4 L323.1,42.2 L376.9,91.1 L430.8,77.8 L484.6,82.2 L538.5,60 L592.3,68.9 L646.2,51.1 L700,28.9" fill="none" stroke="#0B4B50" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+              <path d="M700,28.9 L753,34 L806,22" fill="none" stroke="#C08B5C" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"></path>
+              <circle cx="700" cy="28.9" r="4" fill="#0B4B50"></circle>
+              <circle cx="323.1" cy="42.2" r="3" fill="#FBF9F4" stroke="#0B4B50" stroke-width="2"></circle>
+            </svg>
+            <div style="display:flex;justify-content:space-between;margin-top:11px;font-size:10.5px;color:#6E675C;">
+              <span>21 Jul</span><span>25 Jul</span><span>29 Jul</span><span>1 Aug</span><span>3 Aug</span>
+            </div>
+          </div>
+        </section>
+
+        <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:16px 19px;border-bottom:1px solid #E7E0D2;">
+            <h2 style="font-size:14px;font-weight:600;letter-spacing:-.005em;">Needs attention</h2>
+            <span style="font-size:11.5px;color:#6E675C;">5 items</span>
+          </div>
+          <ul style="flex:1;">
+            <li style="border-bottom:1px solid #F0EBE0;padding:13px 19px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;">
+              <span style="width:7px;height:7px;border-radius:50%;background:#B23A2E;"></span>
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13.5px;font-weight:500;">2 invoices overdue</span>
+                <span style="display:block;font-size:12px;color:#6E675C;margin-top:2px;">₦96,000 · Corporate, 12 days</span>
+              </span>
+              <a href="#/revenue" style="font-size:11.5px;color:#8A5A2E;white-space:nowrap;">Chase →</a>
+            </li>
+            <li style="border-bottom:1px solid #F0EBE0;padding:13px 19px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;">
+              <span style="width:7px;height:7px;border-radius:50%;background:#B23A2E;"></span>
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13.5px;font-weight:500;">Lavender oil — 3 days left</span>
+                <span style="display:block;font-size:12px;color:#6E675C;margin-top:2px;">17 treatments depend on it</span>
+              </span>
+              <a href="#/inventory" style="font-size:11.5px;color:#8A5A2E;white-space:nowrap;">Reorder →</a>
+            </li>
+            <li style="border-bottom:1px solid #F0EBE0;padding:13px 19px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;">
+              <span style="width:7px;height:7px;border-radius:50%;background:#C77D14;"></span>
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13.5px;font-weight:500;">Friday PM — 11 slots open</span>
+                <span style="display:block;font-size:12px;color:#6E675C;margin-top:2px;">Below 60% for 3 weeks</span>
+              </span>
+              <a href="#/appointments" style="font-size:11.5px;color:#8A5A2E;white-space:nowrap;">Fill →</a>
+            </li>
+            <li style="border-bottom:1px solid #F0EBE0;padding:13px 19px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;">
+              <span style="width:7px;height:7px;border-radius:50%;background:#C77D14;"></span>
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13.5px;font-weight:500;">Suliat at 118% capacity</span>
+                <span style="display:block;font-size:12px;color:#6E675C;margin-top:2px;">Third week running</span>
+              </span>
+              <a href="#/staff" style="font-size:11.5px;color:#8A5A2E;white-space:nowrap;">Roster →</a>
+            </li>
+            <li style="padding:13px 19px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;">
+              <span style="width:7px;height:7px;border-radius:50%;background:#2A6F97;"></span>
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13.5px;font-weight:500;">1 review awaiting reply</span>
+                <span style="display:block;font-size:12px;color:#6E675C;margin-top:2px;">4★ · Google · 2 days</span>
+              </span>
+              <a href="#/reviews" style="font-size:11.5px;color:#8A5A2E;white-space:nowrap;">Reply →</a>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- heatmap + treatments + staff -->
+      <div data-oprow3="1" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;">
+
+        <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+          <div style="padding:16px 19px;border-bottom:1px solid #E7E0D2;">
+            <h2 style="font-size:14px;font-weight:600;letter-spacing:-.005em;">Booking heatmap</h2>
+            <p style="font-size:11.5px;color:#6E675C;margin-top:3px;">This week · both houses</p>
+          </div>
+          <div style="padding:17px 19px 19px;">
+            <div style="display:grid;grid-template-columns:30px repeat(7,minmax(0,1fr));gap:3px;">
+              <span></span>
+              <span style="font-size:9.5px;color:#6E675C;text-align:center;">M</span>
+              <span style="font-size:9.5px;color:#6E675C;text-align:center;">T</span>
+              <span style="font-size:9.5px;color:#6E675C;text-align:center;">W</span>
+              <span style="font-size:9.5px;color:#6E675C;text-align:center;">T</span>
+              <span style="font-size:9.5px;color:#6E675C;text-align:center;">F</span>
+              <span style="font-size:9.5px;color:#6E675C;text-align:center;">S</span>
+              <span style="font-size:9.5px;color:#6E675C;text-align:center;">S</span>
+              <sc-for list="{{ heat }}" as="cell" hint-placeholder-count="56">
+                <span title="{{ cell.title }}" style="background:#0B4B50;border-radius:2px;height:18px;opacity:{{ cell.o }};"></span>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:15px;">
+              <span style="font-size:10.5px;color:#6E675C;">Quiet</span>
+              <span style="display:flex;gap:3px;flex:1;max-width:110px;">
+                <span style="flex:1;height:5px;background:#0B4B50;opacity:.12;border-radius:1px;"></span>
+                <span style="flex:1;height:5px;background:#0B4B50;opacity:.32;border-radius:1px;"></span>
+                <span style="flex:1;height:5px;background:#0B4B50;opacity:.55;border-radius:1px;"></span>
+                <span style="flex:1;height:5px;background:#0B4B50;opacity:.78;border-radius:1px;"></span>
+                <span style="flex:1;height:5px;background:#0B4B50;opacity:1;border-radius:1px;"></span>
+              </span>
+              <span style="font-size:10.5px;color:#6E675C;">Full</span>
+            </div>
+            <p style="font-size:12px;line-height:1.6;color:#4A5450;margin-top:14px;padding-top:13px;border-top:1px solid #E7E0D2;">Friday 13:00–17:00 is your only sustained gap. Everything else is at or near capacity.</p>
+          </div>
+        </section>
+
+        <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+          <div style="padding:16px 19px;border-bottom:1px solid #E7E0D2;">
+            <h2 style="font-size:14px;font-weight:600;letter-spacing:-.005em;">Treatment mix</h2>
+            <p style="font-size:11.5px;color:#6E675C;margin-top:3px;">By revenue, last 30 days</p>
+          </div>
+          <ul style="padding:17px 19px 19px;display:grid;gap:14px;">
+            <sc-for list="{{ mix }}" as="m" hint-placeholder-count="6">
+              <li>
+                <span style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:6px;">
+                  <span style="font-size:13px;">{{ m.name }}</span>
+                  <span style="display:flex;align-items:baseline;gap:8px;"><span style="font-size:12.5px;font-weight:600;">{{ m.value }}</span><span style="font-size:11px;color:{{ m.deltaColor }};">{{ m.delta }}</span></span>
+                </span>
+                <span style="display:block;height:5px;background:#E7E0D2;border-radius:3px;overflow:hidden;"><span style="display:block;height:100%;background:#0B4B50;width:{{ m.pct }};"></span></span>
+              </li>
+            </sc-for>
+          </ul>
+        </section>
+
+        <section style="background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;overflow:hidden;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:16px 19px;border-bottom:1px solid #E7E0D2;">
+            <div>
+              <h2 style="font-size:14px;font-weight:600;letter-spacing:-.005em;">Staff yesterday</h2>
+              <p style="font-size:11.5px;color:#6E675C;margin-top:3px;">Revenue generated</p>
+            </div>
+            <a href="#/staff" style="font-size:11.5px;color:#8A5A2E;white-space:nowrap;">All →</a>
+          </div>
+          <ul>
+            <sc-for list="{{ staffRows }}" as="s" hint-placeholder-count="5">
+              <li style="padding:12px 19px;border-bottom:1px solid #F0EBE0;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:11px;align-items:center;">
+                <span style="width:28px;height:28px;border-radius:50%;background:#E7E0D2;color:#4A5450;display:grid;place-items:center;font-size:11px;font-weight:600;">{{ s.initials }}</span>
+                <span style="min-width:0;">
+                  <span style="display:block;font-size:13.5px;font-weight:500;">{{ s.name }}</span>
+                  <span style="display:block;font-size:11.5px;color:#6E675C;margin-top:1px;">{{ s.role }}</span>
+                </span>
+                <span style="text-align:right;">
+                  <span style="display:block;font-size:13px;font-weight:600;">{{ s.rev }}</span>
+                  <span style="display:block;font-size:11px;color:{{ s.utilColor }};margin-top:2px;">{{ s.util }}</span>
+                </span>
+              </li>
+            </sc-for>
+          </ul>
+        </section>
+      </div>
+
+    </div>
+    </sc-if>
+
+    <!-- ================= MODULES ================= -->
+    <sc-if value="{{ isAppointments }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:1560px;margin:0 auto;animation:osIn .5s cubic-bezier(.2,.7,.2,1) both;">
+        <dc-import name="Appointments" hint-size="100%,900px"></dc-import>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isClients }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:1560px;margin:0 auto;animation:osIn .5s cubic-bezier(.2,.7,.2,1) both;">
+        <dc-import name="Clients" hint-size="100%,900px"></dc-import>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isRevenue }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:1560px;margin:0 auto;animation:osIn .5s cubic-bezier(.2,.7,.2,1) both;">
+        <dc-import name="Revenue" hint-size="100%,900px"></dc-import>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isStaff }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:1560px;margin:0 auto;animation:osIn .5s cubic-bezier(.2,.7,.2,1) both;">
+        <dc-import name="Staff" hint-size="100%,900px"></dc-import>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isInventory }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:1560px;margin:0 auto;animation:osIn .5s cubic-bezier(.2,.7,.2,1) both;">
+        <dc-import name="Inventory" hint-size="100%,900px"></dc-import>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isMarketing }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:1560px;margin:0 auto;animation:osIn .5s cubic-bezier(.2,.7,.2,1) both;">
+        <dc-import name="Marketing" hint-size="100%,900px"></dc-import>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isLite }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:1560px;margin:0 auto;animation:osIn .5s cubic-bezier(.2,.7,.2,1) both;">
+        <dc-import name="ModulesLite" route="{{ route }}" hint-size="100%,700px"></dc-import>
+      </div>
+    </sc-if>
+
+    </main>
+  </div>
+
+  <!-- ============ COMMAND PALETTE ============ -->
+  <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:80;background:rgba(6,42,46,.36);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:12vh 20px 20px;">
+      <div onClick="{{ stop }}" style="width:100%;max-width:620px;background:#FBF9F4;border:1px solid #DDD5C6;border-radius:14px;box-shadow:0 24px 60px -20px rgba(6,42,46,.4);overflow:hidden;animation:osIn .22s cubic-bezier(.2,.7,.2,1) both;">
+        <div style="display:flex;align-items:center;gap:11px;padding:15px 17px;border-bottom:1px solid #E7E0D2;">
+          <span style="color:#78715F;font-size:14px;">⌕</span>
+          <input value="{{ query }}" onChange="{{ setQuery }}" placeholder="Search clients, appointments, invoices, products…" autofocus="{{ true }}" style="flex:1;min-width:0;background:none;border:0;outline:none;font-size:15px;">
+          <button onClick="{{ closeAll }}" style="font-size:10.5px;color:#6E675C;background:#F2EEE6;border:1px solid #DDD5C6;border-radius:5px;padding:2px 7px;cursor:pointer;">esc</button>
+        </div>
+        <div style="max-height:52vh;overflow-y:auto;">
+          <span style="display:block;padding:12px 17px 7px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#78715F;">{{ resultLabel }}</span>
+          <sc-for list="{{ results }}" as="r" hint-placeholder-count="6">
+            <button onClick="{{ closeAll }}" style="width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:10px 17px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;transition:background .15s ease;" style-hover="background:#F2EEE6;">
+              <span style="width:26px;height:26px;border-radius:7px;background:#F2EEE6;border:1px solid #E7E0D2;display:grid;place-items:center;font-size:11px;color:#4A5450;">{{ r.icon }}</span>
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13.5px;">{{ r.title }}</span>
+                <span style="display:block;font-size:11.5px;color:#6E675C;margin-top:1px;">{{ r.sub }}</span>
+              </span>
+              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#78715F;white-space:nowrap;">{{ r.kind }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ AI ASSISTANT DRAWER ============ -->
+  <sc-if value="{{ assistantOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:80;background:rgba(6,42,46,.3);backdrop-filter:blur(2px);display:flex;justify-content:flex-end;">
+      <div onClick="{{ stop }}" style="width:min(440px,100%);background:#FBF9F4;border-left:1px solid #DDD5C6;display:flex;flex-direction:column;box-shadow:-20px 0 50px -20px rgba(6,42,46,.3);animation:osIn .25s cubic-bezier(.2,.7,.2,1) both;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 19px;border-bottom:1px solid #E7E0D2;background:#062A2E;color:#F7F4EE;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:24px;height:24px;border-radius:6px;background:#0D3A3F;color:#C08B5C;display:grid;place-items:center;font-size:11px;">◆</span>
+            <div>
+              <span style="display:block;font-size:13.5px;font-weight:600;">Ask SpaOS</span>
+              <span style="display:block;font-size:11px;color:#8FA9A4;margin-top:1px;">Reads your live data</span>
+            </div>
+          </div>
+          <button onClick="{{ closeAll }}" aria-label="Close" style="width:28px;height:28px;background:none;border:1px solid #1B4247;border-radius:7px;color:#8FA9A4;cursor:pointer;font-size:13px;">×</button>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:19px;">
+          <div style="background:#F2EEE6;border:1px solid #E7E0D2;border-radius:11px;padding:14px;">
+            <p style="font-size:13.5px;line-height:1.65;color:#4A5450;">Ask anything about the business. I can pull revenue, occupancy, client history, stock levels and staff performance, and I will tell you what to do about it.</p>
+          </div>
+          <span style="display:block;margin-top:20px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#78715F;">Try asking</span>
+          <ul style="display:grid;gap:8px;margin-top:11px;">
+            <sc-for list="{{ prompts }}" as="p" hint-placeholder-count="6">
+              <li>
+                <button style="width:100%;text-align:left;background:#FBF9F4;border:1px solid #DDD5C6;border-radius:9px;padding:11px 13px;font-size:13px;line-height:1.5;color:#1F2A28;cursor:pointer;transition:border-color .2s ease,background .2s ease;" style-hover="border-color:#C4BAA6;background:#F7F4EE;">{{ p }}</button>
+              </li>
+            </sc-for>
+          </ul>
+        </div>
+        <div style="padding:15px 19px;border-top:1px solid #E7E0D2;">
+          <div style="display:flex;gap:9px;align-items:center;background:#F2EEE6;border:1px solid #DDD5C6;border-radius:10px;padding:9px 12px;">
+            <input placeholder="Ask about your business…" style="flex:1;min-width:0;background:none;border:0;outline:none;font-size:13.5px;">
+            <button aria-label="Send" style="width:28px;height:28px;flex-shrink:0;background:#062A2E;border:0;border-radius:7px;color:#F7F4EE;font-size:12px;cursor:pointer;">↑</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ QUICK ACTIONS ============ -->
+  <sc-if value="{{ quickOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:80;background:rgba(6,42,46,.3);display:flex;align-items:flex-start;justify-content:flex-end;padding:64px clamp(18px,2.4vw,32px) 20px;">
+      <div onClick="{{ stop }}" style="width:min(300px,100%);background:#FBF9F4;border:1px solid #DDD5C6;border-radius:12px;box-shadow:0 20px 50px -18px rgba(6,42,46,.34);overflow:hidden;padding:7px;animation:osIn .2s cubic-bezier(.2,.7,.2,1) both;">
+        <span style="display:block;padding:9px 11px 6px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#78715F;">Quick actions</span>
+        <sc-for list="{{ quickActions }}" as="q" hint-placeholder-count="6">
+          <button onClick="{{ closeAll }}" style="width:100%;text-align:left;background:none;border:0;border-radius:8px;cursor:pointer;padding:9px 11px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:11px;align-items:center;transition:background .15s ease;" style-hover="background:#F2EEE6;">
+            <span style="width:16px;text-align:center;font-size:12px;color:#4A5450;">{{ q.icon }}</span>
+            <span style="font-size:13.5px;">{{ q.label }}</span>
+            <span style="font-size:10.5px;color:#78715F;">{{ q.key }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ NOTIFICATIONS ============ -->
+  <sc-if value="{{ notifsOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:80;background:rgba(6,42,46,.3);display:flex;align-items:flex-start;justify-content:flex-end;padding:64px clamp(18px,2.4vw,32px) 20px;">
+      <div onClick="{{ stop }}" style="width:min(376px,100%);background:#FBF9F4;border:1px solid #DDD5C6;border-radius:12px;box-shadow:0 20px 50px -18px rgba(6,42,46,.34);overflow:hidden;animation:osIn .2s cubic-bezier(.2,.7,.2,1) both;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid #E7E0D2;">
+          <span style="font-size:13.5px;font-weight:600;">Notifications</span>
+          <button style="font-size:11.5px;color:#8A5A2E;background:none;border:0;cursor:pointer;">Mark all read</button>
+        </div>
+        <ul style="max-height:60vh;overflow-y:auto;">
+          <sc-for list="{{ notifs }}" as="n" hint-placeholder-count="5">
+            <li style="padding:13px 16px;border-bottom:1px solid #F0EBE0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:11px;">
+              <span style="width:7px;height:7px;border-radius:50%;background:{{ n.dot }};margin-top:5px;"></span>
+              <span style="min-width:0;">
+                <span style="display:block;font-size:13px;line-height:1.5;">{{ n.text }}</span>
+                <span style="display:block;font-size:11px;color:#6E675C;margin-top:3px;">{{ n.time }}</span>
+              </span>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000},&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Comfortable&quot;,&quot;Compact&quot;],&quot;default&quot;:&quot;Comfortable&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;,&quot;label&quot;:&quot;Density&quot;},&quot;startCollapsed&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;,&quot;label&quot;:&quot;Start with briefing collapsed&quot;}}">
+const DEDICATED = ['appointments', 'clients', 'revenue', 'staff', 'inventory', 'marketing'];
+const LITE = ['treatments', 'memberships', 'reviews', 'automation', 'reports', 'settings'];
+const ROUTES = ['overview'].concat(DEDICATED, LITE);
+
+// Occupancy 0-1 per cell, 8 blocks × 7 days, read row-major (block, then day).
+const HEAT = [
+  [.55, .62, .58, .66, .70, .88, .40],
+  [.72, .78, .74, .80, .84, .96, .52],
+  [.88, .92, .90, .94, .90, 1.0, .68],
+  [.94, .96, .92, .96, .58, 1.0, .74],
+  [.80, .86, .84, .88, .42, .98, .70],
+  [.86, .90, .88, .92, .48, 1.0, .66],
+  [.92, .94, .96, .98, .86, 1.0, .60],
+  [.74, .80, .78, .84, .90, .92, .44],
+];
+const BLOCKS = ['07:00', '09:00', '11:00', '13:00', '15:00', '17:00', '18:30', '19:30'];
+const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+const SEARCH = [
+  { icon: '◍', title: 'Amaka Nwosu', sub: 'Member · The House · last visit 8 weeks ago', kind: 'Client' },
+  { icon: '◍', title: 'Tunde Bakare', sub: 'Member · The Fortnight · ₦1.24M lifetime', kind: 'Client' },
+  { icon: '▤', title: 'Today 14:00 — HydraFacial', sub: 'Ifeoma Chukwu with Suliat · Wuse 2', kind: 'Booking' },
+  { icon: '₦', title: 'INV-2418', sub: 'Sterling Corporate · ₦96,000 · 12 days overdue', kind: 'Invoice' },
+  { icon: '▣', title: 'Lavender essential oil', sub: '340ml remaining · 3 days of cover', kind: 'Product' },
+  { icon: '✦', title: 'Deep Tissue Massage', sub: '60 min · ₦38,000 · 74% utilisation', kind: 'Treatment' },
+  { icon: '◈', title: 'Suliat', sub: 'Lead Medical Aesthetician · 118% capacity', kind: 'Staff' },
+];
+
+class Component extends DCLogic {
+  state = {
+    route: 'overview', rail: true, searchOpen: false, assistantOpen: false,
+    quickOpen: false, notifsOpen: false, query: '', open: [true, false, false, false, false, false, false],
+  };
+
+  componentDidMount() {
+    if (this.props.startCollapsed) this.setState({ open: [false, false, false, false, false, false, false] });
+    this.syncRoute();
+    this._hash = () => this.syncRoute();
+    this._key = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); this.setState({ searchOpen: true }); }
+      if (e.key === 'Escape') this.setState({ searchOpen: false, assistantOpen: false, quickOpen: false, notifsOpen: false });
+    };
+    window.addEventListener('hashchange', this._hash);
+    window.addEventListener('keydown', this._key);
+    this.afterRender();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this._hash);
+    window.removeEventListener('keydown', this._key);
+  }
+
+  componentDidUpdate() { this.afterRender(); }
+
+  syncRoute() {
+    const h = (location.hash || '').replace(/^#\/?/, '').split('?')[0] || 'overview';
+    const r = ROUTES.indexOf(h) >= 0 ? h : 'overview';
+    if (r !== this.state.route) { this.setState({ route: r, searchOpen: false, quickOpen: false, notifsOpen: false }); window.scrollTo(0, 0); }
+  }
+
+  afterRender() {
+    this.paintNav();
+    this.paintAi();
+    this.responsive();
+  }
+
+  // Active nav is set from the DOM rather than a style hole: interpolated style values resolve a
+  // render late, which would leave the highlight one click behind.
+  paintNav() {
+    const want = '#/' + this.state.route;
+    document.querySelectorAll('[data-navlink]').forEach((a) => {
+      const on = a.getAttribute('href') === want;
+      a.style.background = on ? '#0D3A3F' : 'transparent';
+      a.style.color = on ? '#F7F4EE' : '#C6D6D3';
+      a.style.boxShadow = on ? 'inset 2px 0 0 #C08B5C' : 'none';
+      a.style.fontWeight = on ? '500' : '400';
+    });
+  }
+
+  paintAi() {
+    this.state.open.forEach((isOpen, i) => {
+      const body = document.querySelector('[data-aibody="' + i + '"]');
+      const card = document.querySelector('[data-aicard="' + i + '"]');
+      // grid-template-rows 0fr→1fr needs no measurement, so the panel cannot clip when the
+      // inner grid reflows to one column at ≤1080px.
+      if (body) {
+        body.style.gridTemplateRows = isOpen ? '1fr' : '0fr';
+        body.style.opacity = isOpen ? '1' : '0';
+      }
+      if (card) card.style.background = isOpen ? '#F7F4EE' : 'transparent';
+      const chev = card && card.querySelector('[data-chev]');
+      if (chev) chev.style.transform = isOpen ? 'rotate(180deg)' : 'none';
+    });
+  }
+
+  // Inline-only styling means breakpoints live here. Authored track lists are captured before
+  // being overridden, because clearing an inline value does not restore it.
+  responsive() {
+    if (!this._bound) {
+      this._bound = true;
+      this._apply = () => {
+        const w = window.innerWidth;
+        const set = (sel, narrow, wide) => document.querySelectorAll(sel).forEach((el) => {
+          if (el.__c == null) el.__c = el.style.gridTemplateColumns || '';
+          el.style.gridTemplateColumns = w <= narrow ? wide : el.__c;
+        });
+        set('[data-summary]', 1180, 'repeat(3,minmax(0,1fr))');
+        set('[data-kpis]', 1180, 'repeat(2,minmax(0,1fr))');
+        set('[data-oprow]', 1180, 'minmax(0,1fr)');
+        set('[data-oprow3]', 1180, 'minmax(0,1fr)');
+        set('[data-aigrid]', 1080, 'minmax(0,1fr)');
+        document.querySelectorAll('[data-hide-md]').forEach((el) => { el.style.display = w <= 980 ? 'none' : ''; });
+        if (this.props.density === 'Compact') {
+          document.querySelectorAll('[data-kpis] > div').forEach((el) => { el.style.padding = '11px 13px'; });
+          document.querySelectorAll('[data-ai] button').forEach((el) => { el.style.paddingTop = '11px'; el.style.paddingBottom = '11px'; });
+        }
+      };
+      window.addEventListener('resize', this._apply);
+    }
+    this._apply();
+    this.paintRail();
+  }
+
+  paintRail() {
+    const open = this.state.rail && window.innerWidth > 1080;
+    const aside = document.querySelector('[data-rail]');
+    if (aside && aside.parentElement) aside.parentElement.style.gridTemplateColumns = (open ? '246px' : '68px') + ' minmax(0,1fr)';
+    document.querySelectorAll('[data-railtext]').forEach((el) => { el.style.display = open ? '' : 'none'; });
+    document.querySelectorAll('[data-navlink]').forEach((a) => { a.style.justifyContent = open ? '' : 'center'; });
+  }
+
+  t(i) {
+    return () => {
+      const open = this.state.open.slice();
+      open[i] = !open[i];
+      this.setState({ open });
+    };
+  }
+
+  renderVals() {
+    const { route, searchOpen, assistantOpen, quickOpen, notifsOpen, query, open, rail } = this.state;
+    const q = (query || '').trim().toLowerCase();
+    const results = q
+      ? SEARCH.filter((r) => (r.title + ' ' + r.sub + ' ' + r.kind).toLowerCase().indexOf(q) >= 0)
+      : SEARCH.slice(0, 6);
+
+    const heat = [];
+    HEAT.forEach((row, b) => row.forEach((v, d) => {
+      heat.push({ o: Math.max(0.1, v).toFixed(2), title: `${DAYS[d]} ${BLOCKS[b]} — ${Math.round(v * 100)}% booked` });
+    }));
+
+    return {
+      isOverview: route === 'overview',
+      isAppointments: route === 'appointments', isClients: route === 'clients', isRevenue: route === 'revenue',
+      isStaff: route === 'staff', isInventory: route === 'inventory', isMarketing: route === 'marketing',
+      isLite: LITE.indexOf(route) >= 0, route,
+
+      railIcon: rail ? '‹' : '›',
+      toggleRail: () => this.setState({ rail: !rail }),
+
+      searchOpen, assistantOpen, quickOpen, notifsOpen,
+      openSearch: () => this.setState({ searchOpen: true }),
+      openAssistant: () => this.setState({ assistantOpen: true }),
+      openQuick: () => this.setState({ quickOpen: true }),
+      openNotifs: () => this.setState({ notifsOpen: true }),
+      closeAll: () => this.setState({ searchOpen: false, assistantOpen: false, quickOpen: false, notifsOpen: false }),
+      stop: (e) => e.stopPropagation(),
+
+      query,
+      setQuery: (e) => this.setState({ query: e.target.value }),
+      results,
+      resultLabel: q ? results.length + ' result' + (results.length === 1 ? '' : 's') : 'Recent',
+
+      expandLabel: open.every(Boolean) ? 'Collapse all' : 'Expand all',
+      expandAll: () => {
+        const all = open.every(Boolean);
+        this.setState({ open: open.map(() => !all) });
+      },
+      toggle0: this.t(0), toggle1: this.t(1), toggle2: this.t(2), toggle3: this.t(3),
+      toggle4: this.t(4), toggle5: this.t(5), toggle6: this.t(6),
+
+      heat,
+
+      mix: [
+        { name: 'HydraFacial', value: '₦6.75M', pct: '100%', delta: '↑19%', deltaColor: '#2E7D5B' },
+        { name: 'Deep Tissue Massage', value: '₦4.94M', pct: '73%', delta: '↓12%', deltaColor: '#B23A2E' },
+        { name: 'Signature packages', value: '₦4.20M', pct: '62%', delta: '↑8%', deltaColor: '#2E7D5B' },
+        { name: 'Body Polish & Wrap', value: '₦2.88M', pct: '43%', delta: '↑4%', deltaColor: '#2E7D5B' },
+        { name: 'Hot Stone Massage', value: '₦2.25M', pct: '33%', delta: '↓6%', deltaColor: '#B23A2E' },
+        { name: 'Body Sculpting', value: '₦1.80M', pct: '27%', delta: '↑22%', deltaColor: '#2E7D5B' },
+      ],
+
+      staffRows: [
+        { initials: 'CH', name: 'Charles', role: 'Senior Massage Therapist', rev: '₦486k', util: '106% util', utilColor: '#2E7D5B' },
+        { initials: 'SU', name: 'Suliat', role: 'Lead Medical Aesthetician', rev: '₦612k', util: '118% util', utilColor: '#B23A2E' },
+        { initials: 'AB', name: 'Abigail', role: 'Massage & Body Therapist', rev: '₦398k', util: '92% util', utilColor: '#2E7D5B' },
+        { initials: 'NG', name: 'Ngozi', role: 'Aesthetician · Wuye', rev: '₦274k', util: '78% util', utilColor: '#8A5A2E' },
+        { initials: 'HE', name: 'Helene', role: 'Spa Manager', rev: '₦0', util: 'Front desk', utilColor: '#6E675C' },
+      ],
+
+      prompts: [
+        'Which clients are about to lapse?',
+        'What is Friday actually worth if I fill it?',
+        'Compare Wuse 2 and Wuye margins this month',
+        'Who should I promote to senior therapist?',
+        'What did we lose to no-shows this quarter?',
+        'Draft a December campaign for diaspora clients',
+      ],
+
+      quickActions: [
+        { icon: '▤', label: 'New appointment', key: 'A' },
+        { icon: '◍', label: 'Add client', key: 'C' },
+        { icon: '₦', label: 'Take payment', key: 'P' },
+        { icon: '◇', label: 'Sell gift card', key: 'G' },
+        { icon: '▣', label: 'Log stock use', key: 'S' },
+        { icon: '◐', label: 'Start campaign', key: 'M' },
+      ],
+
+      notifs: [
+        { dot: '#B23A2E', text: 'Lavender oil hits zero Thursday — 17 treatments affected.', time: '18 minutes ago' },
+        { dot: '#B23A2E', text: 'Sterling Corporate invoice is 12 days overdue (₦96,000).', time: '1 hour ago' },
+        { dot: '#C77D14', text: 'Suliat has exceeded her hours for the third week.', time: '3 hours ago' },
+        { dot: '#2E7D5B', text: 'Grace Ameh renewed The House membership — ₦280,000.', time: 'Yesterday, 17:42' },
+        { dot: '#2A6F97', text: 'New 4★ Google review from Chidinma A. awaiting reply.', time: 'Yesterday, 09:10' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>
