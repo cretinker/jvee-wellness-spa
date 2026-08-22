@@ -103,7 +103,7 @@
       <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
         <a href="{{ item.href }}" onMouseEnter="{{ item.onHover }}" style="display:none;font-size:12px;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap;padding:6px 0;border-bottom:1px solid {{ item.rule }};color:{{ item.color }};transition:color .35s ease,border-color .35s ease;" data-nav="1">{{ item.label }}</a>
       </sc-for>
-      <a href="#/book" style="padding:12px 22px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:background .4s ease;" style-hover="background:#0B4B50;color:#F7F4EE;">Book</a>
+      <a href="#/book" style="padding:12px 22px;background:{{ navBookBg }};border:1px solid {{ navBookBorder }};color:{{ navBookInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:all .35s ease;" style-hover="background:#C08B5C;color:#1F2A28;border-color:#C08B5C;">Book</a>
       <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:none;background:none;border:1px solid {{ navBorder2 }};width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;color:{{ navInk }};" data-burger="1">
         <span style="display:block;width:16px;height:7px;border-top:1px solid currentColor;border-bottom:1px solid currentColor;"></span>
       </button>
@@ -4109,7 +4109,8 @@ class Component extends DCLogic {
     const showPrices = this.props.showPrices !== false;
     const featured = this.props.featuredTier || 'Gold';
     const P = (v) => (showPrices ? v : 'On request');
-    const onDark = !scrolled && (route === 'home' || route === 'treatments' || route === 'visit' || route === 'detail' || route === 'membership' || route === 'occasions' || route === 'matcher' || route === 'massage' || route === 'facials' || route === 'rituals' || route === 'aesthetics' || route === 'etiquette' || route === 'aftercare' || route === 'book');
+    const darkRoutes = ['treatments', 'visit', 'detail', 'membership', 'occasions', 'matcher', 'massage', 'facials', 'rituals', 'aesthetics', 'etiquette', 'aftercare', 'book'];
+    const onDark = !scrolled && darkRoutes.includes(route);
 
     const nav = [
       ['Home', '#/'],
@@ -5398,13 +5399,16 @@ class Component extends DCLogic {
       ritualTable,
       aestheticTable,
 
-      navBg: onDark ? 'rgba(7,47,51,.6)' : 'rgba(247,244,238,.86)',
-      navBorder: onDark ? 'rgba(247,244,238,.12)' : 'rgba(31,42,40,.08)',
-      navBorder2: onDark ? 'rgba(247,244,238,.3)' : 'rgba(31,42,40,.2)',
-      navPad: scrolled ? '14px' : '22px',
-      navBlur: 'blur(16px)', navH: scrolled ? '64px' : '78px',
+      navBg: onDark ? 'rgba(7,47,51,.82)' : scrolled ? 'rgba(247,244,238,.96)' : 'rgba(247,244,238,.9)',
+      navBorder: onDark ? 'rgba(247,244,238,.14)' : 'rgba(220,211,197,.85)',
+      navBorder2: onDark ? 'rgba(247,244,238,.3)' : 'rgba(138,90,46,.3)',
+      navPad: scrolled ? '14px' : '20px',
+      navBlur: 'blur(18px)', navH: scrolled ? '66px' : '80px',
       navInk: onDark ? '#F7F4EE' : '#1F2A28',
       navMuted: onDark ? '#C08B5C' : '#8A5A2E',
+      navBookBg: onDark ? '#C08B5C' : '#072F33',
+      navBookInk: onDark ? '#1F2A28' : '#F7F4EE',
+      navBookBorder: onDark ? '#C08B5C' : '#072F33',
       navItems,
       menuItems,
       toggleMenu: () => this.setState({ menuOpen: !menuOpen }),
