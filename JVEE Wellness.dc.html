@@ -1614,51 +1614,334 @@
 <!-- ================= GROUP & BRIDAL OCCASIONS ================= -->
 <sc-if value="{{ isOccasions }}" hint-placeholder-val="{{ false }}">
 <main style="animation:{{ pageAnim }};">
+  <!-- Hero Section -->
   <section style="position:relative;min-height:clamp(420px,54vh,600px);display:grid;align-items:end;background:#072F33;color:#F7F4EE;overflow:hidden;padding:calc(78px + clamp(44px,6vw,80px)) clamp(20px,4vw,56px) clamp(44px,5vw,72px);border-bottom:1px solid rgba(192,139,92,.28);">
-    <span style="position:absolute;inset:0;overflow:hidden;"><img data-parallax="0.32" src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&amp;fit=crop&amp;w=2200&amp;q=80" alt="Occasions" style="width:100%;height:125%;min-height:125%;object-fit:cover;filter:saturate(.7) contrast(1.05) brightness(.55);"></span>
-    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.72) 0%,rgba(7,47,51,.4) 44%,rgba(7,47,51,.95) 100%);"></span>
+    <span style="position:absolute;inset:0;overflow:hidden;"><img data-parallax="0.32" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&amp;fit=crop&amp;w=2200&amp;q=80" alt="Occasions Sanctuary" style="width:100%;height:125%;min-height:125%;object-fit:cover;filter:saturate(.7) contrast(1.05) brightness(.55);"></span>
+    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.72) 0%,rgba(7,47,51,.44) 44%,rgba(7,47,51,.96) 100%);"></span>
+    
     <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;">
-      <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Private Sanctuary Buy-Outs</span>
-      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,7.5vw,104px);line-height:.96;letter-spacing:-.03em;margin:18px 0 20px;max-width:18ch;">Bridal parties, birthdays, and the office that needs it most.</h1>
-      <p style="font-size:16px;line-height:1.72;color:rgba(247,244,238,.75);max-width:50ch;margin:0;">Exclusive sanctuary suite access with parallel therapist rotations, private tea lounges, and custom catering.</p>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="width:28px;height:1px;background:#C08B5C;"></span>
+        <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Private Sanctuary Buy-Outs &amp; Group Occasions</span>
+      </div>
+      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,7.5vw,104px);line-height:.96;letter-spacing:-.03em;margin:0 0 20px;max-width:18ch;">
+        Private Sanctuary Hours for Celebrations &amp; Teams.
+      </h1>
+      <p style="font-size:16.5px;line-height:1.75;color:rgba(247,244,238,.85);max-width:54ch;margin:0 0 24px;">
+        Hold an entire wing or private suite at Wuse 2 or Wuye. Parallel therapist rotations, bespoke botanical tea service, and private champagne lounge access for bridal parties, milestones, and corporate retreats.
+      </p>
+      
+      <div style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:18px;background:rgba(247,244,238,.07);border:1px solid rgba(247,244,238,.16);padding:10px 18px;border-radius:40px;font-size:12px;color:rgba(247,244,238,.85);letter-spacing:.06em;">
+        <span>✦ 2 to 20 Guests Capacity</span>
+        <span style="opacity:.4;">·</span>
+        <span>✦ Synchronized Parallel Therapists</span>
+        <span style="opacity:.4;">·</span>
+        <span>✦ Private Suite &amp; Lounge Buyouts</span>
+      </div>
     </div>
   </section>
 
+  <!-- 4 Curated Occasions Grid -->
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
-    <div style="display:grid;gap:clamp(36px,5vw,64px);">
-      <sc-for list="{{ occasions }}" as="o" hint-placeholder-count="2">
-        <div class="jv-bezel" style="background:{{ o.bg }};">
-          <div class="jv-bezel-inner" style="background:{{ o.bg }};padding:clamp(30px,4vw,56px);">
-            <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start;margin-bottom:28px;">
-              <div>
-                <span style="font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Occasion {{ o.n }} · {{ o.meta }}</span>
-                <h2 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(30px,4vw,48px);line-height:1.05;color:#1F2A28;margin:12px 0 10px;">{{ o.name }}</h2>
-                <p style="font-size:15.5px;line-height:1.7;color:#6E675C;max-width:52ch;margin:0;">{{ o.desc }}</p>
+    
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(32px,4vw,48px);">
+      <div>
+        <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Curated Occasions</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">Private Buyout Collections</h2>
+      </div>
+      <button onClick="{{ scrollToGroupApply }}" style="background:none;border:none;cursor:pointer;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid #C08B5C;padding:0 0 2px;font-family:inherit;">Request Custom Group Buyout ↓</button>
+    </div>
+
+    <!-- 4 Occasion Cards in 2x2 Grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(20px,2.4vw,34px);margin-bottom:clamp(70px,9vw,120px);" data-stack="1">
+      <sc-for list="{{ occasionCards }}" as="oc" hint-placeholder-count="4">
+        <div class="jv-bezel" style="background:{{ oc.bg }};border-color:{{ oc.border }};">
+          <div class="jv-bezel-inner" style="background:{{ oc.bg }};color:{{ oc.ink }};padding:clamp(28px,3.2vw,44px);display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ oc.border }};">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <span style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:{{ oc.gold }};font-weight:600;">{{ oc.num }} · {{ oc.capacity }}</span>
+                <span style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:{{ oc.badgeInk }};background:{{ oc.badgeBg }};padding:3px 8px;border-radius:12px;font-weight:600;border:1px solid {{ oc.badgeBorder }};">{{ oc.rateBadge }}</span>
               </div>
-              <a href="{{ o.enquire }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:16px 28px;background:#072F33;color:#F7F4EE;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
-                <span>{{ o.cta }}</span>
-                <span class="btn-icon-bubble">→</span>
-              </a>
+
+              <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3vw,38px);line-height:1.08;margin:0 0 10px;color:{{ oc.ink }};">{{ oc.title }}</h3>
+              <p style="font-size:14px;line-height:1.65;color:{{ oc.muted }};margin:0 0 20px;padding-bottom:16px;border-bottom:1px solid {{ oc.border }};">{{ oc.desc }}</p>
+
+              <!-- Inclusions -->
+              <div style="margin-bottom:24px;">
+                <span style="font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:{{ oc.gold }};font-weight:600;display:block;margin-bottom:10px;">Curated Sequence Details:</span>
+                <div style="display:grid;gap:10px;">
+                  <sc-for list="{{ oc.inclusions }}" as="inc" hint-placeholder-count="2">
+                    <div style="background:{{ oc.itemBg }};border:1px solid {{ oc.border }};padding:14px 16px;border-radius:4px;">
+                      <span style="display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:{{ oc.gold }};font-weight:600;margin-bottom:4px;">{{ inc.tag }}</span>
+                      <strong style="display:block;font-size:14px;color:{{ oc.ink }};margin-bottom:4px;">{{ inc.title }}</strong>
+                      <span style="display:block;font-size:12.5px;line-height:1.55;color:{{ oc.muted }};">{{ inc.desc }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
             </div>
 
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;padding-top:24px;border-top:1px solid #DCD3C5;">
-              <sc-for list="{{ o.items }}" as="it" hint-placeholder-count="2">
-                <div style="background:rgba(255,255,255,.6);padding:22px 24px;border:1px solid #DCD3C5;border-radius:6px;">
-                  <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">{{ it.tag }}</span>
-                  <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.15;color:#1F2A28;margin:10px 0 6px;">{{ it.title }}</h4>
-                  <p style="font-size:13.5px;line-height:1.6;color:#6E675C;margin:0;">{{ it.desc }}</p>
-                </div>
-              </sc-for>
+            <div style="padding-top:18px;border-top:1px solid {{ oc.border }};display:flex;justify-content:space-between;align-items:center;">
+              <button onClick="{{ oc.selectToEnquire }}" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;background:{{ oc.btnBg }};border:1px solid {{ oc.btnBorder }};color:{{ oc.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;cursor:pointer;transition:all .3s ease;">
+                <span>Plan {{ oc.shortTitle }}</span>
+                <span class="btn-icon-bubble">→</span>
+              </button>
+              <span style="font-size:12px;color:{{ oc.muted }};">{{ oc.pricingNote }}</span>
             </div>
           </div>
         </div>
       </sc-for>
     </div>
+
+    <!-- Interactive Group Cost Estimator -->
+    <div style="background:#072F33;color:#F7F4EE;border:1px solid rgba(192,139,92,.4);border-radius:12px;padding:clamp(32px,4.5vw,64px);margin-bottom:clamp(70px,9vw,120px);">
+      <div style="max-width:48ch;margin-bottom:28px;">
+        <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Estimate Your Buy-Out</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#F7F4EE;margin:10px 0 10px;">Interactive Group Cost Calculator</h2>
+        <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);">Configure your party size, occasion format, and duration to see estimated investment and staffing allocations.</p>
+      </div>
+
+      <!-- Controls: Guest Count + Occasion Type + Duration -->
+      <div style="display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:20px;margin-bottom:34px;" data-stack="1">
+        <!-- Guest Counter -->
+        <div style="background:rgba(247,244,238,.04);border:1px solid rgba(247,244,238,.14);padding:18px 20px;border-radius:6px;">
+          <span style="display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C08B5C;margin-bottom:10px;font-weight:600;">1. Number of Guests:</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+            <button onClick="{{ decGuestCount }}" style="width:38px;height:38px;border-radius:50%;background:rgba(247,244,238,.1);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">−</button>
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:28px;color:#F7F4EE;font-weight:600;">{{ occasionGuestCount }} Guests</span>
+            <button onClick="{{ incGuestCount }}" style="width:38px;height:38px;border-radius:50%;background:rgba(247,244,238,.1);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">+</button>
+          </div>
+        </div>
+
+        <!-- Occasion Type Selector -->
+        <div style="background:rgba(247,244,238,.04);border:1px solid rgba(247,244,238,.14);padding:18px 20px;border-radius:6px;">
+          <span style="display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C08B5C;margin-bottom:10px;font-weight:600;">2. Occasion Collection:</span>
+          <select onChange="{{ onOccasionTypeChange }}" style="width:100%;padding:10px 14px;background:#072F33;border:1px solid rgba(247,244,238,.2);font-size:13.5px;color:#F7F4EE;border-radius:4px;outline:none;">
+            <option value="bridal">Bridal Party / Groom Suite</option>
+            <option value="corporate">Executive Corporate Retreat</option>
+            <option value="birthday">Birthday &amp; Milestone Celebration</option>
+            <option value="couples">Couples VIP Double Suite</option>
+          </select>
+        </div>
+
+        <!-- Duration Selector -->
+        <div style="background:rgba(247,244,238,.04);border:1px solid rgba(247,244,238,.14);padding:18px 20px;border-radius:6px;">
+          <span style="display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C08B5C;margin-bottom:10px;font-weight:600;">3. Sanctuary Duration:</span>
+          <select onChange="{{ onOccasionDurationChange }}" style="width:100%;padding:10px 14px;background:#072F33;border:1px solid rgba(247,244,238,.2);font-size:13.5px;color:#F7F4EE;border-radius:4px;outline:none;">
+            <option value="express">2-Hour Express Rotation</option>
+            <option value="half-day">3.5-Hour Half-Day Immersion</option>
+            <option value="full-day">6-Hour Full-Day Private Buyout</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Estimate Results Strip -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:26px 28px;background:rgba(247,244,238,.04);border:1px solid rgba(247,244,238,.12);border-radius:8px;">
+        <div>
+          <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:6px;">Estimated Group Investment</span>
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:32px;color:#C08B5C;font-weight:600;">{{ estGroupTotal }}</span>
+          <span style="display:block;font-size:11.5px;color:rgba(247,244,238,.6);margin-top:2px;">{{ estPerGuest }} / guest estimate</span>
+        </div>
+        <div>
+          <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F7F4EE;display:block;margin-bottom:6px;">Staffing &amp; Therapists Assigned</span>
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;color:#F7F4EE;">{{ estTherapistCount }}</span>
+          <span style="display:block;font-size:11.5px;color:rgba(247,244,238,.6);margin-top:2px;">Parallel rotation structure</span>
+        </div>
+        <div>
+          <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F7F4EE;display:block;margin-bottom:6px;">Private Lounge &amp; Amenities</span>
+          <span style="font-size:14px;color:#F7F4EE;font-weight:600;display:block;margin-top:4px;">{{ estAmenities }}</span>
+          <span style="display:block;font-size:11.5px;color:rgba(247,244,238,.6);margin-top:4px;">No public walk-in cross traffic</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Private Buy-out Guarantees (4 Pillars) -->
+    <div style="margin-bottom:clamp(70px,9vw,120px);">
+      <div style="max-width:48ch;margin-bottom:clamp(32px,4vw,48px);">
+        <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Buy-Out Standards</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">The Private Sanctuary Standard</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(16px,2vw,28px);">
+        <sc-for list="{{ occasionStandards }}" as="os" hint-placeholder-count="4">
+          <div class="jv-bezel">
+            <div class="jv-bezel-inner" style="padding:26px 28px;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <span style="font-size:11px;letter-spacing:.2em;color:#8A5A2E;font-weight:600;">Standard {{ os.n }}</span>
+                <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.15;color:#1F2A28;margin:10px 0 8px;">{{ os.title }}</h4>
+                <p style="font-size:13.5px;line-height:1.6;color:#6E675C;margin:0 0 14px;">{{ os.desc }}</p>
+              </div>
+              <span style="display:block;padding-top:12px;border-top:1px solid #DCD3C5;font-size:12px;color:#8A5A2E;font-weight:600;">Rule: {{ os.rule }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Direct In-House Group Reservation & Buyout Form -->
+    <div id="group-apply" style="margin-bottom:clamp(70px,9vw,120px);">
+      <sc-if value="{{ occasionConfirmed }}" hint-placeholder-val="{{ false }}">
+        <!-- Confirmed Group Pass -->
+        <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:#C08B5C;max-width:860px;margin:0 auto;">
+          <div class="jv-bezel-inner" style="background:#072F33;padding:clamp(36px,5vw,68px);color:#F7F4EE;border-color:rgba(247,244,238,.14);">
+            <div style="text-align:center;max-width:48ch;margin:0 auto 32px;">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:rgba(192,139,92,.2);border:1px solid #C08B5C;color:#C08B5C;font-size:22px;margin-bottom:14px;">✓</span>
+              <span style="display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#C08B5C;margin-bottom:6px;">Group Sanctuary Request Held</span>
+              <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#F7F4EE;margin:0 0 10px;">We are holding your wing, {{ occasionName }}.</h2>
+              <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);">A tailored itinerary proposal and invoice draft have been dispatched to <strong>{{ occasionPhone }}</strong> and <strong>{{ occasionEmail }}</strong>.</p>
+            </div>
+
+            <!-- Digital Group Itinerary Card -->
+            <div style="background:rgba(247,244,238,.04);border:1px solid rgba(247,244,238,.16);padding:22px 26px;border-radius:8px;margin-bottom:30px;">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;padding-bottom:18px;border-bottom:1px solid rgba(247,244,238,.1);">
+                <div>
+                  <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Group Ref ID</span>
+                  <span style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;color:#F7F4EE;">{{ occasionRef }}</span>
+                </div>
+                <div>
+                  <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Occasion &amp; Size</span>
+                  <span style="font-size:14px;color:#F7F4EE;font-weight:600;">{{ curOccasionTitle }} · {{ occasionGuestCount }} Guests</span>
+                </div>
+                <div>
+                  <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Reserved Location</span>
+                  <span style="font-size:14px;color:#F7F4EE;">{{ occasionHouseLabel }}</span>
+                </div>
+                <div>
+                  <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C08B5C;display:block;margin-bottom:4px;">Target Date</span>
+                  <span style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;color:#C08B5C;font-weight:600;">{{ occasionDate }}</span>
+                </div>
+              </div>
+
+              <div style="padding-top:16px;font-size:13.5px;color:rgba(247,244,238,.85);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;">
+                <div>
+                  <span style="color:#C08B5C;font-weight:600;">Estimated Package:</span> {{ estGroupTotal }} ({{ estPerGuest }}/guest)
+                </div>
+                <div>
+                  <span style="color:#C08B5C;font-weight:600;">Assigned Staff:</span> {{ estTherapistCount }}
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;">
+              <a href="{{ occasionWhatsAppLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:16px 30px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+                <span>Send Group Plan to WhatsApp Concierge</span>
+                <span class="btn-icon-bubble">→</span>
+              </a>
+              <button onClick="{{ resetOccasionForm }}" style="padding:16px 24px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">
+                Plan Another Group Event
+              </button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ occasionPending }}" hint-placeholder-val="{{ true }}">
+        <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:rgba(192,139,92,.5);max-width:920px;margin:0 auto;">
+          <div class="jv-bezel-inner" style="background:#072F33;padding:clamp(32px,4.5vw,60px);color:#F7F4EE;border-color:rgba(247,244,238,.12);">
+            
+            <div style="margin-bottom:28px;">
+              <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;">Direct Group Intake</span>
+              <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.04;margin:8px 0 10px;color:#F7F4EE;">Request a Private Sanctuary Buyout</h2>
+              <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);margin:0;">Submit your event details. Our Private Events Concierge will formulate your room allocations and catering itinerary within 2 hours.</p>
+            </div>
+
+            <div style="display:grid;gap:22px;">
+              <!-- 1. Occasion Format & House Row -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;" data-stack="1">
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C08B5C;font-weight:600;margin-bottom:8px;">1. Occasion Format:</label>
+                  <select onChange="{{ onOccasionTypeChange }}" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                    <option value="bridal" style="background:#072F33;color:#F7F4EE;">Bridal Shower &amp; Groom Party</option>
+                    <option value="corporate" style="background:#072F33;color:#F7F4EE;">Executive Leadership &amp; Team Retreat</option>
+                    <option value="birthday" style="background:#072F33;color:#F7F4EE;">Milestone Birthday &amp; Celebration</option>
+                    <option value="couples" style="background:#072F33;color:#F7F4EE;">Couples VIP Double Suite Immersion</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C08B5C;font-weight:600;margin-bottom:8px;">2. Sanctuary House Location:</label>
+                  <select onChange="{{ onOccasionHouseChange }}" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                    <option value="wuse2" style="background:#072F33;color:#F7F4EE;">Wuse 2 Main Flagship House (Up to 20 Guests)</option>
+                    <option value="wuye" style="background:#072F33;color:#F7F4EE;">Wuye Secluded Retreat (Up to 12 Guests)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- 2. Target Date & Guest Count Row -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;" data-stack="1">
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C08B5C;font-weight:600;margin-bottom:8px;">3. Target Event Date:</label>
+                  <input type="date" value="{{ occasionDate }}" onChange="{{ onOccasionDateChange }}" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C08B5C;font-weight:600;margin-bottom:8px;">4. Number of Guests ({{ occasionGuestCount }} selected):</label>
+                  <input type="number" min="2" max="25" value="{{ occasionGuestCount }}" onChange="{{ onOccasionGuestChange }}" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+              </div>
+
+              <!-- 3. Organizer Contact (Name, Phone, Email) -->
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Organizer Name *</label>
+                  <input type="text" value="{{ occasionName }}" onChange="{{ onOccasionNameChange }}" placeholder="e.g. Bukola Adebayo" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Phone / WhatsApp *</label>
+                  <input type="tel" value="{{ occasionPhone }}" onChange="{{ onOccasionPhoneChange }}" placeholder="+234 803 123 4567" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Email Address *</label>
+                  <input type="email" value="{{ occasionEmail }}" onChange="{{ onOccasionEmailChange }}" placeholder="bukola@company.com" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+              </div>
+
+              <!-- 4. Notes -->
+              <div>
+                <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Custom Dietary, Champagne, or Sequence Notes (Optional)</label>
+                <textarea value="{{ occasionNotes }}" onChange="{{ onOccasionNotesChange }}" rows="3" placeholder="Tell us if you require corporate invoicing, custom dietary catering, specific music, or custom massage/facial balance..." style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;resize:vertical;"></textarea>
+              </div>
+
+              <!-- Submit Bar -->
+              <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:10px;padding-top:20px;border-top:1px solid rgba(247,244,238,.12);">
+                <button onClick="{{ submitOccasionEnquiry }}" class="btn-touch" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 36px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;border:none;cursor:pointer;transition:background .3s ease;" style-hover="background:#F7F4EE;color:#072F33;">
+                  <span>Submit Group Buyout Request</span>
+                  <span class="btn-icon-bubble">→</span>
+                </button>
+                <a href="{{ whatsapp }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:17px 24px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;">
+                  <span>Speak with Events Director</span>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- Group FAQs -->
+    <div style="max-width:960px;margin:0 auto;">
+      <div style="text-align:center;max-width:48ch;margin:0 auto clamp(36px,5vw,60px);">
+        <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#8A5A2E;">Event Logistics</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(32px,4.8vw,60px);line-height:1.05;letter-spacing:-.025em;margin-top:14px;color:#1F2A28;">Frequently Asked Group Questions</h2>
+      </div>
+
+      <div style="display:grid;gap:14px;">
+        <sc-for list="{{ occasionFaqsList }}" as="ofq" hint-placeholder-count="4">
+          <div class="jv-bezel">
+            <div class="jv-bezel-inner" style="padding:22px 26px;">
+              <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#1F2A28;margin:0 0 8px;">{{ ofq.q }}</h4>
+              <p style="font-size:14px;line-height:1.68;color:#6E675C;margin:0;">{{ ofq.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
   </section>
 </main>
-</sc-if>
-
-<!-- ================= ABOUT JVEE ================= -->
+</sc-if><!-- ================= ABOUT JVEE ================= -->
 <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
 <main style="animation:{{ pageAnim }};">
   <section style="position:relative;min-height:clamp(420px,54vh,600px);display:grid;align-items:end;background:#072F33;color:#F7F4EE;overflow:hidden;padding:calc(78px + clamp(44px,6vw,80px)) clamp(20px,4vw,56px) clamp(44px,5vw,72px);border-bottom:1px solid rgba(192,139,92,.28);">
@@ -3153,6 +3436,17 @@ class Component extends DCLogic {
     memberApplyPhone: '',
     memberApplyEmail: '',
     memberOpenFaq: -1,
+    occasionGuestCount: 6,
+    occasionType: 'bridal',
+    occasionDuration: 'half-day',
+    occasionHouse: 'wuse2',
+    occasionDate: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
+    occasionName: '',
+    occasionPhone: '',
+    occasionEmail: '',
+    occasionNotes: '',
+    occasionConfirmed: false,
+    occasionRef: 'JV-GRP-' + Math.floor(100000 + Math.random() * 900000),
     builderMassage: 1, builderFacial: 1, builderHydro: 0,
     bookStep: 0, bookCat: 'massage', bookService: 'deep-tissue', bookSpecialist: 'any', bookHouse: 'wuse2',
     bookDate: new Date(Date.now() + 86400000).toISOString().split('T')[0],
@@ -4207,30 +4501,135 @@ class Component extends DCLogic {
     ];
 
 
-    const occasions = [
+    // Upgraded Curated Occasion Collections
+    const occasionCards = [
+
+
       {
-        n: '01', name: 'Bridal & Groom Parties',
-        desc: 'Send the bride into the weekend with calm shoulders, clean skin and a bridal party that has actually stopped stressing.',
-        meta: 'From 4 to 12 guests · Private suite booking', bg: '#F7F4EE', itemBg: '#F7F4EE',
-        cta: 'Enquire for Bridal Party',
-        enquire: wa('Hello JVEE — I would like to enquire about booking a bridal party.'),
-        items: [
-          { tag: 'Bride', title: 'The Bridal Glow & Release', desc: 'HydraFacial, full-body exfoliation, gentle aromatherapy massage and teeth whitening.' },
-          { tag: 'Party', title: 'The Bridesmaid Rotation', desc: '60-minute massage or facial rotations with champagne and light bites in the private lounge.' },
+        num: '01', key: 'bridal',
+        title: 'The Bridal Sanctuary & Groom Suite',
+        shortTitle: 'Bridal Party',
+        capacity: '4 to 12 Guests',
+        rateBadge: 'From ₦45,000 / guest',
+        pricingNote: 'Custom packages available',
+        desc: 'Send the bride or groom into the wedding weekend with supple hydrated skin, decompressed trapezius muscles, and zero planning stress.',
+        bg: '#F7F4EE', ink: '#1F2A28', muted: '#6E675C', border: '#DCD3C5', gold: '#8A5A2E',
+        badgeBg: 'rgba(138,90,46,.08)', badgeInk: '#8A5A2E', badgeBorder: 'rgba(138,90,46,.2)',
+        btnBg: '#072F33', btnInk: '#F7F4EE', btnBorder: '#072F33', itemBg: '#EDE8DF',
+        selectToEnquire: () => {
+          this.setState({ occasionType: 'bridal' });
+          const el = document.getElementById('group-apply');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        },
+        inclusions: [
+          { tag: 'Bride / Groom VIP Care', title: 'The Radiance Glow & Tension Release', desc: 'HydraFacial MD vortex infusion, full-body botanical polish, gentle aromatherapy flow & cold LED teeth whitening.' },
+          { tag: 'Bridal Party Rotation', title: 'Parallel Relaxing Bodywork & Steam', desc: 'Synchronized 60-min massages or brightening facials with chilled champagne and artisanal canapés in the private lounge.' },
         ],
       },
       {
-        n: '02', name: 'Executive & Corporate Retreats',
-        desc: 'Reward the team that closed the quarter or reset the partners after budget season. Discrete, unhurried, restorative.',
-        meta: 'From 6 to 20 guests · Half-day buy-outs available', bg: '#EDE8DF', itemBg: '#EDE8DF',
-        cta: 'Enquire for Corporate Day',
-        enquire: wa('Hello JVEE — I would like to enquire about a corporate wellness buy-out.'),
-        items: [
-          { tag: 'Posture', title: 'Desk Fatigue Down-Regulation', desc: 'Targeted neck, shoulder, and lumbar myofascial release for keyboard strain.' },
-          { tag: 'Thermal', title: 'Private Steam & Contrast Flow', desc: 'Rotational access to steam and relaxation suites with cold herbal infusions.' },
+        num: '02', key: 'corporate',
+        title: 'Executive & Corporate Leadership Retreat',
+        shortTitle: 'Corporate Retreat',
+        capacity: '6 to 20 Guests',
+        rateBadge: 'From ₦40,000 / guest',
+        pricingNote: 'Corporate invoice provided',
+        desc: 'Reward the leadership team that delivered the quarter or reset executive partners. Unhurried, discrete, and scientifically restorative.',
+        bg: '#072F33', ink: '#F7F4EE', muted: 'rgba(247,244,238,.75)', border: 'rgba(192,139,92,.4)', gold: '#C08B5C',
+        badgeBg: 'rgba(192,139,92,.2)', badgeInk: '#C08B5C', badgeBorder: 'rgba(192,139,92,.4)',
+        btnBg: '#C08B5C', btnInk: '#1F2A28', btnBorder: '#C08B5C', itemBg: 'rgba(247,244,238,.06)',
+        selectToEnquire: () => {
+          this.setState({ occasionType: 'corporate' });
+          const el = document.getElementById('group-apply');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        },
+        inclusions: [
+          { tag: 'Ergonomic Decompression', title: 'Postural Reset & Trigger Point Release', desc: 'Targeted deep tissue work addressing neck strain, trapezius knots, and lower back aches caused by travel and screen hours.' },
+          { tag: 'Adrenal Thermal Reset', title: 'Private Eucalyptus Steam & Contrast Flow', desc: 'Rotational access to hydrotherapy steam suites paired with cold herbal infusions and private strategy breakout areas.' },
+        ],
+      },
+      {
+        num: '03', key: 'birthday',
+        title: 'Milestone Birthday & Private Celebrations',
+        shortTitle: 'Birthday Buyout',
+        capacity: '2 to 10 Guests',
+        rateBadge: 'From ₦50,000 / guest',
+        pricingNote: 'Personalized gifting included',
+        desc: 'Celebrate milestone anniversaries and birthdays with full private suite holds, candlelit acoustic calmness, and customized ritual sequences.',
+        bg: '#EDE8DF', ink: '#1F2A28', muted: '#6E675C', border: '#DCD3C5', gold: '#8A5A2E',
+        badgeBg: 'rgba(138,90,46,.12)', badgeInk: '#8A5A2E', badgeBorder: 'rgba(138,90,46,.25)',
+        btnBg: '#072F33', btnInk: '#F7F4EE', btnBorder: '#072F33', itemBg: '#F7F4EE',
+        selectToEnquire: () => {
+          this.setState({ occasionType: 'birthday' });
+          const el = document.getElementById('group-apply');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        },
+        inclusions: [
+          { tag: 'Celebration Ritual', title: 'Authentic Turkish Hammam & Hot Basalt', desc: 'Full-body eucalyptus kessa scrub, warm rhassoul clay wrap, followed by deep heated volcanic stone bodywork.' },
+          { tag: 'Lounge Hospitality', title: 'Custom Fresh Fruit & Botanical Tea Bar', desc: 'Dedicated private lounge hold with handcrafted mocktails, seasonal fruit platters, and custom music playlist curation.' },
+        ],
+      },
+      {
+        num: '04', key: 'couples',
+        title: 'Couples VIP Double Suite Immersion',
+        shortTitle: 'Couples Sanctuary',
+        capacity: '2 Guests (Double Suite)',
+        rateBadge: '₦95,000 – ₦160,000 Total',
+        pricingNote: 'Dedicated private suite',
+        desc: 'Side-by-side synchronized bodywork in our acoustic VIP double suite with dedicated hydro-steam rainfall shower and private tea lounge.',
+        bg: '#F7F4EE', ink: '#1F2A28', muted: '#6E675C', border: '#DCD3C5', gold: '#8A5A2E',
+        badgeBg: 'rgba(138,90,46,.08)', badgeInk: '#8A5A2E', badgeBorder: 'rgba(138,90,46,.2)',
+        btnBg: '#072F33', btnInk: '#F7F4EE', btnBorder: '#072F33', itemBg: '#EDE8DF',
+        selectToEnquire: () => {
+          this.setState({ occasionType: 'couples' });
+          const el = document.getElementById('group-apply');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        },
+        inclusions: [
+          { tag: 'Synchronized Care', title: 'Side-by-Side Bespoke Modality Choice', desc: 'Two therapists working in exact harmony. Choose between Deep Tissue, Swedish, or Hot Stone tailored to each partner.' },
+          { tag: 'Sensory Immersion', title: 'Private Steam & Artisan Tea Service', desc: 'Private 30-min eucalyptus hydro bath followed by lemongrass infusions and dark chocolate in the secluded couple resting suite.' },
         ],
       },
     ];
+    const occasions = occasionCards;
+
+
+    // Interactive Group Cost Estimator Calculation
+    const occBaseRates = {
+      bridal: { express: 35000, halfDay: 48000, fullDay: 85000, title: 'Bridal & Groom Celebration' },
+      corporate: { express: 30000, halfDay: 42000, fullDay: 75000, title: 'Executive Corporate Retreat' },
+      birthday: { express: 38000, halfDay: 52000, fullDay: 90000, title: 'Milestone Birthday Celebration' },
+      couples: { express: 40000, halfDay: 60000, fullDay: 110000, title: 'Couples VIP Double Suite' },
+    };
+    const curOccBase = occBaseRates[this.state.occasionType] || occBaseRates['bridal'];
+    const curOccRate = this.state.occasionDuration === 'express' ? curOccBase.express : this.state.occasionDuration === 'fullDay' ? curOccBase.fullDay : curOccBase.halfDay;
+    
+    const countGuests = Math.max(2, Math.min(25, Number(this.state.occasionGuestCount) || 6));
+    const totalEstNum = curOccRate * countGuests;
+    const estGroupTotal = '₦' + totalEstNum.toLocaleString();
+    const estPerGuest = '₦' + curOccRate.toLocaleString();
+    const estStaffNum = Math.max(2, Math.ceil(countGuests / 2));
+    const estTherapistCount = `${estStaffNum} Certified Therapists Assigned`;
+    const estAmenities = this.state.occasionDuration === 'fullDay' ? 'Full Sanctuary Wing Buyout + Catering' : this.state.occasionDuration === 'express' ? 'Private Suite + Herbal Tea Service' : 'Private Suite + Eucalyptus Steam & Champagne';
+    const curOccasionTitle = curOccBase.title;
+
+    const occasionStandards = [
+      { n: '01', title: 'Zero Public Cross-Traffic', desc: 'Your reserved wing, treatment suites, and tea lounges are strictly closed to walk-ins during your private booking.', rule: '100% Acoustic & Visual Privacy Guaranteed' },
+      { n: '02', title: 'Synchronized Parallel Care', desc: 'We staff multiple certified practitioners concurrently so your group rotates seamlessly without long idle waiting.', rule: 'Max 2 Guests per Therapist Rotation' },
+      { n: '03', title: 'Bespoke Catering & Bar Service', desc: 'Complimentary glassware, ice, and chilling service for your champagne, paired with organic fruit and tea infusions.', rule: 'Dietary & Allergens Accommodated' },
+      { n: '04', title: 'Seamless Corporate Invoicing', desc: 'Corporate buyouts receive itemized, VAT-compliant corporate invoices with same-day digital receipts for tax accounting.', rule: 'Official Tax Invoicing Provided' },
+    ];
+
+    const occasionHouseLabel = this.state.occasionHouse === 'wuse2' ? 'Wuse 2 Flagship House (Up to 20 Guests)' : 'Wuye Secluded Retreat (Up to 12 Guests)';
+
+    const occasionWhatsAppLink = wa(`Hello JVEE Events Concierge — I would like to request a Private Group Sanctuary Buyout:\n• Group Ref ID: ${this.state.occasionRef}\n• Organizer: ${this.state.occasionName || 'Honoured Host'}\n• Phone: ${this.state.occasionPhone || 'N/A'}\n• Email: ${this.state.occasionEmail || 'N/A'}\n• Occasion: ${curOccasionTitle}\n• Guests: ${countGuests} Guests\n• Location: ${occasionHouseLabel}\n• Target Date: ${this.state.occasionDate}\n• Est. Total: ${estGroupTotal} (${estPerGuest}/guest)\n• Notes: ${this.state.occasionNotes || 'None'}`);
+
+    const occasionFaqsList = [
+      { q: 'How far in advance should we reserve our group buyout?', a: 'For small groups (2–4 guests), 48–72 hours is recommended. For bridal parties and corporate full-wing buyouts (6–20 guests), we recommend reserving 1 to 2 weeks in advance to ensure full therapist synchronization.' },
+      { q: 'Can we bring our own champagne, wine, or special food?', a: 'Yes! We provide complimentary ice buckets, champagne flutes, and serving ware. Light catering, cakes, and champagne are welcomed in our private relaxation lounges.' },
+      { q: 'What is the deposit and rescheduling policy for groups?', a: 'A 50% deposit secures your private wing hold and therapist calendar locks. You may reschedule your event date with zero penalty up to 48 hours before your booking.' },
+      { q: 'Can individual guests in our party choose different treatments?', a: 'Absolutely. Prior to arrival, or upon reception, each guest can choose between Deep Tissue Massage, Swedish Relaxation, HydraFacial MD, or Turkish Hammam scrubbing.' },
+    ];
+
 
     const menuItems = [
       { label: 'Home', href: '#/' },
@@ -4362,6 +4761,63 @@ class Component extends DCLogic {
       }),
       isGifts: route === 'gifts',
       isOccasions: route === 'occasions',
+      scrollToGroupApply: () => {
+        const el = document.getElementById('group-apply');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+      occasionCards,
+      occasionGuestCount: this.state.occasionGuestCount,
+      occasionType: this.state.occasionType,
+      occasionDuration: this.state.occasionDuration,
+      occasionHouse: this.state.occasionHouse,
+      occasionDate: this.state.occasionDate,
+      occasionName: this.state.occasionName,
+      occasionPhone: this.state.occasionPhone,
+      occasionEmail: this.state.occasionEmail,
+      occasionNotes: this.state.occasionNotes,
+      occasionConfirmed: this.state.occasionConfirmed,
+      occasionPending: !this.state.occasionConfirmed,
+      occasionRef: this.state.occasionRef,
+      curOccasionTitle,
+      occasionHouseLabel,
+      estGroupTotal,
+      estPerGuest,
+      estTherapistCount,
+      estAmenities,
+      occasionStandards,
+      occasionFaqsList,
+      occasionWhatsAppLink,
+      incGuestCount: () => this.setState({ occasionGuestCount: Math.min(25, (Number(this.state.occasionGuestCount) || 6) + 1) }),
+      decGuestCount: () => this.setState({ occasionGuestCount: Math.max(2, (Number(this.state.occasionGuestCount) || 6) - 1) }),
+      onOccasionGuestChange: (e) => this.setState({ occasionGuestCount: Math.max(2, Math.min(25, Number(e.target.value) || 2)) }),
+      onOccasionTypeChange: (e) => this.setState({ occasionType: e.target.value }),
+      onOccasionDurationChange: (e) => this.setState({ occasionDuration: e.target.value }),
+      onOccasionHouseChange: (e) => this.setState({ occasionHouse: e.target.value }),
+      onOccasionDateChange: (e) => this.setState({ occasionDate: e.target.value }),
+      onOccasionNameChange: (e) => this.setState({ occasionName: e.target.value }),
+      onOccasionPhoneChange: (e) => this.setState({ occasionPhone: e.target.value }),
+      onOccasionEmailChange: (e) => this.setState({ occasionEmail: e.target.value }),
+      onOccasionNotesChange: (e) => this.setState({ occasionNotes: e.target.value }),
+      submitOccasionEnquiry: () => {
+        if (!this.state.occasionName) {
+          alert('Please enter the organizer full name.');
+          return;
+        }
+        if (!this.state.occasionPhone) {
+          alert('Please enter your phone or WhatsApp number for itinerary confirmations.');
+          return;
+        }
+        if (!this.state.occasionEmail) {
+          alert('Please enter your email address for your formal event invoice.');
+          return;
+        }
+        this.setState({ occasionConfirmed: true });
+      },
+      resetOccasionForm: () => this.setState({
+        occasionConfirmed: false,
+        occasionRef: 'JV-GRP-' + Math.floor(100000 + Math.random() * 900000),
+      }),
+
       isAbout: route === 'about',
       isFaq: route === 'faq',
       isVisit: route === 'visit',
@@ -4483,7 +4939,7 @@ class Component extends DCLogic {
       whatsapp: wa('Hello JVEE Wellness & Spa — I would like to make an enquiry.'),
       instagram: 'https://instagram.com/jveewellness_spa',
 
-      goals, packages, matrix, memberships, occasions,
+      goals, packages, matrix, memberships, occasions: occasionCards, 
       giftCards, giftIdx, giftDelivery, giftName, giftMsg,
       giftActive: (idx) => idx === giftIdx,
       selectGift: (idx) => this.setState({ giftIdx: idx }),
