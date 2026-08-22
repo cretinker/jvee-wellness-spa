@@ -2030,80 +2030,208 @@
 <!-- ================= VISIT & HOUSES ================= -->
 <sc-if value="{{ isVisit }}" hint-placeholder-val="{{ false }}">
 <main style="animation:{{ pageAnim }};">
-  <section style="position:relative;min-height:clamp(420px,54vh,600px);display:grid;align-items:end;background:#072F33;color:#F7F4EE;overflow:hidden;padding:calc(78px + clamp(44px,6vw,80px)) clamp(20px,4vw,56px) clamp(44px,5vw,72px);border-bottom:1px solid rgba(192,139,92,.28);">
+  <!-- Hero Section -->
+  <section style="position:relative;min-height:clamp(440px,56vh,620px);display:grid;align-items:end;background:#072F33;color:#F7F4EE;overflow:hidden;padding:calc(78px + clamp(44px,6vw,80px)) clamp(20px,4vw,56px) clamp(44px,5vw,72px);border-bottom:1px solid rgba(192,139,92,.28);">
     <span style="position:absolute;inset:0;overflow:hidden;"><img data-parallax="0.32" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&amp;fit=crop&amp;w=2200&amp;q=80" alt="Houses" style="width:100%;height:125%;min-height:125%;object-fit:cover;filter:saturate(.7) contrast(1.05) brightness(.55);"></span>
-    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.72) 0%,rgba(7,47,51,.4) 44%,rgba(7,47,51,.95) 100%);"></span>
+    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.72) 0%,rgba(7,47,51,.44) 44%,rgba(7,47,51,.96) 100%);"></span>
+    
     <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;">
-      <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Two Houses · Abuja</span>
-      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,7.5vw,104px);line-height:.96;letter-spacing:-.03em;margin:18px 0 20px;max-width:18ch;">Wuse 2 and Wuye.</h1>
-      <p style="font-size:16px;line-height:1.72;color:rgba(247,244,238,.75);max-width:50ch;margin:0;">Two distinct architectural sanctuaries across the Federal Capital Territory with synchronized booking and shared standards.</p>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="width:28px;height:1px;background:#C08B5C;"></span>
+        <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">Two Architectural Sanctuaries · Abuja</span>
+      </div>
+      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,7.5vw,104px);line-height:.96;letter-spacing:-.03em;margin:0 0 20px;max-width:18ch;">
+        Wuse 2 Flagship &amp; Wuye Quiet Retreat.
+      </h1>
+      <p style="font-size:16.5px;line-height:1.75;color:rgba(247,244,238,.85);max-width:54ch;margin:0 0 24px;">
+        Two distinct physical sanctuaries across the Federal Capital Territory, built around acoustic calm, private eucalyptus hydro-steam suites, and certified practitioners.
+      </p>
+      
+      <div style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:18px;background:rgba(247,244,238,.07);border:1px solid rgba(247,244,238,.16);padding:10px 18px;border-radius:40px;font-size:12px;color:rgba(247,244,238,.85);letter-spacing:.06em;">
+        <span>✦ Synchronized Client Dermal Profiles</span>
+        <span style="opacity:.4;">·</span>
+        <span>✦ Dual House Cross-Access</span>
+        <span style="opacity:.4;">·</span>
+        <span>✦ Dedicated Secure Parking</span>
+      </div>
     </div>
   </section>
 
+  <!-- Deep Dive House Profiles Grid (2x2) -->
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(24px,3.5vw,44px);margin-bottom:clamp(60px,8vw,110px);">
-      <sc-for list="{{ houses }}" as="h" hint-placeholder-count="2">
-        <div class="jv-bezel">
-          <div class="jv-bezel-inner" style="overflow:hidden;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
-            <div style="aspect-ratio:16/10;overflow:hidden;background:#EDE8DF;">
-              <img src="{{ h.img }}" alt="{{ h.name }}" style="width:100%;height:100%;object-fit:cover;">
-            </div>
-            <div style="padding:clamp(24px,3vw,38px);">
-              <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(26px,2.8vw,36px);color:#1F2A28;margin:0 0 10px;">{{ h.name }}</h3>
-              <p style="font-size:15px;line-height:1.65;color:#6E675C;margin:0 0 14px;">{{ h.address }}</p>
-              <span style="display:block;font-size:13.5px;color:#8A5A2E;margin-bottom:18px;">{{ h.hours }}</span>
-              <p style="font-size:14px;line-height:1.6;color:#6E675C;margin:0 0 24px;padding-top:14px;border-top:1px solid #DCD3C5;">{{ h.note }}</p>
+    
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(32px,4vw,48px);">
+      <div>
+        <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Sanctuary Locations</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">Explore Our Sanctuary Houses</h2>
+      </div>
+      <a href="#/book" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid #C08B5C;padding:0 0 2px;text-decoration:none;">Book In-House Appointment →</a>
+    </div>
 
-              <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:18px;border-top:1px solid #DCD3C5;">
-                <a href="#/book" style="flex:1;min-width:140px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:14px 20px;background:#072F33;color:#F7F4EE;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;" style-hover="background:#C08B5C;color:#1F2A28;">
-                  <span>Book Slot</span>
-                  <span class="btn-icon-bubble">→</span>
-                </a>
-                <a href="{{ h.tel }}" style="padding:14px 18px;background:#EDE8DF;border:1px solid #DCD3C5;color:#1F2A28;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;">
-                  Call Desk
-                </a>
+    <!-- 2 Main House Deep Dive Cards in Balanced 2-Column Grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:clamp(24px,3.5vw,44px);margin-bottom:clamp(70px,9vw,120px);align-items:stretch;" data-stack="1">
+      <sc-for list="{{ housesDetailed }}" as="h" hint-placeholder-count="2">
+        <div class="jv-bezel" style="background:{{ h.bg }};border-color:{{ h.border }};">
+          <div class="jv-bezel-inner" style="background:{{ h.bg }};color:{{ h.ink }};padding:0;display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ h.border }};overflow:hidden;">
+            
+            <!-- Image Header -->
+            <div style="position:relative;height:240px;overflow:hidden;background:#072F33;">
+              <img src="{{ h.img }}" alt="{{ h.name }}" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05) brightness(.75);transition:transform .6s ease;" style-hover="transform:scale(1.04);">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.2) 0%,rgba(7,47,51,.85) 100%);"></div>
+              
+              <div style="position:absolute;top:16px;left:18px;right:18px;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#F7F4EE;background:rgba(7,47,51,.75);border:1px solid rgba(247,244,238,.2);padding:4px 10px;border-radius:20px;font-weight:600;">{{ h.badge }}</span>
+                <span style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;background:#C08B5C;padding:4px 10px;border-radius:20px;font-weight:600;">{{ h.hoursBadge }}</span>
+              </div>
+
+              <div style="position:absolute;bottom:16px;left:20px;right:20px;">
+                <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3vw,38px);line-height:1.05;margin:0;color:#F7F4EE;">{{ h.name }}</h3>
               </div>
             </div>
+
+            <!-- Card Body Content -->
+            <div style="padding:clamp(24px,2.8vw,36px);display:flex;flex-direction:column;justify-content:space-between;flex-grow:1;">
+              <div>
+                <div style="margin-bottom:14px;">
+                  <span style="display:block;font-size:14px;color:{{ h.accent }};font-weight:600;margin-bottom:4px;">📍 {{ h.address }}</span>
+                  <span style="display:block;font-size:13px;color:{{ h.muted }};">🕒 {{ h.hours }}</span>
+                </div>
+
+                <p style="font-size:14.5px;line-height:1.68;color:{{ h.muted }};margin:0 0 20px;padding-bottom:18px;border-bottom:1px solid {{ h.border }};">{{ h.desc }}</p>
+
+                <!-- Key Amenities -->
+                <div style="margin-bottom:24px;">
+                  <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ h.gold }};font-weight:600;display:block;margin-bottom:12px;">House Facilities &amp; Suites:</span>
+                  <ul style="margin:0;padding-left:0;list-style:none;display:grid;gap:10px;">
+                    <sc-for list="{{ h.facilities }}" as="fac" hint-placeholder-count="4">
+                      <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:{{ h.ink }};">
+                        <span style="color:{{ h.gold }};margin-top:1px;font-size:11px;">✦</span>
+                        <span>{{ fac }}</span>
+                      </li>
+                    </sc-for>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Multi-Action Bar -->
+              <div style="padding-top:20px;border-top:1px solid {{ h.border }};display:grid;gap:10px;">
+                <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:10px;">
+                  <a href="{{ h.bookUrl }}" class="btn-touch" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 18px;background:{{ h.btnBg }};border:1px solid {{ h.btnBorder }};color:{{ h.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .3s ease;">
+                    <span>Book {{ h.shortName }}</span>
+                    <span class="btn-icon-bubble">→</span>
+                  </a>
+                  <a href="{{ h.mapUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:15px 14px;background:{{ h.mapBtnBg }};border:1px solid {{ h.border }};color:{{ h.ink }};font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;text-decoration:none;">
+                    <span>Maps ↗</span>
+                  </a>
+                </div>
+
+                <a href="{{ h.whatsAppUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;background:rgba(247,244,238,.06);border:1px solid {{ h.border }};color:{{ h.muted }};font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">
+                  <span>Speak with Desk: {{ h.phone }}</span>
+                </a>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </sc-for>
     </div>
 
-    <!-- Arrival & Transit Details -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,44px);" data-stack="1">
-      <div class="jv-bezel">
-        <div class="jv-bezel-inner" style="padding:28px 32px;">
-          <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8A5A2E;">Arrival Protocol</span>
-          <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;color:#1F2A28;margin:12px 0 16px;">What to expect when you arrive:</h4>
-          <ul style="display:grid;gap:12px;list-style:none;padding:0;margin:0;">
-            <sc-for list="{{ arriving }}" as="ar" hint-placeholder-count="2">
-              <li style="font-size:14px;line-height:1.6;color:#6E675C;">
-                <strong style="color:#1F2A28;">{{ ar.step }}:</strong> {{ ar.note }}
-              </li>
+    <!-- House Comparison Matrix -->
+    <div style="background:#EDE8DF;border:1px solid #DCD3C5;padding:clamp(28px,4vw,56px);border-radius:12px;margin-bottom:clamp(70px,9vw,120px);">
+      <div style="max-width:48ch;margin-bottom:24px;">
+        <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Sanctuary Matrix</span>
+        <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(26px,3vw,38px);line-height:1.1;color:#1F2A28;margin:8px 0 0;">Compare House Capabilities</h3>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;text-align:left;font-size:14px;">
+          <thead>
+            <tr style="border-bottom:2px solid #DCD3C5;">
+              <th style="padding:14px 12px;color:#8A5A2E;font-size:11px;letter-spacing:.2em;text-transform:uppercase;">Facility / Capability</th>
+              <th style="padding:14px 12px;color:#0B4B50;text-align:center;font-weight:600;">Wuse 2 Flagship</th>
+              <th style="padding:14px 12px;color:#1F2A28;text-align:center;">Wuye Secluded Retreat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ visitHouseMatrix }}" as="row" hint-placeholder-count="7">
+              <tr style="border-bottom:1px solid #DCD3C5;">
+                <td style="padding:14px 12px;font-weight:500;color:#1F2A28;">{{ row.label }}</td>
+                <sc-for list="{{ row.cells }}" as="c" hint-placeholder-count="2">
+                  <td style="padding:14px 12px;text-align:center;color:{{ c.color }};font-weight:600;">{{ c.mark }}</td>
+                </sc-for>
+              </tr>
             </sc-for>
-          </ul>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- The 4-Step First Visit Protocol -->
+    <div style="margin-bottom:clamp(70px,9vw,120px);">
+      <div style="max-width:48ch;margin-bottom:clamp(32px,4vw,48px);">
+        <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">The First Visit Guide</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">What to Expect from Arrival to Rest</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,2.2vw,30px);">
+        <sc-for list="{{ visitStepsList }}" as="vs" hint-placeholder-count="4">
+          <div class="jv-bezel">
+            <div class="jv-bezel-inner" style="padding:26px 28px;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <span style="font-size:11px;letter-spacing:.2em;color:#8A5A2E;font-weight:600;">Phase {{ vs.n }}</span>
+                <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.15;color:#1F2A28;margin:10px 0 8px;">{{ vs.title }}</h4>
+                <p style="font-size:13.5px;line-height:1.65;color:#6E675C;margin:0 0 14px;">{{ vs.desc }}</p>
+              </div>
+              <span style="display:block;padding-top:12px;border-top:1px solid #DCD3C5;font-size:12px;color:#8A5A2E;font-weight:600;">Standard: {{ vs.standard }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Parking & Transit Details -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,44px);margin-bottom:clamp(70px,9vw,120px);" data-stack="1">
+      <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:rgba(192,139,92,.4);">
+        <div class="jv-bezel-inner" style="background:#072F33;padding:clamp(28px,3.5vw,40px);color:#F7F4EE;border-color:rgba(247,244,238,.12);">
+          <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;">Wuse 2 Access</span>
+          <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;color:#F7F4EE;margin:12px 0 14px;">Wuse 2 Flagship House Parking</h4>
+          <p style="font-size:14px;line-height:1.68;color:rgba(247,244,238,.8);margin:0 0 14px;">Dedicated on-site gated car park located directly in front of the Kumasi Crescent property. Uniformed security guard on duty during all operating hours.</p>
+          <span style="display:inline-block;font-size:12px;color:#C08B5C;background:rgba(192,139,92,.18);padding:4px 10px;border-radius:4px;">Gated &amp; Guarded · 8 Dedicated Bays</span>
         </div>
       </div>
 
-      <div class="jv-bezel">
-        <div class="jv-bezel-inner" style="padding:28px 32px;">
-          <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8A5A2E;">Parking &amp; Security</span>
-          <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;color:#1F2A28;margin:12px 0 16px;">Dedicated parking at both locations:</h4>
-          <ul style="display:grid;gap:12px;list-style:none;padding:0;margin:0;">
-            <sc-for list="{{ transit }}" as="tr" hint-placeholder-count="2">
-              <li style="font-size:14px;line-height:1.6;color:#6E675C;">
-                <strong style="color:#1F2A28;">{{ tr.house }}:</strong> {{ tr.text }}
-              </li>
-            </sc-for>
-          </ul>
+      <div class="jv-bezel" style="background:#072F33;color:#F7F4EE;border-color:rgba(192,139,92,.4);">
+        <div class="jv-bezel-inner" style="background:#072F33;padding:clamp(28px,3.5vw,40px);color:#F7F4EE;border-color:rgba(247,244,238,.12);">
+          <span style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;">Wuye Access</span>
+          <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;color:#F7F4EE;margin:12px 0 14px;">Wuye Secluded House Parking</h4>
+          <p style="font-size:14px;line-height:1.68;color:rgba(247,244,238,.8);margin:0 0 14px;">Discreet residential setting on Anthony Ozodinobi Crescent with broad, shaded curbside parking directly adjacent to the entrance. Quiet and low traffic.</p>
+          <span style="display:inline-block;font-size:12px;color:#C08B5C;background:rgba(192,139,92,.18);padding:4px 10px;border-radius:4px;">Low-Traffic Residential · Discreet Entry</span>
         </div>
       </div>
     </div>
+
+    <!-- Visit & House FAQs -->
+    <div style="max-width:960px;margin:0 auto;">
+      <div style="text-align:center;max-width:48ch;margin:0 auto clamp(36px,5vw,60px);">
+        <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#8A5A2E;">Arrival Protocol</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(32px,4.8vw,60px);line-height:1.05;letter-spacing:-.025em;margin-top:14px;color:#1F2A28;">Frequently Asked Visit Questions</h2>
+      </div>
+
+      <div style="display:grid;gap:14px;">
+        <sc-for list="{{ visitFaqsList }}" as="vfq" hint-placeholder-count="4">
+          <div class="jv-bezel">
+            <div class="jv-bezel-inner" style="padding:22px 26px;">
+              <h4 style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#1F2A28;margin:0 0 8px;">{{ vfq.q }}</h4>
+              <p style="font-size:14px;line-height:1.68;color:#6E675C;margin:0;">{{ vfq.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
   </section>
 </main>
-</sc-if>
-
-<!-- ================= CONSULTATION MATCHER ================= -->
+</sc-if><!-- ================= CONSULTATION MATCHER ================= -->
 <sc-if value="{{ isMatcher }}" hint-placeholder-val="{{ false }}">
 <main style="animation:{{ pageAnim }};">
 
@@ -3763,25 +3891,97 @@ class Component extends DCLogic {
       href: '#/t/' + k,
     }));
 
-    const houses = [
+    // Upgraded Sanctuary Houses Detailed Profiles
+    const housesDetailed = [
       {
-        name: 'Wuse 2 House',
+        name: 'Wuse 2 Flagship Sanctuary House',
+        shortName: 'Wuse 2',
+        badge: 'Flagship Sanctuary',
+        hoursBadge: 'Open Daily · 9am–9pm',
         address: '3 Kumasi Crescent, Off Aminu Kano Way, Wuse 2, Abuja',
-        phone: '+234 706 840 8027',
-        tel: 'tel:+2347068408027',
         hours: 'Monday – Sunday · 9:00 AM – 9:00 PM',
-        img: U('1540555700478-4be289fbecef', 1600),
-        note: 'Flagship location with private couples suites, hydrotherapy steam, and advanced medical aesthetics wing.',
+        phone: '+234 706 840 8027',
+        img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
+        desc: 'Our full-service flagship sanctuary featuring luxury couples double suites, advanced clinical skin tech, and authentic Turkish Hammam heated marble.',
+        facilities: [
+          'Private VIP Couples Double Suite with rainfall shower',
+          'Clinical Aesthetics Wing (HydraFacial MD, Chemical Peels)',
+          'Authentic Turkish Hammam with heated marble slab',
+          'Private Eucalyptus Steam & Hydro-Rainfall Suite',
+          'Gated car park with dedicated security guard',
+        ],
+        bookUrl: '#/book?house=wuse2',
+        mapUrl: 'https://maps.google.com/?q=3+Kumasi+Crescent+Wuse+2+Abuja',
+        whatsAppUrl: wa('Hello JVEE Wuse 2 Concierge — I would like to check availability at Kumasi Crescent.'),
+        bg: '#F7F4EE', ink: '#1F2A28', border: '#DCD3C5', gold: '#8A5A2E', muted: '#6E675C', accent: '#0B4B50',
+        btnBg: '#072F33', btnInk: '#F7F4EE', btnBorder: '#072F33', mapBtnBg: '#EDE8DF',
       },
       {
-        name: 'Wuye House',
-        address: 'Anthony Ozodinobi Crescent, Off Obasanjo Way, Wuye, Abuja',
+        name: 'Wuye Secluded Sanctuary Retreat',
+        shortName: 'Wuye House',
+        badge: 'Acoustic Seclusion',
+        hoursBadge: 'Tue–Sun · 10am–8pm',
+        address: 'Anthony Ozodinobi Crescent, Off Olusegun Obasanjo Way, Wuye, Abuja',
+        hours: 'Tuesday – Sunday · 10:00 AM – 8:00 PM (Monday Closed)',
         phone: '+234 706 840 8027',
-        tel: 'tel:+2347068408027',
-        hours: 'Tuesday – Sunday · 10:00 AM – 8:00 PM',
-        img: U('1544161515-4ab6ce6db874', 1600),
-        note: 'Secluded residential retreat designed for deep quiet, individual recharge and restorative massage sessions.',
+        img: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80',
+        desc: 'A discreet residential sanctuary designed for deep acoustic silence, sports postural recovery, and unhurried clinical bodywork.',
+        facilities: [
+          'Sound-dampened private single recovery suites',
+          'Senior Sports Massage & Spinal Trigger-Point focus',
+          'Private Eucalyptus Steam Chamber & Lounge',
+          'Tree-lined peaceful curbside parking with private security',
+          'High-profile guest discretion & private entrance',
+        ],
+        bookUrl: '#/book?house=wuye',
+        mapUrl: 'https://maps.google.com/?q=Anthony+Ozodinobi+Crescent+Wuye+Abuja',
+        whatsAppUrl: wa('Hello JVEE Wuye Concierge — I would like to check availability at Wuye Retreat.'),
+        bg: '#072F33', ink: '#F7F4EE', border: 'rgba(192,139,92,.4)', gold: '#C08B5C', muted: 'rgba(247,244,238,.75)', accent: '#C08B5C',
+        btnBg: '#C08B5C', btnInk: '#1F2A28', btnBorder: '#C08B5C', mapBtnBg: 'rgba(247,244,238,.08)',
       },
+    ];
+
+    const houses = housesDetailed.map(h => ({
+      name: h.name,
+      address: h.address,
+      phone: h.phone,
+      tel: 'tel:+2347068408027',
+      hours: h.hours,
+      img: h.img,
+      note: h.desc,
+    }));
+
+    // House Comparison Matrix
+    const visitHouseMatrix = [
+      ['Private Treatment Suites', ['6 Private Suites', '4 Private Suites']],
+      ['VIP Couples Double Suite', ['✓ Available', '— Single Suites Only']],
+      ['HydraFacial MD Dermal Wing', ['✓ Full Clinical Suite', '— Express Facials Only']],
+      ['Authentic Turkish Hammam', ['✓ Heated Marble Room', '— Eucalyptus Steam Only']],
+      ['Private Eucalyptus Steam Suite', ['✓ Available', '✓ Available']],
+      ['Parking & Security Infrastructure', ['Gated On-Site Car Park', 'Quiet Residential Curbside']],
+      ['Weekly Operating Schedule', ['7 Days (Mon–Sun 9am–9pm)', '6 Days (Tue–Sun 10am–8pm)']],
+    ].map(([label, cells]) => ({
+      label,
+      cells: cells.map((c) => ({
+        mark: typeof c === 'string' ? c : c ? '✓' : '—',
+        color: c.startsWith('✓') ? '#0B4B50' : c.startsWith('—') ? '#8A5A2E' : '#1F2A28',
+      })),
+    }));
+
+    // 4-Phase First Visit Protocol
+    const visitStepsList = [
+      { n: '01', title: 'Arrival & Botanical Intake', desc: 'Arrive 15 minutes before your slot. Enjoy a chilled lemongrass towel and hot herbal tea while completing your confidential digital intake.', standard: '15-Min Pre-Session Calming Buffer' },
+      { n: '02', title: 'Thermal Foot Cleansing', desc: 'Your therapist escorts you into your private suite for a warm botanical foot soak with pink Himalayan salt to downshift your nervous system.', standard: 'Sensory Transition Ritual' },
+      { n: '03', title: 'Heated Suite Treatment', desc: 'Your therapist delivers continuous, unhurried bodywork on pre-warmed hydraulic tables tailored precisely to your requested pressure level.', standard: 'Medical Draping & Temperature Control' },
+      { n: '04', title: 'Unhurried Lounge Recovery', desc: 'After your session, hydrate with antioxidant infusions and fresh fruit in our quiet lounge with zero checkout rush.', standard: 'Frictionless Departure' },
+    ];
+
+    // Visit FAQs
+    const visitFaqsList = [
+      { q: 'What is the parking situation at Wuse 2 vs Wuye?', a: 'Wuse 2 features a private gated parking forecourt with a full-time security guard. Wuye is located on a quiet residential crescent with wide, shaded curbside parking with dedicated security monitoring.' },
+      { q: 'Can I book sessions across both houses under the same membership or gift card?', a: 'Yes! All client files, membership credits, and gift certificates are synchronized in real time across both Wuse 2 and Wuye houses.' },
+      { q: 'What should I do if I am running late for my appointment?', a: 'Please send a quick WhatsApp message to the desk. We provide a 15-minute grace window. If your delay exceeds 15 minutes, we will deliver the remainder of your scheduled time so subsequent guests are not delayed.' },
+      { q: 'Are plush robes, sanitized sandals, and private showers provided?', a: 'Yes. Every treatment includes clean sanitized sandals, plush robes, disposable undergarments, and private rainfall shower access stocked with botanical hair and body wash.' },
     ];
 
     const stats = [
@@ -4842,6 +5042,11 @@ class Component extends DCLogic {
       isAbout: route === 'about',
       isFaq: route === 'faq',
       isVisit: route === 'visit',
+      housesDetailed,
+      visitHouseMatrix,
+      visitStepsList,
+      visitFaqsList,
+
       isMatcher: route === 'matcher',
       isMassage: route === 'massage',
       isFacials: route === 'facials',
