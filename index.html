@@ -1665,7 +1665,7 @@
               <span style="display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:rgba(192,139,92,.2);border:1px solid #C08B5C;color:#C08B5C;font-size:22px;margin-bottom:14px;">✓</span>
               <span style="display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#C08B5C;margin-bottom:6px;">Matched Protocol Confirmed</span>
               <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#F7F4EE;margin:0 0 10px;">We have held your room, {{ bookName }}.</h2>
-              <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);">A confirmation SMS has been dispatched to <strong>{{ bookPhone }}</strong>. Your therapist will prepare your treatment suite and botanical tea prior to arrival.</p>
+              <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);">A confirmation ticket & SMS have been dispatched to <strong>{{ bookPhone }}</strong> and <strong>{{ bookEmail }}</strong>. Your therapist will prepare your treatment suite and botanical tea prior to arrival.</p>
             </div>
 
             <!-- Digital Reservation Ticket -->
@@ -1766,15 +1766,19 @@
                 </div>
               </div>
 
-              <!-- Guest Name & Phone Row -->
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px;" data-stack="1">
+              <!-- Guest Name, Phone & Email Row -->
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px;">
                 <div>
                   <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Full Name *</label>
                   <input type="text" value="{{ bookName }}" onChange="{{ onNameChange }}" placeholder="e.g. Dr. Ngozi Adeleke" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
                 </div>
                 <div>
-                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Phone / WhatsApp Number *</label>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Phone / WhatsApp *</label>
                   <input type="tel" value="{{ bookPhone }}" onChange="{{ onPhoneChange }}" placeholder="+234 803 123 4567" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
+                </div>
+                <div>
+                  <label style="display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.85);font-weight:600;margin-bottom:6px;">Email Address *</label>
+                  <input type="email" value="{{ bookEmail }}" onChange="{{ onEmailChange }}" placeholder="ngozi@example.com" style="width:100%;padding:14px 16px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);font-size:14px;color:#F7F4EE;border-radius:4px;outline:none;">
                 </div>
               </div>
 
@@ -2384,20 +2388,19 @@
               </div>
 
               <div style="display:grid;gap:18px;margin-bottom:28px;">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" data-stack="1">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
                   <div>
                     <label style="display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:6px;">Full Name *</label>
                     <input type="text" value="{{ bookName }}" onChange="{{ onNameChange }}" placeholder="e.g. Dr. Ngozi Adeleke" style="width:100%;padding:14px 16px;background:#EDE8DF;border:1px solid #DCD3C5;font-size:14px;color:#1F2A28;border-radius:4px;outline:none;">
                   </div>
                   <div>
-                    <label style="display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:6px;">Phone / WhatsApp Number *</label>
+                    <label style="display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:6px;">Phone / WhatsApp *</label>
                     <input type="tel" value="{{ bookPhone }}" onChange="{{ onPhoneChange }}" placeholder="+234 803 123 4567" style="width:100%;padding:14px 16px;background:#EDE8DF;border:1px solid #DCD3C5;font-size:14px;color:#1F2A28;border-radius:4px;outline:none;">
                   </div>
-                </div>
-
-                <div>
-                  <label style="display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:6px;">Email Address (For Booking Confirmation)</label>
-                  <input type="email" value="{{ bookEmail }}" onChange="{{ onEmailChange }}" placeholder="ngozi@example.com" style="width:100%;padding:14px 16px;background:#EDE8DF;border:1px solid #DCD3C5;font-size:14px;color:#1F2A28;border-radius:4px;outline:none;">
+                  <div>
+                    <label style="display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#1F2A28;font-weight:600;margin-bottom:6px;">Email Address *</label>
+                    <input type="email" value="{{ bookEmail }}" onChange="{{ onEmailChange }}" placeholder="ngozi@example.com" style="width:100%;padding:14px 16px;background:#EDE8DF;border:1px solid #DCD3C5;font-size:14px;color:#1F2A28;border-radius:4px;outline:none;">
+                  </div>
                 </div>
 
                 <div>
@@ -3529,7 +3532,7 @@ class Component extends DCLogic {
     const matchRecHouseSlug = this.state.matcherHouse === 0 ? 'wuse2' : this.state.matcherHouse === 1 ? 'wuye' : 'either';
     const matchRecHouseLabel = this.state.matcherHouse === 0 ? 'Wuse 2 Sanctuary House' : this.state.matcherHouse === 1 ? 'Wuye Secluded House' : 'First Available House';
     const matchRecBookUrl = `#/book?service=${matchRecServiceSlug}&specialist=${matchRecSpecialistSlug}&house=${matchRecHouseSlug}&step=3`;
-    const matchRecWhatsAppConfirmation = wa(`Hello JVEE Concierge — I have confirmed my Matched Protocol Reservation:\n• Reference: ${this.state.bookRef}\n• Guest: ${this.state.bookName || 'Honoured Guest'}\n• Protocol: ${matchRecTitle}\n• Specialist: ${matchRecPractitioner}\n• Location: ${matchRecHouseLabel}\n• Date & Time: ${this.state.bookDate} at ${this.state.bookTime}\n• Total Rate: ${matchRecPrice}`);
+    const matchRecWhatsAppConfirmation = wa(`Hello JVEE Concierge — I have confirmed my Matched Protocol Reservation:\n• Reference: ${this.state.bookRef}\n• Guest: ${this.state.bookName || 'Honoured Guest'}\n• Phone: ${this.state.bookPhone || 'N/A'}\n• Email: ${this.state.bookEmail || 'N/A'}\n• Protocol: ${matchRecTitle}\n• Specialist: ${matchRecPractitioner}\n• Location: ${matchRecHouseLabel}\n• Date & Time: ${this.state.bookDate} at ${this.state.bookTime}\n• Total Rate: ${matchRecPrice}`);
 
     const matchRecWhatsApp = wa(`Hello JVEE — I completed the Clinical Protocol Matcher and would like to book: ${matchRecTitle} (${matchRecPrice})`);
 
@@ -3689,7 +3692,7 @@ class Component extends DCLogic {
       : 'Select your service, specialist and arrival window with published transparent rates.';
 
         const bookMinDate = new Date().toISOString().split('T')[0];
-    const bookWhatsAppConfirmation = wa(`Hello JVEE Concierge — I have submitted an online reservation:\n• Reference: ${this.state.bookRef}\n• Guest: ${this.state.bookName || 'Honoured Guest'}\n• Service: ${currentServiceName} (${currentServiceDur})\n• Specialist: ${currentSpecialistLabel}\n• Location: ${currentHouseLabel}\n• Date & Time: ${this.state.bookDate} at ${this.state.bookTime}\n• Total Rate: ${currentServicePrice}`);
+    const bookWhatsAppConfirmation = wa(`Hello JVEE Concierge — I have submitted an online reservation:\n• Reference: ${this.state.bookRef}\n• Guest: ${this.state.bookName || 'Honoured Guest'}\n• Phone: ${this.state.bookPhone || 'N/A'}\n• Email: ${this.state.bookEmail || 'N/A'}\n• Service: ${currentServiceName} (${currentServiceDur})\n• Specialist: ${currentSpecialistLabel}\n• Location: ${currentHouseLabel}\n• Date & Time: ${this.state.bookDate} at ${this.state.bookTime}\n• Total Rate: ${currentServicePrice}`);
 
     const etiquettePillars = [
       { n: '01', title: 'Silent Sanctuary & Phone Locker', desc: 'All personal phones must be set to silent upon arrival and stored in your private locker with USB-C chargers.', rule: 'No phone calls or loud media in public lounges.' },
@@ -3924,7 +3927,11 @@ class Component extends DCLogic {
           return;
         }
         if (!this.state.bookPhone) {
-          alert('Please enter your phone or WhatsApp number so we can reach you.');
+          alert('Please enter your phone or WhatsApp number so we can dispatch your SMS confirmation.');
+          return;
+        }
+        if (!this.state.bookEmail) {
+          alert('Please enter your email address so we can dispatch your email confirmation ticket.');
           return;
         }
         this.setState({ bookConfirmed: true });
@@ -3948,7 +3955,11 @@ class Component extends DCLogic {
           return;
         }
         if (!this.state.bookPhone) {
-          alert('Please enter your phone or WhatsApp number so we can reach you.');
+          alert('Please enter your phone or WhatsApp number so we can dispatch your SMS confirmation.');
+          return;
+        }
+        if (!this.state.bookEmail) {
+          alert('Please enter your email address so we can dispatch your email confirmation ticket.');
           return;
         }
         this.setState({
