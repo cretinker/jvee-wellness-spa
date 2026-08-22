@@ -1015,41 +1015,68 @@
 <!-- ================= SIGNATURE PACKAGES ================= -->
 <sc-if value="{{ isPackages }}" hint-placeholder-val="{{ false }}">
 <main style="animation:{{ pageAnim }};">
+  <!-- Hero Section with Elevated Editorial Copy -->
   <section style="position:relative;min-height:clamp(420px,54vh,600px);display:grid;align-items:end;background:#072F33;color:#F7F4EE;overflow:hidden;padding:calc(78px + clamp(44px,6vw,80px)) clamp(20px,4vw,56px) clamp(44px,5vw,72px);border-bottom:1px solid rgba(192,139,92,.28);">
-    <span style="position:absolute;inset:0;overflow:hidden;"><img data-parallax="0.32" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&amp;fit=crop&amp;w=2200&amp;q=80" alt="Packages" style="width:100%;height:125%;min-height:125%;object-fit:cover;filter:saturate(.7) contrast(1.05) brightness(.55);"></span>
-    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.72) 0%,rgba(7,47,51,.4) 44%,rgba(7,47,51,.95) 100%);"></span>
+    <span style="position:absolute;inset:0;overflow:hidden;"><img data-parallax="0.32" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&amp;fit=crop&amp;w=2200&amp;q=80" alt="Sanctuary Packages" style="width:100%;height:125%;min-height:125%;object-fit:cover;filter:saturate(.7) contrast(1.05) brightness(.55);"></span>
+    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,47,51,.72) 0%,rgba(7,47,51,.44) 44%,rgba(7,47,51,.96) 100%);"></span>
+    
     <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;">
-      <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">The Sanctuary Suites</span>
-      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,7.5vw,104px);line-height:.96;letter-spacing:-.03em;margin:18px 0 20px;max-width:18ch;">Bronze to Diamond. One booking, the whole afternoon.</h1>
-      <p style="font-size:16px;line-height:1.72;color:rgba(247,244,238,.75);max-width:50ch;margin:0;">Sequenced multi-hour rituals combining clinical bodywork, medical skin, hydrotherapy steam, and catered private relaxation.</p>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="width:28px;height:1px;background:#C08B5C;"></span>
+        <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#C08B5C;">All-Inclusive Sanctuary Packages</span>
+      </div>
+      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,7.5vw,104px);line-height:.96;letter-spacing:-.03em;margin:0 0 20px;max-width:18ch;">
+        Curated Multi-Hour Wellness Journeys.
+      </h1>
+      <p style="font-size:16.5px;line-height:1.75;color:rgba(247,244,238,.85);max-width:54ch;margin:0 0 24px;">
+        Masterfully sequenced rituals combining deep anatomical bodywork, clinical skin rejuvenation, hydrotherapy steam, and catered private resting suite tranquility.
+      </p>
+      
+      <!-- Key Package Attributes Pill -->
+      <div style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:18px;background:rgba(247,244,238,.07);border:1px solid rgba(247,244,238,.16);padding:10px 18px;border-radius:40px;font-size:12px;color:rgba(247,244,238,.85);letter-spacing:.06em;">
+        <span>✦ 90 Min to Full-Day Journeys</span>
+        <span style="opacity:.4;">·</span>
+        <span>✦ Private Suite &amp; Dedicated Specialist</span>
+        <span style="opacity:.4;">·</span>
+        <span>✦ Zero Hidden Fees</span>
+      </div>
     </div>
   </section>
 
-  <!-- 4 Tier Package Cards -->
+  <!-- 4 Balanced Tier Package Cards Grid (4 Columns Desktop / 2x2 Tablet / 1 Mobile) -->
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.4vw,32px);margin-bottom:clamp(60px,8vw,110px);">
+    
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(32px,4vw,48px);">
+      <div>
+        <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A5A2E;font-weight:600;">Sanctuary Tiers</span>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">Select Your Care Ritual</h2>
+      </div>
+      <a href="#custom-builder" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid #C08B5C;padding-bottom:2px;">Prefer to Build a Custom Bundle? ↓</a>
+    </div>
+
+    <div class="jv-packages-grid" style="margin-bottom:clamp(60px,8vw,110px);">
       <sc-for list="{{ packages }}" as="pk" hint-placeholder-count="4">
         <div class="jv-bezel" style="background:{{ pk.cardBg }};border-color:{{ pk.cardBorder }};">
-          <div class="jv-bezel-inner" style="background:{{ pk.cardBg }};color:{{ pk.cardInk }};padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ pk.cardBorder }};">
+          <div class="jv-bezel-inner" style="background:{{ pk.cardBg }};color:{{ pk.cardInk }};padding:clamp(24px,2.4vw,34px);display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ pk.cardBorder }};">
             <div>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-                <span style="font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:{{ pk.gold }};font-weight:600;">{{ pk.tier }} Tier</span>
-                <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:{{ pk.cardMuted }};">{{ pk.dur }}</span>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <span style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:{{ pk.gold }};font-weight:600;">{{ pk.tier }} Tier</span>
+                <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:{{ pk.cardMuted }};font-weight:500;">{{ pk.dur }}</span>
               </div>
-              <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(32px,3.5vw,46px);line-height:1;margin:0 0 14px;color:{{ pk.cardInk }};">{{ pk.price }}</h3>
-              <p style="font-size:14px;line-height:1.65;color:{{ pk.cardMuted }};margin:0 0 22px;">{{ pk.summary }}</p>
+              <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(30px,3.2vw,42px);line-height:1;margin:0 0 12px;color:{{ pk.cardInk }};">{{ pk.price }}</h3>
+              <p style="font-size:13.5px;line-height:1.6;color:{{ pk.cardMuted }};margin:0 0 18px;">{{ pk.summary }}</p>
               
-              <ul style="margin:0 0 28px;padding-top:18px;border-top:1px solid {{ pk.cardBorder }};display:grid;gap:10px;list-style:none;padding-left:0;">
+              <ul style="margin:0 0 24px;padding-top:16px;border-top:1px solid {{ pk.cardBorder }};display:grid;gap:9px;list-style:none;padding-left:0;">
                 <sc-for list="{{ pk.includes }}" as="inc" hint-placeholder-count="5">
-                  <li style="font-size:13.5px;color:{{ pk.cardInk }};display:flex;align-items:center;gap:8px;">
-                    <span style="color:{{ pk.gold }};">✦</span>
+                  <li style="font-size:13px;color:{{ pk.cardInk }};display:flex;align-items:flex-start;gap:8px;line-height:1.45;">
+                    <span style="color:{{ pk.gold }};margin-top:1px;">✦</span>
                     <span>{{ inc }}</span>
                   </li>
                 </sc-for>
               </ul>
             </div>
 
-            <a href="{{ pk.bookHref }}" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;background:{{ pk.btnBg }};border:1px solid {{ pk.btnBorder }};color:{{ pk.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:all .3s ease;">
+            <a href="{{ pk.bookHref }}" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;background:{{ pk.btnBg }};border:1px solid {{ pk.btnBorder }};color:{{ pk.btnInk }};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:all .3s ease;">
               <span>Book {{ pk.tier }}</span>
               <span class="btn-icon-bubble">→</span>
             </a>
@@ -1057,7 +1084,6 @@
         </div>
       </sc-for>
     </div>
-
     <!-- Modality Comparison Matrix -->
     <div style="background:#EDE8DF;border:1px solid #DCD3C5;padding:clamp(28px,4vw,56px);border-radius:12px;">
       <h3 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(26px,3vw,38px);line-height:1.1;color:#1F2A28;margin:0 0 24px;">Modality Inclusions by Tier</h3>
