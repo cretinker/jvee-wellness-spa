@@ -65,11 +65,11 @@
 </script>
 <style>
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: #F7F4EE; color: #1F2A28; font-family: "Instrument Sans", "Helvetica Neue", Helvetica, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: #F7F4EE; color: #1F2A28; font-family: "Instrument Sans", "Helvetica Neue", Helvetica, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty; overflow-x: hidden; width: 100%; }
   h1, h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd { margin: 0; padding: 0; }
   ul, ol { list-style: none; }
-  img { display: block; max-width: 100%; }
+  img { display: block; max-width: 100%; height: auto; }
   a { color: #0B4B50; text-decoration: none; }
   a:hover { color: #C08B5C; }
   button, input, textarea, select { font: inherit; color: inherit; }
@@ -79,11 +79,25 @@
   button:active, a.btn-touch:active { transform: scale(0.985); transition: transform 0.12s ease-out; }
   .btn-icon-bubble { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(0,0,0,0.08); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
   a:hover .btn-icon-bubble, button:hover .btn-icon-bubble { transform: translateX(3px); }
-  .jv-bezel { border: 1px solid #DCD3C5; padding: 6px; background: rgba(220, 211, 197, 0.4); border-radius: 16px; transition: border-color 0.4s ease; }
-  .jv-bezel-inner { border-radius: 10px; background: #F7F4EE; border: 1px solid rgba(220, 211, 197, 0.5); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.45); }
+  .jv-bezel { border: 1px solid #DCD3C5; padding: 6px; background: rgba(220, 211, 197, 0.4); border-radius: 16px; transition: border-color 0.4s ease; max-width: 100%; }
+  .jv-bezel-inner { border-radius: 10px; background: #F7F4EE; border: 1px solid rgba(220, 211, 197, 0.5); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.45); max-width: 100%; word-break: break-word; }
+  
+  /* Mobile Typography & Layout Utilities */
   @media (max-width: 880px) {
     .jv-mobile-rail { display: flex !important; }
-    body { padding-bottom: 72px; }
+    body { padding-bottom: 84px !important; }
+    [data-stack="1"], [data-stack3="1"] { grid-template-columns: minmax(0, 1fr) !important; gap: 20px !important; }
+    [data-nav] { display: none !important; }
+    [data-burger] { display: flex !important; }
+    [data-hide-sm] { display: none !important; }
+    [data-heropad] { padding-right: 0 !important; }
+    input, select, textarea { font-size: 16px !important; }
+  }
+  @media (max-width: 640px) {
+    .jv-bezel { padding: 4px; border-radius: 12px; }
+    .jv-bezel-inner { border-radius: 8px; }
+    [data-grid5] { grid-template-columns: minmax(0, 1fr) !important; }
+    [data-footer-grid] { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; }
   }
 </style>
 </helmet>
@@ -143,12 +157,43 @@
 </header>
 
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;inset:0;z-index:95;background:#072F33;display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,7vw,80px);overflow-y:auto;animation:jvPage .45s ease both;">
-    <button onClick="{{ toggleMenu }}" aria-label="Close" style="position:absolute;top:22px;right:clamp(20px,4vw,48px);background:none;border:1px solid rgba(247,244,238,.25);width:44px;height:44px;color:#F7F4EE;font-size:18px;cursor:pointer;line-height:1;">×</button>
-    <sc-for list="{{ menuItems }}" as="item" hint-placeholder-count="8">
-      <a href="{{ item.href }}" onClick="{{ toggleMenu }}" style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,6.5vw,46px);line-height:1.18;color:#F7F4EE;padding:5px 0;border-bottom:1px solid rgba(247,244,238,.12);">{{ item.label }}</a>
-    </sc-for>
-    <a href="#/book" style="margin-top:30px;align-self:start;padding:16px 30px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;">Book an appointment</a>
+  <div style="position:fixed;inset:0;z-index:999;background:#072F33;display:flex;flex-direction:column;justify-content:space-between;padding:calc(20px + env(safe-area-inset-top)) clamp(20px,5vw,48px) calc(28px + env(safe-area-inset-bottom));overflow-y:auto;animation:jvPage .35s ease both;">
+    
+    <!-- Drawer Top Bar -->
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid rgba(247,244,238,.15);">
+      <a href="#/" onClick="{{ toggleMenu }}" style="display:flex;flex-direction:column;gap:2px;">
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;letter-spacing:.26em;line-height:1;color:#F7F4EE;">JVEE</span>
+        <span style="font-size:8.5px;letter-spacing:.32em;text-transform:uppercase;color:#C08B5C;">Wellness &amp; Spa · Abuja</span>
+      </a>
+      <button onClick="{{ toggleMenu }}" aria-label="Close Menu" style="background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.25);width:44px;height:44px;border-radius:50%;color:#F7F4EE;font-size:22px;cursor:pointer;display:grid;place-items:center;line-height:1;">×</button>
+    </div>
+
+    <!-- Drawer Navigation Links -->
+    <div style="display:grid;gap:6px;padding:24px 0;">
+      <sc-for list="{{ menuItems }}" as="item" hint-placeholder-count="8">
+        <a href="{{ item.href }}" onClick="{{ toggleMenu }}" style="display:flex;justify-content:space-between;align-items:center;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,5.5vw,36px);line-height:1.2;color:#F7F4EE;padding:10px 0;border-bottom:1px solid rgba(247,244,238,.08);transition:color .25s ease;" style-hover="color:#C08B5C;">
+          <span>{{ item.label }}</span>
+          <span style="font-size:16px;color:#C08B5C;opacity:.8;">→</span>
+        </a>
+      </sc-for>
+    </div>
+
+    <!-- Drawer Action Footer -->
+    <div style="display:grid;gap:12px;padding-top:20px;border-top:1px solid rgba(247,244,238,.15);">
+      <a href="#/book" onClick="{{ toggleMenu }}" class="btn-touch" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 24px;background:#C08B5C;color:#1F2A28;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;text-decoration:none;border-radius:4px;">
+        <span>Book an Appointment</span>
+        <span class="btn-icon-bubble">→</span>
+      </a>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <a href="tel:+2347068408027" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 12px;background:rgba(247,244,238,.08);border:1px solid rgba(247,244,238,.2);color:#F7F4EE;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:4px;">
+          <span>📞 Call Desk</span>
+        </a>
+        <a href="{{ whatsapp }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 12px;background:rgba(37,211,102,.2);border:1px solid #25D366;color:#25D366;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:4px;">
+          <span>💬 WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
   </div>
 </sc-if>
 
@@ -233,7 +278,7 @@
         <p style="margin-top:14px;font-size:15.5px;line-height:1.7;color:#6E675C;">We engineered every protocol, suite constraint, and background system to protect your peace from the moment you arrive.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.6vw,36px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.6vw,36px);">
         <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
           <div class="jv-bezel">
             <div class="jv-bezel-inner" style="padding:clamp(26px,3vw,38px);height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -317,7 +362,7 @@
         <a href="#/treatments" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #C08B5C;padding-bottom:4px;color:#1F2A28;">All treatments menu →</a>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,2.4vw,32px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 250px), 1fr));gap:clamp(20px,2.4vw,32px);">
         <!-- Card 1: Deep Tissue -->
         <a href="#/t/deep-tissue" class="jv-bezel" style="display:block;text-decoration:none;transition:transform .4s ease;" style-hover="transform:translateY(-6px);">
           <div class="jv-bezel-inner" style="overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;height:100%;">
@@ -569,7 +614,7 @@
         <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(34px,5vw,64px);line-height:1.05;letter-spacing:-.025em;margin-top:14px;color:#1F2A28;">A quiet afternoon in six pictures.</h2>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(16px,2vw,26px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(16px,2vw,26px);">
         <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="6">
           <div class="jv-bezel" style="aspect-ratio:4/3;overflow:hidden;position:relative;">
             <div class="jv-bezel-inner" style="width:100%;height:100%;overflow:hidden;position:relative;">
@@ -632,7 +677,7 @@
         <span style="width:28px;height:1px;background:#C08B5C;"></span>
         <span style="font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#8A5A2E;">In Their Words</span>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.6vw,36px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.6vw,36px);">
         <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
           <div class="jv-bezel">
             <div class="jv-bezel-inner" style="padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;height:100%;">
@@ -716,7 +761,7 @@
     </div>
 
     <!-- 2-Column Transparent Pricing Table (Eden Spa / PeeSkin MedSpa Style) -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2vw,28px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px), 1fr));gap:clamp(16px,2vw,28px);">
       <sc-for list="{{ massageTable }}" as="tb" hint-placeholder-count="6">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;justify-content:space-between;height:100%;">
@@ -762,7 +807,7 @@
       </div>
 
       <!-- 2-Column Table -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2vw,28px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px), 1fr));gap:clamp(16px,2vw,28px);">
         <sc-for list="{{ facialTable }}" as="tb" hint-placeholder-count="6">
           <div class="jv-bezel">
             <div class="jv-bezel-inner" style="padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;justify-content:space-between;height:100%;">
@@ -808,7 +853,7 @@
     </div>
 
     <!-- 2-Column Table -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2vw,28px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px), 1fr));gap:clamp(16px,2vw,28px);">
       <sc-for list="{{ ritualTable }}" as="tb" hint-placeholder-count="6">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;justify-content:space-between;height:100%;">
@@ -854,7 +899,7 @@
       </div>
 
       <!-- 2-Column Table -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2vw,28px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px), 1fr));gap:clamp(16px,2vw,28px);">
         <sc-for list="{{ aestheticTable }}" as="tb" hint-placeholder-count="3">
           <div class="jv-bezel">
             <div class="jv-bezel-inner" style="padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;justify-content:space-between;height:100%;">
@@ -889,7 +934,7 @@
       <a href="#/packages#custom-builder" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #C08B5C;padding-bottom:4px;color:#1F2A28;">Custom Bundle Builder (Save 15%) →</a>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(20px,2.4vw,32px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.4vw,32px);">
       <sc-for list="{{ pairings }}" as="p" hint-placeholder-count="3">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:clamp(26px,3vw,38px);display:flex;flex-direction:column;justify-content:space-between;height:100%;">
@@ -970,7 +1015,7 @@
       <p style="margin-top:14px;font-size:15.5px;line-height:1.72;color:#6E675C;">{{ d.body }}</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(16px,2vw,24px);margin-bottom:clamp(50px,6vw,90px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 250px), 1fr));gap:clamp(16px,2vw,24px);margin-bottom:clamp(50px,6vw,90px);">
       <sc-for list="{{ d.steps }}" as="st" hint-placeholder-count="5">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:22px 24px;height:100%;">
@@ -1054,7 +1099,7 @@
       <button onClick="{{ scrollToBuilder }}" style="background:none;border:none;cursor:pointer;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid #C08B5C;padding:0 0 2px;font-family:inherit;">Prefer to Build a Custom Bundle? ↓</button>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(14px,1.8vw,24px);margin-bottom:clamp(60px,8vw,110px);align-items:stretch;" data-stack="1">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 240px), 1fr));gap:clamp(14px,1.8vw,24px);margin-bottom:clamp(60px,8vw,110px);align-items:stretch;" data-stack="1">
       <sc-for list="{{ packages }}" as="pk" hint-placeholder-count="4">
         <div class="jv-bezel" style="background:{{ pk.cardBg }};border-color:{{ pk.cardBorder }};height:100%;">
           <div class="jv-bezel-inner" style="background:{{ pk.cardBg }};color:{{ pk.cardInk }};padding:clamp(22px,2.2vw,32px);display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ pk.cardBorder }};">
@@ -1128,7 +1173,7 @@
         <p style="margin-top:16px;font-size:15.5px;line-height:1.7;color:rgba(247,244,238,.75);">Stack your choice of bodywork, clinical skin, and hydro rituals into a single sequence. Bundling three services automatically applies a 15% sanctuary rate discount.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.5vw,32px);margin-bottom:clamp(40px,5vw,64px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.5vw,32px);margin-bottom:clamp(40px,5vw,64px);">
         <!-- Column 1: Massage Selection -->
         <div style="background:rgba(247,244,238,.04);border:1px solid rgba(247,244,238,.14);padding:clamp(24px,2.6vw,36px);">
           <span style="display:block;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#C08B5C;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(247,244,238,.14);">01 · Bodywork</span>
@@ -1243,7 +1288,7 @@
       <button onClick="{{ scrollToMemberApply }}" style="background:none;border:none;cursor:pointer;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A5A2E;font-weight:600;border-bottom:1px solid #C08B5C;padding:0 0 2px;font-family:inherit;">Enroll in Standing Care ↓</button>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,2.4vw,34px);margin-bottom:clamp(70px,9vw,120px);align-items:stretch;" data-stack="1">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 270px), 1fr));gap:clamp(20px,2.4vw,34px);margin-bottom:clamp(70px,9vw,120px);align-items:stretch;" data-stack="1">
       <sc-for list="{{ memberships }}" as="m" hint-placeholder-count="3">
         <div class="jv-bezel" style="background:{{ m.bg }};border-color:{{ m.border }};">
           <div class="jv-bezel-inner" style="background:{{ m.bg }};color:{{ m.ink }};padding:clamp(28px,3vw,42px);display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ m.border }};">
@@ -1358,7 +1403,7 @@
         <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">Why Abuja Executives Choose Standing Care</h2>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.4vw,32px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.4vw,32px);">
         <sc-for list="{{ memberRules }}" as="r" hint-placeholder-count="3">
           <div class="jv-bezel">
             <div class="jv-bezel-inner" style="padding:28px 30px;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -1653,7 +1698,7 @@
     </div>
 
     <!-- 4 Occasion Cards in 2x2 Grid -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:clamp(24px,3vw,40px);margin-bottom:clamp(70px,9vw,120px);align-items:stretch;" data-stack="1">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 340px), 1fr));gap:clamp(24px,3vw,40px);margin-bottom:clamp(70px,9vw,120px);align-items:stretch;" data-stack="1">
       <sc-for list="{{ occasionCards }}" as="oc" hint-placeholder-count="4">
         <div class="jv-bezel" style="background:{{ oc.bg }};border-color:{{ oc.border }};">
           <div class="jv-bezel-inner" style="background:{{ oc.bg }};color:{{ oc.ink }};padding:0;display:flex;flex-direction:column;justify-content:space-between;height:100%;border-color:{{ oc.border }};overflow:hidden;">
@@ -1777,7 +1822,7 @@
         <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">The Private Sanctuary Standard</h2>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(16px,2vw,28px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 250px), 1fr));gap:clamp(16px,2vw,28px);">
         <sc-for list="{{ occasionStandards }}" as="os" hint-placeholder-count="4">
           <div class="jv-bezel">
             <div class="jv-bezel-inner" style="padding:26px 28px;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -1976,7 +2021,7 @@
       <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(32px,4.8vw,60px);line-height:1.05;letter-spacing:-.025em;margin-top:14px;color:#1F2A28;">The practitioners behind the hour.</h2>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.6vw,36px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.6vw,36px);">
       <sc-for list="{{ team }}" as="tm" hint-placeholder-count="4">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="overflow:hidden;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -2182,7 +2227,7 @@
         <p style="font-size:15px;line-height:1.7;color:rgba(247,244,238,.8);">Tap a mood below to see which Abuja sanctuary location is curated for your exact needs.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:24px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 240px), 1fr));gap:14px;margin-bottom:24px;">
         <sc-for list="{{ moodOptions }}" as="mo" hint-placeholder-count="4">
           <div onClick="{{ mo.select }}" style="cursor:pointer;padding:18px 20px;background:{{ mo.bg }};border:1px solid {{ mo.border }};border-radius:8px;transition:all .3s ease;">
             <span style="font-size:22px;display:block;margin-bottom:8px;">{{ mo.icon }}</span>
@@ -2401,7 +2446,7 @@
         <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:#1F2A28;margin:8px 0 0;">What to Expect from Arrival to Rest</h2>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,2.2vw,30px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 250px), 1fr));gap:clamp(18px,2.2vw,30px);">
         <sc-for list="{{ visitStepsList }}" as="vs" hint-placeholder-count="4">
           <div class="jv-bezel">
             <div class="jv-bezel-inner" style="padding:26px 28px;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -2476,7 +2521,7 @@
 
   <!-- ================= 3 PROTOCOL PILLARS ================= -->
   <section style="background:#EDE8DF;border-bottom:1px solid #DCD3C5;padding:clamp(50px,6vw,80px) clamp(20px,4vw,56px);">
-    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.6vw,36px);">
+    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.6vw,36px);">
       <sc-for list="{{ protocolPillars }}" as="pp" hint-placeholder-count="3">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:24px 28px;height:100%;">
@@ -2508,7 +2553,7 @@
           <p style="font-size:15.5px;line-height:1.7;color:#6E675C;max-width:54ch;">Select the area of your body, skin, or energy state that requires the most dedicated clinical attention.</p>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:12px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 250px), 1fr));gap:18px;margin-top:12px;">
           <sc-for list="{{ matcherNeeds }}" as="nd" hint-placeholder-count="5">
             <div onClick="{{ nd.select }}" class="jv-bezel" style="cursor:pointer;background:{{ nd.bg }};border-color:{{ nd.border }};transition:all .3s ease;">
               <div class="jv-bezel-inner" style="padding:26px 28px;background:transparent;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -2564,7 +2609,7 @@
           <p style="font-size:15.5px;line-height:1.7;color:#6E675C;max-width:54ch;">Both houses share the same hygiene and power redundancy standards, but differ in atmosphere.</p>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:12px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 250px), 1fr));gap:18px;margin-top:12px;">
           <sc-for list="{{ matcherHouses }}" as="hs" hint-placeholder-count="3">
             <div onClick="{{ hs.select }}" class="jv-bezel" style="cursor:pointer;background:{{ hs.bg }};border-color:{{ hs.border }};transition:all .3s ease;">
               <div class="jv-bezel-inner" style="padding:26px 28px;background:transparent;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -2866,7 +2911,7 @@
     </div>
   </section>
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.4vw,32px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.4vw,32px);">
       <sc-for list="{{ massageItems }}" as="mi" hint-placeholder-count="6">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:clamp(24px,2.6vw,34px);display:flex;flex-direction:column;justify-content:space-between;height:100%;">
@@ -2899,7 +2944,7 @@
     </div>
   </section>
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.4vw,32px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.4vw,32px);">
       <sc-for list="{{ facialItems }}" as="fi" hint-placeholder-count="6">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:clamp(24px,2.6vw,34px);display:flex;flex-direction:column;justify-content:space-between;height:100%;">
@@ -2932,7 +2977,7 @@
     </div>
   </section>
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.4vw,32px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.4vw,32px);">
       <sc-for list="{{ ritualItems }}" as="ri" hint-placeholder-count="6">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:clamp(24px,2.6vw,34px);display:flex;flex-direction:column;justify-content:space-between;height:100%;">
@@ -2965,7 +3010,7 @@
     </div>
   </section>
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.4vw,32px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.4vw,32px);">
       <sc-for list="{{ aestheticItems }}" as="ai" hint-placeholder-count="3">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:clamp(24px,2.6vw,34px);display:flex;flex-direction:column;justify-content:space-between;height:100%;">
@@ -2999,7 +3044,7 @@
     </div>
   </section>
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,2.6vw,36px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 270px), 1fr));gap:clamp(20px,2.6vw,36px);">
       <sc-for list="{{ etiquettePillars }}" as="ep" hint-placeholder-count="6">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:28px 30px;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -3028,7 +3073,7 @@
     </div>
   </section>
   <section style="max-width:1440px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(20px,4vw,56px);">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.6vw,36px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px), 1fr));gap:clamp(20px,2.6vw,36px);">
       <sc-for list="{{ aftercareFull }}" as="af" hint-placeholder-count="4">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:28px 30px;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -3186,7 +3231,7 @@
               </div>
 
               <!-- Service Cards Grid -->
-              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:34px;">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 250px), 1fr));gap:14px;margin-bottom:34px;">
                 <sc-for list="{{ bookServicesList }}" as="sv" hint-placeholder-count="6">
                   <div onClick="{{ sv.select }}" class="jv-bezel" style="cursor:pointer;background:{{ sv.bg }};border-color:{{ sv.border }};transition:all .3s ease;">
                     <div class="jv-bezel-inner" style="padding:20px 22px;background:transparent;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -3271,7 +3316,7 @@
                 <p style="font-size:15px;line-height:1.7;color:#6E675C;">Both houses operate dual solar/generator backup, medical sanitization, and complimentary tea lounges.</p>
               </div>
 
-              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:34px;">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 250px), 1fr));gap:16px;margin-bottom:34px;">
                 <sc-for list="{{ bookHousesList }}" as="hl" hint-placeholder-count="3">
                   <div onClick="{{ hl.select }}" class="jv-bezel" style="cursor:pointer;background:{{ hl.bg }};border-color:{{ hl.border }};transition:all .3s ease;">
                     <div class="jv-bezel-inner" style="padding:24px 26px;background:transparent;height:100%;display:flex;flex-direction:column;justify-content:space-between;">
@@ -3470,7 +3515,7 @@
 
   <!-- Sanctuary Standards & Booking Assurances Bar -->
   <section style="background:#EDE8DF;border-top:1px solid #DCD3C5;padding:clamp(40px,5vw,70px) clamp(20px,4vw,56px);">
-    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,2.6vw,36px);">
+    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 250px), 1fr));gap:clamp(20px,2.6vw,36px);">
       <sc-for list="{{ bookAssurances }}" as="ba" hint-placeholder-count="4">
         <div class="jv-bezel">
           <div class="jv-bezel-inner" style="padding:22px 24px;height:100%;">
@@ -3622,12 +3667,26 @@
     </div>
   </div>
 </footer>
-<!-- Mobile Floating Booking Rail -->
-<div class="jv-mobile-rail" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:rgba(7,47,51,.94);backdrop-filter:blur(16px);border-top:1px solid rgba(247,244,238,.16);gap:10px;align-items:center;">
-  <a href="#/book" style="flex:1;text-align:center;padding:13px 18px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .3s ease;">Book Online</a>
-  <a href="{{ whatsapp }}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 18px;background:#25D366;color:#FFFFFF;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:opacity .3s ease;">
+<!-- Luxury Mobile Floating Bottom Navigation Rail -->
+<div class="jv-mobile-rail" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(7,47,51,.96);backdrop-filter:blur(20px);border-top:1px solid rgba(192,139,92,.35);box-shadow:0 -10px 25px rgba(0,0,0,.4);align-items:center;justify-content:space-around;">
+  <a href="#/" style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(247,244,238,.75);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:6px 8px;text-decoration:none;">
+    <span style="font-size:16px;">🏠</span>
+    <span>Home</span>
+  </a>
+  <a href="#/treatments" style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(247,244,238,.75);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:6px 8px;text-decoration:none;">
+    <span style="font-size:16px;">🌿</span>
+    <span>Menu</span>
+  </a>
+  <a href="#/book" style="display:flex;align-items:center;gap:6px;padding:10px 16px;background:#C08B5C;color:#1F2A28;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-radius:24px;text-decoration:none;box-shadow:0 4px 12px rgba(192,139,92,.4);">
+    <span>✦ Book</span>
+  </a>
+  <a href="#/visit" style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(247,244,238,.75);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:6px 8px;text-decoration:none;">
+    <span style="font-size:16px;">📍</span>
+    <span>Visit</span>
+  </a>
+  <a href="{{ whatsapp }}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#25D366;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:6px 8px;text-decoration:none;">
     <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.19 8.19 0 0 1-5.82 2.42c-1.48 0-2.93-.39-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.25-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
-    <span>WhatsApp</span>
+    <span>Chat</span>
   </a>
 </div>
 
@@ -4074,6 +4133,7 @@ class Component extends DCLogic {
       this._mq = window.matchMedia('(max-width: 880px)');
       this._apply = () => {
         const sm = this._mq.matches;
+        const w = window.innerWidth;
         document.querySelectorAll('[data-stack]').forEach((el) => {
           if (el.__cols == null) el.__cols = el.style.gridTemplateColumns || '';
           el.style.gridTemplateColumns = sm ? 'minmax(0,1fr)' : el.__cols;
@@ -4083,17 +4143,16 @@ class Component extends DCLogic {
           if (el.__cols == null) el.__cols = el.style.gridTemplateColumns || '';
           if (el.__gap == null) el.__gap = el.style.gap || '';
           el.style.gridTemplateColumns = sm ? 'minmax(0,1fr)' : el.__cols;
-          el.style.gap = sm ? '10px' : el.__gap;
+          el.style.gap = sm ? '12px' : el.__gap;
         });
         document.querySelectorAll('[data-hide-sm]').forEach((el) => { el.style.display = sm ? 'none' : ''; });
         document.querySelectorAll('[data-heropad]').forEach((el) => {
           el.style.paddingRight = sm ? '' : 'max(clamp(20px,4vw,56px), 50%)';
         });
-        const w = window.innerWidth;
-        const cols = w <= 620 ? 'minmax(0,1fr)' : w <= 1060 ? 'repeat(2,minmax(0,1fr))' : 'repeat(5,minmax(0,1fr))';
+        const cols = w <= 640 ? 'minmax(0,1fr)' : w <= 1060 ? 'repeat(2,minmax(0,1fr))' : 'repeat(5,minmax(0,1fr))';
         document.querySelectorAll('[data-grid5]').forEach((el) => { el.style.gridTemplateColumns = cols; });
         document.querySelectorAll('[data-footer-grid]').forEach((el) => { el.style.gridTemplateColumns = w <= 640 ? 'minmax(0,1fr)' : w <= 1040 ? 'repeat(2,minmax(0,1fr))' : '1.4fr 1fr 1fr 1.35fr'; });
-        const nsm = window.innerWidth <= 1140;
+        const nsm = w <= 1140;
         document.querySelectorAll('[data-nav]').forEach((el) => { el.style.display = nsm ? 'none' : 'inline-block'; });
         document.querySelectorAll('[data-burger]').forEach((el) => { el.style.display = nsm ? 'flex' : 'none'; });
       };
